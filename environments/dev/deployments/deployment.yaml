@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demand-driver-api
+  labels:
+    app: demand-driver-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demand-driver-api
+  template:
+    metadata:
+      labels:
+        app: demand-driver-api
+    spec:
+      containers:
+      - name: demand-driver-api
+        image: australia-southeast1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/demand-driver:5187e3c
+        ports:
+        - containerPort: 5001

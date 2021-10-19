@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demand-driver-api
+spec:
+  selector:
+    app: demand-driver-api
+  ports:
+  - protocol: TCP
+    port: 5001
+    targetPort: 5001
+  type: LoadBalancer

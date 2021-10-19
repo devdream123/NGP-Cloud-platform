@@ -1,0 +1,23 @@
+steps:
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Deploy deployments
+    args:
+     - "apply"
+     - "-R"
+     - "-f"
+     - "environments/$BRANCH_NAME/deployments"
+  - name: 'gcr.io/cloud-builders/kubectl'
+    id: Deploy services
+    args:
+     - "apply"
+     - "-R"
+     - "-f"
+     - "environments/$BRANCH_NAME/services"  
+options:
+  env:
+    - "LOCATION = australia-southeast1"
+    - "DEMAND_DRIVER_IMAGE_NAME = demand-driver" 
+    - "ARTIFACT_REPOSITORY= qr-dev-backend-artifact-registry"
+    - "CLOUDSDK_COMPUTE_REGION=australia-southeast1"
+    - "CLOUDSDK_CONTAINER_CLUSTER=qr-dev-analytics-backend"
+    - "KUBECTL_DRY_RUN=none"
