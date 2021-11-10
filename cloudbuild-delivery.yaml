@@ -1,11 +1,7 @@
 steps:
   - name: 'gcr.io/cloud-builders/kubectl'
     id: Deploy deployments
-    entrypoint: bash
-    args:
-    - '-c'
-    - |
-        ./deploy.sh $BRANCH_NAME
+    args: ["bash ./deploy.sh $BRANCH_NAME"]
 options:
   env:
     - "LOCATION = us-central1"
