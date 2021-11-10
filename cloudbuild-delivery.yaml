@@ -3,7 +3,7 @@ steps:
     id: Deploy deployments
     entrypoint: bash
     args:
-    - 'c'
+    - '-c'
     - |
         ./deploy.sh $BRANCH_NAME
 options:
