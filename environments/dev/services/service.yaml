@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: demand-driver-api
+  name: deslsheet-api
 spec:
   selector:
-    app: demand-driver-api
+    app: dealsheet-api
   ports:
   - protocol: TCP
     port: 5001
