@@ -4,6 +4,7 @@ metadata:
   name: dealsheet-api
   labels:
     app: dealsheet-api
+  namespace: ngp
 spec:
   replicas: 1
   selector:
@@ -16,6 +17,10 @@ spec:
     spec:
       containers:
       - name: dealsheet-api
-        image: us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-dealsheet:5187e3c
+        image: us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-dealsheet:0.0.8
+        imagePullPolicy: Always
         ports:
-        - containerPort: 5001
+        - name: http
+          containerPort: 8080
+        - name: ASPNETCORE_URLS
+          value: http://*:8080

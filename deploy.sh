@@ -16,6 +16,7 @@ KUBECTL_DRY_RUN="${KUBECTL_DRY_RUN:-server}"
 echo ================================================================================
 echo "Deploying environment specific settings for $environment"
 echo ================================================================================
-# kubectl apply --dry-run=$KUBECTL_DRY_RUN -R -f environments/$environment/deplyoments/
-# kubectl apply --dry-run=$KUBECTL_DRY_RUN -R -f environments/$environment/services
+kubectl apply --dry-run=$KUBECTL_DRY_RUN -R -f environments/$environment/namespaces/
+kubectl apply --dry-run=$KUBECTL_DRY_RUN -R -f environments/$environment/deplyoments/
+kubectl apply --dry-run=$KUBECTL_DRY_RUN -R -f environments/$environment/services/
 

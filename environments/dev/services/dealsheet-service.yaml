@@ -1,12 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: deslsheet-api
+  name: dealsheet-api
+  namespace: ngp
 spec:
   selector:
     app: dealsheet-api
   ports:
   - protocol: TCP
-    port: 5001
-    targetPort: 5001
+    port: 8080
+    targetPort: 8080
   type: LoadBalancer
