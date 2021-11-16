@@ -22,5 +22,5 @@ kubectl cluster-info
 echo $CLOUDSDK_CONTAINER_CLUSTER
 kubectl apply --dry-run=$KUBECTL_DRY_RUN -R -f environments/$environment/namespaces/
 kubectl apply --dry-run=$KUBECTL_DRY_RUN -R -f environments/$environment/deployments/
-kubectl apply --dry-run=$KUBECTL_DRY_RUN -R -f environments/$environment/services/
+# kubectl apply --dry-run=$KUBECTL_DRY_RUN -R -f environments/$environment/services/
 
