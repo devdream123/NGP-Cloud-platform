@@ -3,11 +3,12 @@ steps:
     id: Deploy resources
     entrypoint: bash
     args: ['deploy.sh','$BRANCH_NAME']
-    - 'LOCATION=us-central1'
-    - 'ARTIFACT_REPOSITORY=qr-dev-backend-artifact-registry'
-    - 'CLOUDSDK_COMPUTE_REGION=us-central1'
-    - 'CLOUDSDK_CONTAINER_CLUSTER=qr-dev-analytics-backend'
-    - 'KUBECTL_DRY_RUN=none'
+    env:
+      - 'LOCATION=us-central1'
+      - 'ARTIFACT_REPOSITORY=qr-dev-backend-artifact-registry'
+      - 'CLOUDSDK_COMPUTE_REGION=us-central1'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=qr-dev-analytics-backend'
+      - 'KUBECTL_DRY_RUN=none'
 options:
   env:
     - "LOCATION=us-central1"
