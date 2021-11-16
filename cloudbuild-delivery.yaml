@@ -9,6 +9,7 @@ steps:
       - 'CLOUDSDK_COMPUTE_REGION=us-central1'
       - 'CLOUDSDK_CONTAINER_CLUSTER=qr-dev-analytics-backend'
       - 'KUBECTL_DRY_RUN=none'
+      - 'PROJECT_ID=gcp-wow-corp-qretail-ngp-dev'
 options:
   env:
     - "LOCATION=us-central1"
@@ -16,3 +17,4 @@ options:
     - "CLOUDSDK_COMPUTE_REGION=us-central1"
     - "CLOUDSDK_CONTAINER_CLUSTER=qr-dev-analytics-backend"
     - "KUBECTL_DRY_RUN=none"
+    - "PROJECT_ID=gcp-wow-corp-qretail-ngp-dev"
