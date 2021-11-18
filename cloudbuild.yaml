@@ -6,5 +6,6 @@ steps:
       - '-c'
       - |
         . ./config/dev.env
+        printenv
         /builder/entrypoint.sh template ./charts/dealsheet-api
         /builder/entrypoint.sh template ./charts/graphql-mesh
