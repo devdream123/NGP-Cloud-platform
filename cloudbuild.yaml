@@ -1,0 +1,10 @@
+---
+steps:
+  - name: 'gcr.io/gcp-wow-corp-qretail-ngp-dev/helm'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        . ./config/dev.env
+        /builder/entrypoint.sh template ./charts/dealsheet-api
+        /builder/entrypoint.sh template ./charts/graphql-mesh
