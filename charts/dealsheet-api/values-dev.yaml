@@ -1,25 +1,16 @@
 replicaCount: 3
 
-dealSheet:
-  hostname: dealsheet-api.ngp.svc.cluster.local
-  port: 8080
-
-mesh:
-  cors:
-    origin: '*'
-
-  debugEnabled: 1
-
-  fullname: graphql-mesh
+dealsheet-api:
+  fullname: dealsheet-api
   
   labels:
-    run: graphql-mesh
+    run: dealsheet-api
 
   selectorLabels:
-    run: graphql-mesh
+    run: dealsheet-api
 
 image:
-  repository: us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-graphql-mesh
+  repository: us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-dealsheet
   pullPolicy: Always
   tag: ""
 

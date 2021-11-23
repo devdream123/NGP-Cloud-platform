@@ -1,0 +1,90 @@
+---
+# Source: dealsheet-api/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: qr-ngp-dealsheet-api
+  labels:
+    helm.sh/chart: dealsheet-api-0.0.1
+    app.kubernetes.io/name: dealsheet-api
+    app.kubernetes.io/instance: qr-ngp
+    app.kubernetes.io/version: "0.0.7"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: dealsheet-api
+    app.kubernetes.io/instance: qr-ngp
+---
+# Source: dealsheet-api/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qr-ngp-dealsheet-api
+  labels:
+    helm.sh/chart: dealsheet-api-0.0.1
+    app.kubernetes.io/name: dealsheet-api
+    app.kubernetes.io/instance: qr-ngp
+    app.kubernetes.io/version: "0.0.7"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dealsheet-api
+      app.kubernetes.io/instance: qr-ngp
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dealsheet-api
+        app.kubernetes.io/instance: qr-ngp
+    spec:
+      securityContext:
+        {}
+      containers:
+        - name: dealsheet-api
+          securityContext:
+            {}
+          image: "us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-dealsheet:0.0.7"
+          imagePullPolicy: Always
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://*:8080       
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /graphql
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /graphql
+              port: http
+          resources:
+            {}
+---
+# Source: dealsheet-api/templates/tests/test-connection.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "qr-ngp-dealsheet-api-test-connection"
+  labels:
+    helm.sh/chart: dealsheet-api-0.0.1
+    app.kubernetes.io/name: dealsheet-api
+    app.kubernetes.io/instance: qr-ngp
+    app.kubernetes.io/version: "0.0.7"
+    app.kubernetes.io/managed-by: Helm
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['qr-ngp-dealsheet-api:8080']
+  restartPolicy: Never

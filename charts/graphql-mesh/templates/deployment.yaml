@@ -44,11 +44,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /graphql
+              path: /healthcheck
               port: http
           readinessProbe:
             httpGet:
-              path: /graphql
+              path: /readiness
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

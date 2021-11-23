@@ -1,23 +1,8 @@
----
 steps:
-  - name: 'gcr.io/gcp-wow-corp-qretail-ngp-dev/yq'
-    entrypoint: 'sh'
-    args:
-      - '-c'
-      - |
-        cat ./config/dev.env.yaml | /usr/bin/yq e '.env.CLOUDSDK_COMPUTE_REGION' - > _CLOUDSDK_COMPUTE_REGION
-        cat ./config/dev.env.yaml | /usr/bin/yq e '.env.CLOUDSDK_CONTAINER_CLUSTER' - > _CLOUDSDK_CONTAINER_CLUSTER
-        cat ./config/dev.env.yaml | /usr/bin/yq e '.env.GCLOUD_PROJECT' - > _GCLOUD_PROJECT
-
   - name: 'gcr.io/gcp-wow-corp-qretail-ngp-dev/helm'
-    entrypoint: 'sh'
-    args:
-      - '-c'
-      - |
-        export CLOUDSDK_COMPUTE_REGION=$(cat _CLOUDSDK_COMPUTE_REGION)
-        export CLOUDSDK_CONTAINER_CLUSTER=$(cat _CLOUDSDK_CONTAINER_CLUSTER)
-        export GCLOUD_PROJECT=$(cat _GCLOUD_PROJECT)
-        printenv
-
-        /builder/entrypoint.sh template ./charts/dealsheet-api
-        /builder/entrypoint.sh template ./charts/graphql-mesh
+    id: Deploy helm charts
+    entrypoint: bash
+    args: ['deploy.sh','$BRANCH_NAME']
+options:
+  env:
+    - "KUBECTL_DRY_RUN=none"
