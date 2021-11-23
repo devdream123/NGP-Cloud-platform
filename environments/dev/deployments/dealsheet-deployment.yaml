@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: dealsheet-api
-        image: us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-dealsheet:0.0.20
+        image: us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-dealsheet:0.0.21
         imagePullPolicy: Always
         ports:
         - name: http
