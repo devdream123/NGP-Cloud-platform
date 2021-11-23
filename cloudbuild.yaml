@@ -2,7 +2,7 @@ steps:
   - name: 'gcr.io/gcp-wow-corp-qretail-ngp-dev/helm'
     id: Deploy helm charts
     entrypoint: bash
-    args: ['deploy.sh','$BRANCH_NAME']
+    args: ['deploy.sh','-e','$BRANCH_NAME']
 options:
   env:
     - "KUBECTL_DRY_RUN=none"
