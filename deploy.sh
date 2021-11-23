@@ -38,16 +38,16 @@ if [[ -z "${namespace}" ]]; then
 	exit 1
 fi
 
-export CLOUDSDK_COMPUTE_REGION=$(cat config/dev.env.yaml | grep CLOUDSDK_COMPUTE_REGION | cut -d ':' -f 2 | xargs)
-export CLOUDSDK_CONTAINER_CLUSTER=$(cat config/dev.env.yaml | grep CLOUDSDK_CONTAINER_CLUSTER | cut -d ':' -f 2 | xargs)
-export GCLOUD_PROJECT=$(cat config/dev.env.yaml | grep GCLOUD_PROJECT | cut -d ':' -f 2 | xargs)
-export PROJECT_ID=$(cat config/dev.env.yaml | grep GCLOUD_PROJECT | cut -d ':' -f 2 | xargs)
-export LOCATION=$(cat config/dev.env.yaml | grep CLOUDSDK_COMPUTE_REGION | cut -d ':' -f 2 | xargs)
+export CLOUDSDK_COMPUTE_REGION=$(cat "config/dev.${environment}.yaml" | grep CLOUDSDK_COMPUTE_REGION | cut -d ':' -f 2 | xargs)
+export CLOUDSDK_CONTAINER_CLUSTER=$(cat "config/dev.${environment}.yaml"| grep CLOUDSDK_CONTAINER_CLUSTER | cut -d ':' -f 2 | xargs)
+export GCLOUD_PROJECT=$(cat "config/dev.${environment}.yaml" | grep GCLOUD_PROJECT | cut -d ':' -f 2 | xargs)
+export PROJECT_ID=$(cat "config/dev.${environment}.yaml" | grep GCLOUD_PROJECT | cut -d ':' -f 2 | xargs)
+export LOCATION=$(cat "config/dev.${environment}.yaml" | grep CLOUDSDK_COMPUTE_REGION | cut -d ':' -f 2 | xargs)
 
 if [[ -z $(helm list -n ngp --filter 'ngp-base' -o yaml | grep name) ]]; then
-  /builder/entrypoint.sh install -n ngp --atomic ngp-base ./charts/ngp-base
+  /builder/entrypoint.sh install --atomic ngp-base ./charts/ngp-base
 else
-  /builder/entrypoint.sh upgrade -n ngp --atomic ngp-base ./charts/ngp-base
+  /builder/entrypoint.sh upgrade --atomic ngp-base ./charts/ngp-base
 fi
 
 if [[ -z $(helm list -n ngp --filter 'dealsheet' -o yaml | grep name) ]]; then
