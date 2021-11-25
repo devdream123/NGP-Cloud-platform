@@ -47,6 +47,12 @@ export GCLOUD_PROJECT=$(cat "${base_dir}/../config/${environment}.env.yaml" | gr
 export PROJECT_ID=$(cat "${base_dir}/../config/${environment}.env.yaml" | grep GCLOUD_PROJECT | cut -d ':' -f 2 | xargs)
 export LOCATION=$(cat "${base_dir}/../config/${environment}.env.yaml" | grep CLOUDSDK_COMPUTE_REGION | cut -d ':' -f 2 | xargs)
 
-helmfile   --environment "${environment}" --namespace "${namespace}" apply \
+mkdir -p /builder/home/.local/share/helm
+cp -r /root/.local/share/helm/plugins /builder/home/.local/share/helm/plugins
+
+echoerr "Running: gcloud container clusters get-credentials --project=\"$PROJECT_ID\" --region=\"$CLOUDSDK_COMPUTE_REGION\" \"$CLOUDSDK_CONTAINER_CLUSTER\""
+gcloud container clusters get-credentials --project="$PROJECT_ID" --region="$CLOUDSDK_COMPUTE_REGION" "$CLOUDSDK_CONTAINER_CLUSTER" || exit
+
+helmfile --environment "${environment}" --namespace "${namespace}" apply \
   --skip-deps \
   --concurrency 1
