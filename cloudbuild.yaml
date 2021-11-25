@@ -5,6 +5,8 @@ steps:
     args:
       - '-c'
       - |
+        mkdir -p "$HOME/.local/share/helm"
+        ln -s /root/.local/share/helm/plugins "$HOME/.local/share/helm/plugins"
         if [[ "$BRANCH_NAME" == 'main' || "$BRANCH_NAME" == 'dev' ]]; then
           ./scripts/deploy.sh -e "$BRANCH_NAME" -n ngp
         fi
