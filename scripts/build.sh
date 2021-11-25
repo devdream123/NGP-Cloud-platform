@@ -38,10 +38,7 @@ if [[ -z "${release_name}" || -z "${release_env}" ]]; then
 	exit 1
 fi
 
-helm template "${base_dir}/charts/ngp-base" \
-  -f "${base_dir}/charts/ngp-base/values.yaml" \
-  --atomic \
-  --name-template="${release_name}" > "${base_dir}/charts-rendered/dev/ngp-base-0.0.1.yml"
+mkdir -p "${base_dir}/charts-rendered/dev"
 
 helm template "${base_dir}/charts/graphql-mesh" \
 	-f "${base_dir}/charts/graphql-mesh/values-dev.yaml" \
