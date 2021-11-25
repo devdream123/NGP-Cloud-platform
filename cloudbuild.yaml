@@ -1,12 +1,11 @@
 ---
 steps:
   - name: 'gcr.io/gcp-wow-corp-qretail-ngp-dev/helmfile'
-    id: Deploy helm charts
-    entrypoint: 'sh'
+    entrypoint: 'bash'
     args:
       - '-c'
       - |
-        if [ $BRANCH_NAME == 'main' || $BRANCH_NAME == 'dev' ]; then
+        if [[ "$BRANCH_NAME" == 'main' || "$BRANCH_NAME" == 'dev' ]]; then
           ./scripts/deploy.sh -e "$BRANCH_NAME" -n ngp
         fi
 
