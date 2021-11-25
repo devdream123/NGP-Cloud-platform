@@ -1,0 +1,15 @@
+---
+steps:
+  - name: 'gcr.io/gcp-wow-corp-qretail-ngp-dev/helmfile'
+    id: Deploy helm charts
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        if [ $BRANCH_NAME == 'main' || $BRANCH_NAME == 'dev' ]; then
+          ./scripts/deploy.sh -e "$BRANCH_NAME" -n ngp
+        fi
+
+options:
+  env:
+    - "KUBECTL_DRY_RUN=none"

@@ -1,0 +1,42 @@
+replicaCount: 3
+
+dealsheet-api:
+  fullname: dealsheet-api
+  
+  labels:
+    run: dealsheet-api
+
+  selectorLabels:
+    run: dealsheet-api
+
+image:
+  repository: us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-dealsheet
+  pullPolicy: Always
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
