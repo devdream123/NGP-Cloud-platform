@@ -1,0 +1,30 @@
+---
+repositories:
+  - name: stable
+    url: https://charts.helm.sh/stable
+
+environments:
+  default:
+    values: 
+    - values/dev.yaml
+  dev:
+    values:
+    - values/dev.yaml
+
+helmDefaults:
+  wait: false
+  createNamespace: true
+  timeout: 600
+
+releases:
+  - name: dealsheet-api
+    namespace: {{ .Namespace }}
+    chart: ./charts/dealsheet-api
+    values:
+      - "./charts/dealsheet-api/values-{{ .Values.environment }}.yaml"
+
+  - name: graphql-mesh
+    namespace: {{ .Namespace }}
+    chart: ./charts/graphql-mesh
+    values:
+      - "./charts/graphql-mesh/values-{{ .Values.environment }}.yaml"

@@ -1,8 +1,9 @@
+---
 steps:
-  - name: 'gcr.io/gcp-wow-corp-qretail-ngp-dev/helm'
+  - name: 'gcr.io/gcp-wow-corp-qretail-ngp-dev/helmfile'
     id: Deploy helm charts
     entrypoint: bash
-    args: ['deploy.sh','-e','$BRANCH_NAME']
+    args: ['./scripts/deploy.sh','-e','$BRANCH_NAME']
 options:
   env:
     - "KUBECTL_DRY_RUN=none"

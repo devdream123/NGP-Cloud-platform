@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "dealsheet-api.labels" . | nindent 4 }}
 spec:
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       {{- include "dealsheet-api.selectorLabels" . | nindent 6 }}
@@ -38,11 +39,11 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /graphql
+              path: /health
               port: http
           readinessProbe:
             httpGet:
-              path: /graphql
+              path: /health
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
