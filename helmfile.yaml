@@ -22,11 +22,21 @@ releases:
     chart: ./charts/dealsheet-api
     values:
       - "./charts/dealsheet-api/values-{{ .Environment.Name }}.yaml"
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.dealsheet.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}']      
   - name: graphql-mesh
     namespace: {{ .Values.graphql.namespace }}
     chart: ./charts/graphql-mesh
     values:
       - "./charts/graphql-mesh/values-{{ .Environment.Name }}.yaml"
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.graphql.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}']       
   - name: istio
     chart: ./charts/istio
     namespace: {{ .Values.istio.namespace }}
