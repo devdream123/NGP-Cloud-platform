@@ -17,26 +17,27 @@ helmDefaults:
   timeout: 600
 
 releases:
-
-  - name: ngp-base
-    chart: ./charts/ngp-base
-    values:
-      - "./charts/ngp-base/values-{{ .Environment.Name }}.yaml"
-
   - name: dealsheet-api
-    namespace: {{ .Namespace }}
+    namespace: {{ .Values.dealsheet.namespace }}
     chart: ./charts/dealsheet-api
     values:
       - "./charts/dealsheet-api/values-{{ .Environment.Name }}.yaml"
-
   - name: graphql-mesh
-    namespace: {{ .Namespace }}
+    namespace: {{ .Values.graphql.namespace }}
     chart: ./charts/graphql-mesh
     values:
       - "./charts/graphql-mesh/values-{{ .Environment.Name }}.yaml"
-  
-  - name: Istio
-    chart: ./charts/Istio
-    namespace: {{ .Values.namespace }}
+  - name: istio
+    chart: ./charts/istio
+    namespace: {{ .Values.istio.namespace }}
     values:
-      - "./charts/Istio/values-{{ .Environment.Name }}.yaml"
+      - "./charts/istio/values-{{ .Environment.Name }}.yaml"
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.istio.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}']
+      - events: ['postuninstall']
+        showlogs: true
+        command: 'kubectl'
+        args: ['delete', 'ns', '{{ .Values.istio.namespace }}']
