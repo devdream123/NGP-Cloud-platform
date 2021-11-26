@@ -40,11 +40,15 @@ spec:
           livenessProbe:
             httpGet:
               path: /health
-              port: http
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 120
           readinessProbe:
             httpGet:
               path: /health
-              port: http
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 120
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

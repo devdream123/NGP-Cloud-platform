@@ -17,6 +17,12 @@ helmDefaults:
   timeout: 600
 
 releases:
+
+  - name: ngp-base
+    chart: ./charts/ngp-base
+    values:
+      - "./charts/ngp-base/values-{{ .Environment.Name }}.yaml"
+
   - name: dealsheet-api
     namespace: {{ .Namespace }}
     chart: ./charts/dealsheet-api
@@ -28,3 +34,9 @@ releases:
     chart: ./charts/graphql-mesh
     values:
       - "./charts/graphql-mesh/values-{{ .Environment.Name }}.yaml"
+  
+  - name: Istio
+    chart: ./charts/Istio
+    namespace: {{ .Values.namespace }}
+    values:
+      - "./charts/Istio/values-{{ .Environment.Name }}.yaml"

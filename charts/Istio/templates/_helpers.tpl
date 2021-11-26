@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "dealsheet-api.name" -}}
+{{- define "Istio.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "dealsheet-api.fullname" -}}
+{{- define "Istio.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "dealsheet-api.chart" -}}
+{{- define "Istio.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "dealsheet-api.labels" -}}
-helm.sh/chart: {{ include "dealsheet-api.chart" . }}
-{{ include "dealsheet-api.selectorLabels" . }}
+{{- define "Istio.labels" -}}
+helm.sh/chart: {{ include "Istio.chart" . }}
+{{ include "Istio.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,18 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "dealsheet-api.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "dealsheet-api.name" . }}
+{{- define "Istio.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "Istio.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-istio: ingressgateway
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "dealsheet-api.serviceAccountName" -}}
+{{- define "Istio.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "dealsheet-api.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "Istio.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
