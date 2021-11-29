@@ -1,0 +1,20 @@
+---
+name: services-ingress
+namespace: asm-gateway
+
+asm:
+  rev: asm-198-6
+
+servers:
+    port: 
+      name: http
+      protocol: HTTP
+      number: 8080
+    hosts:
+      - "*"
+
+VirtualServices: 
+  name: services-ingress
+  spec: 
+    hosts: '*'
+    gateways: services-gateway 

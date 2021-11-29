@@ -1,1 +1,10 @@
 ---
+dealsheet:
+  namespace: ngp
+
+graphql:
+  namespace: ngp
+
+istio:
+  namespace: asm-gateway
+  revision: asm-198-6

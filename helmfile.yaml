@@ -18,13 +18,36 @@ helmDefaults:
 
 releases:
   - name: dealsheet-api
-    namespace: {{ .Namespace }}
+    namespace: {{ .Values.dealsheet.namespace }}
     chart: ./charts/dealsheet-api
     values:
       - "./charts/dealsheet-api/values-{{ .Environment.Name }}.yaml"
-
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.dealsheet.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}']      
   - name: graphql-mesh
-    namespace: {{ .Namespace }}
+    namespace: {{ .Values.graphql.namespace }}
     chart: ./charts/graphql-mesh
     values:
       - "./charts/graphql-mesh/values-{{ .Environment.Name }}.yaml"
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.graphql.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}']       
+  - name: istio
+    chart: ./charts/istio
+    namespace: {{ .Values.istio.namespace }}
+    values:
+      - "./charts/istio/values-{{ .Environment.Name }}.yaml"
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.istio.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}']
+      - events: ['postuninstall']
+        showlogs: true
+        command: 'kubectl'
+        args: ['delete', 'ns', '{{ .Values.istio.namespace }}']

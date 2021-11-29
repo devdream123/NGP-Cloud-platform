@@ -6,7 +6,7 @@ steps:
       - '-c'
       - |
         if [[ "$BRANCH_NAME" == 'main' || "$BRANCH_NAME" == 'dev' ]]; then
-          ./scripts/deploy.sh -e "$BRANCH_NAME" -n ngp
+          ./scripts/deploy.sh -e "$BRANCH_NAME"
         fi
 
 options:

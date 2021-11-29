@@ -38,14 +38,23 @@ if [[ -z "${release_name}" || -z "${release_env}" ]]; then
 	exit 1
 fi
 
-mkdir -p "${base_dir}/charts-rendered/dev"
+rendered_chart_path="${base_dir}/../charts-rendered/dev"
+mkdir -p "${rendered_chart_path}"
+chart_path="${base_dir}/../charts"
 
-helm template "${base_dir}/charts/graphql-mesh" \
-	-f "${base_dir}/charts/graphql-mesh/values-dev.yaml" \
-	--atomic \
-	--name-template="${release_name}" > "${base_dir}/charts-rendered/dev/graphql-mesh-0.0.1.yml"
 
-helm template "${base_dir}/charts/dealsheet-api" \
-	-f "${base_dir}/charts/dealsheet-api/values-dev.yaml" \
+helm template "${chart_path}/istio" \
+  -f "${chart_path}/istio/values-dev.yaml" \
+  --atomic \
+  --name-template="${release_name}" > "${rendered_chart_path}/istio-0.0.1.yml"
+
+helm template "${chart_path}/graphql-mesh" \
+	-f "${chart_path}/graphql-mesh/values-dev.yaml" \
 	--atomic \
-	--name-template="${release_name}" > "${base_dir}/charts-rendered/dev/dealsheet-api-0.0.1.yml"
+	--name-template="${release_name}" > "${rendered_chart_path}/graphql-mesh-0.0.1.yml"
+
+helm template "${chart_path}/dealsheet-api" \
+	-f "${chart_path}/dealsheet-api/values-dev.yaml" \
+	--atomic \
+	--name-template="${release_name}" > "${rendered_chart_path}/dealsheet-api-0.0.1.yml"
+
