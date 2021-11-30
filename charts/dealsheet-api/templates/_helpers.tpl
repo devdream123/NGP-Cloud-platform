@@ -48,7 +48,6 @@ Selector labels
 {{- define "dealsheet-api.selectorLabels" -}}
 app.kubernetes.io/name: {{ include "dealsheet-api.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-istio: ingressgateway
 {{- end }}
 
 {{/*
