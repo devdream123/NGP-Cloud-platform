@@ -12,7 +12,7 @@ dealsheet-api:
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-dealsheet
   pullPolicy: Always
-  tag: 0.0.61
+  tag: 0.0.63
 
 imagePullSecrets: []
 nameOverride: ""
