@@ -8,14 +8,14 @@ spec:
   hosts:
    - "*"
   gateways:
-    - {{ .Values.VirtualServices.spec.gateways }}
+    - {{ .Values.gateways.name }}
   http:
-  - name: dealsheet
+  - name: graphql-mesh
     match:
     - uri:
        prefix: /graphql
     route:
       - destination:
-          host: dealsheet-api.ngp.svc.cluster.local
+          host: graphql-mesh.ngp.svc.cluster.local
           port:
-           number: 8080
+            number: 80

@@ -26,7 +26,7 @@ releases:
       - events: ['postsync']
         showlogs: true
         command: 'kubectl'
-        args: ['label', 'ns', '{{ .Values.dealsheet.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}']      
+        args: ['label', 'ns', '{{ .Values.dealsheet.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']      
   - name: graphql-mesh
     namespace: {{ .Values.graphql.namespace }}
     chart: ./charts/graphql-mesh
@@ -36,7 +36,7 @@ releases:
       - events: ['postsync']
         showlogs: true
         command: 'kubectl'
-        args: ['label', 'ns', '{{ .Values.graphql.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}']       
+        args: ['label', 'ns', '{{ .Values.graphql.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']       
   - name: istio
     chart: ./charts/istio
     namespace: {{ .Values.istio.namespace }}
@@ -46,7 +46,7 @@ releases:
       - events: ['postsync']
         showlogs: true
         command: 'kubectl'
-        args: ['label', 'ns', '{{ .Values.istio.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}']
+        args: ['label', 'ns', '{{ .Values.istio.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
       - events: ['postuninstall']
         showlogs: true
         command: 'kubectl'

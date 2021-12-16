@@ -2,7 +2,7 @@ replicaCount: 3
 
 dealSheet:
   hostname: dealsheet-api.ngp.svc.cluster.local
-  port: 8080
+  port: 80
 
 mesh:
   cors:
@@ -40,7 +40,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 80
 
 resources: {}
 

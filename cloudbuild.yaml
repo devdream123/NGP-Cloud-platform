@@ -7,8 +7,7 @@ steps:
       - |
         if [[ "$BRANCH_NAME" == 'main' || "$BRANCH_NAME" == 'dev' ]]; then
           ./scripts/deploy.sh -e "$BRANCH_NAME"
-        fi
-
+        fi   
 options:
   env:
     - "KUBECTL_DRY_RUN=none"
