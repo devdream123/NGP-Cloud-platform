@@ -21,7 +21,7 @@ releases:
     namespace: {{ .Values.dealsheet.namespace }}
     chart: ./charts/dealsheet-api
     values:
-      - "./charts/dealsheet-api/values-{{ .Environment.Name }}.yaml"
+      - ./charts/dealsheet-api/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
     hooks:
       - events: ['postsync']
         showlogs: true
@@ -31,7 +31,7 @@ releases:
     namespace: {{ .Values.graphql.namespace }}
     chart: ./charts/graphql-mesh
     values:
-      - "./charts/graphql-mesh/values-{{ .Environment.Name }}.yaml"
+      - ./charts/graphql-mesh/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
     hooks:
       - events: ['postsync']
         showlogs: true
@@ -41,7 +41,7 @@ releases:
     chart: ./charts/istio
     namespace: {{ .Values.istio.namespace }}
     values:
-      - "./charts/istio/values-{{ .Environment.Name }}.yaml"
+      - ./charts/istio/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
     hooks:
       - events: ['postsync']
         showlogs: true
