@@ -34,7 +34,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [[ -z "${release_name}" || -z "${release_env}" ]]; then
-	print_help
+	print_usage
 	exit 1
 fi
 
