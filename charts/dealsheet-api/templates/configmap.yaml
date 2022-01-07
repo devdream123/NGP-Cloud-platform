@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "dealsheet-api.fullname" . }}-cm
+  labels:
+    {{- include "dealsheet-api.labels" . | nindent 4 }}
+data:
+  PROJECT_ID: {{ .Values.projectId | quote }}

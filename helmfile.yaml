@@ -5,10 +5,12 @@ repositories:
 
 environments:
   default:
-    values: 
+    values:
+    - config/dev.env.yaml
     - values/dev.yaml
   dev:
     values:
+    - config/dev.env.yaml
     - values/dev.yaml
 
 helmDefaults:
@@ -22,6 +24,7 @@ releases:
     chart: ./charts/dealsheet-api
     values:
       - ./charts/dealsheet-api/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
+      - projectId: {{ .Values.env.GCLOUD_PROJECT }}
     hooks:
       - events: ['postsync']
         showlogs: true

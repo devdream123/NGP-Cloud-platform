@@ -32,7 +32,12 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: ASPNETCORE_URLS
-              value: http://*:{{ .Values.service.port }}       
+              value: http://*:{{ .Values.service.port }}
+            - name: GCPSettings__ProjectId
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "dealsheet-api.fullname" . }}-cm
+                  key: PROJECT_ID
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
