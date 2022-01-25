@@ -29,7 +29,18 @@ releases:
       - events: ['postsync']
         showlogs: true
         command: 'kubectl'
-        args: ['label', 'ns', '{{ .Values.dealsheet.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']      
+        args: ['label', 'ns', '{{ .Values.dealsheet.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
+  - name: calendar-api
+    namespace: {{ .Values.calendar.namespace }}
+    chart: ./charts/calendar-api
+    values:
+      - ./charts/calendar-api/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
+      - projectId: {{ .Values.env.GCLOUD_PROJECT }}
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.calendar.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']         
   - name: graphql-mesh
     namespace: {{ .Values.graphql.namespace }}
     chart: ./charts/graphql-mesh

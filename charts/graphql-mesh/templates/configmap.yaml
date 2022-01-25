@@ -17,3 +17,7 @@ data:
         handler:
           graphql:
             endpoint: http://{{ .Values.dealSheet.hostname }}:{{ .Values.dealSheet.port }}/graphql/
+      - name: Calendar
+        handler:
+          graphql:
+            endpoint: http://{{ .Values.calendar.hostname }}:{{ .Values.calendar.port }}/graphql/

@@ -1,26 +1,15 @@
+projectId: ""
+
 replicaCount: 3
 
-dealSheet:
-  hostname: dealsheet-api.ngp.svc.cluster.local
-  port: 80
-
-calendar: 
-  hostname: calendar-api.ngp.svc.cluster.local
-  port: 80
-
-mesh:
-  cors:
-    origin: '*'
-
-  debugEnabled: 1
-
-  fullname: graphql-mesh
+calendar-api:
+  fullname: calendar-api
   
   labels:
-    run: graphql-mesh
+    run: calendar-api
 
   selectorLabels:
-    run: graphql-mesh
+    run: calendar-api
 
 image:
   repository: ""
