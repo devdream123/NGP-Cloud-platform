@@ -30,14 +30,6 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: ASPNETCORE_URLS
-              value: http://*:{{ .Values.service.port }}
-            - name: GCPSettings__ProjectId
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "hierarchy-api.fullname" . }}-cm
-                  key: PROJECT_ID
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
