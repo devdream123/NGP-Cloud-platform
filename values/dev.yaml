@@ -11,3 +11,6 @@ istio:
 
 calendar:
   namespace: ngp
+
+hierarchy:
+  namespace: ngp
