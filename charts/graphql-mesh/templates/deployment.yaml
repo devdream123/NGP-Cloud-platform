@@ -38,6 +38,9 @@ spec:
             - mountPath: /mesh/.meshrc.yaml
               name: {{ include "mesh.fullname" . }}-meshrc-cm
               subPath: .meshrc.yaml
+            - mountPath: /mesh/typesense-openapi.yml
+              name: {{ include "mesh.fullname" . }}-typesense-openapi-cm
+              subPath: typesense-openapi.yml
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -56,6 +59,9 @@ spec:
       - name: {{ include "mesh.fullname" . }}-meshrc-cm
         configMap:
           name: {{ include "mesh.fullname" . }}-meshrc-cm
+      - name: {{ include "mesh.fullname" . }}-typesense-openapi-cm
+        configMap:
+          name: {{ include "mesh.fullname" . }}-typesense-openapi-cm
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
