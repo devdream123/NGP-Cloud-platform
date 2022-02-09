@@ -24,4 +24,7 @@ data:
       - name: Hierarchy
         handler:
           openapi:
-            endpoint: http://{{ .Values.hierarchy.hostname }}:{{ .Values.hierarchy.port }}/
+            source: https://raw.githubusercontent.com/typesense/typesense-api-spec/master/openapi.yml
+            baseUrl: http://{{ .Values.hierarchy.hostname }}:{{ .Values.hierarchy.port }}/
+            operationHeaders:
+              X-TYPESENSE-API-KEY: f44910b7-4b35-48bb-ac16-4f6a4d5af120
