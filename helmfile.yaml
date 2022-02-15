@@ -41,6 +41,17 @@ releases:
         showlogs: true
         command: 'kubectl'
         args: ['label', 'ns', '{{ .Values.calendar.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
+  - name: eventschedule-api
+    namespace: {{ .Values.eventschedule.namespace }}
+    chart: ./charts/eventschedule-api
+    values:
+      - ./charts/eventschedule-api/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
+      - projectId: {{ .Values.env.GCLOUD_PROJECT }}
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.eventschedule.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
   - name: hierarchy-api
     namespace: {{ .Values.hierarchy.namespace }}
     chart: ./charts/hierarchy-api

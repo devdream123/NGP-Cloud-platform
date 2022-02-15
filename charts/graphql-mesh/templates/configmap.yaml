@@ -21,6 +21,10 @@ data:
         handler:
           graphql:
             endpoint: http://{{ .Values.calendar.hostname }}:{{ .Values.calendar.port }}/graphql/
+      - name: EventSchedule
+        handler:
+          graphql:
+            endpoint: http://{{ .Values.eventschedule.hostname }}:{{ .Values.eventschedule.port }}/graphql/
       - name: Hierarchy
         handler:
           openapi:
