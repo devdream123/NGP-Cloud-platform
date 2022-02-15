@@ -58,3 +58,13 @@ helm template "${chart_path}/dealsheet-api" \
 	--atomic \
 	--name-template="${release_name}" > "${rendered_chart_path}/dealsheet-api-0.0.1.yml"
 
+helm template "${chart_path}/calendar-api" \
+	-f "${chart_path}/calendar-api/values-dev.yaml" \
+	--atomic \
+	--name-template="${release_name}" > "${rendered_chart_path}/calendar-api-0.0.1.yml"
+
+helm template "${chart_path}/eventschedule-api" \
+	-f "${chart_path}/eventschedule-api/values-dev.yaml" \
+	--atomic \
+	--name-template="${release_name}" > "${rendered_chart_path}/eventschedule-api-0.0.1.yml"
+

@@ -1,0 +1,44 @@
+projectId: ""
+
+replicaCount: 3
+
+eventschedule-api:
+  fullname: eventschedule-api
+  
+  labels:
+    run: eventschedule-api
+
+  selectorLabels:
+    run: eventschedule-api
+
+image:
+  repository: ""
+  pullPolicy: Always
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

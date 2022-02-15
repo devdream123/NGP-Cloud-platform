@@ -8,6 +8,10 @@ calendar:
   hostname: calendar-api.ngp.svc.cluster.local
   port: 80
 
+eventschedule: 
+  hostname: eventschedule-api.ngp.svc.cluster.local
+  port: 80
+
 hierarchy: 
   hostname: hierarchy-api.ngp.svc.cluster.local
   port: 80
