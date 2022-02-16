@@ -19,3 +19,12 @@ spec:
           host: graphql-mesh.ngp.svc.cluster.local
           port:
             number: 80
+  - name: hierarchy-api
+    match:
+    - uri:
+       prefix: /hierarchy
+    route:
+      - destination:
+          host: hierarchy-api.ngp.svc.cluster.local
+          port:
+            number: 80
