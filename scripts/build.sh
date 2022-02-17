@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 script_dir=$(dirname "$0")
 base_dir=$(cd "${script_dir}"; pwd -P)
 
@@ -68,3 +70,7 @@ helm template "${chart_path}/eventschedule-api" \
 	--atomic \
 	--name-template="${release_name}" > "${rendered_chart_path}/eventschedule-api-0.0.1.yml"
 
+helm template "${chart_path}/hierarchy-api" \
+	-f "${chart_path}/hierarchy-api/values-dev.yaml" \
+	--atomic \
+	--name-template="${release_name}" > "${rendered_chart_path}/hierarchy-api-0.0.1.yml"
