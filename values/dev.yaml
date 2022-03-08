@@ -17,3 +17,6 @@ hierarchy:
 
 eventschedule:
   namespace: ngp
+
+forecast:
+  namespace: ngp

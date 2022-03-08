@@ -74,3 +74,8 @@ helm template "${chart_path}/hierarchy-api" \
 	-f "${chart_path}/hierarchy-api/values-dev.yaml" \
 	--atomic \
 	--name-template="${release_name}" > "${rendered_chart_path}/hierarchy-api-0.0.1.yml"
+
+helm template "${chart_path}/forecast-api" \
+	-f "${chart_path}/forecast-api/values-dev.yaml" \
+	--atomic \
+	--name-template="${release_name}" > "${rendered_chart_path}/forecast-api-0.0.1.yml"
