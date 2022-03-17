@@ -1,5 +1,8 @@
 projectId: ""
 
+graphQLClient:
+  calendarUrl: http://calendar-api.ngp.svc.cluster.local/graphql
+
 replicaCount: 3
 
 dealsheet-api:
