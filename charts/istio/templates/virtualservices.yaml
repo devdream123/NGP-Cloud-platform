@@ -23,6 +23,8 @@ spec:
     match:
     - uri:
        prefix: /hierarchy
+    rewrite:
+      uri: /
     route:
       - destination:
           host: hierarchy-api.ngp.svc.cluster.local
