@@ -42,3 +42,7 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+hierarchy:
+  url: http://hierarchy-api
+  key: "f44910b7-4b35-48bb-ac16-4f6a4d5af120"
