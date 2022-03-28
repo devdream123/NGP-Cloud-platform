@@ -11,7 +11,7 @@ database:
   user: postgres
   pwd: rhy5oMHrNCEeIe3d
   db: qforecast
-  localhost: "127.0.0.1"
+  primaryIP: "10.242.240.3"
 
 serviceAccount:
   annotations: {

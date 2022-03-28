@@ -11,17 +11,17 @@ forecast-api:
   selectorLabels:
     run: forecast-api
 
-environment: development
+environment: testing
 
 database:
   mode: postgres
   region: us-central1
   instance: forecast-api-db
   user: postgres
-  pwd: rhy5oMHrNCEeIe3d
+  pwd: ""
   db: qforecast
   localhost: "127.0.0.1"
-  primaryIP: "34.132.119.179"
+  primaryIP: ""
   proxyVersion: "1.19.1"
   proxyResources:
     requests:
