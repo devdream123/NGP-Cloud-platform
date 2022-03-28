@@ -6,3 +6,5 @@ metadata:
     {{- include "dealsheet-api.labels" . | nindent 4 }}
 data:
   PROJECT_ID: {{ .Values.projectId | quote }}
+  HIERARCHY_API_URL: {{ .Values.hierarchy.url | quote }}
+  HIERARCHY_API_KEY: {{ .Values.hierarchy.key | quote }}
