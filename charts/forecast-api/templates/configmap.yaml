@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "forecast-api.fullname" . }}-cm
+  labels:
+    {{- include "forecast-api.labels" . | nindent 4 }}
+data:
+  PROJECT_ID: {{ .Values.projectId | quote }}
+  QF_ENVIRONMENT : {{ .Values.environment | quote }}
+  QF_DATABASE_MODE: {{ .Values.database.mode | quote }}
+  QF_POSTGRES_USER: {{ .Values.database.user | quote }}
+  QF_POSTGRES_DB: {{ .Values.database.db | quote }}
+  QF_POSTGRES_HOST: {{ .Values.database.localhost | quote }}
+  QF_SQLITE_URI: 'sqlite:////tmp/qforecast.sqlite3.db?check_same_thread=False'

@@ -1,0 +1,72 @@
+projectId: gcp-wow-corp-qretail-ngp-dev
+
+replicaCount: 1
+
+forecast-api:
+  fullname: forecast-api
+
+  labels:
+    run: forecast-api
+
+  selectorLabels:
+    run: forecast-api
+
+environment: testing
+
+database:
+  mode: postgres
+  region: us-central1
+  instance: forecast-api-db
+  user: postgres
+  pwd: ""
+  db: qforecast
+  localhost: "127.0.0.1"
+  primaryIP: ""
+  proxyVersion: "1.19.1"
+  proxyResources:
+    requests:
+      memory: "32Mi"
+      cpu: "50m"
+
+image:
+  repository: us-central1-docker.pkg.dev/gcp-wow-corp-qretail-ngp-dev/qr-dev-backend-artifact-registry/qr-ngp-qforecast
+  pullPolicy: Always
+  tag: latest
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+serviceAccount:
+  create: true
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: "forecast-api-ksa"
+  annotations: {
+    iam.gke.io/gcp-service-account: cloud-sql@gcp-wow-corp-qretail-ngp-dev.iam.gserviceaccount.com
+  }
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
