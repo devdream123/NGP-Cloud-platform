@@ -48,6 +48,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "dealsheet-api.fullname" . }}-cm
                   key: HIERARCHY_API_KEY
+            - name: DemandDriver__ForecastUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "dealsheet-api.fullname" . }}-cm
+                  key: DEMAND_DRIVER_FORECAST_URL
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
