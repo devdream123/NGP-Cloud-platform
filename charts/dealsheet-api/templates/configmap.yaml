@@ -9,3 +9,4 @@ data:
   HIERARCHY_API_URL: {{ .Values.hierarchy.url | quote }}
   HIERARCHY_API_KEY: {{ .Values.hierarchy.key | quote }}
   DEMAND_DRIVER_FORECAST_URL: {{ .Values.demandDriver.forecastUrl | quote }}
+  GRAPHQL_CLIENT_CALENDAR_URL: {{ .Values.graphQLClient.calendarUrl | quote }}
