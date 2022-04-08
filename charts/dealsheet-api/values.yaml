@@ -52,3 +52,6 @@ hierarchy:
 
 demandDriver:
   forecastUrl: http://forecast-api.ngp.svc.cluster.local
+
+graphQLClient:
+  calendarUrl: http://calendar-api/graphql
