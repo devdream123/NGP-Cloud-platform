@@ -38,6 +38,26 @@ spec:
                 configMapKeyRef:
                   name: {{ include "calendar-api.fullname" . }}-cm
                   key: PROJECT_ID
+            - name: Hierarchy__Url
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "calendar-api.fullname" . }}-cm
+                  key: HIERARCHY_API_URL
+            - name: Hierarchy__ApiKey
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "calendar-api.fullname" . }}-cm
+                  key: HIERARCHY_API_KEY
+            - name: DemandDriver__ForecastUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "calendar-api.fullname" . }}-cm
+                  key: DEMAND_DRIVER_FORECAST_URL
+            - name: GraphQLClient__DealsheetUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "calendar-api.fullname" . }}-cm
+                  key: GRAPHQL_CLIENT_DEALSHEET_URL
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
