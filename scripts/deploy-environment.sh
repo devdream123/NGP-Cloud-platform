@@ -35,20 +35,20 @@ GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${base_dir}/../config/${environm
   for cluster in $CLOUDSDK_CONTAINER_CLUSTERS; do
     export CLUSTER_NAME="$cluster"
     echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"$CLOUDSDK_COMPUTE_REGION\" \"$CLUSTER_NAME\""
-    gcloud container clusters get-credentials --project="$GCLOUD_PROJECT" --region="$CLOUDSDK_COMPUTE_REGION" "$CLUSTER_NAME" || exit
+    gcloud container clusters get-credentials --project="$GCLOUD_PROJECT" --region="$CLOUDSDK_COMPUTE_REGION" "$CLUSTER_NAME"
 
     if [[  "${environment}" == "uat" ]]; then
       
       echo "${environment}"
       echo "Deploying Istio gateway to cluster: ${CLUSTER_NAME} in ${environment} environment" 
-      helmfile -f ./../helmfile-istio-gateway.yaml --environment "${environment}" apply \
+      helmfile -f "${base_dir}/../helmfile-istio-gateway.yaml" --environment "${environment}" apply \
       --skip-deps \
       --concurrency 1
       
     fi
 
     echo "Deploying services to cluster: ${CLUSTER_NAME} in ${environment} environment"
-    helmfile  -f ./../helmfile.yaml --environment "${environment}" apply \
+    helmfile -f  "${base_dir}/../helmfile.yaml" --environment "${environment}" apply \
       --skip-deps \
       --concurrency 1
       
