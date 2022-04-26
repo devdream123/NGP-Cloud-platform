@@ -1,13 +1,10 @@
 ---
 steps:
-  - name: 'gcr.io/gcp-wow-corp-qretail-ngp-dev/helmfile'
+  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        if [[ "$BRANCH_NAME" == 'main' || "$BRANCH_NAME" == 'dev' ]]; then
-          ./scripts/deploy.sh -e "$BRANCH_NAME"
-        fi   
-options:
-  env:
-    - "KUBECTL_DRY_RUN=none"
+        if [[ "$BRANCH_NAME" == 'main' ]]; then
+          ./scripts/deploy.sh
+        fi 

@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: istio-ingressgateway
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+      istio: ingressgateway
+  template:
+    metadata:
+      annotations:
+        # This is required to tell Anthos Service Mesh to inject the gateway with the
+        # required configuration.
+        inject.istio.io/templates: gateway
+      labels:
+        app: istio-ingressgateway
+        istio: ingressgateway
+    spec:
+      containers:
+      - name: istio-proxy
+        image: auto # The image will automatically update each time the pod starts.
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 1024Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+      serviceAccountName: istio-ingressgateway
+
+---
+# Optional: PodDisruptionBudget will instruct Kubernetes to ensure at least 1 replica
+# is available when possible
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: istio-ingressgateway
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      istio: ingressgateway
+      app: istio-ingressgateway
+---
+# Optional: HorizontalPodAutoscaler will automatically scale the gateway replica count based on
+# CPU utilization
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: istio-ingressgateway
+spec:
+  maxReplicas: 5
+  metrics:
+  - resource:
+      name: cpu
+      targetAverageUtilization: 80
+    type: Resource
+  minReplicas: 3
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: istio-ingressgateway
