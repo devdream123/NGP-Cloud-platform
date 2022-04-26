@@ -8,3 +8,5 @@ steps:
         if [[ "$BRANCH_NAME" == 'main' ]]; then
           ./scripts/deploy.sh
         fi 
+options:
+  logging: CLOUD_LOGGING_ONLY
