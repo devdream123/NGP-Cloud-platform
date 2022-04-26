@@ -9,6 +9,6 @@ echo "using base dir: ${base_dir}"
 
 for environment in ${environments[@]}; do
 
-  ./deploy-environment $environment
+  ./deploy-environment.sh $environment
 
 done
