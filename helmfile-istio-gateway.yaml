@@ -1,0 +1,31 @@
+---
+repositories:
+  - name: stable
+    url: https://charts.helm.sh/stable
+
+environments:
+  uat: 
+    values:
+      - config/uat.env.yaml
+      - values/uat.yaml
+
+helmDefaults:
+  wait: false
+  createNamespace: true
+  timeout: 600
+
+releases:
+  - name: istio-gateway
+    chart: ./charts/istio-gateway
+    namespace: {{ .Values.istio.namespace }}
+    values:
+      - ./charts/istio-gateway/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.istio.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
+      - events: ['postuninstall']
+        showlogs: true
+        command: 'kubectl'
+        args: ['delete', 'ns', '{{ .Values.istio.namespace }}']

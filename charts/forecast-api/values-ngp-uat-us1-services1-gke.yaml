@@ -1,4 +1,4 @@
-projectId: gcp-wow-corp-qretail-ngp-dev
+projectId: gcp-wow-corp-qretail-ngp-uat
 
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-qforecast
@@ -7,13 +7,14 @@ image:
 environment: testing
 
 database:
-  instance: forecast-api-db
+  instance: ngp-uat-us1-services1-sql
   user: postgres
-  pwd: rhy5oMHrNCEeIe3d
+  pwd: h^Fj#pOLz0ws
   db: qforecast
-  primaryIP: "10.242.240.3"
+  primaryIP: "10.49.0.3"
 
 serviceAccount:
+  create: true
   annotations: {
-    iam.gke.io/gcp-service-account: cloud-sql@gcp-wow-corp-qretail-ngp-dev.iam.gserviceaccount.com
+    iam.gke.io/gcp-service-account: cloud-sql@gcp-wow-corp-qretail-ngp-uat.iam.gserviceaccount.com
   }
