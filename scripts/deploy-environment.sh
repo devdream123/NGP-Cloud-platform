@@ -21,12 +21,10 @@ environment=$1
 echo "using base dir: ${base_dir}"
 echo "deploying to environment: ${environment}"
 
-
 if [[ -d "/root/.local/share/helm/plugins" ]]; then
   mkdir -p /builder/home/.local/share/helm
   cp -r /root/.local/share/helm/plugins /builder/home/.local/share/helm/plugins
 fi
-
 
 CLOUDSDK_COMPUTE_REGION=$(yq eval '.env.CLOUDSDK_COMPUTE_REGION' "${base_dir}/../config/${environment}.env.yaml")
 CLOUDSDK_CONTAINER_CLUSTERS=$(yq eval '.env.CLOUDSDK_CONTAINER_CLUSTERS[]' "${base_dir}/../config/${environment}.env.yaml")
@@ -36,6 +34,10 @@ GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${base_dir}/../config/${environm
     export CLUSTER_NAME="$cluster"
     echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"$CLOUDSDK_COMPUTE_REGION\" \"$CLUSTER_NAME\""
     gcloud container clusters get-credentials --project="$GCLOUD_PROJECT" --region="$CLOUDSDK_COMPUTE_REGION" "$CLUSTER_NAME"
+
+    if [[  "${environment}" == "dev" ]]; then
+      bash ${base_dir}/inject-cluster-secrets.sh $environment $cluster
+    fi 
 
     if [[  "${environment}" == "uat" ]]; then
       

@@ -9,7 +9,7 @@ environment: testing
 database:
   instance: forecast-api-db
   user: postgres
-  pwd: rhy5oMHrNCEeIe3d
+  pwd: 
   db: qforecast
   primaryIP: "10.242.240.3"
 
