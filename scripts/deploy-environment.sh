@@ -35,9 +35,7 @@ GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${base_dir}/../config/${environm
     echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"$CLOUDSDK_COMPUTE_REGION\" \"$CLUSTER_NAME\""
     gcloud container clusters get-credentials --project="$GCLOUD_PROJECT" --region="$CLOUDSDK_COMPUTE_REGION" "$CLUSTER_NAME"
 
-    if [[  "${environment}" == "dev" ]]; then
-      bash ${base_dir}/inject-cluster-secrets.sh $environment $cluster
-    fi 
+    bash ${base_dir}/inject-cluster-secrets.sh $environment $cluster
 
     if [[  "${environment}" == "uat" ]]; then
       
