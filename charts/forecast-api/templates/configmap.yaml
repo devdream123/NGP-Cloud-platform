@@ -6,7 +6,7 @@ metadata:
     {{- include "forecast-api.labels" . | nindent 4 }}
 data:
   PROJECT_ID: {{ .Values.projectId | quote }}
-  QF_ENVIRONMENT : {{ .Values.environment | quote }}
+  FLASK_ENV: {{ .Values.environment | quote }}
   QF_DATABASE_MODE: {{ .Values.database.mode | quote }}
   QF_POSTGRES_USER: {{ .Values.database.user | quote }}
   QF_POSTGRES_DB: {{ .Values.database.db | quote }}

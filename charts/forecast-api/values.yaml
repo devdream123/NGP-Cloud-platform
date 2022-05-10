@@ -11,7 +11,7 @@ forecast-api:
   selectorLabels:
     run: forecast-api
 
-environment: testing
+environment: production
 
 database:
   mode: postgres
