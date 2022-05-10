@@ -9,7 +9,7 @@ environment: testing
 database:
   instance: ngp-uat-us1-services1-sql
   user: postgres
-  pwd: h^Fj#pOLz0ws
+  pwd: 
   db: qforecast
   primaryIP: "10.49.0.3"
 
