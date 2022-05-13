@@ -1,0 +1,22 @@
+---
+dealsheet:
+  namespace: ngp
+
+graphql:
+  namespace: ngp
+
+istio:
+  namespace: asm-gateway
+  revision: asm-managed
+
+calendar:
+  namespace: ngp
+
+hierarchy:
+  namespace: ngp
+
+eventschedule:
+  namespace: ngp
+
+forecast:
+  namespace: ngp

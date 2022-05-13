@@ -31,15 +31,17 @@ CLOUDSDK_CONTAINER_CLUSTERS=$(yq eval '.env.CLOUDSDK_CONTAINER_CLUSTERS[]' "${ba
 GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${base_dir}/../config/${environment}.env.yaml")
 
   for cluster in $CLOUDSDK_CONTAINER_CLUSTERS; do
+    
     export CLUSTER_NAME="$cluster"
+    
     echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"$CLOUDSDK_COMPUTE_REGION\" \"$CLUSTER_NAME\""
     gcloud container clusters get-credentials --project="$GCLOUD_PROJECT" --region="$CLOUDSDK_COMPUTE_REGION" "$CLUSTER_NAME"
-
+    
+    echo "Substituting secrets' values for cluster: $cluster"
     bash ${base_dir}/inject-cluster-secrets.sh $environment $cluster
 
-    if [[  "${environment}" == "uat" ]]; then
+    if [[  "${environment}" == "uat" ]] || [[ "${environment}" == "dev2" ]]; then
       
-      echo "${environment}"
       echo "Deploying Istio gateway to cluster: ${CLUSTER_NAME} in ${environment} environment" 
       helmfile -f "${base_dir}/../helmfile-istio-gateway.yaml" --environment "${environment}" apply \
       --skip-deps \
