@@ -52,3 +52,6 @@ demandDriver:
 
 graphQLClient:
   dealsheetUrl: http://dealsheet-api/graphql
+
+firestoreSettings:
+  rootCollectionName: "calendar-assortments"
