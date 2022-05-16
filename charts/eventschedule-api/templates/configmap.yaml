@@ -6,3 +6,4 @@ metadata:
     {{- include "eventschedule-api.labels" . | nindent 4 }}
 data:
   PROJECT_ID: {{ .Values.projectId | quote }}
+  FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.firestoreSettings.rootCollectionName | quote }}
