@@ -58,6 +58,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "calendar-api.fullname" . }}-cm
                   key: GRAPHQL_CLIENT_DEALSHEET_URL
+            - name: FirestoreSettings__RootCollectionName
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "calendar-api.fullname" . }}-cm
+                  key: FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
