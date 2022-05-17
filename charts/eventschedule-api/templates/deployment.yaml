@@ -38,6 +38,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "eventschedule-api.fullname" . }}-cm
                   key: PROJECT_ID
+            - name: FirestoreSettings__RootCollectionName
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "eventschedule-api.fullname" . }}-cm
+                  key: FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
