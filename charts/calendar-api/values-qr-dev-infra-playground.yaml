@@ -3,4 +3,4 @@ image:
   tag: 0.0.156
 
 firestoreSettings:
-  rootCollectionName: "calendar-assortments_dev"
+  rootCollectionName: "calendar-assortments-pg"

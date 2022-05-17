@@ -3,4 +3,4 @@ image:
   tag: 0.0.156
 
 firestoreSettings:
-  rootCollectionName: "dealsheet-assortments_dev"
+  rootCollectionName: "dealsheet-assortments-pg"
