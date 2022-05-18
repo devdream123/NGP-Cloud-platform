@@ -58,6 +58,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "calendar-api.fullname" . }}-cm
                   key: GRAPHQL_CLIENT_DEALSHEET_URL
+            - name: GraphQLClient__EventScheduleUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "calendar-api.fullname" . }}-cm
+                  key: GRAPHQL_CLIENT_EVENTSCHEDULE_URL
             - name: FirestoreSettings__RootCollectionName
               valueFrom:
                 configMapKeyRef:
