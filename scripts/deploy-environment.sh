@@ -29,6 +29,8 @@ fi
 CLOUDSDK_COMPUTE_REGION=$(yq eval '.env.CLOUDSDK_COMPUTE_REGION' "${base_dir}/../config/${environment}.env.yaml")
 CLOUDSDK_CONTAINER_CLUSTERS=$(yq eval '.env.CLOUDSDK_CONTAINER_CLUSTERS[]' "${base_dir}/../config/${environment}.env.yaml")
 GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${base_dir}/../config/${environment}.env.yaml")
+GRAPHQL_SERVICE_NAMESPACE=$(yq eval '.graphql.namespace' "${base_dir}/../values/${environment}.yaml")
+HIERARCHY_SERVICE_NAMESPACE=$(yq eval '.hierarchy.namespace' "${base_dir}/../values/${environment}.yaml")
 
   for cluster in $CLOUDSDK_CONTAINER_CLUSTERS; do
     
@@ -53,5 +55,9 @@ GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${base_dir}/../config/${environm
     helmfile -f  "${base_dir}/../helmfile.yaml" --environment "${environment}" apply \
       --skip-deps \
       --concurrency 1
-      
+    
+    #Restarting graphql mesh & hierarchy api since they are using latest image tag
+    kubectl rollout restart deployment/graphql-mesh --namespace=$GRAPHQL_SERVICE_NAMESPACE 
+    kubectl rollout restart deployment/hierarchy-api --namespace=$HIERARCHY_SERVICE_NAMESPACE 
+
   done
