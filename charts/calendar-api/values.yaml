@@ -52,6 +52,7 @@ demandDriver:
 
 graphQLClient:
   dealsheetUrl: http://dealsheet-api/graphql
+  eventScheduleUrl: http://eventschedule-api/graphql
 
 firestoreSettings:
   rootCollectionName: "calendar-assortments"

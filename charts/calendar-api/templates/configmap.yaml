@@ -10,4 +10,5 @@ data:
   HIERARCHY_API_KEY: {{ .Values.hierarchy.key | quote }}
   DEMAND_DRIVER_FORECAST_URL: {{ .Values.demandDriver.forecastUrl | quote }}
   GRAPHQL_CLIENT_DEALSHEET_URL: {{ .Values.graphQLClient.dealsheetUrl | quote }}
+  GRAPHQL_CLIENT_EVENTSCHEDULE_URL: {{ .Values.graphQLClient.eventScheduleUrl | quote }}
   FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.firestoreSettings.rootCollectionName | quote }}
