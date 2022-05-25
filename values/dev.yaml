@@ -7,7 +7,7 @@ graphql:
 
 istio:
   namespace: asm-gateway
-  revision: asm-198-6
+  revision: asm-managed
 
 calendar:
   namespace: ngp

@@ -41,15 +41,11 @@ HIERARCHY_SERVICE_NAMESPACE=$(yq eval '.hierarchy.namespace' "${base_dir}/../val
     
     echo "Substituting secrets' values for cluster: $cluster"
     bash ${base_dir}/inject-cluster-secrets.sh $environment $cluster
-
-    if [[  "${environment}" == "uat" ]] || [[ "${environment}" == "dev2" ]]; then
       
-      echo "Deploying Istio gateway to cluster: ${CLUSTER_NAME} in ${environment} environment" 
-      helmfile -f "${base_dir}/../helmfile-istio-gateway.yaml" --environment "${environment}" apply \
-      --skip-deps \
-      --concurrency 1
-      
-    fi
+    echo "Deploying Istio gateway to cluster: ${CLUSTER_NAME} in ${environment} environment" 
+    helmfile -f "${base_dir}/../helmfile-istio-gateway.yaml" --environment "${environment}" apply \
+    --skip-deps \
+    --concurrency 1
 
     echo "Deploying services to cluster: ${CLUSTER_NAME} in ${environment} environment"
     helmfile -f  "${base_dir}/../helmfile.yaml" --environment "${environment}" apply \

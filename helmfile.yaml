@@ -16,10 +16,6 @@ environments:
     values:
       - config/uat.env.yaml
       - values/uat.yaml
-  dev2:
-    values:
-      - config/dev2.env.yaml
-      - values/dev2.yaml
 
 helmDefaults:
   wait: false
