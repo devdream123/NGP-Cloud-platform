@@ -4,5 +4,3 @@ image:
 
 firestoreSettings:
   rootCollectionName: "dealsheet-assortments-pg"
-
-systemTimeZone: "Australia/Sydney"
