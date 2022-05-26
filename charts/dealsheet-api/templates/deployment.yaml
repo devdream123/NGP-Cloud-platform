@@ -63,6 +63,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "dealsheet-api.fullname" . }}-cm
                   key: FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
+            - name: SystemTimeZone
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "dealsheet-api.fullname" . }}-cm
+                  key: SYSTEM_TIME_ZONE
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

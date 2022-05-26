@@ -4,3 +4,5 @@ image:
 
 firestoreSettings:
   rootCollectionName: "calendar-assortments-pg"
+
+systemTimeZone: "Australia/Sydney"

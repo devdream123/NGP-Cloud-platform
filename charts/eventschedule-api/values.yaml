@@ -45,3 +45,5 @@ affinity: {}
 
 firestoreSettings:
   rootCollectionName: "event-schedules"
+
+systemTimeZone: "Australia/Sydney"

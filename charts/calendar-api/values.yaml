@@ -56,3 +56,5 @@ graphQLClient:
 
 firestoreSettings:
   rootCollectionName: "calendar-assortments"
+
+systemTimeZone: "Australia/Sydney"
