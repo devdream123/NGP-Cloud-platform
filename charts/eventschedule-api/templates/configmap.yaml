@@ -7,4 +7,4 @@ metadata:
 data:
   PROJECT_ID: {{ .Values.projectId | quote }}
   FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.firestoreSettings.rootCollectionName | quote }}
-  SYSTEM_TIME_ZONE: {{ .Values.firestoreSettings.systemTimeZone | quote }}
+  SYSTEM_TIME_ZONE: {{ .Values.systemTimeZone | quote }}
