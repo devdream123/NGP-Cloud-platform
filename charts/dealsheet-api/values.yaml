@@ -55,3 +55,5 @@ graphQLClient:
 
 firestoreSettings:
   rootCollectionName: "dealsheet-assortments"
+
+systemTimeZone: "Australia/Sydney"
