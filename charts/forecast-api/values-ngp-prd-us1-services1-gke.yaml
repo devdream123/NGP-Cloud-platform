@@ -1,0 +1,20 @@
+projectId: gcp-wow-corp-qretail-ngp-prod
+
+image:
+  repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-qforecast
+  tag: latest
+
+environment: testing
+
+database:
+  instance: ngp-prd-us1-services1-sql
+  user: postgres
+  pwd: 
+  db: qforecast
+  primaryIP: "10.49.0.3"
+
+serviceAccount:
+  create: true
+  annotations: {
+    iam.gke.io/gcp-service-account: cloud-sql@gcp-wow-corp-qretail-ngp-prod.iam.gserviceaccount.com
+  }

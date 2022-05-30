@@ -3,7 +3,7 @@
 script_dir=$(dirname "$0")
 base_dir=$(cd "${script_dir}"; pwd -P)
 
-environments=("uat" "dev" )
+environments=("uat" "dev" "prd")
 
 echo "using base dir: ${base_dir}"
 

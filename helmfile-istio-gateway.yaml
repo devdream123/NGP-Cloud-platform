@@ -12,6 +12,10 @@ environments:
     values:
       - config/dev.env.yaml
       - values/dev.yaml
+  prd: 
+    values:
+      - config/prd.env.yaml
+      - values/prd.yaml
 
 helmDefaults:
   wait: false
