@@ -1,6 +1,6 @@
 projectId: gcp-wow-corp-qretail-ngp-dev
 
-replicaCount: 1
+replicaCount: 3
 
 forecast-api:
   fullname: forecast-api
@@ -40,15 +40,9 @@ fullnameOverride: ""
 podAnnotations: {}
 
 podSecurityContext: {}
-  # fsGroup: 2000
+  
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
 
 service:
   type: ClusterIP
