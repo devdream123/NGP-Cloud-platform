@@ -11,6 +11,7 @@ data:
           origin: '{{ .Values.mesh.cors.origin }}'
         hostname: 0.0.0.0
         port: {{ .Values.service.port }}
+        maxRequestBodySize: 10mb
 
     sources:
       - name: Deal Sheet
