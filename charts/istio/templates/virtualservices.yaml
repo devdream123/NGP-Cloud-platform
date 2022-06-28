@@ -30,3 +30,12 @@ spec:
           host: hierarchy-api.ngp.svc.cluster.local
           port:
             number: 80
+  - name: analytics
+    match:
+    - uri:
+       prefix: /forecast
+    route:
+      - destination:
+          host: forecast-api.ngp.svc.cluster.local
+          port:
+            number: 80
