@@ -34,6 +34,8 @@ spec:
     match:
     - uri:
        prefix: /forecast
+    rewrite:
+      uri: /
     route:
       - destination:
           host: forecast-api.ngp.svc.cluster.local
