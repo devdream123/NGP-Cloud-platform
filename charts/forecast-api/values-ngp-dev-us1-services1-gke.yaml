@@ -2,7 +2,7 @@ projectId: gcp-wow-corp-qretail-ngp-dev
 
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-qforecast
-  tag: 1.27.1-dev
+  tag: 1.28.1-dev
 
 environment: testing
 
