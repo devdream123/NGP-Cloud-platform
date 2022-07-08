@@ -54,6 +54,5 @@ HIERARCHY_SERVICE_NAMESPACE=$(yq eval '.hierarchy.namespace' "${base_dir}/../val
     
     #Restarting graphql mesh & hierarchy api since they are using latest image tag
     kubectl rollout restart deployment/graphql-mesh --namespace=$GRAPHQL_SERVICE_NAMESPACE 
-    kubectl rollout restart deployment/hierarchy-api --namespace=$HIERARCHY_SERVICE_NAMESPACE 
 
   done
