@@ -3,12 +3,16 @@
 script_dir=$(dirname "$0")
 base_dir=$(cd "${script_dir}"; pwd -P)
 
-environments=("uat" "dev" "prd")
+export BASE_DIR=$(cd "${script_dir}"; pwd -P)
 
-echo "using base dir: ${base_dir}"
+environments=("dev" "uat" "prd")
+
+echo "using base dir: ${BASE_DIR}"
 
 for environment in ${environments[@]}; do
+   bash ${BASE_DIR}/deploy-environment.sh $environment 
+done
 
-   bash ${base_dir}/deploy-environment.sh $environment
-
+for environment in ${environments[@]}; do   
+   bash ${BASE_DIR}/restart-graphql-service.sh $environment
 done
