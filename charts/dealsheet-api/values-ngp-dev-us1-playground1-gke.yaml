@@ -4,3 +4,11 @@ image:
 
 firestoreSettings:
   rootCollectionName: "dealsheet-assortments-pg"
+
+livelinessProbe:
+  path: /graphql?query=%7B__typename%7D
+  port: http
+
+readinessProbe: 
+  path: /readyz
+  port: http

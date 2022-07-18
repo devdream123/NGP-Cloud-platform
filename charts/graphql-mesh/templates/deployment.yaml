@@ -47,12 +47,16 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /healthcheck
-              port: http
+              path: {{ .Values.livelinessProbe.path }}
+              port: {{ .Values.livelinessProbe.port }}
+            initialDelaySeconds: 15
+            periodSeconds: 120
           readinessProbe:
             httpGet:
-              path: /readiness
-              port: http
+              path: {{ .Values.readinessProbe.path }}
+              port: {{ .Values.readinessProbe.port }}            
+            initialDelaySeconds: 15
+            periodSeconds: 120
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       volumes:

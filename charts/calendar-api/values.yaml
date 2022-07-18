@@ -35,6 +35,14 @@ service:
   type: ClusterIP
   port: 80
 
+readinessProbe: 
+  path: /health
+  port: http
+
+livelinessProbe:
+  path: /health 
+  port: http
+
 resources: {}
 
 nodeSelector: {}

@@ -54,6 +54,14 @@ service:
   type: ClusterIP
   port: 80
 
+livelinessProbe:
+  path: /healthcheck
+  port: http
+
+readinessProbe:
+  path: /readiness
+  port: http
+
 resources: {}
 
 nodeSelector: {}
