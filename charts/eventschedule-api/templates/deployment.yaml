@@ -54,14 +54,14 @@ spec:
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /health
-              port: http
+              path: {{ .Values.livelinessProbe.path }}
+              port: {{ .Values.livelinessProbe.port }}
             initialDelaySeconds: 10
             periodSeconds: 120
           readinessProbe:
             httpGet:
-              path: /health
-              port: http
+              path: {{ .Values.readinessProbe.path }}
+              port:  {{ .Values.readinessProbe.port }}
             initialDelaySeconds: 10
             periodSeconds: 120
           resources:

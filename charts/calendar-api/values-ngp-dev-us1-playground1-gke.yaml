@@ -3,4 +3,12 @@ image:
   tag: v1.0.8-dev
 
 firestoreSettings:
-  rootCollectionName: "calendar-assortments-pg"
+  rootCollectionName: "calendar-assortments-pg" 
+
+livelinessProbe:
+  path: /graphql?query=%7B__typename%7D
+  port: http
+
+readinessProbe: 
+  path: /readyz
+  port: http
