@@ -2,11 +2,9 @@
 
 set -e
 
-script_dir=$(dirname "$0")
-base_dir=$(cd "${script_dir}"; pwd -P)
-
 function print_usage() {
-  printf "a build script for helm\n"
+  printf "a deployment script for helm charts.\n"
+  printf "Environment name is required i.e. dev, uat, prd."
   printf '\t-h | --help\n'
   printf '\t-e | --environment (string, optional, the name of the environment config to use during deployment)\n'
 }
@@ -17,8 +15,9 @@ if [ ! "$1" ]; then
 fi
 
 environment=$1
+source ${BASE_DIR}/export-env-variables.sh $environment
 
-echo "using base dir: ${base_dir}"
+echo "using base dir: ${BASE_DIR}"
 echo "deploying to environment: ${environment}"
 
 if [[ -d "/root/.local/share/helm/plugins" ]]; then
@@ -26,34 +25,23 @@ if [[ -d "/root/.local/share/helm/plugins" ]]; then
   cp -r /root/.local/share/helm/plugins /builder/home/.local/share/helm/plugins
 fi
 
-CLOUDSDK_COMPUTE_REGION=$(yq eval '.env.CLOUDSDK_COMPUTE_REGION' "${base_dir}/../config/${environment}.env.yaml")
-CLOUDSDK_CONTAINER_CLUSTERS=$(yq eval '.env.CLOUDSDK_CONTAINER_CLUSTERS[]' "${base_dir}/../config/${environment}.env.yaml")
-GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${base_dir}/../config/${environment}.env.yaml")
-GRAPHQL_SERVICE_NAMESPACE=$(yq eval '.graphql.namespace' "${base_dir}/../values/${environment}.yaml")
-HIERARCHY_SERVICE_NAMESPACE=$(yq eval '.hierarchy.namespace' "${base_dir}/../values/${environment}.yaml")
-
-  for cluster in $CLOUDSDK_CONTAINER_CLUSTERS; do
+  for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
     
     export CLUSTER_NAME="$cluster"
+    echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"${CLOUDSDK_COMPUTE_REGION}\" \"${cluster}\""
+    gcloud container clusters get-credentials --project="${GCLOUD_PROJECT}" --region="${CLOUDSDK_COMPUTE_REGION}" "${cluster}"
     
-    echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"$CLOUDSDK_COMPUTE_REGION\" \"$CLUSTER_NAME\""
-    gcloud container clusters get-credentials --project="$GCLOUD_PROJECT" --region="$CLOUDSDK_COMPUTE_REGION" "$CLUSTER_NAME"
-    
-    echo "Substituting secrets' values for cluster: $cluster"
-    bash ${base_dir}/inject-cluster-secrets.sh $environment $cluster
+    echo "Substituting secrets' values for cluster: ${cluster}"
+    bash ${BASE_DIR}/inject-cluster-secrets.sh ${environment} ${cluster}
       
-    echo "Deploying Istio gateway to cluster: ${CLUSTER_NAME} in ${environment} environment" 
-    helmfile -f "${base_dir}/../helmfile-istio-gateway.yaml" --environment "${environment}" apply \
+    echo "Deploying Istio gateway to cluster: ${cluster} in ${environment} environment" 
+    helmfile -f "${BASE_DIR}/../helmfile-istio-gateway.yaml" --environment "${environment}" apply \
     --skip-deps \
     --concurrency 1
 
-    echo "Deploying services to cluster: ${CLUSTER_NAME} in ${environment} environment"
-    helmfile -f  "${base_dir}/../helmfile.yaml" --environment "${environment}" apply \
+    echo "Deploying services to cluster: ${cluster} in ${environment} environment"
+    helmfile -f  "${BASE_DIR}/../helmfile.yaml" --environment "${environment}" apply \
       --skip-deps \
       --concurrency 1
-    
-    #Restarting graphql mesh & hierarchy api since they are using latest image tag
-    kubectl rollout restart deployment/graphql-mesh --namespace=$GRAPHQL_SERVICE_NAMESPACE 
-    kubectl rollout restart deployment/hierarchy-api --namespace=$HIERARCHY_SERVICE_NAMESPACE 
 
-  done
+  done 

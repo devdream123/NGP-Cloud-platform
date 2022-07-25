@@ -5,9 +5,9 @@ steps:
     args:
       - '-c'
       - |
-        if [[ "$BRANCH_NAME" == 'main' ]]; then
-          ./scripts/deploy.sh
-        fi 
+        if [[ "$BRANCH_NAME" == 'main' ]]; then 
+          ./scripts/deploy.sh 
+        fi
     secretEnv:
       - 'FORECAST_POSTGRES_PWD_DEV'
       - 'FORECAST_POSTGRES_PWD_UAT'
