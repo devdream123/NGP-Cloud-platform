@@ -12,4 +12,6 @@ data:
   GRAPHQL_CLIENT_DEALSHEET_URL: {{ .Values.graphQLClient.dealsheetUrl | quote }}
   GRAPHQL_CLIENT_EVENTSCHEDULE_URL: {{ .Values.graphQLClient.eventScheduleUrl | quote }}
   FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.firestoreSettings.rootCollectionName | quote }}
+  SERVICE_SETTINGS_CALENDAR_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.serviceSettings.calendar.firestoreSettings.rootCollectionName | quote }}
+  SERVICE_SETTINGS_DEALSHEET_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.serviceSettings.dealsheet.firestoreSettings.rootCollectionName | quote }}
   SYSTEM_TIME_ZONE: {{ .Values.systemTimeZone | quote }}

@@ -11,4 +11,6 @@ data:
   DEMAND_DRIVER_FORECAST_URL: {{ .Values.demandDriver.forecastUrl | quote }}
   GRAPHQL_CLIENT_CALENDAR_URL: {{ .Values.graphQLClient.calendarUrl | quote }}
   FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.firestoreSettings.rootCollectionName | quote }}
+  SERVICE_SETTINGS_CALENDAR_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.serviceSettings.calendar.firestoreSettings.rootCollectionName | quote }}
+  SERVICE_SETTINGS_DEALSHEET_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.serviceSettings.dealsheet.firestoreSettings.rootCollectionName | quote }}  
   SYSTEM_TIME_ZONE: {{ .Values.systemTimeZone | quote }}
