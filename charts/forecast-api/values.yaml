@@ -21,7 +21,7 @@ database:
   pwd: ""
   db: qforecast
   localhost: "127.0.0.1"
-  primaryIP: ""
+  host: ""
   proxyVersion: "1.19.1"
   proxyResources:
     requests:
