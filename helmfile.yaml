@@ -20,6 +20,10 @@ environments:
     values:
       - config/prd.env.yaml
       - values/prd.yaml
+  tst: 
+    values:
+      - config/tst.env.yaml
+      - values/tst.yaml
 
 helmDefaults:
   wait: false
