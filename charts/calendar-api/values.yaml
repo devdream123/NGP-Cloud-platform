@@ -66,3 +66,11 @@ firestoreSettings:
   rootCollectionName: "calendar-assortments"
 
 systemTimeZone: "Australia/Sydney"
+
+serviceSettings:
+  calendar:
+    firestoreSettings:
+      rootCollectionName: "calendar-assortments"
+  dealsheet:
+    firestoreSettings:
+      rootCollectionName: "dealsheet-assortments"
