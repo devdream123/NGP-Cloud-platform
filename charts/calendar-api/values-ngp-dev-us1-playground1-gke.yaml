@@ -17,8 +17,6 @@ serviceSettings:
   calendar:
     firestoreSettings:
       rootCollectionName: "calendar-assortments-pg"
-
-serviceSettings:
   dealsheet:
     firestoreSettings:
       rootCollectionName: "dealsheet-assortments-pg"
