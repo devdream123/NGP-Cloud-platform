@@ -5,7 +5,7 @@ base_dir=$(cd "${script_dir}"; pwd -P)
 
 export BASE_DIR=$(cd "${script_dir}"; pwd -P)
 
-environments=("dev" "uat" "prd")
+environments=("tst" "dev" "uat" "prd")
 
 echo "using base dir: ${BASE_DIR}"
 
