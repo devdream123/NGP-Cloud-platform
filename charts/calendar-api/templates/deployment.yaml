@@ -58,6 +58,11 @@ spec:
                 configMapKeyRef:
                   name: {{ include "calendar-api.fullname" . }}-cm
                   key: SERVICE_SETTINGS_DEALSHEET_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
+            - name: ServiceSettings__Scenario__FirestoreSettings__RootCollectionName
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "calendar-api.fullname" . }}-cm
+                  key: SERVICE_SETTINGS_SCENARIO_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
             - name: DemandDriver__ForecastUrl
               valueFrom:
                 configMapKeyRef:

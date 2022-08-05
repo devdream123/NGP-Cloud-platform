@@ -20,3 +20,6 @@ serviceSettings:
   dealsheet:
     firestoreSettings:
       rootCollectionName: "dealsheet-assortments-pg"
+  scenario:
+    firestoreSettings:
+      rootCollectionName: "scenarios-pg"

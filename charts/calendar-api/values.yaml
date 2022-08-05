@@ -74,3 +74,6 @@ serviceSettings:
   dealsheet:
     firestoreSettings:
       rootCollectionName: "dealsheet-assortments"
+  scenario:
+    firestoreSettings:
+      rootCollectionName: "scenarios"
