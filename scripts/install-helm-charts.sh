@@ -34,12 +34,12 @@ fi
     echo "Substituting secrets' values for cluster: ${cluster}"
     bash ${BASE_DIR}/inject-cluster-secrets.sh ${environment} ${cluster}
       
-    echo "Deploying Istio gateway to cluster: ${cluster} in ${environment} environment" 
+    echo "Installing Istio gateway chart to cluster: ${cluster} in ${environment} environment" 
     helmfile -f "${BASE_DIR}/../helmfile-istio-gateway.yaml" --environment "${environment}" apply \
     --skip-deps \
     --concurrency 1
 
-    echo "Deploying services to cluster: ${cluster} in ${environment} environment"
+    echo "Installing back-end services charts to cluster: ${cluster} in ${environment} environment"
     helmfile -f  "${BASE_DIR}/../helmfile.yaml" --environment "${environment}" apply \
       --skip-deps \
       --concurrency 1

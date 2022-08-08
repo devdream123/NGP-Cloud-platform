@@ -21,3 +21,5 @@ eventschedule:
 forecast:
   namespace: ngp
 
+kube-state-metrics:
+  namespace: kube-system 
