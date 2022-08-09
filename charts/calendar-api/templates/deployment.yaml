@@ -103,14 +103,15 @@ spec:
             httpGet:
               path: {{ .Values.livelinessProbe.path }}
               port: {{ .Values.livelinessProbe.port }}
-            initialDelaySeconds: 10
-            periodSeconds: 120
+            initialDelaySeconds: {{ .Values.livelinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.livelinessProbe.periodSeconds }}
+            failureThreshold: {{ .Values.livelinessProbe.failureThreshold }}
           readinessProbe:
             httpGet:
               path: {{ .Values.readinessProbe.path }}
               port: {{ .Values.readinessProbe.port }}
-            initialDelaySeconds: 10
-            periodSeconds: 120
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

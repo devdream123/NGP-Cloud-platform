@@ -38,10 +38,15 @@ service:
 readinessProbe: 
   path: /health
   port: http
+  initialDelaySeconds: 15
+  periodSeconds: 120
 
 livelinessProbe:
   path: /health 
   port: http
+  failureThreshold: 1
+  initialDelaySeconds: 15
+  periodSeconds: 120
 
 resources: {}
 
