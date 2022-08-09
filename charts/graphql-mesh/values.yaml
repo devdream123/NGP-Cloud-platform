@@ -57,10 +57,14 @@ service:
 livelinessProbe:
   path: /healthcheck
   port: http
+  initialDelaySeconds: 300
+  periodSeconds: 120
 
 readinessProbe:
   path: /readiness
   port: http
+  initialDelaySeconds: 300
+  periodSeconds: 120
 
 resources: {}
 

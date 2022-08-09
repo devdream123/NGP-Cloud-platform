@@ -5,7 +5,12 @@ image:
 livelinessProbe:
   path: /graphql?query=%7B__typename%7D
   port: http
+  failureThreshold: 2
+  initialDelaySeconds: 15
+  periodSeconds: 180
 
 readinessProbe: 
   path: /readyz
   port: http
+  periodSeconds: 15
+  initialDelaySeconds: 120
