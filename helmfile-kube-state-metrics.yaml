@@ -17,6 +17,6 @@ helmDefaults:
 releases:
   - name: kube-state-metrics
     chart: ./charts/kube-state-metrics
-    namespace: {{ .Values.kube-state-metrics.namespace }}
+    namespace: {{ .Values.kubeStateMetrics.namespace }}
     values:
       - ./charts/kube-state-metrics/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml

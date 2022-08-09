@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      {{- include "kube-state-metrics.selectorLabels" . | indent 4 }}
+      {{- include "kube-state-metrics.selectorLabels" . | indent 8 }}
   endpoints:
   - port: {{ .Values.service.portName}}
     interval: {{ .Values.scrapingInterval }}

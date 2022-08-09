@@ -22,7 +22,7 @@ source ${BASE_DIR}/export-env-variables.sh $environment
     echo "Switching to context:${cluster_context} to restart GraphQL mesh service." 
     kubectl config use-context "${cluster_context}"
     
-    echo "installing 'kube state metrics' chart to cluster: ${cluster} in ${environment} environment"
+    echo "Installing 'kube state metrics' chart to cluster: ${cluster} in ${environment} environment"
     helmfile -f  "${BASE_DIR}/../helmfile-kube-state-metrics.yaml" --environment "${environment}" apply \
       --skip-deps \
       --concurrency 1
