@@ -30,24 +30,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: ASPNETCORE_URLS
-              value: http://*:{{ .Values.service.port }}
-            - name: GCPSettings__ProjectId
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "eventschedule-api.fullname" . }}-cm
-                  key: PROJECT_ID
-            - name: FirestoreSettings__RootCollectionName
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "eventschedule-api.fullname" . }}-cm
-                  key: FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
-            - name: SystemTimeZone
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "eventschedule-api.fullname" . }}-cm
-                  key: SYSTEM_TIME_ZONE
+          envFrom:
+            - configMapRef:
+                name: {{ include "eventschedule-api.fullname" . }}-cm
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

@@ -5,14 +5,15 @@ metadata:
   labels:
     {{- include "calendar-api.labels" . | nindent 4 }}
 data:
-  PROJECT_ID: {{ .Values.projectId | quote }}
-  HIERARCHY_API_URL: {{ .Values.hierarchy.url | quote }}
-  HIERARCHY_API_KEY: {{ .Values.hierarchy.key | quote }}
-  DEMAND_DRIVER_FORECAST_URL: {{ .Values.demandDriver.forecastUrl | quote }}
-  GRAPHQL_CLIENT_DEALSHEET_URL: {{ .Values.graphQLClient.dealsheetUrl | quote }}
-  GRAPHQL_CLIENT_EVENTSCHEDULE_URL: {{ .Values.graphQLClient.eventScheduleUrl | quote }}
-  FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.firestoreSettings.rootCollectionName | quote }}
-  SERVICE_SETTINGS_CALENDAR_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.serviceSettings.calendar.firestoreSettings.rootCollectionName | quote }}
-  SERVICE_SETTINGS_DEALSHEET_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.serviceSettings.dealsheet.firestoreSettings.rootCollectionName | quote }}
-  SERVICE_SETTINGS_SCENARIO_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.serviceSettings.scenario.firestoreSettings.rootCollectionName | quote }}
-  SYSTEM_TIME_ZONE: {{ .Values.systemTimeZone | quote }}
+  GCPSettings__ProjectId: {{ .Values.projectId | quote }}
+  Hierarchy__Url: {{ .Values.hierarchy.url | quote }}
+  Hierarchy__ApiKey: {{ .Values.hierarchy.key | quote }}
+  DemandDriver__ForecastUrl: {{ .Values.demandDriver.forecastUrl | quote }}
+  GraphQLClient__DealsheetUrl: {{ .Values.graphQLClient.dealsheetUrl | quote }}
+  GraphQLClient__EventScheduleUrl: {{ .Values.graphQLClient.eventScheduleUrl | quote }}
+  FirestoreSettings__RootCollectionName: {{ .Values.firestoreSettings.rootCollectionName | quote }}
+  ServiceSettings__Calendar__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.calendar.firestoreSettings.rootCollectionName | quote }}
+  ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.dealsheet.firestoreSettings.rootCollectionName | quote }}
+  ServiceSettings__Scenario__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.scenario.firestoreSettings.rootCollectionName | quote }}
+  SystemTimeZone: {{ .Values.systemTimeZone | quote }}
+  ASPNETCORE_URLS: http://*:{{ .Values.service.port }}

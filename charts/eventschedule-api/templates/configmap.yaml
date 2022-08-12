@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "eventschedule-api.labels" . | nindent 4 }}
 data:
-  PROJECT_ID: {{ .Values.projectId | quote }}
-  FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME: {{ .Values.firestoreSettings.rootCollectionName | quote }}
-  SYSTEM_TIME_ZONE: {{ .Values.systemTimeZone | quote }}
+  GCPSettings__ProjectId: {{ .Values.projectId | quote }}
+  FirestoreSettings__RootCollectionName: {{ .Values.firestoreSettings.rootCollectionName | quote }}
+  SystemTimeZone: {{ .Values.systemTimeZone | quote }}
+  ASPNETCORE_URLS: http://*:{{ .Values.service.port }}

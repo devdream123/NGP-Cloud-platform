@@ -82,5 +82,3 @@ serviceSettings:
   scenario:
     firestoreSettings:
       rootCollectionName: "scenarios"
-
-isClusterInDev: false

@@ -30,59 +30,9 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: ASPNETCORE_URLS
-              value: http://*:{{ .Values.service.port }}
-            - name: GCPSettings__ProjectId
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: PROJECT_ID
-            - name: Hierarchy__Url
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: HIERARCHY_API_URL
-            - name: Hierarchy__ApiKey
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: HIERARCHY_API_KEY
-            - name: ServiceSettings__Calendar__FirestoreSettings__RootCollectionName
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: SERVICE_SETTINGS_CALENDAR_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
-            - name: ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: SERVICE_SETTINGS_DEALSHEET_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
-            - name: ServiceSettings__Scenario__FirestoreSettings__RootCollectionName
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: SERVICE_SETTINGS_SCENARIO_FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
-            - name: DemandDriver__ForecastUrl
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: DEMAND_DRIVER_FORECAST_URL
-            - name: GraphQLClient__CalendarUrl
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: GRAPHQL_CLIENT_CALENDAR_URL
-            - name: FirestoreSettings__RootCollectionName
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: FIRESTORE_SETTINGS_ROOTCOLLECTION_NAME
-            - name: SystemTimeZone
-              valueFrom:
-                configMapKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-cm
-                  key: SYSTEM_TIME_ZONE
+          envFrom:
+            - configMapRef:
+                name: {{ include "dealsheet-api.fullname" . }}-cm
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

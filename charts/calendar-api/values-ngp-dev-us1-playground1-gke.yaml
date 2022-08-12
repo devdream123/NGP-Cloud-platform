@@ -28,5 +28,3 @@ serviceSettings:
   scenario:
     firestoreSettings:
       rootCollectionName: "scenarios-pg"
-
-isClusterInDev: true
