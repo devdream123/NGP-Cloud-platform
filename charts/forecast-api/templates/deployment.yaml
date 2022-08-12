@@ -52,8 +52,10 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "forecast-api.fullname" . }}-cm
+            {{- if ne .Values.database.auth "iam" }}
             - secretRef:
                 name: {{ include "forecast-api.fullname" . }}-secrets
+            {{- end }}
         {{- if eq .Values.database.mode "postgres" }}
         - name: cloud-sql-proxy
           image: "gcr.io/cloudsql-docker/gce-proxy:{{ .Values.database.proxyVersion }}"
