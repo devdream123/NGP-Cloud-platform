@@ -7,12 +7,14 @@ image:
 environment: testing
 
 database:
+  auth: iam
   instance: ngp-tst-us1-services1-sql
-  user: postgres
+  user: "cloud-sql@gcp-wow-corp-qretail-ngp-test.iam"
   pwd: 
   db: qforecast
+  schema: 20220812_1_tst
   host: "forecast-api-db.tst.int.wiqretail.com"
-  proxyVersion: "1.30.1"
+  proxyVersion: "1.31.2"
 
 serviceAccount:
   create: true

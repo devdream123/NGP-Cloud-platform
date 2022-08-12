@@ -15,14 +15,16 @@ environment: production
 
 database:
   mode: postgres
+  auth: builtin
   region: us-central1
   instance: forecast-api-db
   user: postgres
   pwd: ""
   db: qforecast
+  schema: public
   localhost: "127.0.0.1"
   host: ""
-  proxyVersion: "1.19.1"
+  proxyVersion: "1.30.1"
   proxyResources:
     requests:
       memory: "32Mi"
