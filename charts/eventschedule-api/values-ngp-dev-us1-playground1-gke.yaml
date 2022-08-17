@@ -13,4 +13,4 @@ readinessProbe:
   path: /readyz
   port: http
   periodSeconds: 15
-  initialDelaySeconds: 120git add .
+  initialDelaySeconds: 120
