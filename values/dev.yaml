@@ -20,3 +20,6 @@ eventschedule:
 
 forecast:
   namespace: ngp
+
+kubeStateMetrics:
+  namespace: kube-system 

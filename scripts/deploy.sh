@@ -5,7 +5,7 @@ script_dir=$(dirname "$0")
 export BASE_DIR=$(cd "${script_dir}"; pwd -P)
 
 environments=("tst" "dev" "uat" "prd")
-betaReleaseEnvironments=("tst")
+betaReleaseEnvironments=("tst" "dev")
 
 echo "using base dir: ${BASE_DIR}"
 
