@@ -11,6 +11,7 @@ database:
   user: postgres
   pwd: 
   db: qforecast
+  schema: public
   host: "10.49.0.3"
   proxyVersion: "1.30.1"
 

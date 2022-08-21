@@ -52,15 +52,26 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "forecast-api.fullname" . }}-cm
+            {{- if ne .Values.database.auth "iam" }}
             - secretRef:
                 name: {{ include "forecast-api.fullname" . }}-secrets
+            {{- end }}
         {{- if eq .Values.database.mode "postgres" }}
         - name: cloud-sql-proxy
           image: "gcr.io/cloudsql-docker/gce-proxy:{{ .Values.database.proxyVersion }}"
+          {{- if eq .Values.database.auth "iam" }}
+          command:
+            - "/cloud_sql_proxy"
+            - "-enable_iam_login"
+            - "-instances={{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}=tcp:5432"
+            - "-ip_address_types=PRIVATE"
+            - "--token=$(gcloud auth print-access-token --impersonate-service-account='{{ .Values.database.user }}.gserviceaccount.com')"
+          {{- else }}
           command:
             - "/cloud_sql_proxy"
             - "-instances={{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}=tcp:5432"
             - "-ip_address_types=PRIVATE"
+          {{- end }}
           securityContext:
             runAsNonRoot: true
           resources:
