@@ -13,6 +13,9 @@ if [ ! "$1" ]; then
 	exit 1
 fi
 
+# Use the GCloud Auth Plugin
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
 environment=$1
 source ${BASE_DIR}/export-env-variables.sh $environment
     
