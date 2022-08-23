@@ -24,6 +24,13 @@ spec:
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: {{ .Values.initContainer.name }}
+          image: {{ .Values.initContainer.image }}
+          command:
+          {{- range $k, $v := .Values.initContainer.command }}
+          - {{ . | toYaml | nindent 10 | trim }}
+          {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
