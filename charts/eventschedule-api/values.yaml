@@ -48,7 +48,13 @@ livelinessProbe:
   initialDelaySeconds: 15
   periodSeconds: 120
 
-resources: {}
+resources:
+  requests:
+    memory: 64Mi
+    cpu: 50m
+  limits:
+    memory: 400Mi
+    cpu: 500m
 
 nodeSelector: {}
 

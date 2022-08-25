@@ -42,7 +42,6 @@ fullnameOverride: ""
 podAnnotations: {}
 
 podSecurityContext: {}
-  
 
 securityContext: {}
 
@@ -59,7 +58,13 @@ serviceAccount:
     iam.gke.io/gcp-service-account: cloud-sql@gcp-wow-corp-qretail-ngp-dev.iam.gserviceaccount.com
   }
 
-resources: {}
+resources:
+  requests:
+    memory: 64Mi
+    cpu: 500m
+  limits:
+    memory: 1Gi
+    cpu: 3000m
 
 nodeSelector: {}
 

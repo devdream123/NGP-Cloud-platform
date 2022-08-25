@@ -4,6 +4,11 @@ image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-qforecast
   tag: 1.28.1-prd
 
+resources:
+  limits:
+    memory: 1500Mi
+    cpu: 4000m
+
 environment: testing
 
 database:

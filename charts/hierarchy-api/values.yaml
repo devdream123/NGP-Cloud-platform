@@ -35,7 +35,13 @@ service:
   type: ClusterIP
   port: 80
 
-resources: {}
+resources:
+  requests:
+    memory: 64Mi
+    cpu: 50m
+  limits:
+    memory: 1Gi
+    cpu: 2000m
 
 nodeSelector: {}
 
