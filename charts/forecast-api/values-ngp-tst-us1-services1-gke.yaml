@@ -7,9 +7,8 @@ image:
 environment: testing
 
 database:
-  auth: iam
   instance: ngp-tst-us1-services1-sql
-  user: "cloud-sql@gcp-wow-corp-qretail-ngp-test.iam"
+  user: postgres
   pwd: 
   db: qforecast
   schema: 20220812_1_tst
