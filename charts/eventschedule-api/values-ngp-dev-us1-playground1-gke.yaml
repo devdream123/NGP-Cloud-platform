@@ -1,6 +1,6 @@
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-eventschedule
-  tag: v1.32.5-dev
+  tag: v1.32.7-dev
 
 livelinessProbe:
   path: /graphql?query=%7B__typename%7D
