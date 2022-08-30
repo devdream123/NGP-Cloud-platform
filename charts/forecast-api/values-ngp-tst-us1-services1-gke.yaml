@@ -11,7 +11,7 @@ database:
   user: postgres
   pwd: 
   db: qforecast
-  schema: 20220812_1_tst
+  schema: public_20220812_1
   host: "forecast-api-db.tst.int.wiqretail.com"
   proxyVersion: "1.31.2"
 
