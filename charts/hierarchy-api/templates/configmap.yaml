@@ -6,3 +6,11 @@ metadata:
     {{- include "hierarchy-api.labels" . | nindent 4 }}
 data:
   PROJECT_ID: {{ .Values.projectId | quote }}
+  COLLECTION_NAME: {{ .Values.collectionName | quote }}
+  TYPESENSE_API_KEY: {{ .Values.typesenseConfiguration.apiKey | quote }}
+  TYPESENSE_HOST: {{ .Values.typesenseConfiguration.host | quote }}
+  TYPESENSE_PORT: {{ .Values.typesenseConfiguration.port | quote }}
+  TYPESENSE_PROTOCOL: {{ .Values.typesenseConfiguration.protocol | quote }}
+  TYPESENSE_BATCH_SIZE: {{ .Values.typesenseConfiguration.batchSize | quote }}
+  FIRESTORE_PROJECT_ID: {{ .Values.firestoreConfiguration.projectId | quote }}
+  FIRESTORE_COLLECTION_NAME: {{ .Values.firestoreConfiguration.collectionName | quote }}

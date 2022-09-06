@@ -30,6 +30,47 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: CollectionName
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "hierarchy-api.fullname" . }}-cm
+                  key: COLLECTION_NAME
+            - name: TypesenseConfiguration__ApiKey
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "hierarchy-api.fullname" . }}-cm
+                  key: TYPESENSE_API_KEY
+            - name: TypesenseConfiguration__Host
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "hierarchy-api.fullname" . }}-cm
+                  key: TYPESENSE_HOST
+            - name: TypesenseConfiguration__Port
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "hierarchy-api.fullname" . }}-cm
+                  key: TYPESENSE_PORT
+            - name: TypesenseConfiguration__Protocol
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "hierarchy-api.fullname" . }}-cm
+                  key: TYPESENSE_PROTOCOL
+            - name: TypesenseConfiguration__BatchSize
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "hierarchy-api.fullname" . }}-cm
+                  key: TYPESENSE_BATCH_SIZE
+            - name: FirestoreSettings__ProjectId
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "hierarchy-api.fullname" . }}-cm
+                  key: FIRESTORE_PROJECT_ID
+            - name: FirestoreSettings__CollectionName
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "hierarchy-api.fullname" . }}-cm
+                  key: FIRESTORE_COLLECTION_NAME
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

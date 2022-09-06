@@ -48,3 +48,16 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+firestoreConfiguration:
+  projectId: "gcp-wow-corp-qretail-ngp-dev"
+  collectionName: "placeholders"
+
+typesenseConfiguration:
+  apiKey: "f44910b7-4b35-48bb-ac16-4f6a4d5af120"
+  host": localhost
+  port": "51896"
+  protocol": http
+  batchSize": 5000
+
+collectionName: CHECKOUT_SUPER_PRODUCT
