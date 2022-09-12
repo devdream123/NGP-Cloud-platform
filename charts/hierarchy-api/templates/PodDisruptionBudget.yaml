@@ -10,4 +10,3 @@ spec:
     matchLabels: 
       {{- include "hierarchy-api.selectorLabels" . | nindent 6 }}
   minAvailable: {{ .Values.PodDisruptionBudget.minAvailable }}
-  maxUnavailable: {{ .Values.PodDisruptionBudget.maxUnavailable }}

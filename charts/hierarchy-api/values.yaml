@@ -63,5 +63,4 @@ typesenseConfiguration:
 collectionName: CHECKOUT_SUPER_PRODUCT
 
 PodDisruptionBudget:
-  minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd 
-  maxUnavailable: 33%
+  minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
