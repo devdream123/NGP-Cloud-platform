@@ -1,0 +1,13 @@
+--- 
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ template "kube-state-metrics.fullname" . }}-pdb
+  labels:
+    {{- include "kube-state-metrics.labels" . | indent 4 }}
+spec: 
+  selector: 
+    matchLabels:
+      {{- include "kube-state-metrics.selectorLabels" . | indent 6 }}
+  minAvailable: {{ .Values.PodDisruptionBudget.minAvailable }}
+  maxUnavailable: {{ .Values.PodDisruptionBudget.maxUnavailable }}

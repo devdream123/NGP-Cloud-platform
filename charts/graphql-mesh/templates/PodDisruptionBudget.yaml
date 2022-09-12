@@ -1,0 +1,13 @@
+--- 
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "mesh.fullname" . }}-pdb
+  labels: 
+    {{- include "mesh.labels" . | nindent 4 }}
+spec: 
+  selector: 
+    matchLabels: 
+      {{- include "mesh.selectorLabels" . | nindent 6 }}
+  minAvailable: {{ .Values.PodDisruptionBudget.minAvailable }}
+  maxUnavailable: {{ .Values.PodDisruptionBudget.maxUnavailable }}

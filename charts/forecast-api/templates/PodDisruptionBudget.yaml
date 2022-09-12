@@ -1,0 +1,13 @@
+--- 
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "forecast-api.fullname" . }}-pdb
+  labels:
+     {{- include "forecast-api.labels" . | nindent 4 }}
+spec: 
+  selector: 
+    matchLabels: 
+      {{- include "forecast-api.selectorLabels" . | nindent 6 }}
+  minAvailable: {{ .Values.PodDisruptionBudget.minAvailable }}
+  maxUnavailable: {{ .Values.PodDisruptionBudget.maxUnavailable }}

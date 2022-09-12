@@ -1,0 +1,13 @@
+--- 
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "dealsheet-api.fullname" . }}-pdb
+  labels:
+     {{- include "dealsheet-api.labels" . | nindent 4 }}
+spec: 
+  selector: 
+    matchLabels: 
+      {{- include "dealsheet-api.selectorLabels" . | nindent 6 }}
+  minAvailable: {{ .Values.PodDisruptionBudget.minAvailable }}
+  maxUnavailable: {{ .Values.PodDisruptionBudget.maxUnavailable }}
