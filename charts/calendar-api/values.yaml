@@ -35,18 +35,18 @@ service:
   type: ClusterIP
   port: 80
 
-readinessProbe: 
-  path: /health
+readinessProbe:
+  path: /readyz
   port: http
-  initialDelaySeconds: 15
-  periodSeconds: 120
+  periodSeconds: 15
+  initialDelaySeconds: 120
 
 livelinessProbe:
-  path: /health 
+  path: /graphql?query=%7B__typename%7D
   port: http
-  failureThreshold: 1
+  failureThreshold: 2
   initialDelaySeconds: 15
-  periodSeconds: 120
+  periodSeconds: 180
 
 resources:
   requests:
