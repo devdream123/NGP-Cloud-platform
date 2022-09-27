@@ -15,5 +15,6 @@ data:
   ServiceSettings__Calendar__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.calendar.firestoreSettings.rootCollectionName | quote }}
   ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.dealsheet.firestoreSettings.rootCollectionName | quote }}
   ServiceSettings__Scenario__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.scenario.firestoreSettings.rootCollectionName | quote }}
+  ServiceSettings__Placeholder__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.placeholder.firestoreSettings.rootCollectionName | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ASPNETCORE_URLS: http://*:{{ .Values.service.port }}
