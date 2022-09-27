@@ -15,3 +15,6 @@ serviceSettings:
   scenario:
     firestoreSettings:
       rootCollectionName: "scenarios-pg"
+  placeholder:
+    firestoreSettings:
+      rootCollectionName: "placeholders-pg"
