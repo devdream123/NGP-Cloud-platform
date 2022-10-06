@@ -1,6 +1,6 @@
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-dealsheet
-  tag: v1.35.4-dev
+  tag: v1.35.3-dev
 
 firestoreSettings:
   rootCollectionName: "dealsheet-assortments-pg"
