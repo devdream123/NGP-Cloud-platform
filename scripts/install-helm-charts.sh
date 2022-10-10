@@ -30,9 +30,6 @@ fi
     export CLUSTER_NAME="$cluster"
     echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"${CLOUDSDK_COMPUTE_REGION}\" \"${cluster}\""
     gcloud container clusters get-credentials --project="${GCLOUD_PROJECT}" --region="${CLOUDSDK_COMPUTE_REGION}" "${cluster}"
-    
-    echo "Substituting secrets' values for cluster: ${cluster}"
-    bash ${BASE_DIR}/inject-cluster-secrets.sh ${environment} ${cluster}
       
     echo "Installing Istio gateway chart to cluster: ${cluster} in ${environment} environment" 
     helmfile -f "${BASE_DIR}/../helmfile-istio-gateway.yaml" --environment "${environment}" apply \
@@ -41,6 +38,11 @@ fi
 
     echo "Installing back-end services charts to cluster: ${cluster} in ${environment} environment"
     helmfile -f  "${BASE_DIR}/../helmfile.yaml" --environment "${environment}" apply \
+      --skip-deps \
+      --concurrency 1
+
+    echo "Installing 'front end ui ' chart to cluster: ${cluster} in ${environment} environment"
+    helmfile -f  "${BASE_DIR}/../helmfile-front-end.yaml" --environment "${environment}" apply \
       --skip-deps \
       --concurrency 1
 

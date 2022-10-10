@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "hierarchy-api.fullname" . }}
+  name: {{ include "frontend-ui.fullname" . }}
   labels:
-    {{- include "hierarchy-api.labels" . | nindent 4 }}
+    {{- include "frontend-ui.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      {{- include "hierarchy-api.selectorLabels" . | nindent 6 }}
+      {{- include "frontend-ui.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -16,7 +16,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "hierarchy-api.selectorLabels" . | nindent 8 }}
+        {{- include "frontend-ui.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -31,26 +31,28 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
-            - configMapRef:
-                name: {{ include "hierarchy-api.fullname" . }}-cm
-            - secretRef: 
-                name: {{ include "hierarchy-api.fullname" . }}-secrets
+            - secretRef:
+                name: {{ include "frontend-ui.fullname" . }}-secrets
           ports:
             - name: http
-              containerPort: {{ .Values.service.port }}
+              containerPort: {{ .Values.service.targetPort }}
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /health
-              port: http
-            initialDelaySeconds: 10
-            periodSeconds: 120
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: http
-            initialDelaySeconds: 10
-            periodSeconds: 120
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+        - name: {{ .Chart.Name }}-server
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.server.image.repository }}:{{ .Values.server.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.server.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: {{ include "frontend-ui.fullname" . }}-cm
+            - secretRef:
+                name: {{ include "frontend-ui.fullname" . }}-secrets
+          ports:
+            - name: http
+              containerPort: {{ .Values.server.targetPort }}
+              protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

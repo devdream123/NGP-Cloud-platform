@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "frontend-ui.fullname" . }}
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"80":{"name": "frontend-ui-neg" }}}'
+  labels:
+    {{- include "frontend-ui.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - name: http
+      protocol: TCP 
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+  selector:
+    {{- include "frontend-ui.selectorLabels" . | nindent 4 }}

@@ -7,7 +7,6 @@ metadata:
 data:
   PROJECT_ID: {{ .Values.projectId | quote }}
   CollectionName: {{ .Values.collectionName | quote }}
-  TypesenseConfiguration__ApiKey: {{ .Values.typesenseConfiguration.apiKey | quote }}
   TypesenseConfiguration__Host: {{ .Values.typesenseConfiguration.host | quote }}
   TypesenseConfiguration__Port: {{ .Values.typesenseConfiguration.port | quote }}
   TypesenseConfiguration__Protocol: {{ .Values.typesenseConfiguration.protocol | quote }}

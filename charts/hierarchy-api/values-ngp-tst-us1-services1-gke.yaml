@@ -1,7 +1,10 @@
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-typesense-hierarchy
-  tag: 08-09-2022
+  tag: 20-09-2022
 
 firestoreConfiguration:
   projectId: "gcp-wow-corp-qretail-ngp-test"
   collectionName: "placeholders"
+
+secrets:
+  typesenseAPIKey:

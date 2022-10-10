@@ -2,14 +2,14 @@ projectId: ""
 
 replicaCount: 3
 
-hierarchy-api:
-  fullname: hierarchy-api
+frontend-ui:
+  fullname: frontend-ui
   
   labels:
-    run: hierarchy-api
+    run: frontend-ui
 
   selectorLabels:
-    run: hierarchy-api
+    run: frontend-ui
 
 image:
   repository: ""
@@ -33,7 +33,9 @@ securityContext: {}
 
 service:
   type: ClusterIP
+  targetPort: 80
   port: 80
+  negName: frontend-ui-neg
 
 resources:
   requests:
@@ -49,17 +51,12 @@ tolerations: []
 
 affinity: {}
 
-firestoreConfiguration:
-  projectId: "gcp-wow-corp-qretail-ngp-dev"
-  collectionName: "placeholders"
-
-typesenseConfiguration:
-  host: localhost
-  port: "80"
-  protocol: http
-  batchSize: 5000
-
-collectionName: CHECKOUT_SUPER_PRODUCT
-
-PodDisruptionBudget:
-  minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+server: 
+  proxyProtocol: ""
+  proxyHost: ""
+  proxyPort: ""
+  targetPort: ""
+  image:
+    repository: ""
+    pullPolicy: Always
+    tag: ""

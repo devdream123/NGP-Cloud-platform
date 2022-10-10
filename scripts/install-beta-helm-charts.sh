@@ -27,5 +27,5 @@ source ${BASE_DIR}/export-env-variables.sh $environment
     helmfile -f  "${BASE_DIR}/../helmfile-kube-state-metrics.yaml" --environment "${environment}" apply \
       --skip-deps \
       --concurrency 1
-  
+
   done

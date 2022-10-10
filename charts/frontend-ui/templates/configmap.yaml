@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "frontend-ui.fullname" . }}-cm
+  labels:
+    {{- include "frontend-ui.labels" . | nindent 4 }}
+data:
+  PROXY_PROTOCOL: {{ .Values.server.proxyProtocol | quote }}
+  PROXY_HOST: {{ .Values.server.proxyHost | quote  }}
+  PROXY_PORT: {{ .Values.server.proxyPort | quote  }}
+

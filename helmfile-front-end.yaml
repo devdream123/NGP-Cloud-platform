@@ -1,0 +1,22 @@
+---
+repositories:
+  - name: stable
+    url: https://charts.helm.sh/stable
+
+environments:
+  tst: 
+    values:
+      - config/tst.env.yaml
+      - values/tst.yaml
+
+helmDefaults:
+  wait: false
+  createNamespace: true
+  timeout: 600
+
+releases:
+  - name: frontend-ui
+    chart: ./charts/frontend-ui
+    namespace: {{ .Values.frontend.namespace }}
+    values:
+      - ./charts/frontend-ui/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
