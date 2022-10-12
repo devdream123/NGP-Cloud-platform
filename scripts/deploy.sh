@@ -5,9 +5,11 @@ script_dir=$(dirname "$0")
 export BASE_DIR=$(cd "${script_dir}"; pwd -P)
 
 if [ "$1" ]; then
-   environments=("$1")	
+   environments=("$1")
+   betaReleaseEnvironments=("$1")	
  else 
    environments=("tst" "dev" "uat" "prd")
+   betaReleaseEnvironments=("tst" "dev")
 fi
 
 echo "using base dir: ${BASE_DIR}"
