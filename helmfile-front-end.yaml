@@ -8,6 +8,10 @@ environments:
     values:
       - config/tst.env.yaml
       - values/tst.yaml
+  dev: 
+    values:
+      - config/dev.env.yaml
+      - values/dev.yaml
 
 helmDefaults:
   wait: false

@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "frontend-ui.fullname" . }}
   annotations:
-    cloud.google.com/neg: '{"exposed_ports": {"80":{"name": "frontend-ui-neg" }}}'
+    cloud.google.com/neg: '{"exposed_ports": {"80":{"name": "{{ .Values.service.negName }}" }}}'
   labels:
     {{- include "frontend-ui.labels" . | nindent 4 }}
 spec:
