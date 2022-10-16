@@ -23,3 +23,6 @@ forecast:
 
 kubeStateMetrics:
   namespace: kube-system 
+
+frontend:
+  namespace: ngp-frontend
