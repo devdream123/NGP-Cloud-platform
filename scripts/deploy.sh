@@ -8,8 +8,8 @@ if [ "$1" ]; then
    environments=("$1")
    betaReleaseEnvironments=("$1")	
  else 
-   environments=("tst" "dev" "uat" "prd")
-   betaReleaseEnvironments=("tst" "dev")
+   environments=("dev" "uat" "prd")
+   betaReleaseEnvironments=("dev")
 fi
 
 echo "using base dir: ${BASE_DIR}"
