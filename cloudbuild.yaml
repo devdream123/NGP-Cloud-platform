@@ -21,6 +21,8 @@ steps:
       - 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_TST'
       - 'REACT_APP_ERROR_REPORTING_API_KEY_DEV'
       - 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_DEV'
+      - 'REACT_APP_ERROR_REPORTING_API_KEY_UAT'
+      - 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_UAT'
   - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile'
     entrypoint: 'bash'
     args:
