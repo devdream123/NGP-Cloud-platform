@@ -25,12 +25,10 @@ for environment in ${environments[@]}; do
 
     sed -i "s/pwd: /pwd: ${!FORECAST_POSTGRES_DB_PASSWORD}/" "./charts/forecast-api/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/hierarchy-api/values-${cluster}.yaml"
-   
-   if [[ -s "./charts/frontend-ui/values-${cluster}.yaml"  ]]; then
      sed -i "s/reactAppErrorReportingApiKey:/reactAppErrorReportingApiKey: ${!REACT_APP_ERROR_REPORTING_API_KEY}/" "./charts/frontend-ui/values-${cluster}.yaml"
      sed -i "s/reactAppLaunchDarklyClientId:/reactAppLaunchDarklyClientId: ${!REACT_APP_LAUNCHDARKLY_CLIENT_ID}/" "./charts/frontend-ui/values-${cluster}.yaml"
      sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/frontend-ui/values-${cluster}.yaml"
-   fi 
+   
    
    done
 done

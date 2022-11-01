@@ -21,3 +21,6 @@ eventschedule:
 forecast:
   namespace: ngp
 
+frontend:
+  namespace: ngp-frontend
+
