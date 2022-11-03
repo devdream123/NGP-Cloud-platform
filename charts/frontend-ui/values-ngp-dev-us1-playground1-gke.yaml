@@ -20,4 +20,4 @@ secrets:
   typesenseAPIKey:
 
 service:
- negName: frontend-ui-neg-services
+ negName: frontend-ui-neg-pg

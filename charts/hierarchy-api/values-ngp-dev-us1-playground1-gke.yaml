@@ -4,7 +4,7 @@ image:
 
 firestoreConfiguration:
   projectId: "gcp-wow-corp-qretail-ngp-dev"
-  collectionName: "placeholders"
+  collectionName: "placeholders-pg"
 
 secrets:
-  typesenseAPIKey: 
+  typesenseAPIKey:
