@@ -1,6 +1,6 @@
 apiVersion: v2
-name: istio
-description: A Helm chart for Kubernetes
+name: istio-gateway
+description: A Helm chart for Istio gateway proxies
 
 # A chart can be either an 'application' or a 'library' chart.
 #

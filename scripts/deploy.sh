@@ -15,7 +15,13 @@ fi
 echo "using base dir: ${BASE_DIR}"
 
 for environment in ${environments[@]}; do
+   
    bash ${BASE_DIR}/install-helm-charts.sh $environment 
+   
+   if [ ${environment} == "dev" ]; then
+      bash ${BASE_DIR}/enable-service-mesh-features.sh $environment 
+   fi
+
 done
 
 for betaReleaseEnvironment in ${betaReleaseEnvironments[@]}; do

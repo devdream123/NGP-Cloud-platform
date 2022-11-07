@@ -10,12 +10,13 @@ if [ "$1" ]; then
 fi
 
 deployments=(
-    "calendar-api"
-    "dealsheet-api"
-    "eventschedule-api"
-    "forecast-api"
-    "graphql-mesh"
-    "hierarchy-api"
+   "calendar-api"
+   "dealsheet-api"
+   "eventschedule-api"
+   "forecast-api"
+   "graphql-mesh"
+   "hierarchy-api"
+   "istio-control-plane"
 )
 
 echo "Beginning Helm Template checks..."

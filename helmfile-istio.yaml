@@ -41,3 +41,17 @@ releases:
         showlogs: true
         command: 'kubectl'
         args: ['delete', 'ns', '{{ .Values.istio.namespace }}']
+  - name: istio
+    chart: ./charts/istio
+    namespace: {{ .Values.istio.namespace }}
+    values:
+      - ./charts/istio/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.istio.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
+      - events: ['postuninstall']
+        showlogs: true
+        command: 'kubectl'
+        args: ['delete', 'ns', '{{ .Values.istio.namespace }}']

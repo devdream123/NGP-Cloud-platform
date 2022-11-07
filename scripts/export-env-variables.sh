@@ -22,3 +22,5 @@ export CLOUDSDK_CONTAINER_CLUSTERS=$(yq eval '.env.CLOUDSDK_CONTAINER_CLUSTERS[]
 export GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${BASE_DIR}/../config/${environment}.env.yaml")
 export HIERARCHY_SERVICE_NAMESPACE=$(yq eval '.hierarchy.namespace' "${BASE_DIR}/../values/${environment}.yaml")
 export GRAPHQL_SERVICE_NAMESPACE=$(yq eval '.graphql.namespace' "${BASE_DIR}/../values/${environment}.yaml")
+export BACKEND_SERVICES_NAMESPACE=$(yq eval '.dealsheet.namespace' "${BASE_DIR}/../values/${environment}.yaml")
+export ASM_CONTROL_PLANE_NAMESPACE=$(yq eval '.istioControlPlane.namespace' "${BASE_DIR}/../values/${environment}.yaml")

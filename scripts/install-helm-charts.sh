@@ -31,8 +31,8 @@ fi
     echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"${CLOUDSDK_COMPUTE_REGION}\" \"${cluster}\""
     gcloud container clusters get-credentials --project="${GCLOUD_PROJECT}" --region="${CLOUDSDK_COMPUTE_REGION}" "${cluster}"
       
-    echo "Installing Istio gateway chart to cluster: ${cluster} in ${environment} environment" 
-    helmfile -f "${BASE_DIR}/../helmfile-istio-gateway.yaml" --environment "${environment}" apply \
+    echo "Installing Istio Data Plane and Control Plane charts to cluster: ${cluster} in ${environment} environment" 
+    helmfile -f "${BASE_DIR}/../helmfile-istio.yaml" --environment "${environment}" apply \
     --skip-deps \
     --concurrency 1
 

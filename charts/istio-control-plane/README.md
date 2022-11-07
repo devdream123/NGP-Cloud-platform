@@ -1,0 +1,1 @@
+This chart overrides the default configuration values of the managed Anthos Service Mesh control plane, as described [here](https://cloud.google.com/service-mesh/docs/managed/enable-managed-anthos-service-mesh-optional-features)
