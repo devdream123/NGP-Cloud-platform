@@ -1,19 +1,19 @@
 replicaCount: 3
 
 dealSheet:
-  hostname: dealsheet-api.ngp.svc.cluster.local
+  hostname: dealsheet-api.ngp-backend.svc.cluster.local
   port: 80
 
 calendar: 
-  hostname: calendar-api.ngp.svc.cluster.local
+  hostname: calendar-api.ngp-backend.svc.cluster.local
   port: 80
 
 eventschedule: 
-  hostname: eventschedule-api.ngp.svc.cluster.local
+  hostname: eventschedule-api.ngp-backend.svc.cluster.local
   port: 80
 
 hierarchy: 
-  hostname: hierarchy-api.ngp.svc.cluster.local
+  hostname: hierarchy-api.ngp-backend.svc.cluster.local
   port: 80
 
 mesh:

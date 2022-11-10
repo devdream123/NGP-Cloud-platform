@@ -63,15 +63,16 @@ tolerations: []
 affinity: {}
 
 hierarchy:
-  url: http://hierarchy-api
-  key: "f44910b7-4b35-48bb-ac16-4f6a4d5af120"
+  url: http://hierarchy-api.ngp-backend.svc.cluster.local
+
 
 demandDriver:
-  forecastUrl: http://forecast-api.ngp.svc.cluster.local
+  forecastUrl: http://forecast-api.ngp-analytics.svc.cluster.local
 
 graphQLClient:
-  dealsheetUrl: http://dealsheet-api/graphql
-  eventScheduleUrl: http://eventschedule-api/graphql
+  dealsheetUrl: http://dealsheet-api.ngp-backend.svc.cluster.local/graphql
+  eventScheduleUrl: http://eventschedule-api.ngp-backend.svc.cluster.local/graphql
+
 
 firestoreSettings:
   rootCollectionName: "calendar-assortments"
