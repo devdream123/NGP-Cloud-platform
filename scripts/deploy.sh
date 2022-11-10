@@ -12,10 +12,6 @@ if [ "$1" ]; then
    betaReleaseEnvironments=("dev")
 fi
 
-echo "changing the execution mode of scripts to : +x "
-
-bash ${BASE_DIR}/make-scripts-executable.sh
-
 echo "using base dir: ${BASE_DIR}"
 
 for environment in ${environments[@]}; do

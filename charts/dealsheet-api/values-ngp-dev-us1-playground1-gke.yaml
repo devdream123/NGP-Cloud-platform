@@ -15,6 +15,3 @@ serviceSettings:
   scenario:
     firestoreSettings:
       rootCollectionName: "scenarios-pg"
-
-secrets:
-  typesenseAPIKey:

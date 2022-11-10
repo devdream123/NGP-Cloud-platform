@@ -33,8 +33,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "dealsheet-api.fullname" . }}-cm
-            - secretRef:
-                name: {{ include "dealsheet-api.fullname" . }}-secrets
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

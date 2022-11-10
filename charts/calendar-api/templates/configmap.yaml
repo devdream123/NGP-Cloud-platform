@@ -7,6 +7,7 @@ metadata:
 data:
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   Hierarchy__Url: {{ .Values.hierarchy.url | quote }}
+  Hierarchy__ApiKey: {{ .Values.hierarchy.key | quote }}
   DemandDriver__ForecastUrl: {{ .Values.demandDriver.forecastUrl | quote }}
   GraphQLClient__DealsheetUrl: {{ .Values.graphQLClient.dealsheetUrl | quote }}
   GraphQLClient__EventScheduleUrl: {{ .Values.graphQLClient.eventScheduleUrl | quote }}

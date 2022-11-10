@@ -27,10 +27,9 @@ fi
 
   for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
     
-    gcloud config set project ${GCLOUD_PROJECT}
     export CLUSTER_NAME="$cluster"
     echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"${CLOUDSDK_COMPUTE_REGION}\" \"${cluster}\""
-    gcloud container clusters get-credentials --region="${CLOUDSDK_COMPUTE_REGION}" "${cluster}"
+    gcloud container clusters get-credentials --project="${GCLOUD_PROJECT}" --region="${CLOUDSDK_COMPUTE_REGION}" "${cluster}"
       
     echo "Installing Istio Data Plane and Control Plane charts to cluster: ${cluster} in ${environment} environment" 
     helmfile -f "${BASE_DIR}/../helmfile-istio.yaml" --environment "${environment}" apply \

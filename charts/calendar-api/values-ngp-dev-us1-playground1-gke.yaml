@@ -18,6 +18,3 @@ serviceSettings:
   placeholder:
     firestoreSettings:
       rootCollectionName: "placeholders-pg"
-
-secrets:
-  typesenseAPIKey

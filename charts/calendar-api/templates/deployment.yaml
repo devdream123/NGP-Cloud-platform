@@ -33,8 +33,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "calendar-api.fullname" . }}-cm
-            - secretRef:
-                name: {{ include "calendar-api.fullname" . }}-secrets
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
