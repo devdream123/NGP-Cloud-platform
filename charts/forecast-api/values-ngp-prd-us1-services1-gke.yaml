@@ -17,8 +17,8 @@ database:
   pwd: 
   db: qforecast
   schema: public_20221010_3
-  host: "10.49.0.3"
-  proxyVersion: "1.30.1"
+  host: "forecast-api-db.prd.int.wiqretail.com"
+  proxyVersion: "1.32.0"
 
 serviceAccount:
   create: true
