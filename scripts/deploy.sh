@@ -19,6 +19,20 @@ bash ${BASE_DIR}/make-scripts-executable.sh
 echo "using base dir: ${BASE_DIR}"
 
 for environment in ${environments[@]}; do
+      
+   if [ ${environment} == "prd" ]; then
+
+      echo "Starting prod firestore backup"
+      gcloud scheduler jobs run ngp-prd-us1-firestore_backup_schedule1-csj --location=us-central1 --project=gcp-wow-corp-qretail-ngp-prod
+
+      echo "Waiting 60 seconds for firestore backup job"
+      sleep 60
+
+   fi
+
+done
+
+for environment in ${environments[@]}; do
    
    bash ${BASE_DIR}/install-helm-charts.sh $environment 
    
