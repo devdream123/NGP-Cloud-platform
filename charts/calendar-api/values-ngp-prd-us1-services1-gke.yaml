@@ -6,3 +6,6 @@ resources:
   limits:
     memory: 4Gi
     cpu: 4000m
+
+secrets:
+  typesenseAPIKey:

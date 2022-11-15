@@ -1,10 +1,10 @@
 ---
 dealsheet:
-  namespace: ngp
+  namespace: ngp-backend
 
 graphql:
-  namespace: ngp
-
+  namespace: ngp-graphql-mesh
+  
 istio:
   namespace: asm-gateway
   revision: asm-managed
@@ -13,19 +13,25 @@ istioControlPlane:
   namespace: istio-system
 
 calendar:
-  namespace: ngp
+  namespace: ngp-backend
 
 hierarchy:
-  namespace: ngp
+  namespace: ngp-backend
 
 eventschedule:
-  namespace: ngp
+  namespace: ngp-backend
 
 forecast:
-  namespace: ngp
+  namespace: ngp-analytics
+  serviceaccount: forecast-api-ksa
 
 kubeStateMetrics:
   namespace: kube-system
 
 frontend:
   namespace: ngp-frontend
+
+gcp:
+ project: gcp-wow-corp-qretail-ngp-test
+ gsa: cloud-sql
+  

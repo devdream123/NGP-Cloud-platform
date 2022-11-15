@@ -11,6 +11,8 @@ steps:
         if [[ "$BRANCH_NAME" == 'tst' ]]; then 
           bash ./scripts/substitute-charts-secrets.sh tst
         fi
+        script_exit_code=$?
+        exit $script_exit_code
     secretEnv:
       - 'TYPESENSE_API_KEY'
       - 'FORECAST_POSTGRES_PWD_DEV'
@@ -36,6 +38,8 @@ steps:
         if [[ "$BRANCH_NAME" == 'tst' ]]; then 
           ./scripts/helm-template-check.sh tst
         fi
+        script_exit_code=$?
+        exit $script_exit_code
   - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile'
     entrypoint: 'bash'
     args:

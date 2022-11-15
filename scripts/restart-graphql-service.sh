@@ -17,7 +17,7 @@ function check_all_deployments () {
    deployment_statuses=()
    
    for deployment in ${deployments[@]}; do 
-      check_deployment_completeness $deployment $GRAPHQL_SERVICE_NAMESPACE
+      check_deployment_completeness $deployment ${BACKEND_SERVICES_NAMESPACE}
       deployment_statuses+=($?) 
    done
    
