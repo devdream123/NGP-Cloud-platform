@@ -7,6 +7,7 @@ projectId: "gcp-wow-corp-qretail-ngp-uat"
 server: 
   proxyProtocol: http
   proxyHost: ingress-gateway.uat.int.wiqretail.com
+  featureFlagsEnvironment: uat
   proxyPort: 80
   targetPort: 8080
   image:

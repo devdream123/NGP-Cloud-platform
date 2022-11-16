@@ -8,4 +8,5 @@ data:
   PROXY_PROTOCOL: {{ .Values.server.proxyProtocol | quote }}
   PROXY_HOST: {{ .Values.server.proxyHost | quote  }}
   PROXY_PORT: {{ .Values.server.proxyPort | quote  }}
+  ENVIRONMENT: {{ .Values.server.featureFlagsEnvironment | quote  }}
 
