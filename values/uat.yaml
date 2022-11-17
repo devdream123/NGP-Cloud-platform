@@ -9,6 +9,9 @@ istio:
   namespace: asm-gateway
   revision: asm-managed
 
+istioControlPlane:
+  namespace: istio-system
+
 calendar:
   namespace: ngp-backend
 
