@@ -33,10 +33,10 @@ steps:
       - '-c'
       - |
         if [[ "$BRANCH_NAME" == 'main' ]]; then 
-          ./scripts/helm-template-check.sh 
+          ./scripts/render-helm-charts.sh 
         fi
         if [[ "$BRANCH_NAME" == 'tst' ]]; then 
-          ./scripts/helm-template-check.sh tst
+          ./scripts/render-helm-charts.sh tst
         fi
         script_exit_code=$?
         exit $script_exit_code

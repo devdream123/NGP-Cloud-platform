@@ -20,7 +20,6 @@ source ${BASE_DIR}/export-env-variables.sh $environment
     
     export CLUSTER_NAME="$cluster"
     cluster_context="gke_${GCLOUD_PROJECT}_${CLOUDSDK_COMPUTE_REGION}_${cluster}"
-    echo "Switching to context:${cluster_context} to restart GraphQL mesh service." 
     kubectl config use-context "${cluster_context}"
     
     echo "Installing 'kube state metrics' chart to cluster: ${cluster} in ${environment} environment"

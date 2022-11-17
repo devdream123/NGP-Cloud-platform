@@ -34,7 +34,7 @@ for deployment in "${deployments[@]}"; do
         for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
             
            echo "Checking services chart for $environment $deployment with values from ./charts/${deployment}/values-${cluster}.yaml"
-           helm template ${BASE_DIR}/../charts/${deployment} --output-dir ${BASE_DIR}/../outputs/${environment} --values ${BASE_DIR}/../charts/${deployment}/values-${cluster}.yaml
+           helm template ${BASE_DIR}/../charts/${deployment} --output-dir ${BASE_DIR}/../outputs/${environment}/${cluster} --values ${BASE_DIR}/../charts/${deployment}/values-${cluster}.yaml
 
         done
   

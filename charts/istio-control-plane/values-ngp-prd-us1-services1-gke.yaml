@@ -1,0 +1,2 @@
+tracing:
+  sampling: 0.1
