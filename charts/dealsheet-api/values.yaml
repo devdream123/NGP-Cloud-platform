@@ -1,4 +1,5 @@
 projectId: ""
+requestTracingRate: 1.0
 
 replicaCount: 3
 
