@@ -8,6 +8,7 @@ server:
   proxyProtocol: http
   proxyHost: ingress-gateway.tst.int.wiqretail.com
   featureFlagsEnvironment: dev
+  walkmeSrcEnvironment: https://cdn.walkme.com/users/6ea5ca44a4924b9cb2c7c2cf16284bfd/development/walkme_6ea5ca44a4924b9cb2c7c2cf16284bfd_https.js
   proxyPort: 80
   targetPort: 8080
   image:
