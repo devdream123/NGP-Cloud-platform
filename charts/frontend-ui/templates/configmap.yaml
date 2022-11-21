@@ -9,4 +9,3 @@ data:
   PROXY_HOST: {{ .Values.server.proxyHost | quote  }}
   PROXY_PORT: {{ .Values.server.proxyPort | quote  }}
   ENVIRONMENT: {{ .Values.server.featureFlagsEnvironment | quote  }}
-  WALKME_SRC: {{ .Values.server.walkmeSrcEnvironment | quote  }}

@@ -56,7 +56,6 @@ server:
   proxyHost: ""
   proxyPort: ""
   targetPort: ""
-  walkmeSrcEnvironment: ""
   featureFlagsEnvironment: ""
   image:
     repository: ""
