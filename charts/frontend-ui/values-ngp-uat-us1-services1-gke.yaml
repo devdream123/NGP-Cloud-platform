@@ -4,7 +4,7 @@ image:
 
 projectId: "gcp-wow-corp-qretail-ngp-uat"
 
-server: 
+server:
   proxyProtocol: http
   proxyHost: ingress-gateway.uat.int.wiqretail.com
   featureFlagsEnvironment: uat
@@ -13,9 +13,9 @@ server:
   image:
     repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-server"
     pullPolicy: Always
-    tag: 1.38.6-uat
+    tag: 1.38.7-uat
 
 secrets:
-  reactAppErrorReportingApiKey: 
-  reactAppLaunchDarklyClientId:   
+  reactAppErrorReportingApiKey:
+  reactAppLaunchDarklyClientId:
   typesenseAPIKey:
