@@ -6,6 +6,7 @@ metadata:
     {{- include "dealsheet-api.labels" . | nindent 4 }}
 data:
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
+  GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
   Hierarchy__Url: {{ .Values.hierarchy.url | quote }}
   DemandDriver__ForecastUrl: {{ .Values.demandDriver.forecastUrl | quote }}
   GraphQLClient__CalendarUrl: {{ .Values.graphQLClient.calendarUrl | quote }}

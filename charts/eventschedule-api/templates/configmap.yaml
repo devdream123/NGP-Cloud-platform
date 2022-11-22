@@ -6,6 +6,7 @@ metadata:
     {{- include "eventschedule-api.labels" . | nindent 4 }}
 data:
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
+  GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
   FirestoreSettings__RootCollectionName: {{ .Values.firestoreSettings.rootCollectionName | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ASPNETCORE_URLS: http://*:{{ .Values.service.port }}
