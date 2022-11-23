@@ -1,15 +1,16 @@
 ---
 steps:
-  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile'
+  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:21-11-2022'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
+        chmod +x ./scripts/*
         if [[ "$BRANCH_NAME" == 'main' ]]; then 
-          bash ./scripts/substitute-charts-secrets.sh 
+          ./scripts/substitute-charts-secrets.sh 
         fi
         if [[ "$BRANCH_NAME" == 'tst' ]]; then 
-          bash ./scripts/substitute-charts-secrets.sh tst
+          ./scripts/substitute-charts-secrets.sh tst
         fi
         script_exit_code=$?
         exit $script_exit_code
@@ -27,7 +28,7 @@ steps:
       - 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_UAT'
       - 'REACT_APP_ERROR_REPORTING_API_KEY_PRD'
       - 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_PRD'
-  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile'
+  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:21-11-2022'
     entrypoint: 'bash'
     args:
       - '-c'
@@ -40,7 +41,7 @@ steps:
         fi
         script_exit_code=$?
         exit $script_exit_code
-  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile'
+  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:21-11-2022'
     entrypoint: 'bash'
     args:
       - '-c'
