@@ -12,10 +12,6 @@ if [ "$1" ]; then
    betaReleaseEnvironments=("dev")
 fi
 
-echo "changing the execution mode of scripts to : +x "
-
-bash ${BASE_DIR}/make-scripts-executable.sh
-
 echo "using base dir: ${BASE_DIR}"
 
 for environment in ${environments[@]}; do
@@ -34,15 +30,15 @@ done
 
 for environment in ${environments[@]}; do
    
-   bash ${BASE_DIR}/install-helm-charts.sh $environment 
-   bash ${BASE_DIR}/enable-service-mesh-features.sh $environment 
+   ${BASE_DIR}/install-helm-charts.sh $environment 
+   ${BASE_DIR}/enable-service-mesh-features.sh $environment 
    
 done
 
 for betaReleaseEnvironment in ${betaReleaseEnvironments[@]}; do
-   bash ${BASE_DIR}/install-beta-helm-charts.sh $betaReleaseEnvironment 
+   ${BASE_DIR}/install-beta-helm-charts.sh $betaReleaseEnvironment 
 done
 
 for environment in ${environments[@]}; do   
-   bash ${BASE_DIR}/restart-graphql-service.sh $environment
+    ${BASE_DIR}/restart-graphql-service.sh $environment
 done

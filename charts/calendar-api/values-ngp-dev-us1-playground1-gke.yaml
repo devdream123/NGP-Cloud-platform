@@ -1,6 +1,9 @@
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-calendar
-  tag: v1.38.6-dev
+  tag: v1.38.7-dev
+
+secrets:
+  typesenseAPIKey:
 
 firestoreSettings:
   rootCollectionName: "calendar-assortments-pg"
@@ -18,6 +21,3 @@ serviceSettings:
   placeholder:
     firestoreSettings:
       rootCollectionName: "placeholders-pg"
-
-secrets:
-  typesenseAPIKey:
