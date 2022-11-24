@@ -1,6 +1,6 @@
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-ui
-  tag: a240153
+  tag: c10dce2
 
 projectId: "gcp-wow-corp-qretail-ngp-dev"
 
@@ -13,7 +13,7 @@ server:
   image:
     repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-server"
     pullPolicy: Always
-    tag: a240153
+    tag: c10dce2
 
 secrets:
   reactAppErrorReportingApiKey: 
