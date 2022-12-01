@@ -1,6 +1,6 @@
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-eventschedule
-  tag: v1.37.1-prd
+  tag: v1.38.15-prd
 
 resources:
   limits:
