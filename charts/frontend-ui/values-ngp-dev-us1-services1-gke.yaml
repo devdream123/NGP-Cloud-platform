@@ -1,6 +1,6 @@
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-ui
-  tag: cdd81a8
+  tag: ae527bc
 projectId: "gcp-wow-corp-qretail-ngp-dev"
 server:
   proxyProtocol: http
@@ -11,7 +11,7 @@ server:
   image:
     repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-server"
     pullPolicy: Always
-    tag: cdd81a8
+    tag: ae527bc
 secrets:
   reactAppErrorReportingApiKey:
   reactAppLaunchDarklyClientId:
