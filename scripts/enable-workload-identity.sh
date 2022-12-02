@@ -26,4 +26,4 @@ gcloud iam service-accounts add-iam-policy-binding ${gcp_sa}@${gcp_project}.iam.
  --role="roles/iam.workloadIdentityUser" \
  --member="serviceAccount:${gcp_project}.svc.id.goog[${k8s_ns}/${k8s_sa}]"
 
-kubectl annotate serviceaccount ${k8s_sa} iam.gke.io/gcp-service-account=${gcp_sa}@${gcp_project}.iam.gserviceaccount.com -n ${k8s_ns}
+kubectl annotate serviceaccount ${k8s_sa} iam.gke.io/gcp-service-account=${gcp_sa}@${gcp_project}.iam.gserviceaccount.com -n ${k8s_ns} --overwrite=true
