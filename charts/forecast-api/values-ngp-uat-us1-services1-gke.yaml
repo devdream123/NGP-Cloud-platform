@@ -4,7 +4,7 @@ image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-qforecast
   tag: 1.39.2
 
-environment: testing
+environment: production
 
 database:
   instance: ngp-uat-us1-services1-sql
