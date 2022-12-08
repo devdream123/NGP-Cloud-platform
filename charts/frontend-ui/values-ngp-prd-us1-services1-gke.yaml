@@ -1,10 +1,10 @@
 image:
   repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-ui
-  tag: 1.38.17-prd
+  tag: 1.38.18-prd
 
 projectId: "gcp-wow-corp-qretail-ngp-prod"
 
-server: 
+server:
   proxyProtocol: http
   proxyHost: ingress-gateway.prd.int.wiqretail.com
   featureFlagsEnvironment: prd
@@ -13,9 +13,9 @@ server:
   image:
     repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-server"
     pullPolicy: Always
-    tag: 1.38.17-prd
+    tag: 1.38.18-prd
 
 secrets:
-  reactAppErrorReportingApiKey: 
-  reactAppLaunchDarklyClientId:   
+  reactAppErrorReportingApiKey:
+  reactAppLaunchDarklyClientId:
   typesenseAPIKey:
