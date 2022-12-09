@@ -13,3 +13,6 @@ data:
   QF_POSTGRES_SCHEMA: {{ .Values.database.schema | quote }}
   QF_POSTGRES_HOST: {{ .Values.database.localhost | quote }}
   QF_SQLITE_URI: 'sqlite:////tmp/qforecast.sqlite3.db?check_same_thread=False'
+  timeout: {{ .Values.appServer.timeout | quote }}
+  tcp_port: {{ .Values.appServer.port | quote }}
+  worker_num: {{ .Values.appServer.workers | quote }}
