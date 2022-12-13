@@ -9,7 +9,7 @@ resources:
     memory: 1500Mi
     cpu: 4000m
 
-environment: testing
+environment: production
 
 database:
   instance: ngp-prd-us1-services1-sql
