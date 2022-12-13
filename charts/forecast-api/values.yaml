@@ -13,6 +13,11 @@ forecast-api:
 
 environment: production
 
+appServer:
+  timeout: 600
+  port: 80
+  workers: 4
+
 database:
   mode: postgres
   auth: builtin
