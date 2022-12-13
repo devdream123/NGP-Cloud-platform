@@ -4,7 +4,7 @@ replicaCount: 3
 
 frontend-ui:
   fullname: frontend-ui
-  
+
   labels:
     run: frontend-ui
 
@@ -51,12 +51,13 @@ tolerations: []
 
 affinity: {}
 
-server: 
+server:
   proxyProtocol: ""
   proxyHost: ""
   proxyPort: ""
   targetPort: ""
   featureFlagsEnvironment: ""
+  projectKey: ""
   image:
     repository: ""
     pullPolicy: Always
