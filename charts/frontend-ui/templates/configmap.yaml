@@ -9,3 +9,4 @@ data:
   PROXY_HOST: {{ .Values.server.proxyHost | quote  }}
   PROXY_PORT: {{ .Values.server.proxyPort | quote  }}
   ENVIRONMENT: {{ .Values.server.featureFlagsEnvironment | quote  }}
+  REACT_APP_PROJECT_KEY: {{ .Values.projectId  }}
