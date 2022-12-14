@@ -8,7 +8,6 @@ server:
   featureFlagsEnvironment: dev
   proxyPort: 80
   targetPort: 8080
-  projectKey: gcp-wow-corp-qretail-ngp-dev
   image:
     repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-server"
     pullPolicy: Always
