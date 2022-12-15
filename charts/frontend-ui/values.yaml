@@ -57,6 +57,8 @@ server:
   proxyPort: ""
   targetPort: ""
   featureFlagsEnvironment: ""
+  telemetryHost: otel-collector.ngp-frontend.svc.cluster.local
+  telemetryPort: 6832
   image:
     repository: ""
     pullPolicy: Always
