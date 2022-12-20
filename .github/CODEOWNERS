@@ -17,6 +17,7 @@
 /charts/hierarchy-api/      @JasonKong-Quantium @qbehnamkarimi @Q-Retail/q-retail-devops
 /charts/graphql-mesh/       @JasonKong-Quantium @qbehnamkarimi @Q-Retail/q-retail-devops
 /charts/forecast-api/       @Q-Retail/q-retail-devops
+/charts/frontend-ui/        @Q-Retail/q-retail-frontend @Q-Retail/q-retail-devops
 
 /charts/istio/                  @Q-Retail/q-retail-devops
 /charts/istio-gateway/          @Q-Retail/q-retail-devops
