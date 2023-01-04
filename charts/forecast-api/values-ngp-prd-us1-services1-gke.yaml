@@ -5,8 +5,11 @@ image:
   tag: 1.39.2
 
 resources:
+  requests:
+    memory: 64Mi
+    cpu: 500m
   limits:
-    memory: 1500Mi
+    memory: 4Gi
     cpu: 4000m
 
 environment: production
