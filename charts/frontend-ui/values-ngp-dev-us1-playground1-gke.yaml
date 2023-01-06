@@ -1,5 +1,4 @@
 image:
-  repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-ui
   tag: 284d513
 
 projectId: "gcp-wow-corp-qretail-ngp-dev"
@@ -8,11 +7,9 @@ server:
   proxyProtocol: http
   proxyHost: ingress-gateway.dev.int.wiqretail.com
   featureFlagsEnvironment: dev
-  proxyPort: 80
-  targetPort: 8080
+  proxyPort: "80"
+  targetPort: "8080"
   image:
-    repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-server"
-    pullPolicy: Always
     tag: 284d513
 
 secrets:

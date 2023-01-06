@@ -1,7 +1,6 @@
 projectId: gcp-wow-corp-qretail-ngp-dev
 
 image:
-  repository: us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-qforecast
   tag: 1.37.3-tst
 
 environment: testing
@@ -23,8 +22,3 @@ database:
   schema: public_20221010_3
   host: "forecast-api-db.dev.int.wiqretail.com"
   proxyVersion: "1.32.0"
-
-serviceAccount:
-  annotations: {
-    iam.gke.io/gcp-service-account: cloud-sql@gcp-wow-corp-qretail-ngp-dev.iam.gserviceaccount.com
-  }

@@ -7,12 +7,11 @@ metadata:
 data:
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
-  Hierarchy__Url: {{ .Values.hierarchy.url | quote }}
-  DemandDriver__ForecastUrl: {{ .Values.demandDriver.forecastUrl | quote }}
-  GraphQLClient__CalendarUrl: {{ .Values.graphQLClient.calendarUrl | quote }}
-  FirestoreSettings__RootCollectionName: {{ .Values.firestoreSettings.rootCollectionName | quote }}
-  ServiceSettings__Calendar__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.calendar.firestoreSettings.rootCollectionName | quote }}
-  ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.dealsheet.firestoreSettings.rootCollectionName | quote }}
-  ServiceSettings__Scenario__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.scenario.firestoreSettings.rootCollectionName | quote }}
+  Hierarchy__Url: {{ printf "http://%s.%s.svc.cluster.local" .Values.hierarchyChartName .Values.backendNamespace | quote  }}
+  DemandDriver__ForecastUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.forecastChartName .Values.analyticsNamespace | quote  }}
+  GraphQLClient__CalendarUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.calendarChartName .Values.backendNamespace | quote  }}
+  ServiceSettings__Calendar__FirestoreSettings__RootCollectionName: {{ .Values.firestore.calendarCollection | quote }}
+  ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName: {{ .Values.firestore.dealsheetCollection | quote }}
+  ServiceSettings__Scenario__FirestoreSettings__RootCollectionName: {{ .Values.firestore.scenariosCollection | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ASPNETCORE_URLS: http://*:{{ .Values.service.port }}

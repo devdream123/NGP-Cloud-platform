@@ -75,25 +75,6 @@ releases:
         showlogs: true
         command: 'kubectl'
         args: ['label', 'ns', '{{ .Values.hierarchy.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
-  - name: forecast-api
-    namespace: {{ .Values.forecast.namespace }}
-    chart: ./charts/forecast-api
-    values:
-      - ./charts/forecast-api/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
-      - projectId: {{ .Values.env.GCLOUD_PROJECT }}
-    hooks:
-      - events: ['postsync']
-        showlogs: true
-        command: 'kubectl'
-        args: ['label', 'ns', '{{ .Values.forecast.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
-      - events: ['postsync']
-        showlogs: true
-        command: './scripts/enable-workload-identity.sh'
-        args: 
-         - '{{ .Values.gcp.project }}'
-         - '{{ .Values.gcp.gsa }}'
-         - '{{ .Values.forecast.serviceaccount }}'
-         - '{{ .Values.forecast.namespace }}'
   - name: graphql-mesh
     namespace: {{ .Values.graphql.namespace }}
     chart: ./charts/graphql-mesh

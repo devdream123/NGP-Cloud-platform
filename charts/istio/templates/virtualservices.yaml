@@ -16,7 +16,7 @@ spec:
        prefix: /graphql
     route:
       - destination:
-          host: graphql-mesh.ngp-graphql-mesh.svc.cluster.local
+          host: graphql-mesh.{{ .Values.namespaces.graphqlMesh }}.svc.cluster.local
           port:
             number: 80
   - name: hierarchy-api
@@ -27,7 +27,7 @@ spec:
       uri: /
     route:
       - destination:
-          host: hierarchy-api.ngp-backend.svc.cluster.local
+          host: hierarchy-api.{{ .Values.namespaces.backend }}.svc.cluster.local
           port:
             number: 80
   - name: analytics
@@ -38,6 +38,6 @@ spec:
       uri: /
     route:
       - destination:
-          host: forecast-api.ngp-analytics.svc.cluster.local
+          host: forecast-api.{{ .Values.namespaces.analytics }}.svc.cluster.local
           port:
             number: 80

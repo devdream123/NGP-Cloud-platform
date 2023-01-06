@@ -17,23 +17,23 @@ data:
       - name: Deal Sheet
         handler:
           graphql:
-            endpoint: http://{{ .Values.dealSheet.hostname }}:{{ .Values.dealSheet.port }}/graphql/
+            endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.dealSheet.chartName .Values.backendNamespace .Values.dealSheet.port | quote }}
             timeout: 600000
       - name: Calendar
         handler:
           graphql:
-            endpoint: http://{{ .Values.calendar.hostname }}:{{ .Values.calendar.port }}/graphql/
+            endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.calendar.chartName .Values.backendNamespace .Values.calendar.port | quote }}
             timeout: 600000
       - name: EventSchedule
         handler:
           graphql:
-            endpoint: http://{{ .Values.eventschedule.hostname }}:{{ .Values.eventschedule.port }}/graphql/
+            endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.eventSchedule.chartName .Values.backendNamespace .Values.eventSchedule.port | quote }}
             timeout: 600000
       - name: Hierarchy
         handler:
           openapi:
             source: ./typesense-openapi.yml
-            baseUrl: http://{{ .Values.hierarchy.hostname }}:{{ .Values.hierarchy.port }}/
+            baseUrl: {{ printf "http://%s.%s.svc.cluster.local:%s/" .Values.hierarchy.chartName .Values.backendNamespace .Values.hierarchy.port | quote }}
             operationHeaders:
               X-TYPESENSE-API-KEY: f44910b7-4b35-48bb-ac16-4f6a4d5af120
 

@@ -12,7 +12,7 @@ frontend-ui:
     run: frontend-ui
 
 image:
-  repository: ""
+  repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-ui"
   pullPolicy: Always
   tag: ""
 
@@ -58,8 +58,13 @@ server:
   targetPort: ""
   featureFlagsEnvironment: ""
   telemetryHost: otel-collector.ngp-frontend.svc.cluster.local
-  telemetryPort: 6832
+  telemetryPort: "6832"
   image:
-    repository: ""
+    repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-server"
     pullPolicy: Always
     tag: ""
+
+secrets:
+  reactAppErrorReportingApiKey:
+  reactAppLaunchDarklyClientId:
+  typesenseAPIKey:

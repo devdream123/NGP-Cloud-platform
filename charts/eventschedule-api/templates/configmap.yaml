@@ -7,6 +7,6 @@ metadata:
 data:
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
-  FirestoreSettings__RootCollectionName: {{ .Values.firestoreSettings.rootCollectionName | quote }}
+  FirestoreSettings__RootCollectionName: {{ .Values.firestore.eventScheduleCollection | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ASPNETCORE_URLS: http://*:{{ .Values.service.port }}

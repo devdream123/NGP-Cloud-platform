@@ -13,7 +13,7 @@ dealsheet-api:
     run: dealsheet-api
 
 image:
-  repository: ""
+  repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-dealsheet"
   pullPolicy: Always
   tag: ""
 
@@ -63,30 +63,24 @@ tolerations: []
 
 affinity: {}
 
-hierarchy:
-  url: http://hierarchy-api.ngp-backend.svc.cluster.local
+backendNamespace: ngp-backend
+analyticsNamespace: ngp-analytics
 
-demandDriver:
-  forecastUrl: http://forecast-api.ngp-analytics.svc.cluster.local
+hierarchyChartName: hierarchy-api
+forecastChartName: forecast-api
+calendarChartName: calendar-api
 
-graphQLClient:
-  calendarUrl: http://calendar-api.ngp-backend.svc.cluster.local/graphql
-
-firestoreSettings:
-  rootCollectionName: "dealsheet-assortments"
 
 systemTimeZone: "Australia/Sydney"
 
-serviceSettings:
-  calendar:
-    firestoreSettings:
-      rootCollectionName: "calendar-assortments"
-  dealsheet:
-    firestoreSettings:
-      rootCollectionName: "dealsheet-assortments"
-  scenario:
-    firestoreSettings:
-      rootCollectionName: "scenarios"
-
+firestore:
+  calendarCollection: calendar-assortments
+  dealsheetCollection: dealsheet-assortments
+  scenariosCollection: scenarios
+ 
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+
+secrets:
+  typesenseAPIKey:
+  
