@@ -1,20 +1,22 @@
 replicaCount: 3
 
+backendNamespace: ngp-backend 
+
 dealSheet:
-  hostname: dealsheet-api.ngp-backend.svc.cluster.local
-  port: 80
+  chartName: dealsheet-api
+  port: "80"
 
 calendar: 
-  hostname: calendar-api.ngp-backend.svc.cluster.local
-  port: 80
+  chartName: calendar-api
+  port: "80"
 
-eventschedule: 
-  hostname: eventschedule-api.ngp-backend.svc.cluster.local
-  port: 80
+eventSchedule: 
+  chartName: eventschedule-api
+  port: "80"
 
 hierarchy: 
-  hostname: hierarchy-api.ngp-backend.svc.cluster.local
-  port: 80
+  chartName: hierarchy-api
+  port: "80"
 
 mesh:
   cors:
@@ -31,7 +33,7 @@ mesh:
     run: graphql-mesh
 
 image:
-  repository: ""
+  repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-graphql-mesh"
   pullPolicy: Always
   tag: ""
 

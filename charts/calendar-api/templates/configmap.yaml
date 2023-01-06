@@ -7,14 +7,13 @@ metadata:
 data:
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
-  Hierarchy__Url: {{ .Values.hierarchy.url | quote }}
-  DemandDriver__ForecastUrl: {{ .Values.demandDriver.forecastUrl | quote }}
-  GraphQLClient__DealsheetUrl: {{ .Values.graphQLClient.dealsheetUrl | quote }}
-  GraphQLClient__EventScheduleUrl: {{ .Values.graphQLClient.eventScheduleUrl | quote }}
-  FirestoreSettings__RootCollectionName: {{ .Values.firestoreSettings.rootCollectionName | quote }}
-  ServiceSettings__Calendar__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.calendar.firestoreSettings.rootCollectionName | quote }}
-  ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.dealsheet.firestoreSettings.rootCollectionName | quote }}
-  ServiceSettings__Scenario__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.scenario.firestoreSettings.rootCollectionName | quote }}
-  ServiceSettings__Placeholder__FirestoreSettings__RootCollectionName: {{ .Values.serviceSettings.placeholder.firestoreSettings.rootCollectionName | quote }}
+  Hierarchy__Url: {{ printf "http://%s.%s.svc.cluster.local" .Values.hierarchyChartName .Values.backendNamespace | quote  }}
+  DemandDriver__ForecastUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.forecastChartName .Values.analyticsNamespace | quote  }}
+  GraphQLClient__DealsheetUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.dealsheetChartName .Values.analyticsNamespace | quote  }}
+  GraphQLClient__EventScheduleUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.eventScheduleChartName .Values.analyticsNamespace | quote  }}
+  ServiceSettings__Calendar__FirestoreSettings__RootCollectionName: {{ .Values.firestore.calendarCollection | quote }}
+  ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName: {{ .Values.firestore.dealsheetCollection | quote }}
+  ServiceSettings__Scenario__FirestoreSettings__RootCollectionName: {{ .Values.firestore.scenariosCollection | quote }}
+  ServiceSettings__Placeholder__FirestoreSettings__RootCollectionName: {{ .Values.firestore.placeholdersCollection | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ASPNETCORE_URLS: http://*:{{ .Values.service.port }}

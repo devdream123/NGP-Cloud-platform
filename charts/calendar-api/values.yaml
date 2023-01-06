@@ -13,7 +13,7 @@ calendar-api:
     run: calendar-api
 
 image:
-  repository: ""
+  repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-calendar"
   pullPolicy: Always
   tag: ""
 
@@ -63,36 +63,24 @@ tolerations: []
 
 affinity: {}
 
-hierarchy:
-  url: http://hierarchy-api.ngp-backend.svc.cluster.local
+hierarchyChartName: hierarchy-api
+forecastChartName: forecast-api
+dealsheetChartName: dealsheet-api
+eventScheduleChartName : eventschedule-api
 
-
-demandDriver:
-  forecastUrl: http://forecast-api.ngp-analytics.svc.cluster.local
-
-graphQLClient:
-  dealsheetUrl: http://dealsheet-api.ngp-backend.svc.cluster.local/graphql
-  eventScheduleUrl: http://eventschedule-api.ngp-backend.svc.cluster.local/graphql
-
-
-firestoreSettings:
-  rootCollectionName: "calendar-assortments"
+backendNamespace: ngp-backend
+analyticsNamespace: ngp-analytics
 
 systemTimeZone: "Australia/Sydney"
 
-serviceSettings:
-  calendar:
-    firestoreSettings:
-      rootCollectionName: "calendar-assortments"
-  dealsheet:
-    firestoreSettings:
-      rootCollectionName: "dealsheet-assortments"
-  scenario:
-    firestoreSettings:
-      rootCollectionName: "scenarios"
-  placeholder:
-    firestoreSettings:
-      rootCollectionName: "placeholders"
+firestore:
+  calendarCollection: calendar-assortments
+  dealsheetCollection: dealsheet-assortments
+  scenariosCollection: scenarios
+  placeholdersCollection: placeholders
 
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+
+secrets:
+  typesenseAPIKey:

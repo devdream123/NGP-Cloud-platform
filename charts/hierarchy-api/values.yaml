@@ -12,7 +12,7 @@ hierarchy-api:
     run: hierarchy-api
 
 image:
-  repository: ""
+  repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-typesense-hierarchy"
   pullPolicy: Always
   tag: ""
 
@@ -49,9 +49,7 @@ tolerations: []
 
 affinity: {}
 
-firestoreConfiguration:
-  projectId: "gcp-wow-corp-qretail-ngp-dev"
-  collectionName: "placeholders"
+firestoreCollectionName: ""
 
 typesenseConfiguration:
   host: localhost
@@ -63,3 +61,6 @@ collectionName: CHECKOUT_SUPER_PRODUCT
 
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+
+secrets:
+  typesenseAPIKey:

@@ -17,3 +17,8 @@ VirtualServices:
   name: services-ingress-rules
   spec: 
     hosts: '*'
+
+namespaces:
+  backend: ngp-backend
+  graphqlMesh: ngp-graphql-mesh
+  analytics: ngp-analytics
