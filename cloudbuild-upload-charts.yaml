@@ -1,0 +1,16 @@
+---
+steps:
+  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:21-11-2022'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        chmod +x ./scripts/*
+        ./scripts/package-store-charts.sh  ${_HELM_CHART_ARTIFACT_REGISTRY_URI}
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+substitutions:
+  _LOCATION: us-central1
+  _ARTIFACT_REPOSITORY: hub-prd-us1-helm-charts1
+  _HELM_CHART_ARTIFACT_REGISTRY_URI: ${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_ARTIFACT_REPOSITORY}
