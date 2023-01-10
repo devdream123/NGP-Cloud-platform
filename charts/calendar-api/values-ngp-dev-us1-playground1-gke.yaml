@@ -1,5 +1,5 @@
 image:
-  tag: v0.0.0337-dev
+  tag: v0.0.0338-dev
 
 secrets:
   typesenseAPIKey:
