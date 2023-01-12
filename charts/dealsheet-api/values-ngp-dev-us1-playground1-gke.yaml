@@ -1,19 +1,10 @@
 image:
   tag: v0.0.0338-dev
 
-firestoreSettings:
-  rootCollectionName: "dealsheet-assortments-pg"
-
-serviceSettings:
-  calendar:
-    firestoreSettings:
-      rootCollectionName: "calendar-assortments-pg"
-  dealsheet:
-    firestoreSettings:
-      rootCollectionName: "dealsheet-assortments-pg"
-  scenario:
-    firestoreSettings:
-      rootCollectionName: "scenarios-pg"
+firestore:
+  calendarCollection: calendar-assortments-pg
+  dealsheetCollection: dealsheet-assortments-pg
+  scenariosCollection: scenarios-pg
 
 secrets:
   typesenseAPIKey:

@@ -4,11 +4,8 @@ image:
 projectId: "gcp-wow-corp-qretail-ngp-dev"
 
 server:
-  proxyProtocol: http
   proxyHost: ingress-gateway.dev.int.wiqretail.com
   featureFlagsEnvironment: dev
-  proxyPort: "80"
-  targetPort: "8080"
   image:
     tag: 284d513
 
