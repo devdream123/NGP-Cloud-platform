@@ -9,8 +9,8 @@ data:
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
   Hierarchy__Url: {{ printf "http://%s.%s.svc.cluster.local" .Values.hierarchyChartName .Values.backendNamespace | quote  }}
   DemandDriver__ForecastUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.forecastChartName .Values.analyticsNamespace | quote  }}
-  GraphQLClient__DealsheetUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.dealsheetChartName .Values.analyticsNamespace | quote  }}
-  GraphQLClient__EventScheduleUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.eventScheduleChartName .Values.analyticsNamespace | quote  }}
+  GraphQLClient__DealsheetUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.dealsheetChartName .Values.backendNamespace | quote  }}
+  GraphQLClient__EventScheduleUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.eventScheduleChartName .Values.backendNamespace | quote  }}
   ServiceSettings__Calendar__FirestoreSettings__RootCollectionName: {{ .Values.firestore.calendarCollection | quote }}
   ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName: {{ .Values.firestore.dealsheetCollection | quote }}
   ServiceSettings__Scenario__FirestoreSettings__RootCollectionName: {{ .Values.firestore.scenariosCollection | quote }}

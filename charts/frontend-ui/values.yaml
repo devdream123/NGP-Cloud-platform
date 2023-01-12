@@ -52,10 +52,10 @@ tolerations: []
 affinity: {}
 
 server:
-  proxyProtocol: ""
+  proxyProtocol: "http"
   proxyHost: ""
-  proxyPort: ""
-  targetPort: ""
+  proxyPort: "80"
+  targetPort: "8080"
   featureFlagsEnvironment: ""
   telemetryHost: otel-collector.ngp-frontend.svc.cluster.local
   telemetryPort: "6832"
