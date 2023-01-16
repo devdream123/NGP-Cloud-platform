@@ -4,6 +4,9 @@ image:
 firestore:
   calendarCollection: calendar-assortments-pg
   dealsheetCollection: dealsheet-assortments-pg
+  dealsheetSettings:
+    minimumBatchSize: 400
+    maximumDegreeOfParallelism: 1
   scenariosCollection: scenarios-pg
 
 secrets:

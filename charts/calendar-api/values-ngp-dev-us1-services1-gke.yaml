@@ -1,5 +1,10 @@
 image:
   tag: v1.42.1-dev
- 
+
+firestore:
+  dealsheetSettings:
+    minimumBatchSize: 400
+    maximumDegreeOfParallelism: 1
+
 secrets:
   typesenseAPIKey:
