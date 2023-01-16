@@ -1,5 +1,13 @@
 image:
   tag: v0.0.0339-dev
 
+firestore:
+  calendarSettings:
+    minimumBatchSize: 400
+    maximumDegreeOfParallelism: 1
+  dealsheetSettings:
+    minimumBatchSize: 400
+    maximumDegreeOfParallelism: 1
+
 secrets:
   typesenseAPIKey:

@@ -1,5 +1,13 @@
 image:
   tag: v1.41.1-rc
 
+firestore:
+  calendarSettings:
+    minimumBatchSize: 400
+    maximumDegreeOfParallelism: 1
+  dealsheetSettings:
+    minimumBatchSize: 400
+    maximumDegreeOfParallelism: 1
+    
 secrets:
   typesenseAPIKey:
