@@ -2,6 +2,9 @@ image:
   tag: v1.42.1-dev
 
 firestore:
+  calendarSettings:
+    minimumBatchSize: 400
+    maximumDegreeOfParallelism: 1
   dealsheetSettings:
     minimumBatchSize: 400
     maximumDegreeOfParallelism: 1
