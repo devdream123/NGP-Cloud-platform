@@ -10,7 +10,7 @@ server:
     tag: 284d513
 
 secrets:
-  reactAppErrorReportingApiKey:
+  errorReportingApiKey:
   reactAppLaunchDarklyClientId:
   typesenseAPIKey:
 
