@@ -5,40 +5,39 @@ script_dir=$(dirname "$0")
 export BASE_DIR=$(cd "${script_dir}"; pwd -P)
 
 if [ "$1" ]; then
-   environments=("$1")
-   betaReleaseEnvironments=("$1")	
+  environments=("$1")
+  betaReleaseEnvironments=("$1")
  else 
-   environments=("dev" "uat" "prd")
-   betaReleaseEnvironments=("dev")
+  environments=("dev" "uat" "prd")
+  betaReleaseEnvironments=("dev")
 fi
 
 echo "using base dir: ${BASE_DIR}"
 
-for environment in ${environments[@]}; do
-      
-   if [ ${environment} == "prd" ]; then
+for environment in "${environments[@]}"; do
 
-      echo "Starting prod firestore backup"
-      gcloud scheduler jobs run ngp-prd-us1-firestore_backup_schedule1-csj --location=us-central1 --project=gcp-wow-corp-qretail-ngp-prod
+  if [ "${environment}" == "prd" ]; then
 
-      echo "Waiting 60 seconds for firestore backup job"
-      sleep 60
-
-   fi
+    echo "Starting prod firestore backup"
+    gcloud scheduler jobs run ngp-prd-us1-firestore_backup_schedule1-csj --location=us-central1 --project=gcp-wow-corp-qretail-ngp-prod
+    echo "Waiting 60 seconds for firestore backup job"
+    sleep 60
+  
+  fi
 
 done
 
-for environment in ${environments[@]}; do
-   
-   ${BASE_DIR}/install-helm-charts.sh $environment 
-   ${BASE_DIR}/enable-service-mesh-features.sh $environment 
-   
+for environment in "${environments[@]}"; do
+
+  "${BASE_DIR}"/install-helm-charts.sh $environment
+  "${BASE_DIR}"/enable-service-mesh-features.sh $environment
+
 done
 
-for betaReleaseEnvironment in ${betaReleaseEnvironments[@]}; do
-   ${BASE_DIR}/install-beta-helm-charts.sh $betaReleaseEnvironment 
+for betaReleaseEnvironment in "${betaReleaseEnvironments[@]}"; do
+  "${BASE_DIR}"/install-beta-helm-charts.sh $betaReleaseEnvironment
 done
 
-for environment in ${environments[@]}; do   
-    ${BASE_DIR}/restart-graphql-service.sh $environment
+for environment in "${environments[@]}"; do
+  "${BASE_DIR}"/restart-graphql-service.sh $environment
 done

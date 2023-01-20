@@ -6,38 +6,10 @@ metadata:
     istio.io/rev: {{ .Values.asm.rev }}
 spec:
   hosts:
-   - "*"
+    - "*"
   gateways:
     - {{ .Values.gateways.name }}
   http:
-  - name: graphql-mesh
-    match:
-    - uri:
-       prefix: /graphql
-    route:
-      - destination:
-          host: graphql-mesh.{{ .Values.namespaces.graphqlMesh }}.svc.cluster.local
-          port:
-            number: 80
-  - name: hierarchy-api
-    match:
-    - uri:
-       prefix: /hierarchy
-    rewrite:
-      uri: /
-    route:
-      - destination:
-          host: hierarchy-api.{{ .Values.namespaces.backend }}.svc.cluster.local
-          port:
-            number: 80
-  - name: analytics
-    match:
-    - uri:
-       prefix: /forecast
-    rewrite:
-      uri: /
-    route:
-      - destination:
-          host: forecast-api.{{ .Values.namespaces.analytics }}.svc.cluster.local
-          port:
-            number: 80
+    {{- range .Values.VirtualServices.spec.http }}
+    - {{ . | toYaml | indent 6 | trim }}
+    {{- end}}
