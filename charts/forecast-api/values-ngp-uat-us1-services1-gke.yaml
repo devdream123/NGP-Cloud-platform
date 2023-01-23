@@ -1,7 +1,7 @@
 projectId: gcp-wow-corp-qretail-ngp-uat
 
 image:
-  tag: 1.39.2
+  tag: 1.42.1
 
 environment: production
 
@@ -18,7 +18,7 @@ database:
   user: postgres
   pwd: 
   db: qforecast
-  schema: public_20221202_1
+  schema: public_20230105_1
   host: "forecast-api-db.uat.int.wiqretail.com"
   proxyVersion: "1.33.1"
 
