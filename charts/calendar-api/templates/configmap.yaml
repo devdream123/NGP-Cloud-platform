@@ -12,7 +12,15 @@ data:
   GraphQLClient__DealsheetUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.dealsheetChartName .Values.backendNamespace | quote  }}
   GraphQLClient__EventScheduleUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.eventScheduleChartName .Values.backendNamespace | quote  }}
   ServiceSettings__Calendar__FirestoreSettings__RootCollectionName: {{ .Values.firestore.calendarCollection | quote }}
+  ServiceSettings__Calendar__FirestoreSettings__MaximumQueries: {{ .Values.firestore.calendarSettings.maximumQueries | quote }}
+  ServiceSettings__Calendar__FirestoreSettings__MaximumBatchSize: {{ .Values.firestore.calendarSettings.maximumBatchSize | quote }}
+  ServiceSettings__Calendar__FirestoreSettings__MinimumBatchSize: {{ .Values.firestore.calendarSettings.minimumBatchSize | quote }}
+  ServiceSettings__Calendar__FirestoreSettings__MaximumDegreeOfParallelism: {{ .Values.firestore.calendarSettings.maximumDegreeOfParallelism | quote }}
   ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName: {{ .Values.firestore.dealsheetCollection | quote }}
+  ServiceSettings__Dealsheet__FirestoreSettings__MaximumQueries: {{ .Values.firestore.dealsheetSettings.maximumQueries | quote }}
+  ServiceSettings__Dealsheet__FirestoreSettings__MaximumBatchSize: {{ .Values.firestore.dealsheetSettings.maximumBatchSize | quote }}
+  ServiceSettings__Dealsheet__FirestoreSettings__MinimumBatchSize: {{ .Values.firestore.dealsheetSettings.minimumBatchSize | quote }}
+  ServiceSettings__Dealsheet__FirestoreSettings__MaximumDegreeOfParallelism: {{ .Values.firestore.dealsheetSettings.maximumDegreeOfParallelism | quote }}
   ServiceSettings__Scenario__FirestoreSettings__RootCollectionName: {{ .Values.firestore.scenariosCollection | quote }}
   ServiceSettings__Placeholder__FirestoreSettings__RootCollectionName: {{ .Values.firestore.placeholdersCollection | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}

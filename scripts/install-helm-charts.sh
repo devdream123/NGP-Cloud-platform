@@ -25,31 +25,31 @@ if [[ -d "/root/.local/share/helm/plugins" ]]; then
   cp -r /root/.local/share/helm/plugins /builder/home/.local/share/helm/plugins
 fi
 
-  for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
+for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
+  
+  gcloud config set project ${GCLOUD_PROJECT}
+  export CLUSTER_NAME="$cluster"
+  echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"${CLOUDSDK_COMPUTE_REGION}\" \"${cluster}\""
+  gcloud container clusters get-credentials --region="${CLOUDSDK_COMPUTE_REGION}" "${cluster}"
     
-    gcloud config set project ${GCLOUD_PROJECT}
-    export CLUSTER_NAME="$cluster"
-    echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"${CLOUDSDK_COMPUTE_REGION}\" \"${cluster}\""
-    gcloud container clusters get-credentials --region="${CLOUDSDK_COMPUTE_REGION}" "${cluster}"
-      
-    echo "Installing Istio Data Plane and Control Plane chart(s) in cluster: ${cluster} in ${environment} environment" 
-    helmfile -f "${BASE_DIR}/../helmfile-istio.yaml" --environment "${environment}" apply \
+  echo "Installing Istio Data Plane and Control Plane chart(s) in cluster: ${cluster} in ${environment} environment" 
+  helmfile -f "${BASE_DIR}/../helmfile-istio.yaml" --environment "${environment}" apply \
+  --skip-deps \
+  --concurrency 1
+
+  echo "Installing back-end services chart(s) in cluster: ${cluster} in ${environment} environment"
+  helmfile -f  "${BASE_DIR}/../helmfile-backend.yaml" --environment "${environment}" apply \
     --skip-deps \
     --concurrency 1
 
-    echo "Installing back-end services chart(s) in cluster: ${cluster} in ${environment} environment"
-    helmfile -f  "${BASE_DIR}/../helmfile-backend.yaml" --environment "${environment}" apply \
-      --skip-deps \
-      --concurrency 1
+  echo "Installing front end ui chart(s) in cluster: ${cluster} in ${environment} environment"
+  helmfile -f  "${BASE_DIR}/../helmfile-front-end.yaml" --environment "${environment}" apply \
+    --skip-deps \
+    --concurrency 1
 
-    echo "Installing front end ui chart(s) in cluster: ${cluster} in ${environment} environment"
-    helmfile -f  "${BASE_DIR}/../helmfile-front-end.yaml" --environment "${environment}" apply \
-      --skip-deps \
-      --concurrency 1
+  echo "Installing analytics services chart(s) in cluster: ${cluster} in ${environment} environment"
+  helmfile -f  "${BASE_DIR}/../helmfile-analytics.yaml" --environment "${environment}" apply \
+    --skip-deps \
+    --concurrency 1
 
-     echo "Installing analytics services chart(s) in cluster: ${cluster} in ${environment} environment"
-    helmfile -f  "${BASE_DIR}/../helmfile-analytics.yaml" --environment "${environment}" apply \
-      --skip-deps \
-      --concurrency 1
-
-  done 
+done

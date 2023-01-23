@@ -16,14 +16,13 @@ if [ ! "$1" ]  || [ ! "$2" ] || [ ! "$3" ] || [ ! "$4" ] ; then
 	exit 1
 fi
 
-
 gcp_project=$1
 gcp_sa=$2
 k8s_sa=$3
 k8s_ns=$4
 
 gcloud iam service-accounts add-iam-policy-binding ${gcp_sa}@${gcp_project}.iam.gserviceaccount.com \
- --role="roles/iam.workloadIdentityUser" \
- --member="serviceAccount:${gcp_project}.svc.id.goog[${k8s_ns}/${k8s_sa}]"
+  --role="roles/iam.workloadIdentityUser" \
+  --member="serviceAccount:${gcp_project}.svc.id.goog[${k8s_ns}/${k8s_sa}]"
 
 kubectl annotate serviceaccount ${k8s_sa} iam.gke.io/gcp-service-account=${gcp_sa}@${gcp_project}.iam.gserviceaccount.com -n ${k8s_ns} --overwrite=true

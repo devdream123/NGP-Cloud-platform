@@ -17,6 +17,7 @@ VirtualServices:
   name: services-ingress-rules
   spec: 
     hosts: '*'
+    http: []
 
 namespaces:
   backend: ngp-backend

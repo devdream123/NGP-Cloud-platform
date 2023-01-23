@@ -33,8 +33,8 @@ for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
 
   echo "Enabling auto management of ASM control and data planes for envoy proxies in ${environment} environment for ${cluster} cluster."
   gcloud container fleet mesh update \
-      --management automatic \
-      --memberships "${cluster}-membership" \
-      --project ${GCLOUD_PROJECT}
+    --management automatic \
+    --memberships "${cluster}-membership" \
+    --project ${GCLOUD_PROJECT}
 
 done

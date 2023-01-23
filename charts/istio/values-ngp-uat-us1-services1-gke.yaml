@@ -1,2 +1,39 @@
 asm:
   rev: asm-managed
+
+VirtualServices: 
+  name: services-ingress-rules
+  spec: 
+    hosts: '*'
+    http:
+      - name: graphql-mesh
+        match:
+        - uri:
+            prefix: /graphql
+        route:
+          - destination:
+              host: graphql-mesh.ngp-graphql-mesh.svc.cluster.local
+              port:
+                number: 80
+      - name: hierarchy-api
+        match:
+        - uri:
+            prefix: /hierarchy
+        rewrite:
+          uri: /
+        route:
+          - destination:
+              host: hierarchy-api.ngp-backend.svc.cluster.local
+              port:
+                number: 80
+      - name: analytics
+        match:
+        - uri:
+            prefix: /forecast
+        rewrite:
+          uri: /
+        route:
+          - destination:
+              host: forecast-api.ngp-analytics.svc.cluster.local
+              port:
+                number: 80
