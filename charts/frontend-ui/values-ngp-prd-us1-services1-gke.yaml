@@ -10,6 +10,6 @@ server:
     tag: 1.40.2-prd
 
 secrets:
-  reactAppErrorReportingApiKey:
+  errorReportingApiKey:
   reactAppLaunchDarklyClientId:
   typesenseAPIKey:
