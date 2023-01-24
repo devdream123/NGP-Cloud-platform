@@ -7,7 +7,7 @@ server:
   image:
     tag: "dff57d6"
 secrets:
-  reactAppErrorReportingApiKey:
+  errorReportingApiKey:
   reactAppLaunchDarklyClientId:
   typesenseAPIKey:
 service:
