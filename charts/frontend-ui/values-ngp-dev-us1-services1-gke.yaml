@@ -1,11 +1,11 @@
 image:
-  tag: "dff57d6"
+  tag: "4bdf012"
 projectId: "gcp-wow-corp-qretail-ngp-dev"
 server:
   proxyHost: ingress-gateway.dev.int.wiqretail.com
   featureFlagsEnvironment: dev
   image:
-    tag: "dff57d6"
+    tag: "4bdf012"
 secrets:
   errorReportingApiKey:
   reactAppLaunchDarklyClientId:
