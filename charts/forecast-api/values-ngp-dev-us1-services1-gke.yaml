@@ -1,7 +1,7 @@
 projectId: gcp-wow-corp-qretail-ngp-dev
 
 image:
-  tag: 1.43.1-dev
+  tag: 1.43.1
 
 resources:
   requests:
