@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit   # abort on nonzero exitstatus
+set -o nounset   # abort on unbound variable
+set -o pipefail  # don't hide errors within pipes
 
 function print_usage() {
   printf "A script to package and store helm charts on a remote repository.\n"
@@ -8,8 +10,8 @@ function print_usage() {
 }
 
 if [ ! "$1" ]; then
-	print_usage
-	exit 1
+  print_usage 
+  exit 1
 fi
 
 script_dir=$(dirname "$0")
@@ -19,10 +21,14 @@ destination_dir="${BASE_DIR}/../outputs/packages"
 artifact_registry_uri=$1
 
 for dir in  $(ls ${charts_dir}); do
-  helm package "${charts_dir}/${dir}" -d ${destination_dir}
+  
+  helm package "${charts_dir}/${dir}" --destination "${destination_dir}"
+
 done 
 
 for package in $(ls ${destination_dir}); do
+  
   echo "${destination_dir}/${package}"
-  helm push "${destination_dir}/${package}" oci://${artifact_registry_uri}
+  helm push "${destination_dir}/${package}" oci://"${artifact_registry_uri}"
+
 done

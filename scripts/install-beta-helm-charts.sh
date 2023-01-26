@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -e
+
+set -o errexit   # abort on nonzero exitstatus
+set -o nounset   # abort on unbound variable
+set -o pipefail  # don't hide errors within pipes
 
 function print_usage() {
   printf "A script to install canary helm charts.\n"
@@ -9,20 +12,20 @@ function print_usage() {
 }
 
 if [ ! "$1" ]; then
-	print_usage
-	exit 1
+  print_usage
+  exit 1
 fi
 
 environment=$1
-source ${BASE_DIR}/export-env-variables.sh $environment
+source ${BASE_DIR}/export-env-variables.sh "$environment"
 
 for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
   
-  export CLUSTER_NAME="$cluster"
+  export CLUSTER_NAME="${cluster}"
   cluster_context="gke_${GCLOUD_PROJECT}_${CLOUDSDK_COMPUTE_REGION}_${cluster}"
   kubectl config use-context "${cluster_context}"
   
-  echo "Installing 'kube state metrics' chart to cluster: ${cluster} in ${environment} environment"
+  echo "Installing Kube-State-Metrics chart in cluster: ${cluster} in ${environment} environment"
   helmfile -f  "${BASE_DIR}/../helmfile-kube-state-metrics.yaml" --environment "${environment}" apply \
     --skip-deps \
     --concurrency 1

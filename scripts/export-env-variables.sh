@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit   # abort on nonzero exitstatus
+set -o nounset   # abort on unbound variable
+set -o pipefail  # don't hide errors within pipes
 
 function print_usage() {
   printf "A script to export environment specific variables.\n"
@@ -10,8 +12,8 @@ function print_usage() {
 }
 
 if [ ! "$1" ]; then
-	print_usage
-	exit 1
+  print_usage
+  exit 1
 fi
 
 environment=$1

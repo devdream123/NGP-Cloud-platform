@@ -11,10 +11,11 @@ spec:
       {{- include "mesh.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
+      {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- include "graphql-mesh.configChecksum" . | nindent 8 }}
       labels:
         {{- include "mesh.selectorLabels" . | nindent 8 }}
     spec:
