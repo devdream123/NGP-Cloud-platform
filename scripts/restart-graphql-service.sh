@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-set -e
+
+set -o errexit   # abort on nonzero exitstatus
+set -o nounset   # abort on unbound variable
+set -o pipefail  # don't hide errors within pipes
 
 function print_usage() {
   printf "A script to restart the GraphQL mesh.\n"
@@ -9,21 +12,21 @@ function print_usage() {
 }
 
 function check_deployment_completeness () {
-  status=$(kubectl rollout status deployments/${1} -n ${2} -w=false)
-  echo $status | grep 'deployment "'${1}'" successfully rolled out' 
+  status=$(kubectl rollout status deployments/"${1}" -n "${2}" -w=false)
+  echo "${status}" | grep 'deployment "'${1}'" successfully rolled out' 
 }
 
 function check_all_deployments () {
   deployment_statuses=()
    
-  for deployment in ${deployments[@]}; do 
-    check_deployment_completeness $deployment ${BACKEND_SERVICES_NAMESPACE}
+  for deployment in "${deployments[@]}"; do 
+    check_deployment_completeness "${deployment}" "${BACKEND_SERVICES_NAMESPACE}"
     deployment_statuses+=($?) 
   done
    
-  for status in ${deployment_statuses[@]}; do
-    if [ $status != 0 ]; then 
-      return $status
+  for status in "${deployment_statuses[@]}"; do
+    if [ "${status}" != 0 ]; then 
+      return "${status}"
     fi
   done 
    
@@ -36,7 +39,7 @@ if [ ! "$1" ]; then
 fi
 
 environment=$1
-source ${BASE_DIR}/export-env-variables.sh $environment
+source ${BASE_DIR}/export-env-variables.sh "${environment}"
 deployments=("calendar-api" "dealsheet-api" "eventschedule-api" "hierarchy-api")
 
 for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
@@ -51,6 +54,6 @@ for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
   done
 
   echo "Restarting GraphQL mesh in cluster: ${cluster} of ${environment} environment"
-  kubectl rollout restart deployment/graphql-mesh --namespace=${GRAPHQL_SERVICE_NAMESPACE} 
+  kubectl rollout restart deployment/graphql-mesh --namespace="${GRAPHQL_SERVICE_NAMESPACE}"
 
 done

@@ -11,10 +11,11 @@ spec:
       {{- include "calendar-api.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       annotations:
+      {{- with .Values.podAnnotations }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- include "calendar-api.configChecksum" . | nindent 8 }}
       labels:
         {{- include "calendar-api.selectorLabels" . | nindent 8 }}
     spec:

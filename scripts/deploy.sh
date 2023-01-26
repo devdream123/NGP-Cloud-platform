@@ -28,16 +28,20 @@ for environment in "${environments[@]}"; do
 done
 
 for environment in "${environments[@]}"; do
-
-  "${BASE_DIR}"/install-helm-charts.sh $environment
-  "${BASE_DIR}"/enable-service-mesh-features.sh $environment
+  
+  "${BASE_DIR}"/install-helm-charts.sh "${environment}" 
+  "${BASE_DIR}"/enable-service-mesh-features.sh "${environment}" 
 
 done
 
 for betaReleaseEnvironment in "${betaReleaseEnvironments[@]}"; do
-  "${BASE_DIR}"/install-beta-helm-charts.sh $betaReleaseEnvironment
+  
+  "${BASE_DIR}"/install-beta-helm-charts.sh "${betaReleaseEnvironment}"
+  
 done
 
 for environment in "${environments[@]}"; do
-  "${BASE_DIR}"/restart-graphql-service.sh $environment
+  
+  "${BASE_DIR}"/restart-graphql-service.sh "${environment}"
+  
 done

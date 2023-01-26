@@ -1,17 +1,19 @@
 #!/usr/bin/env bash
 
-set -e
+set -o errexit   # abort on nonzero exitstatus
+set -o nounset   # abort on unbound variable
+set -o pipefail  # don't hide errors within pipes
 
 function print_usage() {
   printf "A deployment script for helm charts.\n"
   printf "Environment name is required i.e. dev, uat, prd."
   printf '\t-h | --help\n'
-  printf '\t-e | --environment (string, optional, the name of the environment config to use during deployment)\n'
+  printf '\t-e | --environment (string, the name of the environment config to use during deployment)\n'
 }
 
 if [ ! "$1" ]; then
-	print_usage
-	exit 1
+  print_usage
+  exit 1
 fi
 
 environment=$1

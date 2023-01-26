@@ -61,7 +61,8 @@ Create the name of the service account to use
 {{- end }}
 {{- end }}
 
-{{- define "frontend-ui-negName" -}}
-    cloud.google.com/neg: '{"exposed_ports": {"80":{"name": '{{ .Values.service.negName }}' }}}'
-{{- end }}
 
+{{- define "frontend-ui.configChecksum" -}}
+checksum/config-maps: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+checksum/secrets: {{ include (print $.Template.BasePath "/secrets.yaml") . | sha256sum }}
+{{- end }}

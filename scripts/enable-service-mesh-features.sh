@@ -6,7 +6,9 @@
 ## https://cloud.google.com/service-mesh/docs/managed/enable-managed-anthos-service-mesh-optional-features#enable_cloud_tracing
 ################
 
-set -e
+set -o errexit   # abort on nonzero exitstatus
+set -o nounset   # abort on unbound variable
+set -o pipefail  # don't hide errors within pipes
 
 function print_usage() {
   printf "A script to enable service mesh features.\n"
@@ -16,12 +18,12 @@ function print_usage() {
 }
 
 if [ ! "$1" ]; then
-	print_usage
-	exit 1
+  print_usage
+  exit 1
 fi
 
 environment=$1
-source ${BASE_DIR}/export-env-variables.sh ${environment}
+source ${BASE_DIR}/export-env-variables.sh "${environment}"
 
 for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
 
@@ -29,12 +31,12 @@ for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
   kubectl config use-context "${cluster_context}"
 
   echo "Applying the Istio control plane configuration in ${environment} environment for ${cluster} cluster."
-  kubectl apply -f ./outputs/${environment}/${cluster}/istio-control-plane/templates/ -n ${ASM_CONTROL_PLANE_NAMESPACE}
+  kubectl apply -f "./outputs/${environment}/${cluster}/istio-control-plane/templates/" --namespace "${ASM_CONTROL_PLANE_NAMESPACE}"
 
   echo "Enabling auto management of ASM control and data planes for envoy proxies in ${environment} environment for ${cluster} cluster."
   gcloud container fleet mesh update \
     --management automatic \
     --memberships "${cluster}-membership" \
-    --project ${GCLOUD_PROJECT}
+    --project "${GCLOUD_PROJECT}"
 
 done
