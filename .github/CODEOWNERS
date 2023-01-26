@@ -29,3 +29,6 @@ helmfile-istio-gateway.yaml     @Q-Retail/q-retail-devops
 helmfile.yaml                   @Q-Retail/q-retail-devops
 
 /README.md
+
+# set to no owner so that PRs from frontend can be auto merged
+/charts/frontend-ui/values-ngp-dev-us1-services1-gke.yaml
