@@ -1,5 +1,13 @@
 image:
-  tag: v1.40.1-prd
+  tag: v1.41.3-prd
+
+firestore:
+  calendarSettings:
+    minimumBatchSize: 400
+    maximumDegreeOfParallelism: 1
+  dealsheetSettings:
+    minimumBatchSize: 400
+    maximumDegreeOfParallelism: 1
 
 resources:
   limits:
