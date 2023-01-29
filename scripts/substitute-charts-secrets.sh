@@ -25,6 +25,7 @@ for environment in "${environments[@]}"; do
     ERROR_REPORTING_API_KEY=ERROR_REPORTING_API_KEY_$ENVIRONMENT_UPPER_CASE
     REACT_APP_LAUNCHDARKLY_CLIENT_ID=REACT_APP_LAUNCHDARKLY_CLIENT_ID_$ENVIRONMENT_UPPER_CASE
     sed -i "s/pwd: /pwd: ${!FORECAST_POSTGRES_DB_PASSWORD}/" "./charts/forecast-api/values-${cluster}.yaml"
+    sed -i "s/pwd: /pwd: ${!FORECAST_POSTGRES_DB_PASSWORD}/" "./charts/eventschedule-api/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/hierarchy-api/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/calendar-api/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/dealsheet-api/values-${cluster}.yaml"

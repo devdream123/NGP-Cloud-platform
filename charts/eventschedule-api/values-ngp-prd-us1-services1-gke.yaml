@@ -1,3 +1,5 @@
+projectId: gcp-wow-corp-qretail-ngp-prd
+
 image:
   tag: v1.40.1-prd
 
@@ -5,3 +7,9 @@ resources:
   limits:
     memory: 500Mi
     cpu: 1500m
+
+database:
+  mode: firestore
+  instance: ngp-prd-us1-services1-sql
+  user: postgres
+  pwd: 

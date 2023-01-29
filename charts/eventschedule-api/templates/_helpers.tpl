@@ -63,4 +63,5 @@ Create the name of the service account to use
 
 {{- define "eventschedule-api.configChecksum" -}}
 checksum/config-maps: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+checksum/secrets: {{ include (print $.Template.BasePath "/secrets.yaml") . | sha256sum }}
 {{- end }}
