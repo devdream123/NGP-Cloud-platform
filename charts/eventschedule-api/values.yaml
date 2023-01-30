@@ -5,12 +5,29 @@ replicaCount: 3
 
 eventschedule-api:
   fullname: eventschedule-api
-  
+
   labels:
     run: eventschedule-api
 
   selectorLabels:
     run: eventschedule-api
+
+database:
+  mode: postgres
+  auth: builtin
+  region: us-central1
+  instance: ngp-us1-services1-sql
+  port: "5432"
+  user: postgres
+  pwd: ""
+  db: ngsEventSchedule
+  schema: public
+  localhost: "127.0.0.1"
+  proxyVersion: "1.33.2"
+  proxyResources:
+    requests:
+      memory: "32Mi"
+      cpu: "50m"
 
 image:
   repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-eventschedule"
@@ -36,7 +53,7 @@ service:
   type: ClusterIP
   port: 80
 
-readinessProbe: 
+readinessProbe:
   path: /readyz
   port: http
   periodSeconds: 15
