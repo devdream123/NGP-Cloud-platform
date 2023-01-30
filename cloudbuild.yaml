@@ -6,14 +6,15 @@ steps:
       - '-c'
       - |
         chmod +x ./scripts/*
-        if [[ "$BRANCH_NAME" == 'main' ]]; then 
-          ./scripts/substitute-charts-secrets.sh 
+        set -o errexit   # abort on nonzero exitstatus
+        set -o pipefail  # don't hide errors within pipes
+        
+        if [[ "$BRANCH_NAME" == 'main' ]]; then
+          ./scripts/substitute-charts-secrets.sh
         fi
-        if [[ "$BRANCH_NAME" == 'tst' ]]; then 
+        if [[ "$BRANCH_NAME" == 'tst' ]]; then
           ./scripts/substitute-charts-secrets.sh tst
         fi
-        script_exit_code=$?
-        exit $script_exit_code
     secretEnv:
       - 'TYPESENSE_API_KEY'
       - 'FORECAST_POSTGRES_PWD_DEV'
@@ -33,23 +34,27 @@ steps:
     args:
       - '-c'
       - |
-        if [[ "$BRANCH_NAME" == 'main' ]]; then 
-          ./scripts/render-helm-charts.sh 
+        set -o errexit   # abort on nonzero exitstatus
+        set -o pipefail  # don't hide errors within pipes
+        
+        if [[ "$BRANCH_NAME" == 'main' ]]; then
+          ./scripts/render-helm-charts.sh
         fi
-        if [[ "$BRANCH_NAME" == 'tst' ]]; then 
+        if [[ "$BRANCH_NAME" == 'tst' ]]; then
           ./scripts/render-helm-charts.sh tst
         fi
-        script_exit_code=$?
-        exit $script_exit_code
   - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:21-11-2022'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        if [[ "$BRANCH_NAME" == 'main' ]]; then 
-          ./scripts/deploy.sh 
+        set -o errexit   # abort on nonzero exitstatus
+        set -o pipefail  # don't hide errors within pipes
+        
+        if [[ "$BRANCH_NAME" == 'main' ]]; then
+          ./scripts/deploy.sh
         fi
-        if [[ "$BRANCH_NAME" == 'tst' ]]; then 
+        if [[ "$BRANCH_NAME" == 'tst' ]]; then
           ./scripts/deploy.sh tst
         fi
 options:

@@ -6,6 +6,9 @@ steps:
       - '-c'
       - |
         chmod +x ./scripts/*
+        set -o errexit   # abort on nonzero exitstatus
+        set -o pipefail  # don't hide errors within pipes
+        
         ./scripts/package-store-charts.sh  ${_HELM_CHART_ARTIFACT_REGISTRY_URI}
 
 options:
