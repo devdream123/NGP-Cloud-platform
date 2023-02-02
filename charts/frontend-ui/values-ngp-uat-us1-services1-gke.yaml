@@ -10,6 +10,5 @@ server:
     tag: 1.41.0-uat
 
 secrets:
-  errorReportingApiKey:
   reactAppLaunchDarklyClientId:
   typesenseAPIKey:
