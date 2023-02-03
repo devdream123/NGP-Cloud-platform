@@ -10,5 +10,4 @@ server:
     tag: 1.41.0-prd
 
 secrets:
-  reactAppLaunchDarklyClientId:
   typesenseAPIKey:

@@ -10,5 +10,4 @@ server:
     tag: 6887f0d
 
 secrets:
-  reactAppLaunchDarklyClientId:
   typesenseAPIKey:
