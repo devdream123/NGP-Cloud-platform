@@ -22,7 +22,7 @@ database:
   pwd: ""
   db: ngsEventSchedule
   schema: public
-  localhost: "127.0.0.1"
+  server: localhost
   proxyVersion: "1.33.2"
   proxyResources:
     requests:

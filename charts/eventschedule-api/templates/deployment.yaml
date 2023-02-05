@@ -35,8 +35,13 @@ spec:
             - configMapRef:
                 name: {{ include "eventschedule-api.fullname" . }}-cm
             {{- if ne .Values.database.auth "iam" }}
-            - secretRef:
-                name: {{ include "eventschedule-api.fullname" . }}-secrets
+          env:
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "eventschedule-api.fullname" . }}-secrets
+                  key: db-password
+            -  { name: CONNECTION_STRING, value: "{{ printf "Driver={PostgreSQL ODBC Driver(UNICODE)};Server=%s;Port=%s;Database=%s;UID=%s;PWD=$(DATABASE_PASSWORD)" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}"}
             {{- end }}
           ports:
             - name: http
