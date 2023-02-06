@@ -4,6 +4,7 @@ image:
   tag: v1.41.3-rc
 
 database:
+  mode: postgres
   instance: ngp-uat-us1-services1-sql
   user: postgres
   pwd: 
