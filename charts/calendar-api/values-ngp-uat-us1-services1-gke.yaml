@@ -1,3 +1,5 @@
+projectId: gcp-wow-corp-qretail-ngp-uat
+
 image:
   tag: v1.41.3-rc
 
