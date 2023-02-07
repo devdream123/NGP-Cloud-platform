@@ -13,5 +13,11 @@ firestore:
   scenariosCollection: scenarios-pg
   placeholdersCollection: placeholders-pg
 
+database:
+  mode: postgres
+  instance: ngp-dev-us1-services1-sql
+  user: postgres
+  pwd: 
+
 secrets:
   typesenseAPIKey:

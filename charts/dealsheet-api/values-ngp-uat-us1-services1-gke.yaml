@@ -9,5 +9,11 @@ firestore:
     minimumBatchSize: 400
     maximumDegreeOfParallelism: 1
     
+database:
+  mode: postgres
+  instance: ngp-uat-us1-services1-sql
+  user: postgres
+  pwd: 
+
 secrets:
   typesenseAPIKey:
