@@ -1,7 +1,7 @@
 projectId: gcp-wow-corp-qretail-ngp-dev
 
 image:
-  tag: v1.44.1-dev
+  tag: v1.44.5-dev
 
 database:
   mode: postgres
