@@ -20,7 +20,7 @@ database:
   port: "5432"
   user: postgres
   pwd: ""
-  db: ngsBackend
+  db: ngsSlotting
   schema: public
   server: localhost
   proxyVersion: "1.33.2"
