@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "eventschedule-api.labels" . | nindent 4 }}
 data:
+  GCPSettings__AppVersion: {{ .Values.appVersion | quote }}
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
   FirestoreSettings__RootCollectionName: {{ .Values.firestore.eventScheduleCollection | quote }}

@@ -12,6 +12,8 @@ eventschedule-api:
   selectorLabels:
     run: eventschedule-api
 
+appVersion: v1
+
 database:
   mode: postgres
   auth: builtin
