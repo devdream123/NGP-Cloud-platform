@@ -5,12 +5,31 @@ replicaCount: 3
 
 dealsheet-api:
   fullname: dealsheet-api
-  
+
   labels:
     run: dealsheet-api
 
   selectorLabels:
     run: dealsheet-api
+
+appVersion: v1
+
+database:
+  mode: postgres
+  auth: builtin
+  region: us-central1
+  instance: ngp-us1-services1-sql
+  port: "5432"
+  user: postgres
+  pwd: ""
+  db: ngsSlotting
+  schema: public
+  server: localhost
+  proxyVersion: "1.33.2"
+  proxyResources:
+    requests:
+      memory: "32Mi"
+      cpu: "50m"
 
 image:
   repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-dealsheet"
@@ -35,7 +54,7 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
-  
+
 readinessProbe:
   path: /readyz
   port: http
@@ -88,7 +107,7 @@ firestore:
     maximumDegreeOfParallelism: ""
 
   scenariosCollection: scenarios
- 
+
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
 

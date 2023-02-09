@@ -14,5 +14,11 @@ resources:
     memory: 4Gi
     cpu: 4000m
 
+database:
+  mode: firestore
+  instance: ngp-prd-us1-services1-sql
+  user: postgres
+  pwd: 
+
 secrets:
   typesenseAPIKey:
