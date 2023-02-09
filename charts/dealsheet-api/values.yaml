@@ -12,6 +12,8 @@ dealsheet-api:
   selectorLabels:
     run: dealsheet-api
 
+appVersion: v1
+
 database:
   mode: postgres
   auth: builtin
