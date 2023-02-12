@@ -21,14 +21,6 @@ steps:
       - 'FORECAST_POSTGRES_PWD_UAT'
       - 'FORECAST_POSTGRES_PWD_PRD'
       - 'FORECAST_POSTGRES_PWD_TST'
-      - 'ERROR_REPORTING_API_KEY_TST'
-      - 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_TST'
-      - 'ERROR_REPORTING_API_KEY_DEV'
-      - 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_DEV'
-      - 'ERROR_REPORTING_API_KEY_UAT'
-      - 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_UAT'
-      - 'ERROR_REPORTING_API_KEY_PRD'
-      - 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_PRD'
   - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:21-11-2022'
     entrypoint: 'bash'
     args:
@@ -71,19 +63,3 @@ availableSecrets:
       env: 'FORECAST_POSTGRES_PWD_PRD'
     - versionName: projects/$PROJECT_ID/secrets/ngp-tst-us1-forecast-postgres-pwd1-sms/versions/1
       env: 'FORECAST_POSTGRES_PWD_TST'
-    - versionName: projects/$PROJECT_ID/secrets/ngp-tst-us1-stackdriver-reporting-api-key1-sms/versions/1
-      env: 'ERROR_REPORTING_API_KEY_TST'
-    - versionName: projects/$PROJECT_ID/secrets/ngp-tst-us1-launch-darkly-client-id-key1-sms/versions/1
-      env: 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_TST'
-    - versionName: projects/$PROJECT_ID/secrets/ngp-dev-us1-stackdriver-reporting-api-key1-sms/versions/1
-      env: 'ERROR_REPORTING_API_KEY_DEV'
-    - versionName: projects/$PROJECT_ID/secrets/ngp-dev-us1-launch-darkly-client-id-key1-sms/versions/1
-      env: 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_DEV'
-    - versionName: projects/$PROJECT_ID/secrets/ngp-uat-us1-stackdriver-reporting-api-key1-sms/versions/1
-      env: 'ERROR_REPORTING_API_KEY_UAT'
-    - versionName: projects/$PROJECT_ID/secrets/ngp-uat-us1-launch-darkly-client-id-key1-sms/versions/1
-      env: 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_UAT'
-    - versionName: projects/$PROJECT_ID/secrets/ngp-prd-us1-stackdriver-reporting-api-key1-sms/versions/1
-      env: 'ERROR_REPORTING_API_KEY_PRD'
-    - versionName: projects/$PROJECT_ID/secrets/ngp-prd-us1-launch-darkly-client-id-key1-sms/versions/1
-      env: 'REACT_APP_LAUNCHDARKLY_CLIENT_ID_PRD'

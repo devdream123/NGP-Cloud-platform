@@ -7,8 +7,6 @@ server:
   image:
     tag: "0ab2921"
 secrets:
-  errorReportingApiKey:
-  reactAppLaunchDarklyClientId:
   typesenseAPIKey:
 service:
   negName: frontend-ui-neg-services
