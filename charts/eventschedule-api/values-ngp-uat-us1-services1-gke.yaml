@@ -1,6 +1,8 @@
 image:
   tag: v1.42.2-rc
 
+appVersion: v2
+
 database:
   mode: postgres
   instance: ngp-uat-us1-services1-sql
