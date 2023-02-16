@@ -1,5 +1,7 @@
 image:
-  tag: v1.41.3-rc
+  tag: v1.44.1-rc
+
+appVersion: v2
 
 database:
   mode: postgres

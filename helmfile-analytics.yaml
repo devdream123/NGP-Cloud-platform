@@ -42,12 +42,4 @@ releases:
         showlogs: true
         command: 'kubectl'
         args: ['label', 'ns', '{{ .Values.forecast.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
-      - events: ['postsync']
-        showlogs: true
-        command: './scripts/enable-workload-identity.sh'
-        args: 
-         - '{{ .Values.gcp.project }}'
-         - '{{ .Values.gcp.gsa }}'
-         - '{{ .Values.forecast.serviceaccount }}'
-         - '{{ .Values.forecast.namespace }}'
   
