@@ -25,6 +25,7 @@ spec:
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      serviceAccountName: {{ include "forecast-api.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
@@ -58,15 +59,25 @@ spec:
             {{- end }}
         {{- if eq .Values.database.mode "postgres" }}
         - name: cloud-sql-proxy
-          image: "gcr.io/cloudsql-docker/gce-proxy:{{ .Values.database.proxyVersion }}"
-          {{- if eq .Values.database.auth "iam" }}
-          command:
-            - "/cloud_sql_proxy"
-            - "-enable_iam_login"
-            - "-instances={{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}=tcp:5432"
-            - "-ip_address_types=PRIVATE"
-            - "--token=$(gcloud auth print-access-token --impersonate-service-account='{{ .Values.database.user }}.gserviceaccount.com')"
+          {{- if semverCompare ">= 2.0.0" .Values.database.proxyVersion }}
+          image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.database.proxyVersion }}"
+            {{- if eq .Values.database.auth "iam" }}
+          command: [
+            "/cloud-sql-proxy",
+            "--auto-iam-authn",
+            "--private-ip",
+            "--impersonate-service-account={{ .Values.database.user }}.gserviceaccount.com",
+            "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
+          ]
+            {{- else }}
+          command: [
+            "/cloud-sql-proxy",
+            "--private-ip",
+            "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
+          ]
+            {{- end }}
           {{- else }}
+          image: "gcr.io/cloudsql-docker/gce-proxy:{{ .Values.database.proxyVersion }}"
           command:
             - "/cloud_sql_proxy"
             - "-instances={{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}=tcp:5432"

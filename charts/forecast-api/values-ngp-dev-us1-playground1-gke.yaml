@@ -3,8 +3,6 @@ projectId: gcp-wow-corp-qretail-ngp-dev
 image:
   tag: 1.37.3-tst
 
-environment: testing
-
 resources:
   requests:
     memory: 64Mi
@@ -13,12 +11,14 @@ resources:
     memory: 4Gi
     cpu: 3000m
 
+environment: testing
 
 database:
+  auth: iam
   instance: ngp-dev-us1-services1-sql
-  user: postgres
+  user: cloud-sql@gcp-wow-corp-qretail-ngp-dev.iam
   pwd: 
   db: qforecast
   schema: public_20221010_3
   host: "forecast-api-db.dev.int.wiqretail.com"
-  proxyVersion: "1.32.0"
+  proxyVersion: "2.0.0"
