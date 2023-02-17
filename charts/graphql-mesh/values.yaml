@@ -22,7 +22,7 @@ mesh:
   cors:
     origin: '*'
 
-  debugEnabled: 1
+  debugEnabled: 0
 
   fullname: graphql-mesh
   
