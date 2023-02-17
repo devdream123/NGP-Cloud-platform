@@ -2,3 +2,4 @@ charts-rendered
 *.tmp
 outputs
 .DS_Store
+.vscode/settings.json
