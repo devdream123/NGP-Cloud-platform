@@ -19,6 +19,9 @@ data:
           origin: '{{ .Values.mesh.cors.origin }}'
         hostname: 0.0.0.0
         port: {{ .Values.service.port }}
+        {{- if semverCompare "< 1.33.5" .Values.image.tag }}
+        maxRequestBodySize: 10mb
+        {{- end }}
 
     sources:
       - name: Deal Sheet
