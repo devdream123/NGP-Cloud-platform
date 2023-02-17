@@ -2,16 +2,23 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  name: {{ include "mesh.fullname" . }}-env-cm
+data:
+  TELEMETRY_HOST: {{ .Values.server.telemetryHost | quote }}
+  TELEMETRY_PORT: {{ .Values.server.telemetryPort | quote }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
   name: {{ include "mesh.fullname" . }}-meshrc-cm
 data:
   .meshrc.yaml: |-
-    ---
     serve:
         cors:
           origin: '{{ .Values.mesh.cors.origin }}'
         hostname: 0.0.0.0
         port: {{ .Values.service.port }}
-        maxRequestBodySize: 10mb
 
     sources:
       - name: Deal Sheet
@@ -19,23 +26,46 @@ data:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.dealSheet.chartName .Values.backendNamespace .Values.dealSheet.port | quote }}
             timeout: 600000
+            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
+            operationHeaders:
+              X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
+            {{- end }}
       - name: Calendar
         handler:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.calendar.chartName .Values.backendNamespace .Values.calendar.port | quote }}
             timeout: 600000
+            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
+            operationHeaders:
+              X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
+            {{- end }}
       - name: EventSchedule
         handler:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.eventSchedule.chartName .Values.backendNamespace .Values.eventSchedule.port | quote }}
             timeout: 600000
+            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
+            operationHeaders:
+              X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
+            {{- end }}
       - name: Hierarchy
         handler:
           openapi:
             source: ./typesense-openapi.yml
+            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
+            endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/" .Values.hierarchy.chartName .Values.backendNamespace .Values.hierarchy.port | quote }}
+            {{- else -}}
             baseUrl: {{ printf "http://%s.%s.svc.cluster.local:%s/" .Values.hierarchy.chartName .Values.backendNamespace .Values.hierarchy.port | quote }}
+            {{- end }}
             operationHeaders:
+            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
+              X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
+            {{- end }}
               X-TYPESENSE-API-KEY: f44910b7-4b35-48bb-ac16-4f6a4d5af120
+
+{{- if semverCompare ">= 1.33.5" .Values.image.tag }}
+    additionalEnvelopPlugins: './openTelemetry'
+{{- end }}
 
 ---
 apiVersion: v1
