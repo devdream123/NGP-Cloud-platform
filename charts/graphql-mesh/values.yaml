@@ -88,3 +88,6 @@ affinity: {}
 
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+
+secrets:
+  typesenseAPIKey:

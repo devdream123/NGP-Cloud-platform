@@ -35,6 +35,8 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "mesh.fullname" . }}-env-cm
+            - secretRef:
+                name: {{ include "mesh.fullname" . }}-secrets
           env:
             - name: DEBUG
               value: "{{ .Values.mesh.debugEnabled }}"

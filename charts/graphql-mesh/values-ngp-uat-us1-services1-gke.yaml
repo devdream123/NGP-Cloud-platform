@@ -1,2 +1,5 @@
 image:
   tag: "1.30.0"
+
+secrets:
+  typesenseAPIKey:

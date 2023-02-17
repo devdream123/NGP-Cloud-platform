@@ -61,7 +61,7 @@ data:
             {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
               X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
             {{- end }}
-              X-TYPESENSE-API-KEY: f44910b7-4b35-48bb-ac16-4f6a4d5af120
+              X-TYPESENSE-API-KEY: '${TYPESENSE_API_KEY}'
 
 {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
     additionalEnvelopPlugins: './openTelemetry'

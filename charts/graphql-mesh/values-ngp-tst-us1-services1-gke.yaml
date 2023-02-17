@@ -3,3 +3,6 @@ image:
 
 mesh:
   debugEnabled: 1
+
+secrets:
+  typesenseAPIKey:
