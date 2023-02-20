@@ -22,7 +22,7 @@ mesh:
   cors:
     origin: '*'
 
-  debugEnabled: 1
+  debugEnabled: 0
 
   fullname: graphql-mesh
   
@@ -31,6 +31,10 @@ mesh:
 
   selectorLabels:
     run: graphql-mesh
+
+server:
+  telemetryHost: otel-collector.ngp-graphql-mesh.svc.cluster.local
+  telemetryPort: 6832
 
 image:
   repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-graphql-mesh"
@@ -84,3 +88,6 @@ affinity: {}
 
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+
+secrets:
+  typesenseAPIKey:
