@@ -14,10 +14,11 @@ resources:
 environment: production
 
 database:
+  auth: iam
   instance: ngp-prd-us1-services1-sql
-  user: postgres
+  user: cloud-sql@gcp-wow-corp-qretail-ngp-prod.iam
   pwd: 
   db: qforecast
   schema: public_20230105_1
   host: "forecast-api-db.prd.int.wiqretail.com"
-  proxyVersion: "1.33.1"
+  proxyVersion: "2.0.0"

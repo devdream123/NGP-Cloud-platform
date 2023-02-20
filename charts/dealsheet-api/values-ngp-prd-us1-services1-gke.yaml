@@ -1,5 +1,5 @@
 image:
-  tag: v1.41.3-prd
+  tag: v1.44.1-prd
 
 firestore:
   calendarSettings:
@@ -15,7 +15,7 @@ resources:
     cpu: 4000m
 
 database:
-  mode: firestore
+  mode: postgres
   instance: ngp-prd-us1-services1-sql
   user: postgres
   pwd: 
