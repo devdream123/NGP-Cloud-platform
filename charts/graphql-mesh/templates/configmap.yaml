@@ -57,7 +57,7 @@ data:
             source: ./typesense-openapi.yml
             {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/" .Values.hierarchy.chartName .Values.backendNamespace .Values.hierarchy.port | quote }}
-            {{- else -}}
+            {{- else }}
             baseUrl: {{ printf "http://%s.%s.svc.cluster.local:%s/" .Values.hierarchy.chartName .Values.backendNamespace .Values.hierarchy.port | quote }}
             {{- end }}
             operationHeaders:
