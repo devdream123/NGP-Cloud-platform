@@ -12,7 +12,7 @@ resources:
     cpu: 3000m
 
 environment: production
-run_validation: False
+runValidation: False
 
 database:
   auth: iam
