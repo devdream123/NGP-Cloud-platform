@@ -12,6 +12,7 @@ resources:
     cpu: 3000m
 
 environment: testing
+runValidation: True
 
 database:
   auth: iam
