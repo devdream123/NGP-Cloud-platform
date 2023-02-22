@@ -33,7 +33,7 @@ mesh:
     run: graphql-mesh
 
 server:
-  telemetryHost: otel-collector.ngp-graphql-mesh.svc.cluster.local
+  telemetryHostPrefix: otel-collector
   telemetryPort: 6832
 
 image:
