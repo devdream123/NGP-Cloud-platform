@@ -10,7 +10,7 @@ data:
   PROXY_PORT: {{ .Values.server.proxyPort | quote }}
   PROJECT_KEY: {{ .Values.projectId  }}
   ENVIRONMENT: {{ .Values.server.featureFlagsEnvironment | quote }}
-  TELEMETRY_HOST: {{ .Values.server.telemetryHost | quote }}
+  TELEMETRY_HOST: {{ printf "%s.%s.svc.cluster.local" .Values.server.telemetryHostPrefix .Release.Namespace | quote }}
   TELEMETRY_PORT: {{ .Values.server.telemetryPort | quote }}
   REACT_APP_IMAGE_TAG: {{ .Values.image.tag | quote }}
   PROXY_SERVER_IMAGE_TAG: {{ .Values.server.image.tag | quote }}

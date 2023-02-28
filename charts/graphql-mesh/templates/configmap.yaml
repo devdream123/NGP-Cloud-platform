@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: {{ include "mesh.fullname" . }}-env-cm
 data:
-  TELEMETRY_HOST: {{ .Values.server.telemetryHost | quote }}
+  TELEMETRY_HOST: {{ printf "%s.%s.svc.cluster.local" .Values.server.telemetryHostPrefix .Release.Namespace | quote }}
   TELEMETRY_PORT: {{ .Values.server.telemetryPort | quote }}
 
 ---
