@@ -25,7 +25,7 @@ database:
   db: ngsSlotting
   schema: public
   server: localhost
-  proxyVersion: "1.33.2"
+  proxyVersion: "1.33.4"
   proxyResources:
     requests:
       memory: "32Mi"

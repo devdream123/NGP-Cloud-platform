@@ -80,7 +80,7 @@ spec:
           image: "gcr.io/cloudsql-docker/gce-proxy:{{ .Values.database.proxyVersion }}"
           command:
             - "/cloud_sql_proxy"
-            - "-instances={{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}=tcp:5432"
+            - "-instances={{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}=tcp:{{ .Values.database.port }}"
             - "-ip_address_types=PRIVATE"
           {{- end }}
           securityContext:
