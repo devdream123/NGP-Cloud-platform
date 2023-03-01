@@ -58,7 +58,7 @@ typesenseConfiguration:
   batchSize: 5000
 
 ngpAssortmentConfiguration:
-  bucket": ""
+  bucket: ""
   filePath: ""
   fileName: ""
   useNgpAssortmentFile: false
