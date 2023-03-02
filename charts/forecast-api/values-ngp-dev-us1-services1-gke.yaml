@@ -19,5 +19,5 @@ database:
   instance: ngp-dev-us1-services1-sql
   user: sa-dev-qforecast-sql@gcp-wow-corp-qretail-ngp-dev.iam
   pwd: 
-  schema: public_20221010_3
+  schema: public_20230105_1
   proxyVersion: "2.1.1"
