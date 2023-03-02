@@ -57,6 +57,12 @@ typesenseConfiguration:
   protocol: http
   batchSize: 5000
 
+ngpAssortmentConfiguration:
+  bucket: ""
+  filePath: ""
+  fileName: ""
+  useNgpAssortmentFile: false
+
 collectionName: CHECKOUT_SUPER_PRODUCT
 
 PodDisruptionBudget:
