@@ -11,9 +11,11 @@ firestore:
 
 database:
   mode: postgres
+  auth: iam
   instance: ngp-tst-us1-services1-sql
-  user: postgres
+  user: sa-tst-ngsslotting-sql@gcp-wow-corp-qretail-ngp-test.iam
   pwd: 
+  proxyVersion: "2.1.1"
 
 secrets:
   typesenseAPIKey:
