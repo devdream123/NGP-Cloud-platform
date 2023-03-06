@@ -7,7 +7,7 @@ secrets:
   typesenseAPIKey:
 
 ngpAssortmentConfiguration:
-  bucket": "qr_ngp_data_central"
+  bucket: "qr_ngp_data_central"
   filePath: "release_data/calendar/20230207_5_tst"
   fileName: "pf_codes.csv"
   useNgpAssortmentFile: true
