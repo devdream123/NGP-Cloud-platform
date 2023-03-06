@@ -1,5 +1,7 @@
 image:
-  tag: v1.41.3-prd
+  tag: v1.43.1-prd
+
+appVersion: v2
 
 resources:
   limits:
@@ -7,7 +9,7 @@ resources:
     cpu: 1500m
 
 database:
-  mode: firestore
+  mode: postgres
   instance: ngp-prd-us1-services1-sql
   user: postgres
   pwd: 
