@@ -1,7 +1,13 @@
 image:
-  tag: "bd0d658"
+  tag: "03-03-2023"
 
 firestoreCollectionName: "placeholders"
 
 secrets:
   typesenseAPIKey: 
+
+ngpAssortmentConfiguration:
+  bucket": "qr_ngp_data_central"
+  filePath: "release_data/calendar/20230302_1"
+  fileName: "pf_codes.csv"
+  useNgpAssortmentFile: true
