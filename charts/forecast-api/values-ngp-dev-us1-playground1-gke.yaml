@@ -17,9 +17,7 @@ runValidation: True
 database:
   auth: iam
   instance: ngp-dev-us1-services1-sql
-  user: cloud-sql@gcp-wow-corp-qretail-ngp-dev.iam
+  user: sa-dev-qforecast-sql@gcp-wow-corp-qretail-ngp-dev.iam
   pwd: 
-  db: qforecast
   schema: public_20221010_3
-  host: "forecast-api-db.dev.int.wiqretail.com"
-  proxyVersion: "2.0.0"
+  proxyVersion: "2.1.1"

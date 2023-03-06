@@ -1,10 +1,12 @@
 appVersion: v2
 
 image:
-  tag: v1.44.6-dev
+  tag: v0.0.777-dev
 
 database:
   mode: postgres
+  auth: iam
   instance: ngp-dev-us1-services1-sql
-  user: postgres
+  user: sa-dev-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-dev.iam
   pwd: 
+  proxyVersion: "2.1.1"
