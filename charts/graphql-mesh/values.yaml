@@ -35,6 +35,8 @@ mesh:
 server:
   telemetryHostPrefix: otel-collector
   telemetryPort: 6832
+  memoryLimit: "3072" # memory limit in megabytes, must not exceed Values.resources.limits.memory
+  debug: "0"
 
 image:
   repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-backend-services-registry1/qr-ngp-graphql-mesh"
