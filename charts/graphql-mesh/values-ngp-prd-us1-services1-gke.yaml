@@ -1,6 +1,9 @@
 image:
   tag: "1.30.0"
 
+server:
+  memoryLimit: "4096" # memory limit in megabytes, must not exceed Values.resources.limits.memory
+
 resources:
   limits:
     memory: 4Gi

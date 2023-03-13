@@ -6,6 +6,8 @@ metadata:
 data:
   TELEMETRY_HOST: {{ printf "%s.%s.svc.cluster.local" .Values.server.telemetryHostPrefix .Release.Namespace | quote }}
   TELEMETRY_PORT: {{ .Values.server.telemetryPort | quote }}
+  MEMORY_LIMIT: {{ .Values.server.memoryLimit | quote }}
+  DEBUG: {{ .Values.server.debug | quote }}
 
 ---
 apiVersion: v1
