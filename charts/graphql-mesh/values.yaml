@@ -35,7 +35,7 @@ mesh:
 server:
   telemetryHostPrefix: otel-collector
   telemetryPort: 6832
-  memoryLimit: "3072" # memory limit in megabytes, must not exceed Values.resources.limits.memory
+  nodeOptions: "--max-old-space-size=3072" # memory limit in megabytes, must not exceed Values.resources.limits.memory
   debug: "0"
 
 image:
