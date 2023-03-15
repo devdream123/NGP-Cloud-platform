@@ -1,5 +1,5 @@
 image:
-  tag: v0.43.2-dev
+  tag: v1.46.3-dev
 
 firestore:
   calendarCollection: calendar-assortments-pg
