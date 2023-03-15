@@ -37,9 +37,6 @@ spec:
                 name: {{ include "mesh.fullname" . }}-env-cm
             - secretRef:
                 name: {{ include "mesh.fullname" . }}-secrets
-          env:
-            - name: DEBUG
-              value: "{{ .Values.mesh.debugEnabled }}"
           volumeMounts:
             - mountPath: /mesh/.meshrc.yaml
               name: {{ include "mesh.fullname" . }}-meshrc-cm
