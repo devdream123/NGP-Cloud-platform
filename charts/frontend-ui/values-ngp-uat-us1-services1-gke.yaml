@@ -1,5 +1,5 @@
 image:
-  tag: 1.44.5-uat
+  tag: 1.44.6-uat
 
 projectId: "gcp-wow-corp-qretail-ngp-uat"
 
@@ -7,7 +7,7 @@ server:
   proxyHost: ingress-gateway.uat.int.wiqretail.com
   featureFlagsEnvironment: uat
   image:
-    tag: 1.44.5-uat
+    tag: 1.44.6-uat
 
 secrets:
   typesenseAPIKey:
