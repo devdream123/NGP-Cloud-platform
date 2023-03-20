@@ -1,5 +1,5 @@
 image:
-  tag: "17-03-2023"
+  tag: "bd0d658"
 
 firestoreCollectionName: "placeholders-pg"
 
