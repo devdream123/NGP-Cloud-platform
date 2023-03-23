@@ -2,6 +2,7 @@ image:
   tag: "bd0d658"
 
 firestoreCollectionName: "placeholders-pg"
+appVersion: "v1"
 
 secrets:
   typesenseAPIKey:

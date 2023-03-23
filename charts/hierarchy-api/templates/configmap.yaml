@@ -17,3 +17,4 @@ data:
   NgpAssortmentConfiguration__FilePath: {{ .Values.ngpAssortmentConfiguration.filePath | quote }}
   NgpAssortmentConfiguration__FileName: {{ .Values.ngpAssortmentConfiguration.fileName | quote }}
   NgpAssortmentConfiguration__UseNgpAssortmentFile: {{ .Values.ngpAssortmentConfiguration.useNgpAssortmentFile | quote }}
+  AppConfiguration__Version: {{ .Values.appVersion | quote }}
