@@ -53,6 +53,14 @@ releases:
         showlogs: true
         command: 'kubectl'
         args: ['label', 'ns', '{{ .Values.calendar.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
+      - events: ['postsync']
+        showlogs: true
+        command: '{{requiredEnv "BASE_DIR"}}/apply-entity-framework-migrations.sh'
+        args: 
+         - '{{ .Values.env.EF_MIGRARTIONS_BUCKET }}'
+         - '{{`{{.Release.Name}}`}}'
+         - '{{ requiredEnv "CLUSTER_NAME" }}'
+         - '{{ .Values.env.GCLOUD_PROJECT }}' 
   - name: eventschedule-api
     namespace: {{ .Values.eventschedule.namespace }}
     chart: ./charts/eventschedule-api
@@ -64,6 +72,14 @@ releases:
         showlogs: true
         command: 'kubectl'
         args: ['label', 'ns', '{{ .Values.eventschedule.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
+      - events: ['postsync']
+        showlogs: true
+        command: '{{requiredEnv "BASE_DIR"}}/apply-entity-framework-migrations.sh'
+        args: 
+         - '{{ .Values.env.EF_MIGRARTIONS_BUCKET }}'
+         - '{{`{{.Release.Name}}`}}'
+         - '{{ requiredEnv "CLUSTER_NAME" }}'
+         - '{{ .Values.env.GCLOUD_PROJECT }}' 
   - name: hierarchy-api
     namespace: {{ .Values.hierarchy.namespace }}
     chart: ./charts/hierarchy-api
