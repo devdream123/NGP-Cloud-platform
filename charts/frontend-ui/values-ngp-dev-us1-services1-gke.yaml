@@ -1,11 +1,11 @@
 image:
-  tag: "55fe81c"
+  tag: "15168e5"
 projectId: "gcp-wow-corp-qretail-ngp-dev"
 server:
   proxyHost: ingress-gateway.dev.int.wiqretail.com
   featureFlagsEnvironment: dev
   image:
-    tag: "55fe81c"
+    tag: "15168e5"
 secrets:
   typesenseAPIKey:
 service:
