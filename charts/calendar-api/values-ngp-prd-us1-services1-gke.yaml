@@ -20,7 +20,7 @@ database:
   slotting:
     user: sa-prd-ngsslotting-sql@gcp-wow-corp-qretail-ngp-prod.iam
   placeholder:
-    user: sa-dev-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-prod.iam
+    user: sa-prd-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-prod.iam
   pwd: 
 
 secrets:
