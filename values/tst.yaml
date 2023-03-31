@@ -14,12 +14,23 @@ istioControlPlane:
 
 calendar:
   namespace: ngp-backend
+  databases:
+    slotting:
+      dbName: ngsSlotting
+      user: sa-tst-ngsslotting-sql@gcp-wow-corp-qretail-ngp-test.iam
+    placeholder:
+      dbName: ngsPlaceholder
+      user: sa-tst-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-test.iam
 
 hierarchy:
   namespace: ngp-backend
 
 eventschedule:
   namespace: ngp-backend
+  databases:
+    eventSchedule:
+      dbName: ngsEventSchedule
+      user: sa-tst-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-test.iam
 
 forecast:
   namespace: ngp-analytics

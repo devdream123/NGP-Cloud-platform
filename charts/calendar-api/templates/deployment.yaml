@@ -37,18 +37,10 @@ spec:
             - secretRef:
                 name: {{ include "calendar-api.fullname" . }}-secrets
           env:
-            {{- if ne .Values.database.auth "iam" }}
-            - name: DATABASE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "calendar-api.fullname" . }}-secrets
-                  key: db-password
             - name: ConnectionStrings__SlottingDb
-              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=$(DATABASE_PASSWORD)" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}"
-            {{- else }}
-            - name: ConnectionStrings__SlottingDb
-              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}"
-            {{- end }}
+              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.slotting.proxyPort .Values.database.slotting.dbName .Values.database.slotting.user }}"
+            - name: ConnectionStrings__PlaceholderDb
+              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.placeholder.proxyPort .Values.database.placeholder.dbName .Values.database.placeholder.user }}"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -69,15 +61,15 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
         {{- if eq .Values.database.mode "postgres" }}
-        - name: cloud-sql-proxy
-          {{- if semverCompare ">= 2.0.0" .Values.database.proxyVersion }}
+        - name: cloud-sql-proxy-slotting
           image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.database.proxyVersion }}"
             {{- if eq .Values.database.auth "iam" }}
           command: [
             "/cloud-sql-proxy",
             "--auto-iam-authn",
             "--private-ip",
-            "--impersonate-service-account={{ .Values.database.user }}.gserviceaccount.com",
+            "--port={{ .Values.database.slotting.proxyPort }}",
+            "--impersonate-service-account={{ .Values.database.slotting.user }}.gserviceaccount.com",
             "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
           ]
             {{- else }}
@@ -87,17 +79,28 @@ spec:
             "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
           ]
             {{- end }}
-          {{- else }}
-          image: "gcr.io/cloudsql-docker/gce-proxy:{{ .Values.database.proxyVersion }}"
-          command:
-            - "/cloud_sql_proxy"
-            - "-instances={{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}=tcp:{{ .Values.database.port }}"
-            - "-ip_address_types=PRIVATE"
-          {{- end }}
           securityContext:
             runAsNonRoot: true
           resources:
             {{- toYaml .Values.database.proxyResources | nindent 12 }}
+        - name: cloud-sql-proxy-placeholder
+          image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.database.proxyVersion }}"
+            {{- if eq .Values.database.auth "iam" }}
+          command: [
+            "/cloud-sql-proxy",
+            "--auto-iam-authn",
+            "--private-ip",
+            "--port={{ .Values.database.placeholder.proxyPort }}",
+            "--impersonate-service-account={{ .Values.database.placeholder.user }}.gserviceaccount.com",
+            "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
+          ]
+            {{- else }}
+          command: [
+            "/cloud-sql-proxy",
+            "--private-ip",
+            "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
+          ]
+            {{- end }}
         {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:

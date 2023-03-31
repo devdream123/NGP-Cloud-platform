@@ -12,8 +12,11 @@ firestore:
 database:
   mode: postgres
   instance: ngp-uat-us1-services1-sql
-  user: postgres
-  pwd: 
+  slotting:
+    user: sa-uat-ngsslotting-sql@gcp-wow-corp-qretail-ngp-uat.iam
+  placeholder:
+    user: sa-uat-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-uat.iam
+  pwd:
 
 secrets:
   typesenseAPIKey:

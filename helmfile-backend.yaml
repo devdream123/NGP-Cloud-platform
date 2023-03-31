@@ -57,10 +57,24 @@ releases:
         showlogs: true
         command: '{{requiredEnv "BASE_DIR"}}/apply-entity-framework-migrations.sh'
         args: 
-         - '{{ .Values.env.EF_MIGRARTIONS_BUCKET }}'
+         - '{{ .Values.env.EF_MIGRATIONS_BUCKET }}'
          - '{{`{{.Release.Name}}`}}'
          - '{{ requiredEnv "CLUSTER_NAME" }}'
-         - '{{ .Values.env.GCLOUD_PROJECT }}' 
+         - '{{ .Values.env.GCLOUD_PROJECT }}'
+         - '{{ .Values.env.CLOUD_SQL_INSTANCE }}'
+         - '{{ .Values.calendar.databases.slotting.dbName }}' 
+         - '{{ .Values.calendar.databases.slotting.user }}'
+      - events: ['postsync']
+        showlogs: true
+        command: '{{requiredEnv "BASE_DIR"}}/apply-entity-framework-migrations.sh'
+        args: 
+         - '{{ .Values.env.EF_MIGRATIONS_BUCKET }}'
+         - '{{`{{.Release.Name}}`}}'
+         - '{{ requiredEnv "CLUSTER_NAME" }}'
+         - '{{ .Values.env.GCLOUD_PROJECT }}'
+         - '{{ .Values.env.CLOUD_SQL_INSTANCE }}'
+         - '{{ .Values.calendar.databases.placeholder.dbName }}' 
+         - '{{ .Values.calendar.databases.placeholder.user }}'
   - name: eventschedule-api
     namespace: {{ .Values.eventschedule.namespace }}
     chart: ./charts/eventschedule-api
@@ -76,10 +90,13 @@ releases:
         showlogs: true
         command: '{{requiredEnv "BASE_DIR"}}/apply-entity-framework-migrations.sh'
         args: 
-         - '{{ .Values.env.EF_MIGRARTIONS_BUCKET }}'
+         - '{{ .Values.env.EF_MIGRATIONS_BUCKET }}'
          - '{{`{{.Release.Name}}`}}'
          - '{{ requiredEnv "CLUSTER_NAME" }}'
-         - '{{ .Values.env.GCLOUD_PROJECT }}' 
+         - '{{ .Values.env.GCLOUD_PROJECT }}'
+         - '{{ .Values.env.CLOUD_SQL_INSTANCE }}'
+         - '{{ .Values.eventschedule.databases.eventSchedule.dbName }}' 
+         - '{{ .Values.eventschedule.databases.eventSchedule.user }}'
   - name: hierarchy-api
     namespace: {{ .Values.hierarchy.namespace }}
     chart: ./charts/hierarchy-api

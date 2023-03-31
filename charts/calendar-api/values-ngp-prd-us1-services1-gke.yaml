@@ -17,7 +17,10 @@ resources:
 database:
   mode: firestore
   instance: ngp-prd-us1-services1-sql
-  user: postgres
+  slotting:
+    user: sa-prd-ngsslotting-sql@gcp-wow-corp-qretail-ngp-prod.iam
+  placeholder:
+    user: sa-dev-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-prod.iam
   pwd: 
 
 secrets:
