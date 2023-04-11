@@ -3,3 +3,6 @@ image:
 
 secrets:
   typesenseAPIKey:
+
+pgr:
+  enabled: true

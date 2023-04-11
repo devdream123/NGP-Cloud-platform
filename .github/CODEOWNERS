@@ -11,12 +11,13 @@
 # precedence. When someone opens a pull request that only
 # modifies following file and folder, only @js-owner and not the global
 # owner(s) will be requested for a review.
-/charts/calendar-api/       @JasonKong-Quantium @qbehnamkarimi @jthain-quantium @akono-quantium @ramya-quantium @bbotros-wowcorp @dspeed-quantium @Q-Retail/q-retail-devops
-/charts/dealsheet-api/      @JasonKong-Quantium @qbehnamkarimi @jthain-quantium @akono-quantium @ramya-quantium @bbotros-wowcorp @dspeed-quantium @Q-Retail/q-retail-devops
-/charts/eventschedule-api/  @JasonKong-Quantium @qbehnamkarimi @jthain-quantium @akono-quantium @ramya-quantium @bbotros-wowcorp @dspeed-quantium @Q-Retail/q-retail-devops
-/charts/hierarchy-api/      @JasonKong-Quantium @qbehnamkarimi @Q-Retail/q-retail-devops
-/charts/graphql-mesh/       @JasonKong-Quantium @qbehnamkarimi @Q-Retail/q-retail-devops
-/charts/forecast-api/       @Q-Retail/q-retail-devops
+/charts/calendar-api/       @Q-Retail/q-retail-app-dev @Q-Retail/q-retail-devops
+/charts/dealsheet-api/      @Q-Retail/q-retail-app-dev @Q-Retail/q-retail-devops
+/charts/eventschedule-api/  @Q-Retail/q-retail-app-dev @Q-Retail/q-retail-devops
+/charts/hierarchy-api/      @Q-Retail/q-retail-app-dev @Q-Retail/q-retail-devops
+/charts/graphql-mesh/       @Q-Retail/q-retail-app-dev @Q-Retail/q-retail-devops
+/charts/forecast-api/       @Q-Retail/q-retail-devops @lsomervillewow @srichards-quantium
+/charts/pgr-api/            @Q-Retail/q-retail-devops @lsomervillewow @srichards-quantium
 /charts/frontend-ui/        @Q-Retail/q-retail-frontend @Q-Retail/q-retail-devops
 
 /charts/istio/                  @Q-Retail/q-retail-devops

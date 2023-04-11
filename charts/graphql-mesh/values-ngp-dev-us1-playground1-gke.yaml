@@ -6,3 +6,6 @@ mesh:
 
 secrets:
   typesenseAPIKey:
+
+pgr:
+  enabled: true

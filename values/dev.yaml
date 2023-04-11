@@ -37,12 +37,10 @@ forecast:
   serviceaccount: forecast-api-ksa
 
 kubeStateMetrics:
-  namespace: kube-system 
+  namespace: kube-system
 
 frontend:
   namespace: ngp-frontend
 
-gcp:
- project: gcp-wow-corp-qretail-ngp-dev
- gsa: cloud-sql
-  
+pgr:
+  namespace: ngp-analytics

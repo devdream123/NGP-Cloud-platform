@@ -42,4 +42,8 @@ releases:
         showlogs: true
         command: 'kubectl'
         args: ['label', 'ns', '{{ .Values.forecast.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
-  
+  - name: pgr-api
+    namespace: {{ .Values.pgr.namespace }}
+    chart: ./charts/pgr-api
+    values:
+      - ./charts/pgr-api/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml

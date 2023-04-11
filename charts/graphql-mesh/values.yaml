@@ -1,6 +1,7 @@
 replicaCount: 3
 
 backendNamespace: ngp-backend 
+analyticsNamespace: ngp-analytics
 
 dealSheet:
   chartName: dealsheet-api
@@ -18,6 +19,11 @@ hierarchy:
   chartName: hierarchy-api
   port: "80"
 
+pgr:
+  enabled: false
+  chartName: pgr-api
+  port: "80"
+  
 mesh:
   cors:
     origin: '*'

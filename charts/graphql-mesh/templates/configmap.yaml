@@ -67,6 +67,12 @@ data:
               X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
             {{- end }}
               X-TYPESENSE-API-KEY: '${TYPESENSE_API_KEY}'
+      {{- if .Values.pgr.enabled }}
+      - name: PGR
+        handler:
+          graphql:
+            endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.pgr.chartName .Values.analyticsNamespace .Values.pgr.port | quote }}
+      {{- end }} 
 
 {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
     additionalEnvelopPlugins: './openTelemetry'

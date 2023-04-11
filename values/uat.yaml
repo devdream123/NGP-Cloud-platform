@@ -39,7 +39,5 @@ forecast:
 frontend:
   namespace: ngp-frontend
 
-gcp:
- project: gcp-wow-corp-qretail-ngp-uat
- gsa: cloud-sql
-  
+pgr:
+  namespace: ngp-analytics

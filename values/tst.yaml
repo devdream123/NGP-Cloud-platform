@@ -42,7 +42,5 @@ kubeStateMetrics:
 frontend:
   namespace: ngp-frontend
 
-gcp:
- project: gcp-wow-corp-qretail-ngp-test
- gsa: cloud-sql
-  
+pgr:
+  namespace: ngp-analytics

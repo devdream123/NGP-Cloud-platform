@@ -10,6 +10,12 @@ function print_usage() {
   printf '\t-e | --environment (string, the name of the environment config to use during deployment)\n'
 }
 
+function check_deployment_existence () {
+  kubectl get deployments/"${1}" -n "${2}" 2> /dev/null
+  status=$?
+  return $status
+}
+
 function check_deployment_completeness () {
   status=$(kubectl rollout status deployments/"${1}" -n "${2}" -w=false)
   echo "${status}" | grep 'deployment "'${1}'" successfully rolled out' 
@@ -18,9 +24,15 @@ function check_deployment_completeness () {
 function check_all_deployments () {
   deployment_statuses=()
    
-  for deployment in "${deployments[@]}"; do 
-    check_deployment_completeness "${deployment}" "${BACKEND_SERVICES_NAMESPACE}"
-    deployment_statuses+=($?) 
+  for deployment in "${!deployments[@]}"; do 
+
+    if [[ $(check_deployment_existence "${deployment}" "${deployments["${deployment}"]}") ]]; then
+      check_deployment_completeness "${deployment}" "${deployments["${deployment}"]}"
+      deployment_statuses+=($?) 
+    else 
+      echo "deployment ${deployment} was not found in ${deployments[${deployment}]} namespace. Skipping"
+    fi
+
   done
    
   for status in "${deployment_statuses[@]}"; do
@@ -39,7 +51,14 @@ fi
 
 environment=$1
 source ${BASE_DIR}/export-env-variables.sh "${environment}"
-deployments=("calendar-api" "dealsheet-api" "eventschedule-api" "hierarchy-api")
+
+declare -A deployments
+#deployments[deployment name]="deployment k8s namespace"
+deployments["calendar-api"]="ngp-backend"
+deployments["dealsheet-api"]="ngp-backend"
+deployments["eventschedule-api"]="ngp-backend"
+deployments["hierarchy-api"]="ngp-backend"
+deployments["pgr-api"]="ngp-analytics"
 
 for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
   
