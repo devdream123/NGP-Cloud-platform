@@ -18,7 +18,7 @@ These charts are created by NGP Infrastructure squad and maintained by the NGP t
 
 ### Community-based Helm Charts
 
-These charts are obtained from open source community to enable more features i.e. *Istio Service mesh*, *Kubernetes Observability* in a Kubernetes cluster. These charts include `istio`, `istio-gateway`, `kube-state-metrics`. Github project for `kube state metrics` is [here](https://github.com/kubernetes/kube-state-metrics/tree/master/docs). <br/>
+These charts are obtained from open source community to enable more features i.e. *Istio Service mesh* in a Kubernetes cluster. These charts include `istio`, `istio-gateway`.
 **Note:**  we modified these charts for our use cases in the project and you need to take that into the account when upgrading or re-installing the chart. For more information about each chart please refer to its `README` file in the chart folder.     
 
 

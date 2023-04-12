@@ -36,9 +36,6 @@ forecast:
   namespace: ngp-analytics
   serviceaccount: forecast-api-ksa
 
-kubeStateMetrics:
-  namespace: kube-system
-
 frontend:
   namespace: ngp-frontend
 
