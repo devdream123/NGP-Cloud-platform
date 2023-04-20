@@ -1,8 +1,6 @@
 image:
   tag: 1.45.4-prd
 
-projectId: "gcp-wow-corp-qretail-ngp-prod"
-
 server:
   proxyHost: ingress-gateway.prd.int.wiqretail.com
   featureFlagsEnvironment: prd

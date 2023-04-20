@@ -1,8 +1,6 @@
 image:
   tag: 284d513
 
-projectId: "gcp-wow-corp-qretail-ngp-dev"
-
 server:
   proxyHost: ingress-gateway.dev.int.wiqretail.com
   featureFlagsEnvironment: dev

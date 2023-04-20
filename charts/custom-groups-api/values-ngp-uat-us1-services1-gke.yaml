@@ -1,0 +1,7 @@
+image:
+  tag: "98313df"
+
+sql:
+  instance: ngp-uat-us1-services1-sql
+  customGroupsDB:
+    user: sa-uat-fe-microservices@gcp-wow-corp-qretail-ngp-uat.iam

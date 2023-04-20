@@ -32,6 +32,18 @@ releases:
     namespace: {{ .Values.frontend.namespace }}
     values:
       - ./charts/frontend-ui/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
+      - projectId: {{ .Values.env.GCLOUD_PROJECT }}
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.frontend.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
+  - name: custom-groups-api
+    chart: ./charts/custom-groups-api
+    namespace: {{ .Values.frontend.namespace }}
+    values:
+      - ./charts/custom-groups-api/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
+      - projectId: {{ .Values.env.GCLOUD_PROJECT }}
     hooks:
       - events: ['postsync']
         showlogs: true

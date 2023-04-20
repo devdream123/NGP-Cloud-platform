@@ -1,0 +1,7 @@
+image:
+  tag: "620314f"
+
+sql:
+  instance: ngp-tst-us1-services1-sql
+  customGroupsDB:
+    user: sa-tst-fe-microservices@gcp-wow-corp-qretail-ngp-test.iam

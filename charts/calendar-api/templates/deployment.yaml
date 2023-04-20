@@ -100,6 +100,10 @@ spec:
             "--private-ip",
             "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
           ]
+          securityContext:
+            runAsNonRoot: true
+          resources:
+            {{- toYaml .Values.database.proxyResources | nindent 12 }}
             {{- end }}
         {{- end }}
       {{- with .Values.nodeSelector }}
