@@ -21,7 +21,6 @@ database:
   instance: ngp-us1-services1-sql
   port: "5432"
   user: postgres
-  pwd: ""
   db: ngsEventSchedule
   schema: public
   server: localhost

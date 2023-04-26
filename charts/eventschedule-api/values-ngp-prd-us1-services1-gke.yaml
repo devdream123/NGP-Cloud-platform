@@ -12,4 +12,3 @@ database:
   mode: postgres
   instance: ngp-prd-us1-services1-sql
   user: postgres
-  pwd: 
