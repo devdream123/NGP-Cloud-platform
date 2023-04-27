@@ -17,7 +17,7 @@ runValidation: True
 database:
   auth: iam
   instance: ngp-tst-us1-services1-sql
-  user: sa-tst-qforecast-sql@gcp-wow-corp-qretail-ngp-test.iam
+  user: cloud-sql@gcp-wow-corp-qretail-ngp-test.iam
   pwd: 
   schema: public_20221010_3
   proxyVersion: "2.1.1"
