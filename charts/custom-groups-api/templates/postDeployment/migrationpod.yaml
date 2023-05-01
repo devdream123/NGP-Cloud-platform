@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pob
+metadata:
+  name: "{{ .Release.Name }}"
+  labels:
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/instance: {{ .Release.Name | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # pod is considered part of the release.
+    "helm.sh/hook": post-install
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  restartPolicy: Never
+  containers:
+    - name: cloud-sql-proxy
+      image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.sql.proxyVersion }}"
+      command: [
+            "/cloud-sql-proxy",
+            "--auto-iam-authn",
+            "--private-ip",
+            "--port={{ .Values.sql.customGroupsDB.proxyPort }}",
+            "--impersonate-service-account={{ .Values.sql.customGroupsDB.user }}.gserviceaccount.com",
+            "{{ .Values.projectId }}:{{ .Values.sql.region }}:{{ .Values.sql.instance }}"
+          ]
+    - name: db-migrator
+      envFrom:
+        - configMapRef:
+            name: {{ include "custom-groups-api.fullname" . }}-cm
+      image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+      imagePullPolicy: {{ .Values.image.pullPolicy }}
+      command: ["/bin/sh"]
+      args: ["-c", "cd services/custom-groups & pnpm sequelize-cli db:migrate"]
