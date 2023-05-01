@@ -73,6 +73,12 @@ data:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.pgr.chartName .Values.analyticsNamespace .Values.pgr.port | quote }}
       {{- end }} 
+       {{- if .Values.customGroups.enabled }}
+      - name: CustomGroups
+        handler:
+          graphql:
+            endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.customGroups.chartName .Values.frontendNamespace .Values.customGroups.port | quote }}
+      {{- end }} 
 
 {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
     additionalEnvelopPlugins: './openTelemetry'

@@ -9,3 +9,12 @@ secrets:
 
 pgr:
   enabled: true
+
+customGroups:
+  enabled: true
+
+server:
+  otelServiceName: "ngp-graphql-tst"
+  otelResourceAttributes: "deployment.environment=tst"
+  splunkProfilerEnabled: 'false'
+  splunkProfilerMemoryEnabled: 'false'
