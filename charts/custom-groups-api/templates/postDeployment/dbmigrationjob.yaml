@@ -39,5 +39,5 @@ spec:
               name: {{ include "custom-groups-api.fullname" . }}-cm
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        command: ["/bin/sh"]
-        args: ["-c", "cd services/custom-groups & pnpm sequelize-cli db:migrate"]
+        command: ["/bin/sh", "-c"]
+        args: [cd services/custom-groups; pnpm sequelize-cli db:migrate"]
