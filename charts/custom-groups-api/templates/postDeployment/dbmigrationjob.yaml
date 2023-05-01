@@ -13,7 +13,7 @@ metadata:
     "helm.sh/hook": post-install,post-upgrade
     "helm.sh/hook-delete-policy": hook-succeeded
 spec:
-  ttlSecondsAfterFinished: 600
+  ttlSecondsAfterFinished: 60
   template:
     metadata:
       name: "{{ .Release.Name }}"
@@ -41,4 +41,4 @@ spec:
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/bin/sh", "-c"]
-        args: ["cd services/custom-groups; pnpm sequelize-cli db:migrate && pnpm sequelize-cli db:seed:all"]
+        args: ["cd services/custom-groups; pnpm sequelize-cli db:migrate"]
