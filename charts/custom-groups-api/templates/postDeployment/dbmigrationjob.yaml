@@ -22,22 +22,22 @@ spec:
         helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     spec:
       restartPolicy: Never
-  containers:
-    - name: cloud-sql-proxy
-      image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.sql.proxyVersion }}"
-      command: [
-            "/cloud-sql-proxy",
-            "--auto-iam-authn",
-            "--private-ip",
-            "--port={{ .Values.sql.customGroupsDB.proxyPort }}",
-            "--impersonate-service-account={{ .Values.sql.customGroupsDB.user }}.gserviceaccount.com",
-            "{{ .Values.projectId }}:{{ .Values.sql.region }}:{{ .Values.sql.instance }}"
-          ]
-    - name: db-migrator-job
-      envFrom:
-        - configMapRef:
+      containers:
+      - name: cloud-sql-proxy
+        image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.sql.proxyVersion }}"
+        command: [
+                "/cloud-sql-proxy",
+                "--auto-iam-authn",
+                "--private-ip",
+                "--port={{ .Values.sql.customGroupsDB.proxyPort }}",
+                "--impersonate-service-account={{ .Values.sql.customGroupsDB.user }}.gserviceaccount.com",
+                "{{ .Values.projectId }}:{{ .Values.sql.region }}:{{ .Values.sql.instance }}"
+            ]
+      - name: db-migrator-job
+        envFrom:
+          - configMapRef:
             name: {{ include "custom-groups-api.fullname" . }}-cm
-      image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-      imagePullPolicy: {{ .Values.image.pullPolicy }}
-      command: ["/bin/sh"]
-      args: ["-c", "cd services/custom-groups & pnpm sequelize-cli db:migrate"]
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command: ["/bin/sh"]
+        args: ["-c", "cd services/custom-groups & pnpm sequelize-cli db:migrate"]
