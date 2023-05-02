@@ -24,22 +24,45 @@ spec:
         sidecar.istio.io/inject: "false"
     spec:
       restartPolicy: Never
+      volumes:
+      - name: job-status
+        emptyDir:
+          sizeLimit: 500Mi
       containers:
       - name: cloud-sql-proxy
-        image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.sql.proxyVersion }}"
-        command: [
-                "/cloud-sql-proxy",
-                "--auto-iam-authn",
-                "--private-ip",
-                "--port={{ .Values.sql.customGroupsDB.proxyPort }}",
-                "--impersonate-service-account={{ .Values.sql.customGroupsDB.user }}.gserviceaccount.com",
-                "{{ .Values.projectId }}:{{ .Values.sql.region }}:{{ .Values.sql.instance }}"
-            ]
+        volumeMounts:
+        - mountPath : /tmp
+          name: job-status
+        image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.sql.proxyVersion }}-alpine"
+        command: ["/bin/sh"]
+        args:
+          - -c
+          - >-
+              /cloud-sql-proxy \
+              --auto-iam-authn \
+              --private-ip \
+              --port={{ .Values.sql.customGroupsDB.proxyPort }} \
+              --impersonate-service-account={{ .Values.sql.customGroupsDB.user }}.gserviceaccount.com \
+              {{ .Values.projectId }}:{{ .Values.sql.region }}:{{ .Values.sql.instance }} &
+              until [ -f /tmp/job-result.log ];
+              do
+                 echo "waiting for migration job to be completed"
+                 sleep 10
+              done
+              exit 0
       - name: db-migrator-job
+        volumeMounts:
+        - mountPath: /tmp
+          name: job-status
         envFrom:
           - configMapRef:
               name: {{ include "custom-groups-api.fullname" . }}-cm
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.image.pullPolicy }}
-        command: ["/bin/sh", "-c"]
-        args: ["cd services/custom-groups; pnpm sequelize-cli db:migrate"]
+        command: ["/bin/sh"]
+        args:
+         - -c
+         - >-
+             cd services/custom-groups;
+             pnpm sequelize-cli db:migrate;
+             echo "Job is done" > /tmp/job-result.log
