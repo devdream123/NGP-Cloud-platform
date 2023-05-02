@@ -9,3 +9,6 @@ secrets:
 
 pgr:
   enabled: true
+
+customGroups:
+  enabled: true
