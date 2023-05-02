@@ -49,7 +49,6 @@ spec:
                  echo "waiting for migration job to be completed"
                  sleep 10
               done
-              exit 0
       - name: db-migrator-job
         volumeMounts:
         - mountPath: /tmp
