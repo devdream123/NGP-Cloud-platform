@@ -39,11 +39,11 @@ spec:
           - -c
           - >-
               /cloud-sql-proxy \
-              --auto-iam-authn \
-              --private-ip \
-              --port={{ .Values.sql.customGroupsDB.proxyPort }} \
-              --impersonate-service-account={{ .Values.sql.customGroupsDB.user }}.gserviceaccount.com \
-              {{ .Values.projectId }}:{{ .Values.sql.region }}:{{ .Values.sql.instance }} &
+                --auto-iam-authn \
+                --private-ip \
+                --port={{ .Values.sql.customGroupsDB.proxyPort }} \
+                --impersonate-service-account={{ .Values.sql.customGroupsDB.user }}.gserviceaccount.com \
+                {{ .Values.projectId }}:{{ .Values.sql.region }}:{{ .Values.sql.instance }} &
               until [ -f /tmp/job-result.log ];
               do
                  echo "waiting for migration job to be completed"
