@@ -18,3 +18,4 @@ data:
   NgpAssortmentConfiguration__FileName: {{ .Values.ngpAssortmentConfiguration.fileName | quote }}
   NgpAssortmentConfiguration__UseNgpAssortmentFile: {{ .Values.ngpAssortmentConfiguration.useNgpAssortmentFile | quote }}
   AppConfiguration__Version: {{ .Values.appVersion | quote }}
+  PLACEHOLDER_API_URL: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.calendarChartName .Values.backendNamespace | quote  }}

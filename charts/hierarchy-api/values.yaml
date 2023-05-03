@@ -70,3 +70,6 @@ PodDisruptionBudget:
 
 secrets:
   typesenseAPIKey:
+
+calendarChartName: calendar-api
+backendNamespace: ngp-backend
