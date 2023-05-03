@@ -1,5 +1,5 @@
 image:
-  tag: "c95b91b"
+  tag: "latest"
 
 sql:
   instance: ngp-tst-us1-services1-sql
