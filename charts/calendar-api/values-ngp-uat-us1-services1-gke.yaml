@@ -1,5 +1,5 @@
 image:
-  tag: v1.46.2-hotfix-3
+  tag: v1.46.2-hotfix-4
 
 firestore:
   calendarSettings:
