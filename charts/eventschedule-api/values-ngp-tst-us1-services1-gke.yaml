@@ -8,3 +8,4 @@ database:
   auth: iam
   instance: ngp-tst-us1-services1-sql
   user: sa-tst-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-test.iam
+  pwd: 
