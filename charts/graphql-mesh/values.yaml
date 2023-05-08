@@ -2,6 +2,7 @@ replicaCount: 3
 
 backendNamespace: ngp-backend 
 analyticsNamespace: ngp-analytics
+frontendNamespace: ngp-frontend
 
 dealSheet:
   chartName: dealsheet-api
@@ -23,6 +24,11 @@ pgr:
   enabled: false
   chartName: pgr-api
   port: "80"
+
+customGroups:
+  enabled: false
+  chartName: custom-groups-api
+  port: "4000"
   
 mesh:
   cors:

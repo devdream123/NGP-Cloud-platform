@@ -59,6 +59,7 @@ deployments["dealsheet-api"]="ngp-backend"
 deployments["eventschedule-api"]="ngp-backend"
 deployments["hierarchy-api"]="ngp-backend"
 deployments["pgr-api"]="ngp-analytics"
+deployments["custom-groups-api"]="ngp-frontend"
 
 for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
   
