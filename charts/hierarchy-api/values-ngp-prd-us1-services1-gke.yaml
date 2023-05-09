@@ -1,8 +1,6 @@
 image:
   tag: "07-12-2022"
 
-replicaCount: 3
-
 firestoreCollectionName: "placeholders"
 appVersion: "v1"
 
