@@ -1,7 +1,7 @@
 appVersion: v2
 
 image:
-  tag: v0.0.52-dev
+  tag: v0.0.53-dev
 
 database:
   mode: postgres
