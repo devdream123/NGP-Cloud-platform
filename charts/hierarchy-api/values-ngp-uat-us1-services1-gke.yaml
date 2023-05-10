@@ -8,6 +8,6 @@ secrets:
 
 ngpAssortmentConfiguration:
   bucket: "qr_ngp_data_central"
-  filePath: "release_data/calendar/20230301_1"
+  filePath: "release_data/calendar/20230505_3_uat"
   fileName: "pf_codes.csv"
   useNgpAssortmentFile: true
