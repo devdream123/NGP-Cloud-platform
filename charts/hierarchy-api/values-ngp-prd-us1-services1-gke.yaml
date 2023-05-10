@@ -2,7 +2,6 @@ image:
   tag: "07-12-2022"
 
 firestoreCollectionName: "placeholders"
-appVersion: "v1"
 
 resources:
   limits:
