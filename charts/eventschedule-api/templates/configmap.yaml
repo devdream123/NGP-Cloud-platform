@@ -11,3 +11,4 @@ data:
   FirestoreSettings__RootCollectionName: {{ .Values.firestore.eventScheduleCollection | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ASPNETCORE_URLS: http://*:{{ .Values.service.port }}
+  ConnectionStrings__EventScheduleDb: {{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}

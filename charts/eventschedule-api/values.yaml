@@ -15,13 +15,10 @@ eventschedule-api:
 appVersion: v1
 
 database:
-  mode: postgres
-  auth: builtin
   region: us-central1
   instance: ngp-us1-services1-sql
   port: "5432"
   user: postgres
-  pwd: ""
   db: ngsEventSchedule
   schema: public
   server: localhost

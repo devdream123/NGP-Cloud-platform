@@ -34,9 +34,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "eventschedule-api.fullname" . }}-cm
-          env:
-            - name: ConnectionStrings__EventScheduleDb
-              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -56,10 +53,8 @@ spec:
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-        {{- if eq .Values.database.mode "postgres" }}
         - name: cloud-sql-proxy
           image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.database.proxyVersion }}"
-            {{- if eq .Values.database.auth "iam" }}
           command: [
             "/cloud-sql-proxy",
             "--auto-iam-authn",
@@ -67,18 +62,10 @@ spec:
             "--impersonate-service-account={{ .Values.database.user }}.gserviceaccount.com",
             "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
           ]
-            {{- else }}
-          command: [
-            "/cloud-sql-proxy",
-            "--private-ip",
-            "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
-          ]
-            {{- end }}
           securityContext:
             runAsNonRoot: true
           resources:
             {{- toYaml .Values.database.proxyResources | nindent 12 }}
-        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

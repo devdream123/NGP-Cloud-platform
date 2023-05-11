@@ -4,8 +4,5 @@ image:
   tag: v1.47.4-dev
 
 database:
-  mode: postgres
-  auth: iam
   instance: ngp-tst-us1-services1-sql
   user: sa-tst-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-test.iam
-  pwd: 
