@@ -1,5 +1,5 @@
 image:
-  tag: v0.0.55-dev
+  tag: v1.51.1-dev
 
 appVersion: v3
 
@@ -21,9 +21,7 @@ database:
   user: sa-dev-ngsslotting-sql@gcp-wow-corp-qretail-ngp-dev.iam
   pwd: 
   proxyVersion: "2.1.1"
-  slotting:
-    user: sa-dev-ngsslotting-sql@gcp-wow-corp-qretail-ngp-dev.iam
-    dbName: ngsSlottingTemp
+  db: ngsSlottingTemp
 
 secrets:
   typesenseAPIKey:
