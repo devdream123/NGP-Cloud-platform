@@ -3,3 +3,4 @@ charts-rendered
 outputs
 .DS_Store
 .vscode/settings.json
+.idea/
