@@ -1,7 +1,7 @@
 image:
-  tag: v1.51.3-dev
+  tag: v0.51.4-dev
 
-  appVersion: v3
+appVersion: v3
 
 firestore:
   calendarSettings:
