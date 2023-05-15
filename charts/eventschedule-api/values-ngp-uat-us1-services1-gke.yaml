@@ -4,7 +4,5 @@ image:
 appVersion: v2
 
 database:
-  mode: postgres
   instance: ngp-uat-us1-services1-sql
-  user: postgres
-  pwd: 
+  user: sa-uat-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-uat.iam

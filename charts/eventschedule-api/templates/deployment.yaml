@@ -34,19 +34,6 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "eventschedule-api.fullname" . }}-cm
-          env:
-            {{- if ne .Values.database.auth "iam" }}
-            - name: DATABASE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "eventschedule-api.fullname" . }}-secrets
-                  key: db-password
-            - name: ConnectionStrings__EventScheduleDb
-              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=$(DATABASE_PASSWORD)" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}"
-            {{- else }}
-            - name: ConnectionStrings__EventScheduleDb
-              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}"
-            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -66,11 +53,8 @@ spec:
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-        {{- if eq .Values.database.mode "postgres" }}
         - name: cloud-sql-proxy
-          {{- if semverCompare ">= 2.0.0" .Values.database.proxyVersion }}
           image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.database.proxyVersion }}"
-            {{- if eq .Values.database.auth "iam" }}
           command: [
             "/cloud-sql-proxy",
             "--auto-iam-authn",
@@ -78,25 +62,10 @@ spec:
             "--impersonate-service-account={{ .Values.database.user }}.gserviceaccount.com",
             "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
           ]
-            {{- else }}
-          command: [
-            "/cloud-sql-proxy",
-            "--private-ip",
-            "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
-          ]
-            {{- end }}
-          {{- else }}
-          image: "gcr.io/cloudsql-docker/gce-proxy:{{ .Values.database.proxyVersion }}"
-          command:
-            - "/cloud_sql_proxy"
-            - "-instances={{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}=tcp:{{ .Values.database.port }}"
-            - "-ip_address_types=PRIVATE"
-          {{- end }}
           securityContext:
             runAsNonRoot: true
           resources:
             {{- toYaml .Values.database.proxyResources | nindent 12 }}
-        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
