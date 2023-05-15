@@ -1,5 +1,7 @@
 image:
-  tag: v1.50.9-dev
+  tag: v1.51.3-dev
+
+  appVersion: v3
 
 firestore:
   calendarSettings:
@@ -16,6 +18,7 @@ database:
   user: sa-dev-ngsslotting-sql@gcp-wow-corp-qretail-ngp-dev.iam
   pwd: 
   proxyVersion: "2.1.1"
+  db: ngsSlottingTemp
 
 secrets:
   typesenseAPIKey:

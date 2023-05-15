@@ -1,7 +1,7 @@
 appVersion: v2
 
 image:
-  tag: v1.50.9-dev
+  tag: v1.51.3-dev
 
 database:
   instance: ngp-dev-us1-services1-sql
