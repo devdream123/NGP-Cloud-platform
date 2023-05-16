@@ -1,6 +1,3 @@
-asm:
-  rev: asm-managed
-
 VirtualServices: 
   name: services-ingress-rules
   spec: 
