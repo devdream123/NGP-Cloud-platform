@@ -3,7 +3,7 @@ gateways:
 namespace: asm-gateway
 
 asm:
-  rev: ""
+  rev: asm-managed
 
 servers:
     port: 
