@@ -1,11 +1,11 @@
 image:
-  tag: 1.47.2-uat
+  tag: 1.47.3-uat
 
 server:
   proxyHost: ingress-gateway.uat.int.wiqretail.com
   featureFlagsEnvironment: uat
   image:
-    tag: 1.47.2-uat
+    tag: 1.47.3-uat
 
 secrets:
   typesenseAPIKey:
