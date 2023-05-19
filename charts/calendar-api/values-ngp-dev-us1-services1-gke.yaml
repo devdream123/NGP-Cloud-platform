@@ -1,5 +1,5 @@
 image:
-  tag: v0.51.4-dev
+  tag: v1.51.6-dev
 
 appVersion: v3
 
@@ -16,7 +16,7 @@ database:
   instance: ngp-dev-us1-services1-sql
   slotting:
     user: sa-dev-ngsslotting-sql@gcp-wow-corp-qretail-ngp-dev.iam
-    dbName: ngsSlottingTemp
+    dbName: ngsSlotting
   placeholder:
     user: sa-dev-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-dev.iam
   pwd:
