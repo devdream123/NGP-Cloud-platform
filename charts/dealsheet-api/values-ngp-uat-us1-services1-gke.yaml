@@ -10,10 +10,8 @@ firestore:
     maximumDegreeOfParallelism: 1
     
 database:
-  mode: postgres
   instance: ngp-uat-us1-services1-sql
-  user: postgres
-  pwd: 
+  user: sa-uat-ngsslotting-sql@gcp-wow-corp-qretail-ngp-uat.iam
 
 secrets:
   typesenseAPIKey:
