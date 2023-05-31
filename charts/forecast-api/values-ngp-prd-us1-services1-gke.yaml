@@ -1,7 +1,7 @@
 projectId: gcp-wow-corp-qretail-ngp-prod
 
 image:
-  tag: 1.44.2
+  tag: 1.51.2
 
 resources:
   requests:
@@ -19,6 +19,6 @@ database:
   user: cloud-sql@gcp-wow-corp-qretail-ngp-prod.iam
   pwd: 
   db: qforecast
-  schema: public_20230105_1
+  schema: public_20230530_1
   host: "forecast-api-db.prd.int.wiqretail.com"
-  proxyVersion: "2.0.0"
+  proxyVersion: "2.1.1"
