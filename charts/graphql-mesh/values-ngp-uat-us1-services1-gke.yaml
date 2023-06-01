@@ -1,8 +1,5 @@
 image:
   tag: "1.30.0"
 
-pgr:
-  enabled: true
-
 secrets:
   typesenseAPIKey:
