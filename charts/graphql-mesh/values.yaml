@@ -21,7 +21,6 @@ hierarchy:
   port: "80"
 
 pgr:
-  enabled: false
   chartName: pgr-api
   port: "80"
 

@@ -7,8 +7,5 @@ mesh:
 secrets:
   typesenseAPIKey:
 
-pgr:
-  enabled: true
-
 customGroups:
   enabled: true
