@@ -1,10 +1,10 @@
 image:
-  tag: "dfbe377"
+  tag: "d5a1c67"
 server:
   proxyHost: ingress-gateway.dev.int.wiqretail.com
   featureFlagsEnvironment: dev
   image:
-    tag: "dfbe377"
+    tag: "d5a1c67"
 secrets:
   typesenseAPIKey:
 service:
