@@ -59,3 +59,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+otel:
+  serviceName: "pgr-api"
+  resourceAttributes: ""
+  tracesExporter: otlp
+  propagators: "tracecontext"
+  logLevel: info

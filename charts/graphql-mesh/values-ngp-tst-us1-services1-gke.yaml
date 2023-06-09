@@ -9,3 +9,6 @@ secrets:
 
 customGroups:
   enabled: true
+
+otel:
+  resourceAttributes: "deployment.environment=tst"

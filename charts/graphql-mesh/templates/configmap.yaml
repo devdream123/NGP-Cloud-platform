@@ -8,6 +8,14 @@ data:
   TELEMETRY_PORT: {{ .Values.server.telemetryPort | quote }}
   NODE_OPTIONS: {{ .Values.server.nodeOptions | quote }}
   DEBUG: {{ .Values.server.debug | quote }}
+  OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
+  OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
+  OTEL_TRACES_EXPORTER: {{ .Values.otel.tracesExporter | quote }}
+  OTEL_PROPAGATORS: {{ .Values.otel.propagators | quote }}
+  OTEL_LOG_LEVEL: {{ .Values.otel.logLevel | quote }}
+  SPLUNK_METRICS_ENABLED: {{ .Values.splunk.metricsEnabled | default "false" | quote }}
+  SPLUNK_PROFILER_ENABLED: {{ .Values.splunk.profilerEnabled | quote }}
+  SPLUNK_PROFILER_MEMORY_ENABLED: {{ .Values.splunk.profilerMemoryEnabled | quote }}
 
 ---
 apiVersion: v1

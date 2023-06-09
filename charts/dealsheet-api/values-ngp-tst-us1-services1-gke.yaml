@@ -17,6 +17,9 @@ database:
   pwd: 
   proxyVersion: "2.1.1"
 
+otel:
+  resourceAttributes: "deployment.environment=tst"
+
 secrets:
   typesenseAPIKey:
   

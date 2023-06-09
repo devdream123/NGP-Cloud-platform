@@ -1,2 +1,5 @@
 image:
   tag: "pgr-1.50.2"
+
+otel:
+  resourceAttributes: "deployment.environment=dev"

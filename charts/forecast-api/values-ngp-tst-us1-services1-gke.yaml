@@ -15,9 +15,9 @@ environment: testing
 runValidation: True
 
 database:
-  auth: iam
   instance: ngp-tst-us1-services1-sql
   user: cloud-sql@gcp-wow-corp-qretail-ngp-test.iam
-  pwd: 
   schema: public_20221010_3
-  proxyVersion: "2.1.1"
+
+otel:
+  resourceAttributes: "deployment.environment=tst"

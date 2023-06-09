@@ -15,9 +15,9 @@ environment: production
 runValidation: True
 
 database:
-  auth: iam
   instance: ngp-dev-us1-services1-sql
   user: cloud-sql@gcp-wow-corp-qretail-ngp-dev.iam
-  pwd: 
   schema: public_20230530_1
-  proxyVersion: "2.1.1"
+
+otel:
+  resourceAttributes: "deployment.environment=dev"

@@ -64,5 +64,18 @@ server:
     pullPolicy: Always
     tag: ""
 
+otel:
+  serviceName: "frontend-ui"
+  resourceAttributes: ""
+  tracesExporter: "otlp"
+  tracesSampler: "always_on"
+  propagators: "tracecontext"
+  logLevel: "info"
+
+splunk:
+  metricsEnabled: false
+  profilerEnabled: false
+  profilerMemoryEnabled: false
+
 secrets:
   typesenseAPIKey:

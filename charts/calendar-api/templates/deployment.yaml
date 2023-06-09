@@ -41,6 +41,12 @@ spec:
               value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.slotting.proxyPort .Values.database.slotting.dbName .Values.database.slotting.user }}"
             - name: ConnectionStrings__PlaceholderDb
               value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.placeholder.proxyPort .Values.database.placeholder.dbName .Values.database.placeholder.user }}"
+            - name: SPLUNK_OTEL_AGENT
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://$(SPLUNK_OTEL_AGENT):4318"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

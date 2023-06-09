@@ -20,16 +20,14 @@ appServer:
 
 database:
   mode: postgres
-  auth: builtin
   region: us-central1
   instance: forecast-api-db
   port: "5432"
-  user: postgres
-  pwd: ""
+  user: ""
   db: qforecast
-  schema: public
+  schema: ""
   server: localhost
-  proxyVersion: "1.33.4"
+  proxyVersion: "2.1.1"
   proxyResources:
     requests:
       memory: "32Mi"
@@ -77,3 +75,10 @@ PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
 
 runValidation: False
+
+otel:
+  serviceName: "forecast-api"
+  resourceAttributes: ""
+  tracesExporter: otlp
+  propagators: "tracecontext"
+  logLevel: info

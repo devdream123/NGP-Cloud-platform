@@ -53,15 +53,15 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "forecast-api.fullname" . }}-cm
-            {{- if ne .Values.database.auth "iam" }}
-            - secretRef:
-                name: {{ include "forecast-api.fullname" . }}-secrets
-            {{- end }}
-        {{- if eq .Values.database.mode "postgres" }}
+          env:
+            - name: SPLUNK_OTEL_AGENT
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://$(SPLUNK_OTEL_AGENT):4317"
         - name: cloud-sql-proxy
-          {{- if semverCompare ">= 2.0.0" .Values.database.proxyVersion }}
           image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.database.proxyVersion }}"
-            {{- if eq .Values.database.auth "iam" }}
           command: [
             "/cloud-sql-proxy",
             "--auto-iam-authn",
@@ -69,25 +69,10 @@ spec:
             "--impersonate-service-account={{ .Values.database.user }}.gserviceaccount.com",
             "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
           ]
-            {{- else }}
-          command: [
-            "/cloud-sql-proxy",
-            "--private-ip",
-            "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
-          ]
-            {{- end }}
-          {{- else }}
-          image: "gcr.io/cloudsql-docker/gce-proxy:{{ .Values.database.proxyVersion }}"
-          command:
-            - "/cloud_sql_proxy"
-            - "-instances={{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}=tcp:{{ .Values.database.port }}"
-            - "-ip_address_types=PRIVATE"
-          {{- end }}
           securityContext:
             runAsNonRoot: true
           resources:
             {{- toYaml .Values.database.proxyResources | nindent 12 }}
-        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

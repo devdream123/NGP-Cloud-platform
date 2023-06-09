@@ -111,5 +111,13 @@ firestore:
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
 
+otel:
+  serviceName: "dealsheet-api"
+  resourceAttributes: ""
+  tracesExporter: "otlp"
+  tracesSampler: "always_on"
+  propagators: "tracecontext"
+  logLevel: "info"
+
 secrets:
   typesenseAPIKey:

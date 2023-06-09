@@ -37,6 +37,13 @@ spec:
                 name: {{ include "mesh.fullname" . }}-env-cm
             - secretRef:
                 name: {{ include "mesh.fullname" . }}-secrets
+          env:
+            - name: SPLUNK_OTEL_AGENT
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://$(SPLUNK_OTEL_AGENT):4317"
           volumeMounts:
             - mountPath: /mesh/.meshrc.yaml
               name: {{ include "mesh.fullname" . }}-meshrc-cm
