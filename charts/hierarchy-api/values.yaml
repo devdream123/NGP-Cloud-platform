@@ -59,6 +59,23 @@ typesenseConfiguration:
   protocol: http
   batchSize: 5000
 
+proxyConfiguration:
+  enabled: false
+  host: localhost
+  port: "80"
+  protocol: http
+  image:
+    repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/nginx-otel"
+    pullPolicy: Always
+    tag: "1.22.1"
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 256Mi
+      cpu: 100m
+
 ngpAssortmentConfiguration:
   bucket: ""
   filePath: ""
@@ -69,6 +86,12 @@ collectionName: CHECKOUT_SUPER_PRODUCT
 
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+
+otel:
+  environment: null
+  propagateB3Headers: false
+  serviceName: "hierarchy-api"
+  tracesExporter: "otlp"
 
 secrets:
   typesenseAPIKey:

@@ -6,8 +6,14 @@ firestoreCollectionName: "placeholders"
 secrets:
   typesenseAPIKey:
 
+proxyConfiguration:
+  enabled: true
+
 ngpAssortmentConfiguration:
   bucket: "qr_ngp_data_central"
   filePath: "release_data/calendar/20230530_1_uat"
   fileName: "pf_codes.csv"
   useNgpAssortmentFile: true
+
+otel:
+  environment: "dev"
