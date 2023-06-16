@@ -7,4 +7,5 @@ sql:
     user: sa-dev-fe-microservices@gcp-wow-corp-qretail-ngp-dev.iam
 
 otel:
+  enabled: True
   resourceAttributes: "deployment.environment=dev"

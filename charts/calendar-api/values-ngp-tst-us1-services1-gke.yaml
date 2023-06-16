@@ -19,6 +19,7 @@ database:
   pwd:
 
 otel:
+  enabled: True
   resourceAttributes: "deployment.environment=tst"
 
 secrets:

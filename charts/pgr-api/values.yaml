@@ -61,6 +61,7 @@ tolerations: []
 affinity: {}
 
 otel:
+  enabled: False
   serviceName: "pgr-api"
   resourceAttributes: ""
   tracesExporter: otlp

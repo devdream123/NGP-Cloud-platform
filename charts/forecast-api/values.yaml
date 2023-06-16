@@ -77,6 +77,7 @@ PodDisruptionBudget:
 runValidation: False
 
 otel:
+  enabled: False
   serviceName: "forecast-api"
   resourceAttributes: ""
   tracesExporter: otlp

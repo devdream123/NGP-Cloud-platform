@@ -34,6 +34,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "eventschedule-api.fullname" . }}-cm
+          {{- if .Values.otel.enabled }}
           env:
             - name: SPLUNK_OTEL_AGENT
               valueFrom:
@@ -41,6 +42,7 @@ spec:
                   fieldPath: status.hostIP
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: "http://$(SPLUNK_OTEL_AGENT):4318"
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

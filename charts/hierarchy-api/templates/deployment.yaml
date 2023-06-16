@@ -60,11 +60,13 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.proxyConfiguration.image.repository }}:{{ .Values.proxyConfiguration.image.tag }}"
           imagePullPolicy: {{ .Values.proxyConfiguration.image.pullPolicy }}
+          {{- if .Values.otel.enabled }}
           env:
             - name: SPLUNK_OTEL_AGENT
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

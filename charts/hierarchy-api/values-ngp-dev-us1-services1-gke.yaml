@@ -16,4 +16,5 @@ ngpAssortmentConfiguration:
   useNgpAssortmentFile: true
 
 otel:
+  enabled: True
   environment: "dev"

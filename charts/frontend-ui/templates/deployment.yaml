@@ -50,6 +50,7 @@ spec:
                 name: {{ include "frontend-ui.fullname" . }}-cm
             - secretRef:
                 name: {{ include "frontend-ui.fullname" . }}-secrets
+          {{- if .Values.otel.enabled }}
           env:
             - name: SPLUNK_OTEL_AGENT
               valueFrom:
@@ -57,6 +58,7 @@ spec:
                   fieldPath: status.hostIP
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: "http://$(SPLUNK_OTEL_AGENT):4317"
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.server.targetPort }}

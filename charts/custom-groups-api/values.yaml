@@ -77,6 +77,7 @@ sql:
       cpu: "50m"
 
 otel:
+  enabled: False
   serviceName: "custom-groups-api"
   resourceAttributes: ""
   tracesExporter: "otlp"

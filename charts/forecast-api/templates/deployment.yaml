@@ -53,6 +53,7 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "forecast-api.fullname" . }}-cm
+          {{- if .Values.otel.enabled }}
           env:
             - name: SPLUNK_OTEL_AGENT
               valueFrom:
@@ -60,6 +61,7 @@ spec:
                   fieldPath: status.hostIP
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: "http://$(SPLUNK_OTEL_AGENT):4317"
+          {{- end }}
         - name: cloud-sql-proxy
           image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.database.proxyVersion }}"
           command: [

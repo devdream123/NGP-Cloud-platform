@@ -32,6 +32,7 @@ data:
   DOTNET_ADDITIONAL_DEPS: "/root/.splunk-otel-dotnet/AdditionalDeps"
   DOTNET_SHARED_STORE: "/root/.splunk-otel-dotnet/store"
   DOTNET_STARTUP_HOOKS: "/root/.splunk-otel-dotnet/net/OpenTelemetry.AutoInstrumentation.StartupHook.dll"
+  {{- if .Values.otel.enabled }}
   OTEL_DOTNET_AUTO_PLUGINS: "Splunk.OpenTelemetry.AutoInstrumentation.Plugin, Splunk.OpenTelemetry.AutoInstrumentation"
   OTEL_DOTNET_AUTO_HOME: "/root/.splunk-otel-dotnet"
   OTEL_DOTNET_AUTO_INTEGRATIONS_FILE: "/root/.splunk-otel-dotnet/integrations.json"
@@ -41,3 +42,4 @@ data:
   OTEL_TRACES_SAMPLER: {{ .Values.otel.tracesSampler | quote }}
   OTEL_PROPAGATORS: {{ .Values.otel.propagators | quote }}
   OTEL_LOG_LEVEL: {{ .Values.otel.logLevel | quote }}
+  {{- end }}

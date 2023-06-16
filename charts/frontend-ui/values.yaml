@@ -65,6 +65,7 @@ server:
     tag: ""
 
 otel:
+  enabled: False
   serviceName: "frontend-ui"
   resourceAttributes: ""
   tracesExporter: "otlp"

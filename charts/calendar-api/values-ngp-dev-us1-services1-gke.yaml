@@ -22,7 +22,8 @@ database:
   pwd:
 
 otel:
-  resourceAttributes: "deployment.environment=tst"
+  enabled: True
+  resourceAttributes: "deployment.environment=dev"
 
 secrets:
   typesenseAPIKey:

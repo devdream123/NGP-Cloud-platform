@@ -18,8 +18,10 @@ data:
   timeout: {{ .Values.appServer.timeout | quote }}
   tcp_port: {{ .Values.appServer.port | quote }}
   worker_num: {{ .Values.appServer.workers | quote }}
+  {{- if .Values.otel.enabled }}
   OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
   OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
   OTEL_TRACES_EXPORTER: {{ .Values.otel.tracesExporter | quote }}
   OTEL_PROPAGATORS: {{ .Values.otel.propagators | quote }}
   OTEL_LOG_LEVEL: {{ .Values.otel.logLevel | quote }}
+  {{- end }}

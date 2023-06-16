@@ -8,4 +8,5 @@ database:
   user: sa-tst-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-test.iam
 
 otel:
+  enabled: True
   resourceAttributes: "deployment.environment=tst"

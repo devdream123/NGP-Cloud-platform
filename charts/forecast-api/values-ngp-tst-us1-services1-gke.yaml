@@ -20,4 +20,5 @@ database:
   schema: public_20221010_3
 
 otel:
+  enabled: True
   resourceAttributes: "deployment.environment=tst"

@@ -7,6 +7,7 @@ server:
     tag: "8b5efe8"
 
 otel:
+  enabled: True
   resourceAttributes: "deployment.environment=dev"
 
 secrets:

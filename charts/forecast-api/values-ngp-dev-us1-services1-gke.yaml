@@ -20,4 +20,5 @@ database:
   schema: public_20230530_1
 
 otel:
+  enabled: True
   resourceAttributes: "deployment.environment=dev"

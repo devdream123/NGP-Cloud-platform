@@ -18,6 +18,7 @@ database:
   proxyVersion: "2.1.1"
 
 otel:
+  enabled: True
   resourceAttributes: "deployment.environment=tst"
 
 secrets:

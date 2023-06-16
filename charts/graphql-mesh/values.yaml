@@ -103,6 +103,7 @@ PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
 
 otel:
+  enabled: False
   serviceName: "graphql-mesh"
   resourceAttributes: ""
   tracesExporter: "otlp"
