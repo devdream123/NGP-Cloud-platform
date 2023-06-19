@@ -37,18 +37,16 @@ spec:
             - secretRef:
                 name: {{ include "dealsheet-api.fullname" . }}-secrets
           env:
-            {{- if ne .Values.database.auth "iam" }}
-            - name: DATABASE_PASSWORD
+            {{- if .Values.otel.enabled }}
+            - name: SPLUNK_OTEL_AGENT
               valueFrom:
-                secretKeyRef:
-                  name: {{ include "dealsheet-api.fullname" . }}-secrets
-                  key: db-password
-            - name: ConnectionStrings__SlottingDb
-              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=$(DATABASE_PASSWORD)" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}"
-            {{- else }}
+                fieldRef:
+                  fieldPath: status.hostIP
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: "http://$(SPLUNK_OTEL_AGENT):4318"
+            {{- end }}
             - name: ConnectionStrings__SlottingDb
               value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}"
-            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}

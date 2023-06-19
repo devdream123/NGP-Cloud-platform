@@ -6,3 +6,7 @@ image:
 database:
   instance: ngp-dev-us1-services1-sql
   user: sa-dev-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-dev.iam
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=dev"

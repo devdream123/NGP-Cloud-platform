@@ -60,3 +60,7 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{- define "pgr-api.configChecksum" -}}
+checksum/config-maps: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+{{- end }}

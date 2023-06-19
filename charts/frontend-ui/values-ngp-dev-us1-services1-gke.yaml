@@ -5,6 +5,9 @@ server:
   featureFlagsEnvironment: dev
   image:
     tag: "55bc290"
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=dev"
 secrets:
   typesenseAPIKey:
 service:

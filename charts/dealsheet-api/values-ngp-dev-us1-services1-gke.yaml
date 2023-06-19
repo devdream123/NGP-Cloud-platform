@@ -20,5 +20,9 @@ database:
   proxyVersion: "2.1.1"
   db: ngsSlotting
 
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=dev"
+
 secrets:
   typesenseAPIKey:

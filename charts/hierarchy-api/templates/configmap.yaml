@@ -19,3 +19,64 @@ data:
   NgpAssortmentConfiguration__UseNgpAssortmentFile: {{ .Values.ngpAssortmentConfiguration.useNgpAssortmentFile | quote }}
   AppConfiguration__Version: {{ .Values.appVersion | quote }}
   PLACEHOLDER_API_URL: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.calendarChartName .Values.backendNamespace | quote  }}
+  TYPESENSE_API_PORT: {{ .Values.typesenseConfiguration.port | quote }}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "hierarchy-api.fullname" . }}-proxy-cm
+data:
+  default.conf: |-
+    server {
+
+        # http/1.1
+        listen {{ .Values.service.port }};
+
+        server_name localhost;
+
+        opentelemetry_attribute "deployment.environment" "{{ .Values.otel.environment }}";
+
+        access_log stderr;
+        error_log stderr debug;
+
+        location / {
+            opentelemetry_operation_name {{ .Values.otel.serviceName }};
+            {{- if .Values.otel.propagateB3Headers }}
+            opentelemetry_propagate b3;
+            {{- else }}
+            opentelemetry_propagate;
+            {{- end }}
+
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_pass {{ printf "http://localhost:%s" .Values.typesenseConfiguration.port  | quote }};
+
+        }
+
+        location = /healthz {
+            return 200 'Hierarchy service proxy running';
+        }
+    }
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "hierarchy-api.fullname" . }}-otel-cm
+data:
+  open-telemetry.toml: |-
+    exporter = "{{ .Values.otel.tracesExporter }}"
+    processor = "simple"
+
+    [exporters.otlp]
+    host = "collector"
+    port = 4317
+
+    [processors.batch]
+    max_queue_size = 2048
+    schedule_delay_millis = 5000
+    max_export_batch_size = 512
+
+    [service]
+    name = "{{ .Values.otel.serviceName }}"
