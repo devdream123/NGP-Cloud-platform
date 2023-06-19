@@ -1,5 +1,5 @@
 image:
-  tag: v0.53.1-dev
+  tag: v0.53.6-dev
 
 firestore:
   calendarSettings:
@@ -18,6 +18,10 @@ database:
   placeholder:
     user: sa-dev-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-dev.iam
   pwd:
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=dev"
 
 secrets:
   typesenseAPIKey:

@@ -75,3 +75,17 @@ sql:
     requests:
       memory: "32Mi"
       cpu: "50m"
+
+otel:
+  enabled: False
+  serviceName: "custom-groups-api"
+  resourceAttributes: ""
+  tracesExporter: "otlp"
+  tracesSampler: "always_on"
+  propagators: "tracecontext"
+  logLevel: "info"
+
+splunk:
+  metricsEnabled: false
+  profilerEnabled: false
+  profilerMemoryEnabled: false

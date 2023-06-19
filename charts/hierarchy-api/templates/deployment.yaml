@@ -54,6 +54,45 @@ spec:
             periodSeconds: 120
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+        {{- if .Values.proxyConfiguration.enabled }}
+        - name: {{ .Chart.Name }}-proxy
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.proxyConfiguration.image.repository }}:{{ .Values.proxyConfiguration.image.tag }}"
+          imagePullPolicy: {{ .Values.proxyConfiguration.image.pullPolicy }}
+          {{- if .Values.otel.enabled }}
+          env:
+            - name: SPLUNK_OTEL_AGENT
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 120
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 120
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d/default.conf
+              name: {{ include "hierarchy-api.fullname" . }}-proxy-cm
+              subPath: default.conf
+            - mountPath: /etc/nginx/conf/open-telemetry.toml
+              name: {{ include "hierarchy-api.fullname" . }}-otel-cm
+              subPath: open-telemetry.toml
+          resources:
+            {{- toYaml .Values.proxyConfiguration.resources | nindent 12 }}
+        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

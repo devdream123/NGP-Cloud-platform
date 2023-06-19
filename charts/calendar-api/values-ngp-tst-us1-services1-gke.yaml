@@ -20,5 +20,9 @@ database:
     user: sa-tst-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-test.iam
   pwd:
 
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=tst"
+
 secrets:
   typesenseAPIKey:

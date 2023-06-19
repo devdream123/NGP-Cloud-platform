@@ -14,12 +14,7 @@ resources:
 environment: production
 
 database:
-  auth: iam
   instance: ngp-uat-us1-services1-sql
   user: cloud-sql@gcp-wow-corp-qretail-ngp-uat.iam
-  pwd: 
-  db: qforecast
   schema: public_20230530_1
-  host: "forecast-api-db.uat.int.wiqretail.com"
   proxyVersion: "2.3.0"
-
