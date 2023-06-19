@@ -12,7 +12,7 @@ eventschedule-api:
   selectorLabels:
     run: eventschedule-api
 
-appVersion: v1
+appVersion: v2
 
 database:
   region: us-central1

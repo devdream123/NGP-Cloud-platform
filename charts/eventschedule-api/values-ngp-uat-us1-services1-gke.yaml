@@ -1,7 +1,5 @@
 image:
-  tag: v1.48.3-rc
-
-appVersion: v2
+  tag: v1.50.1-rc
 
 database:
   instance: ngp-uat-us1-services1-sql

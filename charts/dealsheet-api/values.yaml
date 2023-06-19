@@ -12,7 +12,7 @@ dealsheet-api:
   selectorLabels:
     run: dealsheet-api
 
-appVersion: v1
+appVersion: v3
 
 database:
   mode: postgres

@@ -12,7 +12,7 @@ calendar-api:
   selectorLabels:
     run: calendar-api
 
-appVersion: v1
+appVersion: v3
 
 database:
   mode: postgres
