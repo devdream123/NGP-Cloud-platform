@@ -17,6 +17,7 @@ database:
   placeholder:
     user: sa-uat-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-uat.iam
   pwd:
+  proxyVersion: "2.3.0"
 
 secrets:
   typesenseAPIKey:

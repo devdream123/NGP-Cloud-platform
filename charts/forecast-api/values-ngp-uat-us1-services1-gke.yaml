@@ -21,5 +21,5 @@ database:
   db: qforecast
   schema: public_20230530_1
   host: "forecast-api-db.uat.int.wiqretail.com"
-  proxyVersion: "2.1.1"
+  proxyVersion: "2.3.0"
 

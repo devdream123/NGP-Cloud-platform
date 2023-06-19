@@ -6,3 +6,4 @@ appVersion: v2
 database:
   instance: ngp-uat-us1-services1-sql
   user: sa-uat-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-uat.iam
+  proxyVersion: "2.3.0"
