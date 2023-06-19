@@ -26,13 +26,13 @@ data:
   ServiceSettings__Placeholder__FirestoreSettings__RootCollectionName: {{ .Values.firestore.placeholdersCollection | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ASPNETCORE_URLS: {{ printf "http://%s.%s.svc.cluster.local:%v" .Release.Name .Release.Namespace .Values.service.port | quote }}
+  {{- if .Values.otel.enabled }}
   CORECLR_ENABLE_PROFILING: "1"
   CORECLR_PROFILER: "{918728DD-259F-4A6A-AC2B-B85E1B658318}"
   CORECLR_PROFILER_PATH: "/root/.splunk-otel-dotnet/linux-x64/OpenTelemetry.AutoInstrumentation.Native.so"
   DOTNET_ADDITIONAL_DEPS: "/root/.splunk-otel-dotnet/AdditionalDeps"
   DOTNET_SHARED_STORE: "/root/.splunk-otel-dotnet/store"
   DOTNET_STARTUP_HOOKS: "/root/.splunk-otel-dotnet/net/OpenTelemetry.AutoInstrumentation.StartupHook.dll"
-  {{- if .Values.otel.enabled }}
   OTEL_DOTNET_AUTO_PLUGINS: "Splunk.OpenTelemetry.AutoInstrumentation.Plugin, Splunk.OpenTelemetry.AutoInstrumentation"
   OTEL_DOTNET_AUTO_HOME: "/root/.splunk-otel-dotnet"
   OTEL_DOTNET_AUTO_INTEGRATIONS_FILE: "/root/.splunk-otel-dotnet/integrations.json"
