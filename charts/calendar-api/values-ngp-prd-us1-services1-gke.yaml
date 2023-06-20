@@ -1,6 +1,8 @@
 image:
   tag: v1.48.2-prd
 
+appVersion: v1
+
 firestore:
   calendarSettings:
     minimumBatchSize: 400

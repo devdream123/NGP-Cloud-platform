@@ -1,8 +1,6 @@
 image:
   tag: v0.52.3-dev
 
-appVersion: v3
-
 firestore:
   calendarCollection: calendar-assortments-pg
   calendarSettings:

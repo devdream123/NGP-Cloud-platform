@@ -1,5 +1,5 @@
 image:
-  tag: v1.48.3-rc
+  tag: v1.50.2-rc
 
 firestore:
   calendarSettings:
@@ -14,6 +14,7 @@ database:
   instance: ngp-uat-us1-services1-sql
   user: postgres
   pwd: 
+  proxyVersion: "2.3.0"
 
 secrets:
   typesenseAPIKey:
