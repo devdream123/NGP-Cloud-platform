@@ -1,11 +1,11 @@
 image:
-  tag: 1.46.1-prd
+  tag: 1.48.2-prd
 
 server:
   proxyHost: ingress-gateway.prd.int.wiqretail.com
   featureFlagsEnvironment: prd
   image:
-    tag: 1.46.1-prd
+    tag: 1.48.2-prd
 
 secrets:
   typesenseAPIKey:

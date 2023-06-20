@@ -4,8 +4,9 @@ image:
 secrets:
   typesenseAPIKey:
 
-pgr:
-  enabled: true
-
 customGroups:
   enabled: true
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=dev"

@@ -1,5 +1,5 @@
 image:
-  tag: v1.47.0-hotfix-3
+  tag: v1.50.2-rc
 
 firestore:
   calendarSettings:
@@ -17,6 +17,7 @@ database:
   placeholder:
     user: sa-uat-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-uat.iam
   pwd:
+  proxyVersion: "2.3.0"
 
 secrets:
   typesenseAPIKey:

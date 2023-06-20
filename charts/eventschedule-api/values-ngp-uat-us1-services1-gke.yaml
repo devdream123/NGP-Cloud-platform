@@ -1,8 +1,7 @@
 image:
-  tag: v1.47.0-hotfix-3
-
-appVersion: v2
+  tag: v1.50.2-rc
 
 database:
   instance: ngp-uat-us1-services1-sql
   user: sa-uat-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-uat.iam
+  proxyVersion: "2.3.0"

@@ -1,7 +1,5 @@
 image:
-  tag: v1.43.1-prd
-
-appVersion: v2
+  tag: v1.48.2-prd
 
 resources:
   limits:

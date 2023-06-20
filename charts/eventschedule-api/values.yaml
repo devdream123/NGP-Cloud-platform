@@ -12,7 +12,7 @@ eventschedule-api:
   selectorLabels:
     run: eventschedule-api
 
-appVersion: v1
+appVersion: v2
 
 database:
   region: us-central1
@@ -86,3 +86,12 @@ systemTimeZone: "Australia/Sydney"
 
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+
+otel:
+  enabled: False
+  serviceName: "eventschedule-api"
+  resourceAttributes: ""
+  tracesExporter: "otlp"
+  tracesSampler: "always_on"
+  propagators: "tracecontext"
+  logLevel: "info"

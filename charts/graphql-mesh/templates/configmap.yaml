@@ -8,6 +8,16 @@ data:
   TELEMETRY_PORT: {{ .Values.server.telemetryPort | quote }}
   NODE_OPTIONS: {{ .Values.server.nodeOptions | quote }}
   DEBUG: {{ .Values.server.debug | quote }}
+  {{- if .Values.otel.enabled }}
+  OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
+  OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
+  OTEL_TRACES_EXPORTER: {{ .Values.otel.tracesExporter | quote }}
+  OTEL_PROPAGATORS: {{ .Values.otel.propagators | quote }}
+  OTEL_LOG_LEVEL: {{ .Values.otel.logLevel | quote }}
+  SPLUNK_METRICS_ENABLED: {{ .Values.splunk.metricsEnabled | default "false" | quote }}
+  SPLUNK_PROFILER_ENABLED: {{ .Values.splunk.profilerEnabled | quote }}
+  SPLUNK_PROFILER_MEMORY_ENABLED: {{ .Values.splunk.profilerMemoryEnabled | quote }}
+  {{- end }}
 
 ---
 apiVersion: v1
@@ -67,12 +77,10 @@ data:
               X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
             {{- end }}
               X-TYPESENSE-API-KEY: '${TYPESENSE_API_KEY}'
-      {{- if .Values.pgr.enabled }}
       - name: PGR
         handler:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.pgr.chartName .Values.analyticsNamespace .Values.pgr.port | quote }}
-      {{- end }} 
        {{- if .Values.customGroups.enabled }}
       - name: CustomGroups
         handler:

@@ -12,7 +12,7 @@ dealsheet-api:
   selectorLabels:
     run: dealsheet-api
 
-appVersion: v1
+appVersion: v3
 
 database:
   mode: postgres
@@ -23,7 +23,7 @@ database:
   db: ngsSlotting
   schema: public
   server: localhost
-  proxyVersion: "2.1.1"
+  proxyVersion: "2.3.0"
   proxyResources:
     requests:
       memory: "32Mi"
@@ -108,6 +108,15 @@ firestore:
 
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+
+otel:
+  enabled: False
+  serviceName: "dealsheet-api"
+  resourceAttributes: ""
+  tracesExporter: "otlp"
+  tracesSampler: "always_on"
+  propagators: "tracecontext"
+  logLevel: "info"
 
 secrets:
   typesenseAPIKey:

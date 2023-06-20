@@ -1,6 +1,8 @@
 image:
   tag: v1.47.4-dev
 
+appVersion: v1
+
 firestore:
   calendarSettings:
     minimumBatchSize: 400
@@ -17,6 +19,10 @@ database:
   placeholder:
     user: sa-tst-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-test.iam
   pwd:
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=tst"
 
 secrets:
   typesenseAPIKey:

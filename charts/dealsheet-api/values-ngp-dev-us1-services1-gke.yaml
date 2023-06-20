@@ -1,7 +1,5 @@
 image:
-  tag: v1.51.6-dev
-
-appVersion: v3
+  tag: v0.53.7-dev
 
 firestore:
   calendarSettings:
@@ -15,6 +13,10 @@ database:
   instance: ngp-dev-us1-services1-sql
   user: sa-dev-ngsslotting-sql@gcp-wow-corp-qretail-ngp-dev.iam
   db: ngsSlotting
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=dev"
 
 secrets:
   typesenseAPIKey:
