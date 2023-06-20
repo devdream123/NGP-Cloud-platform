@@ -16,14 +16,13 @@ appVersion: v3
 
 database:
   mode: postgres
-  auth: iam
   region: us-central1
   instance: ngp-us1-services1-sql
   port: "5432"
   db: ngsSlotting
   schema: public
   server: localhost
-  proxyVersion: "2.3.0"
+  proxyVersion: "2.1.1"
   proxyResources:
     requests:
       memory: "32Mi"

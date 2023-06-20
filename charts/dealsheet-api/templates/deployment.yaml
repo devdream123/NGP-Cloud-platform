@@ -45,8 +45,6 @@ spec:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: "http://$(SPLUNK_OTEL_AGENT):4318"
             {{- end }}
-            - name: ConnectionStrings__SlottingDb
-              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
