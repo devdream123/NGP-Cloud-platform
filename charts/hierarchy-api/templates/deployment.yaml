@@ -93,6 +93,12 @@ spec:
           resources:
             {{- toYaml .Values.proxyConfiguration.resources | nindent 12 }}
         {{- end }}
+      {{- if .Values.proxyConfiguration.enabled }}
+      hostAliases:
+      - ip: "10.8.0.76" #needs to be able to resolve the collector name via the SPLUNK_OTEL_AGENT env var
+        hostnames:
+        - "collector"
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
