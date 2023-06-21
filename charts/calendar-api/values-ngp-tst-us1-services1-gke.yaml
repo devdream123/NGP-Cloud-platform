@@ -12,13 +12,11 @@ firestore:
     maximumDegreeOfParallelism: 1
 
 database:
-  mode: postgres
   instance: ngp-tst-us1-services1-sql
   slotting:
     user: sa-tst-ngsslotting-sql@gcp-wow-corp-qretail-ngp-test.iam
   placeholder:
     user: sa-tst-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-test.iam
-  pwd:
 
 otel:
   enabled: True

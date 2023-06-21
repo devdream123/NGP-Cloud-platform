@@ -26,6 +26,8 @@ data:
   ServiceSettings__Placeholder__FirestoreSettings__RootCollectionName: {{ .Values.firestore.placeholdersCollection | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ASPNETCORE_URLS: {{ printf "http://%s.%s.svc.cluster.local:%v" .Release.Name .Release.Namespace .Values.service.port | quote }}
+  ConnectionStrings__SlottingDb: {{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.slotting.proxyPort .Values.database.slotting.dbName .Values.database.slotting.user | quote }}
+  ConnectionStrings__PlaceholderDb: {{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.placeholder.proxyPort .Values.database.placeholder.dbName .Values.database.placeholder.user | quote }}
   {{- if .Values.otel.enabled }}
   CORECLR_ENABLE_PROFILING: "1"
   CORECLR_PROFILER: "{918728DD-259F-4A6A-AC2B-B85E1B658318}"

@@ -15,12 +15,8 @@ calendar-api:
 appVersion: v3
 
 database:
-  mode: postgres
-  auth: iam
   region: us-central1
   instance:
-  user: postgres
-  pwd: ""
   slotting:
     dbName: ngsSlotting
     proxyPort: "5432"
@@ -31,7 +27,7 @@ database:
     user: 
   schema: public
   server: localhost
-  proxyVersion: "2.1.1"
+  proxyVersion: "2.3.0"
   proxyResources:
     requests:
       memory: "32Mi"

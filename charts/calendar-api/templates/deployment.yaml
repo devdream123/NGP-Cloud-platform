@@ -35,20 +35,16 @@ spec:
             - configMapRef:
                 name: {{ include "calendar-api.fullname" . }}-cm
             - secretRef:
-                name: {{ include "calendar-api.fullname" . }}-secrets
+                name: {{ include "calendar-api.fullname" . }}-secrets  
+          {{- if .Values.otel.enabled }}
           env:
-            - name: ConnectionStrings__SlottingDb
-              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.slotting.proxyPort .Values.database.slotting.dbName .Values.database.slotting.user }}"
-            - name: ConnectionStrings__PlaceholderDb
-              value: "{{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.placeholder.proxyPort .Values.database.placeholder.dbName .Values.database.placeholder.user }}"
-            {{- if .Values.otel.enabled }}
             - name: SPLUNK_OTEL_AGENT
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: "http://$(SPLUNK_OTEL_AGENT):4318"
-            {{- end }}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -68,10 +64,8 @@ spec:
             periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-        {{- if eq .Values.database.mode "postgres" }}
         - name: cloud-sql-proxy-slotting
           image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.database.proxyVersion }}"
-            {{- if eq .Values.database.auth "iam" }}
           command: [
             "/cloud-sql-proxy",
             "--auto-iam-authn",
@@ -79,21 +73,13 @@ spec:
             "--port={{ .Values.database.slotting.proxyPort }}",
             "--impersonate-service-account={{ .Values.database.slotting.user }}.gserviceaccount.com",
             "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
-          ]
-            {{- else }}
-          command: [
-            "/cloud-sql-proxy",
-            "--private-ip",
-            "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
-          ]
-            {{- end }}
+          ]  
           securityContext:
             runAsNonRoot: true
           resources:
             {{- toYaml .Values.database.proxyResources | nindent 12 }}
         - name: cloud-sql-proxy-placeholder
           image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.database.proxyVersion }}"
-            {{- if eq .Values.database.auth "iam" }}
           command: [
             "/cloud-sql-proxy",
             "--auto-iam-authn",
@@ -102,18 +88,10 @@ spec:
             "--impersonate-service-account={{ .Values.database.placeholder.user }}.gserviceaccount.com",
             "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
           ]
-            {{- else }}
-          command: [
-            "/cloud-sql-proxy",
-            "--private-ip",
-            "{{ .Values.projectId }}:{{ .Values.database.region }}:{{ .Values.database.instance }}"
-          ]
           securityContext:
             runAsNonRoot: true
           resources:
             {{- toYaml .Values.database.proxyResources | nindent 12 }}
-            {{- end }}
-        {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
