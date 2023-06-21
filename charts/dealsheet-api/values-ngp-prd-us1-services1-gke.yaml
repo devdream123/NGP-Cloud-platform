@@ -17,10 +17,8 @@ resources:
     cpu: 4000m
 
 database:
-  mode: firestore
   instance: ngp-prd-us1-services1-sql
-  user: postgres
-  pwd: 
+  user: sa-prd-ngsslotting-sql@gcp-wow-corp-qretail-ngp-prod.iam
 
 secrets:
   typesenseAPIKey:
