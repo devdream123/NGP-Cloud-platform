@@ -18,4 +18,3 @@ ngpAssortmentConfiguration:
 otel:
   enabled: True
   environment: "tst"
-  agentIPAddress: "10.20.0.18"
