@@ -18,3 +18,4 @@ ngpAssortmentConfiguration:
 otel:
   enabled: True
   environment: "dev"
+  agentIPAddress: "10.8.0.76"
