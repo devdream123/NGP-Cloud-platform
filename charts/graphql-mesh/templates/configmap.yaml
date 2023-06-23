@@ -88,7 +88,7 @@ data:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.customGroups.chartName .Values.frontendNamespace .Values.customGroups.port | quote }}
       {{- end }} 
 
-{{- if semverCompare ">= 1.33.5" .Values.image.tag }}
+{{- if semverCompare ">= 1.33.5 <= 1.34.9" .Values.image.tag }}
     additionalEnvelopPlugins: './openTelemetry'
 {{- end }}
 
