@@ -12,6 +12,7 @@ typesenseConfiguration:
 proxyConfiguration:
   enabled: true
   port: "80"
+  agentIPAddress: "10.8.0.76" #temporary fix until we have enabled the gateway feature of the splunk otel collector
 
 ngpAssortmentConfiguration:
   bucket: "qr_ngp_data_central"
