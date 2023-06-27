@@ -93,6 +93,7 @@ otel:
   propagateB3Headers: false
   serviceName: "hierarchy-api"
   tracesExporter: "otlp"
+  agentIPAddress: ""
 
 secrets:
   typesenseAPIKey:

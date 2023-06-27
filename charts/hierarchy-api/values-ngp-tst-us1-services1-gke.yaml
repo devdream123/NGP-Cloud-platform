@@ -6,8 +6,13 @@ firestoreCollectionName: "placeholders"
 secrets:
   typesenseAPIKey:
 
+typesenseConfiguration:
+  port: "8080"
+
 proxyConfiguration:
   enabled: true
+  port: "80"
+  agentIPAddress: "10.20.0.18" #temporary fix until we have enabled the gateway feature of the splunk otel collector
 
 ngpAssortmentConfiguration:
   bucket: "qr_ngp_data_central"

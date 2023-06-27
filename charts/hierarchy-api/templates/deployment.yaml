@@ -95,9 +95,16 @@ spec:
         {{- end }}
       {{- if .Values.proxyConfiguration.enabled }}
       hostAliases:
-      - ip: "10.8.0.76" #needs to be able to resolve the collector name via the SPLUNK_OTEL_AGENT env var
+      - ip: "{{ .Values.otel.agentIPAddress }}" #temporary fix until we have enabled the gateway feature of the splunk otel collector
         hostnames:
         - "collector"
+      volumes:
+      - name: {{ include "hierarchy-api.fullname" . }}-proxy-cm
+        configMap:
+          name: {{ include "hierarchy-api.fullname" . }}-proxy-cm
+      - name: {{ include "hierarchy-api.fullname" . }}-otel-cm
+        configMap:
+          name: {{ include "hierarchy-api.fullname" . }}-otel-cm
       {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
