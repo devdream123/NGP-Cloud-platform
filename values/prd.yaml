@@ -41,3 +41,6 @@ frontend:
 
 pgr:
   namespace: ngp-analytics
+
+webProxy:
+  namespace: kube-system

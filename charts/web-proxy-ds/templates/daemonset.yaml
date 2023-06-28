@@ -1,0 +1,38 @@
+{{- if .Values.proxyEnabled }}
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: {{ include "web-proxy.fullname" . }}
+  labels:
+    {{- include "web-proxy.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "web-proxy.selectorLabels" . | nindent 8 }}
+  template:
+    metadata:
+      labels:
+        {{- include "web-proxy.selectorLabels" . | nindent 8 }}
+    spec:
+      hostPID: true
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            privileged: true
+          env:
+          - name: STARTUP_SCRIPT
+            value: |
+              #! /bin/bash
+              set -o errexit
+              set -o pipefail
+              set -o nounset
+              containerd_service_override_folder="/etc/systemd/system/containerd.service.d"
+              mkdir -p ${containerd_service_override_folder}
+              echo [Service] >> "${containerd_service_override_folder}/proxy.conf"
+              echo Environment="HTTP_PROXY={{ .Values.proxyAddress }}" >> "${containerd_service_override_folder}/proxy.conf"
+              systemctl daemon-reload
+              systemctl restart containerd.service
+              echo done
+{{- end }}

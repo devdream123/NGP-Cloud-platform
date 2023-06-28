@@ -38,6 +38,11 @@ for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
   --skip-deps \
   --concurrency 1
 
+  echo "Installing system related chart(s) in cluster: ${cluster} in ${environment} environment" 
+  helmfile -f "${BASE_DIR}/../helmfile-system.yaml" --environment "${environment}" apply \
+  --skip-deps \
+  --concurrency 1
+
   echo "Installing back-end services chart in cluster: ${cluster} in ${environment} environment"
   helmfile -f  "${BASE_DIR}/../helmfile-backend.yaml" --environment "${environment}" apply \
     --skip-deps \
