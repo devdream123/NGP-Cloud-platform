@@ -15,7 +15,6 @@ database:
     user: sa-uat-ngsslotting-sql@gcp-wow-corp-qretail-ngp-uat.iam
   placeholder:
     user: sa-uat-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-uat.iam
-  proxyVersion: "2.3.0"
 
 secrets:
   typesenseAPIKey:

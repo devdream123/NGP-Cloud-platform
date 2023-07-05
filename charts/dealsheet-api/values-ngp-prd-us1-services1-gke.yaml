@@ -1,7 +1,5 @@
 image:
-  tag: v1.48.2-prd
-
-appVersion: v1
+  tag: v1.50.11-prd
 
 firestore:
   calendarSettings:

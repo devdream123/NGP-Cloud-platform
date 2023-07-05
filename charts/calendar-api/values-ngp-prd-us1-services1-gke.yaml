@@ -1,7 +1,5 @@
 image:
-  tag: v1.48.2-prd
-
-appVersion: v1
+  tag: v1.50.11-prd
 
 firestore:
   calendarSettings:
@@ -22,7 +20,6 @@ database:
     user: sa-prd-ngsslotting-sql@gcp-wow-corp-qretail-ngp-prod.iam
   placeholder:
     user: sa-prd-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-prod.iam
-  proxyVersion: "2.1.1"
 
 secrets:
   typesenseAPIKey:

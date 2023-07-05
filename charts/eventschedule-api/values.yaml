@@ -22,7 +22,7 @@ database:
   db: ngsEventSchedule
   schema: public
   server: localhost
-  proxyVersion: "2.1.1"
+  proxyVersion: "2.3.0"
   proxyResources:
     requests:
       memory: "32Mi"

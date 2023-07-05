@@ -1,5 +1,5 @@
 image:
-  tag: v1.48.2-prd
+  tag: v1.50.11-prd
 
 resources:
   limits:
