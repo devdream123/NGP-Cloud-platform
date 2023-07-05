@@ -94,10 +94,6 @@ spec:
             {{- toYaml .Values.proxyConfiguration.resources | nindent 12 }}
         {{- end }}
       {{- if .Values.proxyConfiguration.enabled }}
-      hostAliases:
-      - ip: "{{ .Values.otel.agentIPAddress }}" #temporary fix until we have enabled the gateway feature of the splunk otel collector
-        hostnames:
-        - "collector"
       volumes:
       - name: {{ include "hierarchy-api.fullname" . }}-proxy-cm
         configMap:
