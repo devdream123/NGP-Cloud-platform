@@ -1,5 +1,5 @@
 image:
-  tag: v1.50.11-rc
+  tag: v1.50.12-rc
 
 database:
   instance: ngp-uat-us1-services1-sql
