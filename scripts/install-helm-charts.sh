@@ -33,11 +33,6 @@ for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
   echo "Running: gcloud container clusters get-credentials --project=\"$GCLOUD_PROJECT\" --region=\"${CLOUDSDK_COMPUTE_REGION}\" \"${cluster}\""
   gcloud container clusters get-credentials --region="${CLOUDSDK_COMPUTE_REGION}" "${cluster}"
     
-  echo "Installing Istio Data Plane and Control Plane chart in cluster: ${cluster} in ${environment} environment" 
-  helmfile -f "${BASE_DIR}/../helmfile-istio.yaml" --environment "${environment}" apply \
-  --skip-deps \
-  --concurrency 1
-
   echo "Installing system related chart(s) in cluster: ${cluster} in ${environment} environment" 
   helmfile -f "${BASE_DIR}/../helmfile-system.yaml" --environment "${environment}" apply \
   --skip-deps \
@@ -57,5 +52,10 @@ for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
   helmfile -f  "${BASE_DIR}/../helmfile-analytics.yaml" --environment "${environment}" apply \
     --skip-deps \
     --concurrency 1
-
+  
+  echo "Installing Istio Data Plane and Control Plane chart in cluster: ${cluster} in ${environment} environment" 
+  helmfile -f "${BASE_DIR}/../helmfile-istio.yaml" --environment "${environment}" apply \
+  --skip-deps \
+  --concurrency 1
+ 
 done
