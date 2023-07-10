@@ -1,10 +1,10 @@
 image:
-  tag: "bf5e98e"
+  tag: "3a0f12e"
 server:
   proxyHost: ingress-gateway.dev.int.wiqretail.com
   featureFlagsEnvironment: dev
   image:
-    tag: "bf5e98e"
+    tag: "3a0f12e"
 otel:
   enabled: True
   resourceAttributes: "deployment.environment=dev"
