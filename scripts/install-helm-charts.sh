@@ -52,10 +52,11 @@ for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
   helmfile -f  "${BASE_DIR}/../helmfile-analytics.yaml" --environment "${environment}" apply \
     --skip-deps \
     --concurrency 1
-  
-  echo "Installing Istio Data Plane and Control Plane chart in cluster: ${cluster} in ${environment} environment" 
-  helmfile -f "${BASE_DIR}/../helmfile-istio.yaml" --environment "${environment}" apply \
-  --skip-deps \
-  --concurrency 1
- 
+    
+   if [ "${environment}" == "prd" ]; then # disabling isio installation in any env other than prd
+      echo "Installing Istio Data Plane and Control Plane chart in cluster: ${cluster} in ${environment} environment" 
+      helmfile -f "${BASE_DIR}/../helmfile-istio.yaml" --environment "${environment}" apply \
+      --skip-deps \
+      --concurrency 1
+   fi 
 done
