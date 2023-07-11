@@ -33,6 +33,7 @@ spec:
               echo [Service] >> "${containerd_service_override_folder}/proxy.conf"
               echo Environment="HTTP_PROXY={{ .Values.proxyAddress }}" >> "${containerd_service_override_folder}/proxy.conf"
               echo Environment="HTTPS_PROXY={{ .Values.proxyAddress }}" >> "${containerd_service_override_folder}/proxy.conf"
+              echo Environment="NO_PROXY=localhost,10.0.0.0/8" >> "${containerd_service_override_folder}/proxy.conf" 
               systemctl daemon-reload
               systemctl restart containerd.service
               echo done
