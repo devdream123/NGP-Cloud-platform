@@ -40,10 +40,12 @@ metadata:
 spec:
   maxReplicas: 5
   metrics:
-  - resource:
+  - type: Resource
+    resource:
       name: cpu
-      averageUtilization: 80
-    type: Resource
+      target:
+        type: Utilization
+        averageUtilization: 80
   minReplicas: 3
   scaleTargetRef:
     apiVersion: apps/v1
