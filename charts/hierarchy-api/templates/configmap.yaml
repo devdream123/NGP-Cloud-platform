@@ -70,7 +70,7 @@ data:
     processor = "simple"
 
     [exporters.otlp]
-    host = "collector"
+    host = "splunk-otel-collector.otel.svc.cluster.local"
     port = 4317
 
     [processors.batch]
