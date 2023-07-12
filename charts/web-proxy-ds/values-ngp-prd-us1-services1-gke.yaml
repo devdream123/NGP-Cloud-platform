@@ -1,2 +1,1 @@
-proxyAddress: ""
-proxyEnabled: false
+proxyAddress: "http://swp.prd.int.wiqretail.com:80"

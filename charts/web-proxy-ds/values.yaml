@@ -7,8 +7,6 @@ image:
   pullPolicy: Always
 
 proxyAddress: ""
-proxyEnabled: false
-
 
 podSecurityContext: {}
   # fsGroup: 2000

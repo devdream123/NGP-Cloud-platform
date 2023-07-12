@@ -1,4 +1,3 @@
-{{- if .Values.proxyEnabled }}
 kind: DaemonSet
 apiVersion: apps/v1
 metadata:
@@ -37,4 +36,3 @@ spec:
               systemctl daemon-reload
               systemctl restart containerd.service
               echo done
-{{- end }}
