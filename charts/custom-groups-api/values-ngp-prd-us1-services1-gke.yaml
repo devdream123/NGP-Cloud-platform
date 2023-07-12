@@ -5,3 +5,7 @@ sql:
   instance: ngp-prd-us1-services1-sql
   customGroupsDB:
     user: sa-prd-fe-microservices@gcp-wow-corp-qretail-ngp-prod.iam
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=prd"

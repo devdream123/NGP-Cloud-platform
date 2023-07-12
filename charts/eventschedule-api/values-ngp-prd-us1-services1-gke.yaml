@@ -9,3 +9,7 @@ resources:
 database:
   instance: ngp-prd-us1-services1-sql
   user: sa-prd-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-prod.iam
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=prd"
