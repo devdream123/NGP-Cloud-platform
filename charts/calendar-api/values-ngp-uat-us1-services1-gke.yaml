@@ -16,5 +16,9 @@ database:
   placeholder:
     user: sa-uat-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-uat.iam
 
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=uat"
+
 secrets:
   typesenseAPIKey:
