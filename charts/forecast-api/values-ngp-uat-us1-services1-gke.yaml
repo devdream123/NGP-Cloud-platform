@@ -17,3 +17,7 @@ database:
   instance: ngp-uat-us1-services1-sql
   user: cloud-sql@gcp-wow-corp-qretail-ngp-uat.iam
   schema: public_20230530_1
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=uat"
