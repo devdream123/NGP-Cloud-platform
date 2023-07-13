@@ -1,5 +1,5 @@
 image:
-  tag: v1.51.1-hotfix-1
+  tag: v1.52.1-rc
 
 database:
   instance: ngp-uat-us1-services1-sql
