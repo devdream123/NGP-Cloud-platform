@@ -52,6 +52,7 @@ data:
             proxy_set_header X-Real-IP $remote_addr;
             proxy_pass {{ printf "http://localhost:%s" .Values.typesenseConfiguration.port  | quote }};
 
+            client_max_body_size 10M;
         }
 
         location = /healthz {
