@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+set -o errexit   # abort on nonzero exitstatus
+set -o pipefail  # don't hide errors within pipes
+
 script_dir=$(dirname "$0")
 
 export BASE_DIR=$(cd "${script_dir}"; pwd -P)
