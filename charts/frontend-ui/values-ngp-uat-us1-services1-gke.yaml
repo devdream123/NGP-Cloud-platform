@@ -2,6 +2,11 @@ image:
   tag: 1.48.3-uat
 
 server:
+  launchDarklyClientId: "62a81d2460d0f91561c5dc58"
+  splunkKey: "Syc-oMzaTVVhuEQS3st8Iw"
+  googleAnalyticsTrackingId: "G-ER46E8QDNH"
+  walkmeSrc: "https://cdn.walkme.com/users/6ea5ca44a4924b9cb2c7c2cf16284bfd/uat/walkme_6ea5ca44a4924b9cb2c7c2cf16284bfd_https.js"
+  appBanner: "uat"
   proxyHost: ingress-gateway.uat.int.wiqretail.com
   featureFlagsEnvironment: uat
   image:
