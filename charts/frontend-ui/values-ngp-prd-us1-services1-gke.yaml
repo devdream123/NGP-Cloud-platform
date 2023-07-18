@@ -2,6 +2,11 @@ image:
   tag: 1.48.3-prd
 
 server:
+  launchDarklyClientId: "62a81d2460d0f91561c5dc59"
+  splunkKey: "5DZGmdGUTvcGhEKmp5770A"
+  googleAnalyticsTrackingId: "G-RVQ73VZZ16"
+  walkmeSrc: "https://cdn.walkme.com/users/6ea5ca44a4924b9cb2c7c2cf16284bfd/walkme_6ea5ca44a4924b9cb2c7c2cf16284bfd_https.js"
+  appBanner: "MVP"
   proxyHost: ingress-gateway.prd.int.wiqretail.com
   featureFlagsEnvironment: prd
   image:

@@ -2,6 +2,10 @@ image:
   tag: 284d513
 
 server:
+  launchDarklyClientId: "62e321d9eeb2f5115cdc811b"
+  googleAnalyticsTrackingId: "G-ERC08PKDEG"
+  walkmeSrc: "https://cdn.walkme.com/users/6ea5ca44a4924b9cb2c7c2cf16284bfd/development/walkme_6ea5ca44a4924b9cb2c7c2cf16284bfd_https.js"
+  appBanner: "dev"
   proxyHost: ingress-gateway.dev.int.wiqretail.com
   featureFlagsEnvironment: dev
   image:

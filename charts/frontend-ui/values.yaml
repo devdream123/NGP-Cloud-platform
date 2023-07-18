@@ -52,6 +52,11 @@ tolerations: []
 affinity: {}
 
 server:
+  launchDarklyClientId: ""
+  splunkKey: ""
+  googleAnalyticsTrackingId: ""
+  walkmeSrc: ""
+  appBanner: ""
   proxyProtocol: "http"
   proxyHost: ""
   proxyPort: "80"
