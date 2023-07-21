@@ -1,8 +1,11 @@
 image:
-  tag: "1.34.10"
+  tag: "1.94.4"
 
 mesh:
   debugEnabled: 1
+  graphqliEnabled: false
+  introspectionEnabled: false
+  errorMaskingEnabled: true
 
 secrets:
   typesenseAPIKey:
