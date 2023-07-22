@@ -43,6 +43,10 @@ mesh:
   selectorLabels:
     run: graphql-mesh
 
+  graphqliEnabled: true
+  introspectionEnabled: true
+  errorMaskingEnabled: false
+
 server:
   telemetryHostPrefix: otel-collector
   telemetryPort: 6832

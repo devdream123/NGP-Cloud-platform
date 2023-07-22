@@ -34,6 +34,12 @@ data:
         {{- if semverCompare "< 1.33.5" .Values.image.tag }}
         maxRequestBodySize: 10mb
         {{- end }}
+        playground: {{ .Values.mesh.graphqliEnabled }}
+        {{- if .Values.mesh.errorMaskingEnabled }}
+        plugins:
+          - maskedErrors:
+              errorMessage: 'Something went wrong.'
+        {{- end }}
 
     sources:
       - name: Deal Sheet
@@ -88,9 +94,10 @@ data:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.customGroups.chartName .Values.frontendNamespace .Values.customGroups.port | quote }}
       {{- end }} 
 
-{{- if semverCompare ">= 1.33.5 <= 1.34.9" .Values.image.tag }}
-    additionalEnvelopPlugins: './openTelemetry'
-{{- end }}
+    # disabling introspection is only available in version 1.94.4 and above
+    {{- if (eq .Values.mesh.introspectionEnabled false) }}
+    additionalEnvelopPlugins: './plugins/index.ts'
+    {{- end }}
 
 ---
 apiVersion: v1
