@@ -1,5 +1,5 @@
 image:
-  tag: v1.53.1-rc
+  tag: v1.53.2-rc
 
 firestore:
   calendarSettings:
