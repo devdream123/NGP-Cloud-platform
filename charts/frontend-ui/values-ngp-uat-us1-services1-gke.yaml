@@ -12,5 +12,9 @@ server:
   image:
     tag: 1.50.1-uat
 
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=uat"
+
 secrets:
   typesenseAPIKey:
