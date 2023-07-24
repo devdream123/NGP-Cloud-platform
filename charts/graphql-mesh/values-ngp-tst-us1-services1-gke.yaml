@@ -2,6 +2,8 @@ image:
   tag: "1.94.4"
 
 mesh:
+  cors:
+    origin: "https://lb.tst.ngp.wiqretail.com/"
   debugEnabled: 1
   graphqliEnabled: false
   introspectionEnabled: false
