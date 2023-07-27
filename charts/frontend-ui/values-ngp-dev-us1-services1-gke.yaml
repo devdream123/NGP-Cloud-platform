@@ -1,5 +1,5 @@
 image:
-  tag: "3eb297e"
+  tag: "656ac05"
 server:
   launchDarklyClientId: "62e321d9eeb2f5115cdc811b"
   walkmeSrc: "https://cdn.walkme.com/users/6ea5ca44a4924b9cb2c7c2cf16284bfd/development/walkme_6ea5ca44a4924b9cb2c7c2cf16284bfd_https.js"
@@ -7,7 +7,7 @@ server:
   proxyHost: ingress-gateway.dev.int.wiqretail.com
   featureFlagsEnvironment: dev
   image:
-    tag: "3eb297e"
+    tag: "656ac05"
 otel:
   enabled: True
   resourceAttributes: "deployment.environment=dev"
