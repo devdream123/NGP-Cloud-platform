@@ -17,4 +17,4 @@ runValidation: True
 database:
   instance: ngp-dev-us1-services1-sql
   user: cloud-sql@gcp-wow-corp-qretail-ngp-dev.iam
-  schema: public_20230105_1
+  schema: public_20230530_1
