@@ -1,8 +1,6 @@
 image:
   tag: "17-03-2023"
 
-firestoreCollectionName: "placeholders"
-
 secrets:
   typesenseAPIKey:
 

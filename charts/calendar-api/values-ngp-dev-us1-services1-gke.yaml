@@ -1,14 +1,6 @@
 image:
   tag: v0.0.0.7-dev
 
-firestore:
-  calendarSettings:
-    minimumBatchSize: 400
-    maximumDegreeOfParallelism: 1
-  dealsheetSettings:
-    minimumBatchSize: 400
-    maximumDegreeOfParallelism: 1
-
 database:
   instance: ngp-dev-us1-services1-sql
   slotting:

@@ -1,17 +1,6 @@
 image:
   tag: v0.57.1-dev
 
-firestore:
-  calendarCollection: calendar-assortments-pg
-  calendarSettings:
-    minimumBatchSize: 400
-    maximumDegreeOfParallelism: 1
-  dealsheetCollection: dealsheet-assortments-pg
-  dealsheetSettings:
-    minimumBatchSize: 400
-    maximumDegreeOfParallelism: 1
-  scenariosCollection: scenarios-pg
-
 database:
   instance: ngp-dev-us1-services1-sql
   user: sa-dev-ngsslotting-sql@gcp-wow-corp-qretail-ngp-dev.iam

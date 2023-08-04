@@ -3,14 +3,6 @@ image:
 
 appVersion: v1
 
-firestore:
-  calendarSettings:
-    minimumBatchSize: 400
-    maximumDegreeOfParallelism: 1
-  dealsheetSettings:
-    minimumBatchSize: 400
-    maximumDegreeOfParallelism: 1
-
 database:
   instance: ngp-tst-us1-services1-sql
   user: sa-tst-ngsslotting-sql@gcp-wow-corp-qretail-ngp-test.iam

@@ -8,7 +8,7 @@ firestore:
   dealsheetSettings:
     minimumBatchSize: 400
     maximumDegreeOfParallelism: 1
-    
+
 database:
   instance: ngp-uat-us1-services1-sql
   user: sa-uat-ngsslotting-sql@gcp-wow-corp-qretail-ngp-uat.iam
