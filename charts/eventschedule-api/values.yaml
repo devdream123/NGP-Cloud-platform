@@ -79,9 +79,6 @@ tolerations: []
 
 affinity: {}
 
-firestore:
-  eventScheduleCollection: event-schedules
-
 systemTimeZone: "Australia/Sydney"
 
 PodDisruptionBudget:

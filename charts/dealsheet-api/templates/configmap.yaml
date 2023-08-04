@@ -12,17 +12,6 @@ data:
   ConnectionStrings__SlottingDb: {{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}
   DemandDriver__ForecastUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.forecastChartName .Values.analyticsNamespace | quote  }}
   GraphQLClient__CalendarUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.calendarChartName .Values.backendNamespace | quote  }}
-  ServiceSettings__Calendar__FirestoreSettings__RootCollectionName: {{ .Values.firestore.calendarCollection | quote }}
-  ServiceSettings__Calendar__FirestoreSettings__MaximumQueries: {{ .Values.firestore.calendarSettings.maximumQueries | quote }}
-  ServiceSettings__Calendar__FirestoreSettings__MaximumBatchSize: {{ .Values.firestore.calendarSettings.maximumBatchSize | quote }}
-  ServiceSettings__Calendar__FirestoreSettings__MinimumBatchSize: {{ .Values.firestore.calendarSettings.minimumBatchSize | quote }}
-  ServiceSettings__Calendar__FirestoreSettings__MaximumDegreeOfParallelism: {{ .Values.firestore.calendarSettings.maximumDegreeOfParallelism | quote }}
-  ServiceSettings__Dealsheet__FirestoreSettings__RootCollectionName: {{ .Values.firestore.dealsheetCollection | quote }}
-  ServiceSettings__Dealsheet__FirestoreSettings__MaximumQueries: {{ .Values.firestore.dealsheetSettings.maximumQueries | quote }}
-  ServiceSettings__Dealsheet__FirestoreSettings__MaximumBatchSize: {{ .Values.firestore.dealsheetSettings.maximumBatchSize | quote }}
-  ServiceSettings__Dealsheet__FirestoreSettings__MinimumBatchSize: {{ .Values.firestore.dealsheetSettings.minimumBatchSize | quote }}
-  ServiceSettings__Dealsheet__FirestoreSettings__MaximumDegreeOfParallelism: {{ .Values.firestore.dealsheetSettings.maximumDegreeOfParallelism | quote }}
-  ServiceSettings__Scenario__FirestoreSettings__RootCollectionName: {{ .Values.firestore.scenariosCollection | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ASPNETCORE_URLS: {{ printf "http://%s.%s.svc.cluster.local:%v" .Release.Name .Release.Namespace .Values.service.port | quote }}
   {{- if .Values.otel.enabled }}

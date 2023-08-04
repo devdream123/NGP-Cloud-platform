@@ -11,8 +11,6 @@ data:
   TypesenseConfiguration__Port: {{ .Values.typesenseConfiguration.port | quote }}
   TypesenseConfiguration__Protocol: {{ .Values.typesenseConfiguration.protocol | quote }}
   TypesenseConfiguration__BatchSize: {{ .Values.typesenseConfiguration.batchSize | quote }}
-  FirestoreConfiguration__ProjectId: {{ .Values.projectId | quote }}
-  FirestoreConfiguration__CollectionName: {{ .Values.firestoreCollectionName | quote }}
   NgpAssortmentConfiguration__Bucket: {{ .Values.ngpAssortmentConfiguration.bucket | quote }}
   NgpAssortmentConfiguration__FilePath: {{ .Values.ngpAssortmentConfiguration.filePath | quote }}
   NgpAssortmentConfiguration__FileName: {{ .Values.ngpAssortmentConfiguration.fileName | quote }}

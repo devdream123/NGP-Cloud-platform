@@ -94,24 +94,6 @@ analyticsNamespace: ngp-analytics
 
 systemTimeZone: "Australia/Sydney"
 
-firestore:
-  calendarCollection: calendar-assortments
-  calendarSettings:
-    maximumQueries: ""
-    maximumBatchSize: ""
-    minimumBatchSize: ""
-    maximumDegreeOfParallelism: ""
-
-  dealsheetCollection: dealsheet-assortments
-  dealsheetSettings:
-    maximumQueries: ""
-    maximumBatchSize: ""
-    minimumBatchSize: ""
-    maximumDegreeOfParallelism: ""
-
-  scenariosCollection: scenarios
-  placeholdersCollection: placeholders
-
 PodDisruptionBudget:
   minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
 

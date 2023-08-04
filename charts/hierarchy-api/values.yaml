@@ -51,8 +51,6 @@ tolerations: []
 
 affinity: {}
 
-firestoreCollectionName: ""
-
 typesenseConfiguration:
   host: localhost
   port: "80"

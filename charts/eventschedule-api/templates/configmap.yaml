@@ -8,7 +8,6 @@ data:
   GCPSettings__AppVersion: {{ .Values.appVersion | quote }}
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
-  FirestoreSettings__RootCollectionName: {{ .Values.firestore.eventScheduleCollection | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
   ConnectionStrings__EventScheduleDb: {{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}
   ASPNETCORE_URLS: {{ printf "http://%s.%s.svc.cluster.local:%v" .Release.Name .Release.Namespace .Values.service.port | quote }}

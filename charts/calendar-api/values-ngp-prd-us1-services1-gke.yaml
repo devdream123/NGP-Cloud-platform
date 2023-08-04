@@ -1,14 +1,6 @@
 image:
   tag: v1.52.2-prd
 
-firestore:
-  calendarSettings:
-    minimumBatchSize: 400
-    maximumDegreeOfParallelism: 1
-  dealsheetSettings:
-    minimumBatchSize: 400
-    maximumDegreeOfParallelism: 1
-
 resources:
   limits:
     memory: 4Gi
