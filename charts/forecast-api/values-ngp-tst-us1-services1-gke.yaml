@@ -16,8 +16,8 @@ runValidation: True
 
 database:
   instance: ngp-tst-us1-services1-sql
-  user: cloud-sql@gcp-wow-corp-qretail-ngp-test.iam
-  schema: public_20221010_3
+  user: sa-tst-qforecast-sql@gcp-wow-corp-qretail-ngp-test.iam
+  schema: public_20230530_2
 
 otel:
   enabled: True
