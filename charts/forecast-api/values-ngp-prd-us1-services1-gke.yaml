@@ -15,8 +15,8 @@ environment: production
 
 database:
   instance: ngp-prd-us1-services1-sql
-  user: cloud-sql@gcp-wow-corp-qretail-ngp-prod.iam
-  schema: public_20230530_1
+  user: sa-prd-qforecast-sql@gcp-wow-corp-qretail-ngp-prod.iam
+  schema: public_20230530_2
 
 otel:
   enabled: True
