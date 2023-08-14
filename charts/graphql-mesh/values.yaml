@@ -25,7 +25,6 @@ pgr:
   port: "80"
 
 customGroups:
-  enabled: false
   chartName: custom-groups-api
   port: "4000"
   

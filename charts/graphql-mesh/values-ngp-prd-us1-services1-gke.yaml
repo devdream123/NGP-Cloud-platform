@@ -1,5 +1,12 @@
 image:
-  tag: "1.30.0"
+  tag: "1.94.4"
+
+mesh:
+  cors:
+    origin: "https://ngp.wiqretail.com/"
+  graphqliEnabled: false
+  introspectionEnabled: false
+  errorMaskingEnabled: true
 
 server:
   memoryLimit: "4096" # memory limit in megabytes, must not exceed Values.resources.limits.memory

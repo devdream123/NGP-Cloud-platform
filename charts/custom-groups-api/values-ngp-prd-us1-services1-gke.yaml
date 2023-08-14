@@ -1,5 +1,5 @@
 image:
-  tag: "latest"
+  tag: "702db6e"
 
 sql:
   instance: ngp-prd-us1-services1-sql

@@ -87,12 +87,10 @@ data:
         handler:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.pgr.chartName .Values.analyticsNamespace .Values.pgr.port | quote }}
-       {{- if .Values.customGroups.enabled }}
       - name: CustomGroups
         handler:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.customGroups.chartName .Values.frontendNamespace .Values.customGroups.port | quote }}
-      {{- end }} 
 
     # disabling introspection is only available in version 1.94.4 and above
     {{- if (eq .Values.mesh.introspectionEnabled false) }}
