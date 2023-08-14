@@ -9,6 +9,3 @@ mesh:
 
 secrets:
   typesenseAPIKey:
-
-customGroups:
-  enabled: true
