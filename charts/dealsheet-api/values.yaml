@@ -15,7 +15,6 @@ dealsheet-api:
 appVersion: v3
 
 database:
-  mode: postgres
   region: us-central1
   instance: ngp-us1-services1-sql
   port: "5432"
@@ -23,6 +22,7 @@ database:
   schema: public
   server: localhost
   proxyVersion: "2.3.0"
+  user: ""
   proxyResources:
     requests:
       memory: "32Mi"

@@ -21,11 +21,12 @@ database:
     dbName: ngsSlotting
     proxyPort: "5432"
     user:
+    schema: public
   placeholder:
     dbName: ngsPlaceholder
     proxyPort: "5433"
     user: 
-  schema: public
+    schema: public
   server: localhost
   proxyVersion: "2.3.0"
   proxyResources:

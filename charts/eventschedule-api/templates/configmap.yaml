@@ -9,7 +9,7 @@ data:
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
   SystemTimeZone: {{ .Values.systemTimeZone | quote }}
-  ConnectionStrings__EventScheduleDb: {{ printf "Server=%s;Port=%s;Database=%s;UID=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user }}
+  ConnectionStrings__EventScheduleDb: {{ printf "Server=%s;Port=%s;Database=%s;UID=%s;SearchPath=%s;PWD=" .Values.database.server .Values.database.port .Values.database.db .Values.database.user .Values.database.schema | quote }}
   ASPNETCORE_URLS: {{ printf "http://%s.%s.svc.cluster.local:%v" .Release.Name .Release.Namespace .Values.service.port | quote }}
   {{- if .Values.otel.enabled }}
   CORECLR_ENABLE_PROFILING: "1"
