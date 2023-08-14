@@ -1,0 +1,25 @@
+name: NGP Cloud Platform CI
+
+on:
+  pull_request:
+    paths-ignore:
+      - '!**/README.md'
+  workflow_dispatch:
+
+jobs:
+  # yamllint:
+  #   uses: Q-Retail/wiq_reusable_workflows/.github/workflows/yamllint.yml@yamllint_v1.0.1
+  #   with:
+  #     yamllint_file_or_dir: .
+  #     yamllint_config_filepath: ./.github/workflows/.yamllint/config.yml
+  #   secrets:
+  #     repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+  shellcheck:
+    uses: Q-Retail/wiq_reusable_workflows/.github/workflows/shellcheck.yml@shellcheck_v1.0.0
+    with:
+      shellcheck_opts: --severity=warning
+      shellcheck_only_diff: true
+      shellcheck_shfmt_disable: true
+    secrets:
+      repo_token: ${{ secrets.GITHUB_TOKEN }}

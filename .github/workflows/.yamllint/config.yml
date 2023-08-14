@@ -1,0 +1,17 @@
+# https://yamllint.readthedocs.io/en/stable/configuration.html
+
+extends: default
+
+rules:
+  # 80 chars should be enough, but don't fail if a line is longer
+  line-length:
+    max: 80
+    level: warning
+
+  # ignore spaces inside braces for helm
+  braces:
+    level: warning
+
+ignore:
+  - charts/*/templates/
+  - scripts/
