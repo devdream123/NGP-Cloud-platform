@@ -1,5 +1,5 @@
 image:
-  tag: 1.48.5-prd
+  tag: 1.50.6-prd
 
 server:
   launchDarklyClientId: "62a81d2460d0f91561c5dc59"
@@ -10,7 +10,7 @@ server:
   proxyHost: ingress-gateway.prd.int.wiqretail.com
   featureFlagsEnvironment: prd
   image:
-    tag: 1.48.5-prd
+    tag: 1.50.6-prd
 
 secrets:
   typesenseAPIKey:
