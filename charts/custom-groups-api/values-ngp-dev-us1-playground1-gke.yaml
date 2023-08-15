@@ -1,5 +1,5 @@
 image:
-  tag: "702db6e"
+  tag: "7d7a07c"
 
 sql:
   instance: ngp-dev-us1-services1-sql
