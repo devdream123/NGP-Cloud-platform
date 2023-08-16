@@ -89,3 +89,4 @@ splunk:
   metricsEnabled: false
   profilerEnabled: false
   profilerMemoryEnabled: false
+  profilerLogsEndpoint: ""

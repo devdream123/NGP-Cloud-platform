@@ -12,3 +12,9 @@ secrets:
 otel:
   enabled: True
   resourceAttributes: "deployment.environment=dev"
+
+splunk:
+  metricsEnabled: true
+  profilerEnabled: true
+  profilerMemoryEnabled: true
+  profilerLogsEndpoint: splunk-otel-collector.otel.svc.cluster.local:4317
