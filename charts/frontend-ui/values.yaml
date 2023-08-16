@@ -1,3 +1,4 @@
+---
 projectId: ""
 
 replicaCount: 3
@@ -70,7 +71,7 @@ server:
     tag: ""
 
 otel:
-  enabled: False
+  enabled: false
   serviceName: "frontend-ui"
   resourceAttributes: ""
   tracesExporter: "otlp"

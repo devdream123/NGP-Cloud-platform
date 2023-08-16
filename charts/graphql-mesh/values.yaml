@@ -1,6 +1,7 @@
+---
 replicaCount: 3
 
-backendNamespace: ngp-backend 
+backendNamespace: ngp-backend
 analyticsNamespace: ngp-analytics
 frontendNamespace: ngp-frontend
 
@@ -8,15 +9,15 @@ dealSheet:
   chartName: dealsheet-api
   port: "80"
 
-calendar: 
+calendar:
   chartName: calendar-api
   port: "80"
 
-eventSchedule: 
+eventSchedule:
   chartName: eventschedule-api
   port: "80"
 
-hierarchy: 
+hierarchy:
   chartName: hierarchy-api
   port: "80"
 
@@ -27,7 +28,7 @@ pgr:
 customGroups:
   chartName: custom-groups-api
   port: "4000"
-  
+
 mesh:
   cors:
     origin: '*'
@@ -35,7 +36,7 @@ mesh:
   debugEnabled: 0
 
   fullname: graphql-mesh
-  
+
   labels:
     run: graphql-mesh
 
@@ -49,7 +50,8 @@ mesh:
 server:
   telemetryHostPrefix: otel-collector
   telemetryPort: 6832
-  nodeOptions: "--max-old-space-size=3072" # memory limit in megabytes, must not exceed Values.resources.limits.memory
+  # memory limit in megabytes, must not exceed Values.resources.limits.memory
+  nodeOptions: "--max-old-space-size=3072"
   debug: "0"
 
 image:
@@ -103,10 +105,11 @@ tolerations: []
 affinity: {}
 
 PodDisruptionBudget:
-  minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+  # K8s rounds up to the nearest integer if the Replica Count is odd
+  minAvailable: 66%
 
 otel:
-  enabled: False
+  enabled: false
   serviceName: "graphql-mesh"
   resourceAttributes: ""
   tracesExporter: "otlp"

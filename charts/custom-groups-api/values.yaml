@@ -1,3 +1,4 @@
+---
 # Default values for custom-groups-api.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
@@ -20,21 +21,22 @@ serviceAccount:
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
+  # If not set and create is true, a name is generated using the fullname
+  # template
   name: ""
 
 podAnnotations: {}
 
 podSecurityContext: {}
-  # fsGroup: 2000
+#   fsGroup: 2000
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+#   capabilities:
+#     drop:
+#     - ALL
+#   readOnlyRootFilesystem: true
+#   runAsNonRoot: true
+#   runAsUser: 1000
 
 service:
   type: ClusterIP
@@ -67,7 +69,7 @@ sql:
   customGroupsDB:
     dbName: ngsCustomGroups
     proxyPort: "5432"
-    user: 
+    user:
     schema: public
   proxyServer: localhost
   proxyVersion: "2.1.1"
@@ -77,7 +79,7 @@ sql:
       cpu: "50m"
 
 otel:
-  enabled: False
+  enabled: false
   serviceName: "custom-groups-api"
   resourceAttributes: ""
   tracesExporter: "otlp"

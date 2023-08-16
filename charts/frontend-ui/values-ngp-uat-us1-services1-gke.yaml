@@ -1,3 +1,4 @@
+---
 image:
   tag: 1.50.6-uat
 
@@ -13,7 +14,7 @@ server:
     tag: 1.50.6-uat
 
 otel:
-  enabled: True
+  enabled: true
   resourceAttributes: "deployment.environment=uat"
 
 splunk:
