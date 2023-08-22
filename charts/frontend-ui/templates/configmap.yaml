@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -8,7 +9,7 @@ data:
   PROXY_PROTOCOL: {{ .Values.server.proxyProtocol | quote }}
   PROXY_HOST: {{ .Values.server.proxyHost | quote }}
   PROXY_PORT: {{ .Values.server.proxyPort | quote }}
-  PROJECT_KEY: {{ .Values.projectId  }}
+  PROJECT_KEY: {{ .Values.projectId }}
   ENVIRONMENT: {{ .Values.server.featureFlagsEnvironment | quote }}
   TELEMETRY_HOST: {{ printf "%s.%s.svc.cluster.local" .Values.server.telemetryHostPrefix .Release.Namespace | quote }}
   TELEMETRY_PORT: {{ .Values.server.telemetryPort | quote }}
@@ -28,4 +29,5 @@ data:
   SPLUNK_METRICS_ENABLED: {{ .Values.splunk.metricsEnabled | default "false" | quote }}
   SPLUNK_PROFILER_ENABLED: {{ .Values.splunk.profilerEnabled | quote }}
   SPLUNK_PROFILER_MEMORY_ENABLED: {{ .Values.splunk.profilerMemoryEnabled | quote }}
+  SPLUNK_PROFILER_LOGS_ENDPOINT: {{ .Values.splunk.profilerLogsEndpoint | quote }}
   {{- end }}

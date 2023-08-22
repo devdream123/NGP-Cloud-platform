@@ -1,3 +1,4 @@
+---
 image:
   tag: "7d7a07c"
 
@@ -7,5 +8,11 @@ sql:
     user: sa-dev-fe-microservices@gcp-wow-corp-qretail-ngp-dev.iam
 
 otel:
-  enabled: True
+  enabled: true
   resourceAttributes: "deployment.environment=dev"
+
+splunk:
+  metricsEnabled: true
+  profilerEnabled: true
+  profilerMemoryEnabled: true
+  profilerLogsEndpoint: splunk-otel-collector.otel.svc.cluster.local:4317

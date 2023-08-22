@@ -1,3 +1,4 @@
+---
 image:
   tag: 1.50.6-uat
 
@@ -13,8 +14,14 @@ server:
     tag: 1.50.6-uat
 
 otel:
-  enabled: True
+  enabled: true
   resourceAttributes: "deployment.environment=uat"
+
+splunk:
+  metricsEnabled: true
+  profilerEnabled: true
+  profilerMemoryEnabled: true
+  profilerLogsEndpoint: splunk-otel-collector.otel.svc.cluster.local:4317
 
 secrets:
   typesenseAPIKey:

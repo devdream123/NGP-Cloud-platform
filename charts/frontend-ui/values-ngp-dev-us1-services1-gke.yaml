@@ -1,3 +1,4 @@
+---
 image:
   tag: "8c12b3b"
 server:
@@ -9,8 +10,13 @@ server:
   image:
     tag: "8c12b3b"
 otel:
-  enabled: True
+  enabled: true
   resourceAttributes: "deployment.environment=dev"
+splunk:
+  metricsEnabled: true
+  profilerEnabled: true
+  profilerMemoryEnabled: true
+  profilerLogsEndpoint: splunk-otel-collector.otel.svc.cluster.local:4317
 secrets:
   typesenseAPIKey:
 service:
