@@ -12,6 +12,8 @@ dealsheet-api:
   selectorLabels:
     run: dealsheet-api
 
+appVersion: v3
+
 database:
   region: us-central1
   instance: ngp-us1-services1-sql

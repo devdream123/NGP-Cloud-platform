@@ -12,6 +12,8 @@ eventschedule-api:
   selectorLabels:
     run: eventschedule-api
 
+appVersion: v2
+
 database:
   region: us-central1
   instance: ngp-us1-services1-sql

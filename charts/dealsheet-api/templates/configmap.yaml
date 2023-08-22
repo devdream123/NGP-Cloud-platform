@@ -5,6 +5,7 @@ metadata:
   labels:
     {{- include "dealsheet-api.labels" . | nindent 4 }}
 data:
+  GCPSettings__AppVersion: {{ .Values.appVersion | quote }}
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
   Hierarchy__Url: {{ printf "http://%s.%s.svc.cluster.local" .Values.hierarchyChartName .Values.backendNamespace | quote  }}
