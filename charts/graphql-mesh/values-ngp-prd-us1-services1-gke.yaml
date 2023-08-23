@@ -1,3 +1,4 @@
+---
 image:
   tag: "1.94.4"
 
@@ -18,3 +19,13 @@ resources:
 
 secrets:
   typesenseAPIKey:
+
+otel:
+  enabled: true
+  resourceAttributes: "deployment.environment=prd"
+
+splunk:
+  metricsEnabled: true
+  profilerEnabled: true
+  profilerMemoryEnabled: true
+  profilerLogsEndpoint: splunk-otel-collector.otel.svc.cluster.local:4317
