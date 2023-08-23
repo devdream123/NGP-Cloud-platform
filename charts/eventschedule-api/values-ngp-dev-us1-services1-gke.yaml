@@ -1,5 +1,5 @@
 image:
-  tag: v0.0.0.7-dev
+  tag: v0.58.2-dev
 
 database:
   instance: ngp-dev-us1-services1-sql
