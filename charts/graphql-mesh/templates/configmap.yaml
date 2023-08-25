@@ -32,9 +32,6 @@ data:
           origin: '{{ .Values.mesh.cors.origin }}'
         hostname: 0.0.0.0
         port: {{ .Values.service.port }}
-        {{- if semverCompare "< 1.33.5" .Values.image.tag }}
-        maxRequestBodySize: 10mb
-        {{- end }}
         playground: {{ .Values.mesh.graphqliEnabled }}
         {{- if .Values.mesh.errorMaskingEnabled }}
         plugins:
@@ -48,42 +45,34 @@ data:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.dealSheet.chartName .Values.backendNamespace .Values.dealSheet.port | quote }}
             timeout: 600000
-            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
             operationHeaders:
-              X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
-            {{- end }}
+              x-cloud-trace-context: "{context.headers['x-cloud-trace-context']}"
+              x-goog-iap-jwt-assertion: "{context.headers['x-goog-iap-jwt-assertion']}"
       - name: Calendar
         handler:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.calendar.chartName .Values.backendNamespace .Values.calendar.port | quote }}
             timeout: 600000
-            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
             operationHeaders:
-              X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
-            {{- end }}
+              x-cloud-trace-context: "{context.headers['x-cloud-trace-context']}"
+              x-goog-iap-jwt-assertion: "{context.headers['x-goog-iap-jwt-assertion']}"
       - name: EventSchedule
         handler:
           graphql:
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/graphql/" .Values.eventSchedule.chartName .Values.backendNamespace .Values.eventSchedule.port | quote }}
             timeout: 600000
-            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
             operationHeaders:
-              X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
-            {{- end }}
+              x-cloud-trace-context: "{context.headers['x-cloud-trace-context']}"
+              x-goog-iap-jwt-assertion: "{context.headers['x-goog-iap-jwt-assertion']}"
       - name: Hierarchy
         handler:
           openapi:
             source: ./typesense-openapi.yml
-            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
             endpoint: {{ printf "http://%s.%s.svc.cluster.local:%s/" .Values.hierarchy.chartName .Values.backendNamespace .Values.hierarchy.port | quote }}
-            {{- else }}
-            baseUrl: {{ printf "http://%s.%s.svc.cluster.local:%s/" .Values.hierarchy.chartName .Values.backendNamespace .Values.hierarchy.port | quote }}
-            {{- end }}
             operationHeaders:
-            {{- if semverCompare ">= 1.33.5" .Values.image.tag }}
-              X-Cloud-Trace-Context: "{context.headers['x-cloud-trace-context']}"
-            {{- end }}
-              X-TYPESENSE-API-KEY: '${TYPESENSE_API_KEY}'
+              x-cloud-trace-context: "{context.headers['x-cloud-trace-context']}"
+              x-goog-iap-jwt-assertion: "{context.headers['x-goog-iap-jwt-assertion']}"
+              x-typesense-api-key: '${TYPESENSE_API_KEY}'
       - name: PGR
         handler:
           graphql:
