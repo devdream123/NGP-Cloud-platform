@@ -2,7 +2,6 @@
 
 ################
 ## This script automates some of the steps documented in these ASM guides
-## https://cloud.google.com/service-mesh/docs/managed/provision-managed-anthos-service-mesh#enable_automatic_management
 ## https://cloud.google.com/service-mesh/docs/managed/enable-managed-anthos-service-mesh-optional-features#enable_cloud_tracing
 ################
 
@@ -31,11 +30,5 @@ for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
 
   echo "Applying the Istio control plane configuration in ${environment} environment for ${cluster} cluster."
   kubectl apply -f "./outputs/${environment}/${cluster}/istio-control-plane/templates/" --namespace "${ASM_CONTROL_PLANE_NAMESPACE}"
-
-  echo "Enabling auto management of ASM control and data planes for envoy proxies in ${environment} environment for ${cluster} cluster."
-  gcloud container fleet mesh update \
-    --management automatic \
-    --memberships "${cluster}-membership" \
-    --project "${GCLOUD_PROJECT}"
 
 done
