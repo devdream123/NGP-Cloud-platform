@@ -5,7 +5,8 @@ set -o pipefail  # don't hide errors within pipes
 
 script_dir=$(dirname "$0")
 
-export BASE_DIR=$(cd "${script_dir}"; pwd -P)
+BASE_DIR=$(cd "${script_dir}"; pwd -P)
+export BASE_DIR
 
 if [ "$1" ]; then
   environments=("$1")	
