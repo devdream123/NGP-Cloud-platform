@@ -11,4 +11,4 @@ otel:
   resourceAttributes: "deployment.environment=uat"
 
 secrets:
-  pmrEndpointAPICredential: ""
+  pmrEndpointAPICredential:
