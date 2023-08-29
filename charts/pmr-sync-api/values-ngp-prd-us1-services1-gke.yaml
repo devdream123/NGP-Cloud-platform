@@ -1,0 +1,14 @@
+image:
+  tag: "latest"
+
+sql:
+  instance: ngp-prd-us1-services1-sql
+  pmrBookkeepingDB:
+    user: sa-prd-fe-microservices@gcp-wow-corp-qretail-ngp-prd.iam
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=prd"
+
+secrets:
+  pmrEndpointAPICredential: ""

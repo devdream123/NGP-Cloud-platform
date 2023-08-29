@@ -49,3 +49,14 @@ releases:
         showlogs: true
         command: 'kubectl'
         args: ['label', 'ns', '{{ .Values.frontend.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
+  - name: pmr-sync-api
+    chart: ./charts/pmr-sync-api
+    namespace: {{ .Values.frontend.namespace }}
+    values:
+      - ./charts/pmr-sync-api/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
+      - projectId: {{ .Values.env.GCLOUD_PROJECT }}
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.frontend.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']

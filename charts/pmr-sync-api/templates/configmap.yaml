@@ -1,0 +1,25 @@
+{{- if .Values.shouldDeploy }}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "pmr-sync-api.fullname" . }}-cm
+  labels:
+    {{- include "pmr-sync-api.labels" . | nindent 4 }}
+data:
+  DB_HOST: {{ .Values.sql.proxyServer | quote }}
+  DB_PORT: {{ .Values.sql.pmrBookkeepingDB.proxyPort | quote }}
+  DB_NAME: {{ .Values.sql.pmrBookkeepingDB.dbName | quote }}
+  DB_USERNAME: {{ .Values.sql.pmrBookkeepingDB.user | quote }}
+  DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
+  {{- if .Values.otel.enabled }}
+  OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
+  OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
+  OTEL_TRACES_EXPORTER: {{ .Values.otel.tracesExporter | quote }}
+  OTEL_PROPAGATORS: {{ .Values.otel.propagators | quote }}
+  OTEL_LOG_LEVEL: {{ .Values.otel.logLevel | quote }}
+  SPLUNK_METRICS_ENABLED: {{ .Values.splunk.metricsEnabled | default "false" | quote }}
+  SPLUNK_PROFILER_ENABLED: {{ .Values.splunk.profilerEnabled | quote }}
+  SPLUNK_PROFILER_MEMORY_ENABLED: {{ .Values.splunk.profilerMemoryEnabled | quote }}
+  {{- end }}
+{{- end }}

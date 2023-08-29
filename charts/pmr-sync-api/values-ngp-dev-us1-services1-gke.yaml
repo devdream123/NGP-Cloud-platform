@@ -1,0 +1,16 @@
+shouldDeploy: true
+
+image:
+  tag: "latest"
+
+sql:
+  instance: ngp-dev-us1-services1-sql
+  pmrBookkeepingDB:
+    user: sa-dev-fe-microservices@gcp-wow-corp-qretail-ngp-dev.iam
+
+otel:
+  enabled: True
+  resourceAttributes: "deployment.environment=dev"
+
+secrets:
+  pmrEndpointAPICredential: ""
