@@ -7,7 +7,7 @@ sql:
     user: sa-prd-fe-microservices@gcp-wow-corp-qretail-ngp-prd.iam
 
 otel:
-  enabled: True
+  enabled: true
   resourceAttributes: "deployment.environment=prd"
 
 secrets:
