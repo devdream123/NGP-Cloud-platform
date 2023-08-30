@@ -7,7 +7,7 @@ sql:
     user: sa-uat-fe-microservices@gcp-wow-corp-qretail-ngp-uat.iam
 
 otel:
-  enabled: True
+  enabled: true
   resourceAttributes: "deployment.environment=uat"
 
 secrets:
