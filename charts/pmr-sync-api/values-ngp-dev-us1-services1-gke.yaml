@@ -9,7 +9,7 @@ sql:
     user: sa-dev-fe-microservices@gcp-wow-corp-qretail-ngp-dev.iam
 
 otel:
-  enabled: True
+  enabled: true
   resourceAttributes: "deployment.environment=dev"
 
 secrets:
