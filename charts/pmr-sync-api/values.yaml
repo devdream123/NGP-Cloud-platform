@@ -79,7 +79,7 @@ sql:
       cpu: "50m"
 
 otel:
-  enabled: False
+  enabled: false
   serviceName: "pmr-sync-api"
   resourceAttributes: ""
   tracesExporter: "otlp"

@@ -18,6 +18,7 @@ spec:
       annotations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      {{- include "pmr-sync-api.configChecksum" . | nindent 8 }}
       labels:
         {{- include "pmr-sync-api.selectorLabels" . | nindent 8 }}
     spec:
