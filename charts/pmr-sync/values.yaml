@@ -1,10 +1,10 @@
 # Default values for custom-groups-api.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+shouldDeploy: false
+
 projectId: ""
 replicaCount: 1
-
-shouldDeploy: false
 
 image:
   repository: ""
@@ -80,7 +80,7 @@ sql:
 
 otel:
   enabled: false
-  serviceName: "pmr-sync-api"
+  serviceName: "pmr-sync"
   resourceAttributes: ""
   tracesExporter: "otlp"
   tracesSampler: "always_on"

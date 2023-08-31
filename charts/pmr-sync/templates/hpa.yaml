@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "pmr-sync-api.fullname" . }}
+  name: {{ include "pmr-sync.fullname" . }}
   labels:
-    {{- include "pmr-sync-api.labels" . | nindent 4 }}
+    {{- include "pmr-sync.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "pmr-sync-api.fullname" . }}
+    name: {{ include "pmr-sync.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
