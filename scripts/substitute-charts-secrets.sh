@@ -26,7 +26,7 @@ for environment in "${environments[@]}"; do
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/dealsheet-api/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/frontend-ui/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/graphql-mesh/values-${cluster}.yaml"
-    if [ $environment == "dev" ]; then
+    if [ "${environment}" == "dev" ]; then
       sed -i "s/pmrEndpointAPICredential:/pmrEndpointAPICredential: ${PMR_ENDPOINT_API_CREDENTIAL_DEV}/" "./charts/pmr-sync/values-${cluster}.yaml"
     fi
   done
