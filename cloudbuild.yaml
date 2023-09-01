@@ -22,8 +22,6 @@ steps:
       - 'FORECAST_POSTGRES_PWD_PRD'
       - 'FORECAST_POSTGRES_PWD_TST'
       - 'PMR_ENDPOINT_API_CREDENTIAL_DEV'
-      - 'PMR_ENDPOINT_API_CREDENTIAL_UAT'
-      - 'PMR_ENDPOINT_API_CREDENTIAL_PRD'
   - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:21-11-2022'
     entrypoint: 'bash'
     args:
