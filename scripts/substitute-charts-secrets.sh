@@ -21,17 +21,14 @@ for environment in "${environments[@]}"; do
    
     echo "Substituting secrets' values for cluster: ${cluster} in environment : ${environment}"
 
-    ENVIRONMENT_UPPER_CASE=$(echo "${environment}" | tr '[:lower:]' '[:upper:]')
-    FORECAST_POSTGRES_DB_PASSWORD=FORECAST_POSTGRES_PWD_$ENVIRONMENT_UPPER_CASE
-    PMR_ENDPOINT_API_CREDENTIAL=PMR_ENDPOINT_API_CREDENTIAL_$ENVIRONMENT_UPPER_CASE
-    sed -i "s/pwd: /pwd: ${!FORECAST_POSTGRES_DB_PASSWORD}/" "./charts/forecast-api/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/hierarchy-api/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/calendar-api/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/dealsheet-api/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/frontend-ui/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/graphql-mesh/values-${cluster}.yaml"
-    sed -i "s/pmrEndpointAPICredential:/pmrEndpointAPICredential: ${PMR_ENDPOINT_API_CREDENTIAL}/" "./charts/pmr-sync/values-${cluster}.yaml"
-
+    if [ $environment == "dev" ]; then
+      sed -i "s/pmrEndpointAPICredential:/pmrEndpointAPICredential: ${PMR_ENDPOINT_API_CREDENTIAL_DEV}/" "./charts/pmr-sync/values-${cluster}.yaml"
+    fi
   done
 
 done
