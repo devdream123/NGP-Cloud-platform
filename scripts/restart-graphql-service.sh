@@ -30,16 +30,16 @@ function check_all_deployments () {
       check_deployment_completeness "${deployment}" "${deployments["${deployment}"]}"
       deployment_statuses+=($?) 
     else 
-      echo "Deployment ${deployment} was not found in ${deployments[${deployment}]} namespace. Skipping"
+      echo "deployment ${deployment} was not found in ${deployments[${deployment}]} namespace. Skipping"
     fi
 
   done
    
   for status in "${deployment_statuses[@]}"; do
-    if [ "${status}" != 0 ]; then
+    if [ "${status}" != 0 ]; then 
       return "${status}"
     fi
-  done
+  done 
    
   return 0
 }
@@ -61,12 +61,12 @@ deployments["hierarchy-api"]="ngp-backend"
 deployments["pgr-api"]="ngp-analytics"
 deployments["custom-groups-api"]="ngp-frontend"
 
-for cluster in "${CLOUDSDK_CONTAINER_CLUSTERS[@]}"; do
-
+for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
+  
   cluster_context="gke_${GCLOUD_PROJECT}_${CLOUDSDK_COMPUTE_REGION}_${cluster}"
   echo "Switching to context:${cluster_context} to restart GraphQL mesh service." 
   kubectl config use-context "${cluster_context}"
-
+  
   until check_all_deployments; do 
     echo "Waiting for deployments of services in cluster: ${cluster} to be ready before restarting GraphQL mesh."
     sleep 20 

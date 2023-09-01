@@ -21,9 +21,9 @@ if [ ! "$1" ]; then
 fi
 
 environment=$1
-source "${BASE_DIR}"/export-env-variables.sh "${environment}"
+source ${BASE_DIR}/export-env-variables.sh "${environment}"
 
-for cluster in "${CLOUDSDK_CONTAINER_CLUSTERS[@]}"; do
+for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
 
   cluster_context="gke_${GCLOUD_PROJECT}_${CLOUDSDK_COMPUTE_REGION}_${cluster}"
   kubectl config use-context "${cluster_context}"
