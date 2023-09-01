@@ -34,14 +34,14 @@ echo "Checking if entity framework migration script for tag: ${tag} and database
 
 if [[ $(gsutil ls "${migration_script_gcs_object_uri}") ]]; then
   
-  echo "Importing entity framework migration script for tag: ${tag} on database: ${database} of ${cloud_sql_instance} cloud SQL instance."
+  echo "Importing entity framework migration script for tag: ${tag} into the database: ${database} on ${cloud_sql_instance} cloud SQL instance."
   gcloud sql import sql "${cloud_sql_instance}" "${migration_script_gcs_object_uri}" \
     --database="${database}" \
     --user="${database_iam_user}" \
     --project="${gcp_project}"
 
 else
-  
+
   echo "The migration script in the following path: ${migration_script_gcs_object_uri} was not found"
 
 fi
