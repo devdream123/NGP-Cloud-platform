@@ -3,8 +3,7 @@ image:
 
 sql:
   instance: ngp-uat-us1-services1-sql
-  pmrBookkeepingDB:
-    user: sa-uat-fe-microservices@gcp-wow-corp-qretail-ngp-uat.iam
+  user: sa-uat-fe-microservices@gcp-wow-corp-qretail-ngp-uat.iam
 
 otel:
   enabled: true

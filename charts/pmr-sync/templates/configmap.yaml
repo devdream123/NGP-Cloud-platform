@@ -8,10 +8,12 @@ metadata:
     {{- include "pmr-sync.labels" . | nindent 4 }}
 data:
   DB_HOST: {{ .Values.sql.proxyServer | quote }}
-  DB_PORT: {{ .Values.sql.pmrBookkeepingDB.proxyPort | quote }}
-  DB_NAME: {{ .Values.sql.pmrBookkeepingDB.dbName | quote }}
-  DB_USERNAME: {{ .Values.sql.pmrBookkeepingDB.user | quote }}
-  DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
+  DB_PORT: {{ .Values.sql.proxyPort | quote }}
+  DB_USERNAME: {{ .Values.sql.user | quote }}
+  BK_DB_NAME: {{ .Values.sql.pmrBookkeepingDB.dbName | quote }}
+  BK_DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
+  CG_DB_NAME: {{ .Values.sql.customGroupsDB.dbName | quote }}
+  CG_DB_SCHEMA: {{ .Values.sql.customGroupsDB.schema | quote }}
   {{- if .Values.otel.enabled }}
   OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
   OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
