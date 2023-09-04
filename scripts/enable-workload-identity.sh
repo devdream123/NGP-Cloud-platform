@@ -12,7 +12,7 @@ function print_usage() {
   printf "Example of execution : enable-workload-identity.sh <project_id> <gcp sa name> <k8s sa name> <k8s ns>."
 }
 
-if [ ! "$1" ]  || [ ! "$2" ] || [ ! "$3" ] || [ ! "$4" ] ; then
+if [ ! "$1" ] || [ ! "$2" ] || [ ! "$3" ] || [ ! "$4" ] ; then
   print_usage
   exit 1
 fi
@@ -26,4 +26,7 @@ gcloud iam service-accounts add-iam-policy-binding "${gcp_sa}@${gcp_project}.iam
   --role="roles/iam.workloadIdentityUser" \
   --member="serviceAccount:${gcp_project}.svc.id.goog[${k8s_ns}/${k8s_sa}]"
 
-kubectl annotate serviceaccount "${k8s_sa}" "iam.gke.io/gcp-service-account=${gcp_sa}@${gcp_project}.iam.gserviceaccount.com" -n "${k8s_ns}" --overwrite=true
+kubectl annotate serviceaccount "${k8s_sa}" \
+  "iam.gke.io/gcp-service-account=${gcp_sa}@${gcp_project}.iam.gserviceaccount.com" \
+  -n "${k8s_ns}" \
+  --overwrite=true

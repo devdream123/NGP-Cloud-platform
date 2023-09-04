@@ -14,20 +14,22 @@ if [ ! "$1" ]; then
 fi
 
 script_dir=$(dirname "$0")
-export BASE_DIR=$(cd "${script_dir}"; pwd -P)
+BASE_DIR=$(cd "${script_dir}"; pwd -P)
+export "BASE_DIR"
 charts_dir="${BASE_DIR}/../charts"
 destination_dir="${BASE_DIR}/../outputs/packages"
 artifact_registry_uri=$1
 
-for dir in  $(ls ${charts_dir}); do
-  
-  helm package "${charts_dir}/${dir}" --destination "${destination_dir}"
+for dir in "${charts_dir}"/*; do
+
+  echo "Packaging the HELM chart: ${dir}"
+  helm package "${dir}" --destination "${destination_dir}"
 
 done 
 
-for package in $(ls ${destination_dir}); do
-  
-  echo "${destination_dir}/${package}"
-  helm push "${destination_dir}/${package}" oci://"${artifact_registry_uri}"
+for package in "${destination_dir}"/*; do
+
+  echo "Uploading the HELM package: ${package}"
+  helm push "${package}" oci://"${artifact_registry_uri}"
 
 done
