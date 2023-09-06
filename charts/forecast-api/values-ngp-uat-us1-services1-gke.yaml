@@ -1,7 +1,7 @@
 projectId: gcp-wow-corp-qretail-ngp-uat
 
 image:
-  tag: 1.54.0
+  tag: 1.59.2
 
 resources:
   requests:

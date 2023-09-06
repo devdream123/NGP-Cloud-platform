@@ -9,14 +9,14 @@ BASE_DIR=$(cd "${script_dir}"; pwd -P)
 export BASE_DIR
 
 if [ "$1" ]; then
-  environments=("$1")	
+  environments=("$1")
  else 
   environments=("tst" "dev" "uat" "prd")
 fi
 
 for environment in "${environments[@]}"; do
-  source ${BASE_DIR}/export-env-variables.sh "${environment}"
-  
+  source "${BASE_DIR}"/export-env-variables.sh "${environment}"
+
   for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
    
     echo "Substituting secrets' values for cluster: ${cluster} in environment : ${environment}"
