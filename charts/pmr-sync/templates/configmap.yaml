@@ -9,9 +9,20 @@ metadata:
 data:
   DB_HOST: {{ .Values.sql.proxyServer | quote }}
   DB_PORT: {{ .Values.sql.pmrBookkeepingDB.proxyPort | quote }}
-  DB_NAME: {{ .Values.sql.pmrBookkeepingDB.dbName | quote }}
-  DB_USERNAME: {{ .Values.sql.pmrBookkeepingDB.user | quote }}
-  DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
+  PROJECT_ID: {{ .Values.projectId | quote }}
+  PMR_SUBSCRIPTION_NAME: {{ .Values.service.subscriptionName | quote }}
+  PMR_TOPIC_NAME: {{ .Values.service.topicName | quote }}
+  PMR_SERVER_URL: {{ .Values.service.serverUrl | quote }}
+  BK_DB_USERNAME: {{ .Values.sql.pmrBookkeepingDB.user | quote }}
+  BK_DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
+  BK_DB_NAME: {{ .Values.sql.pmrBookkeepingDB.dbName | quote }}
+  NUM_OF_ATTEMPTS: {{ .Values.service.numOfAttempts }}
+  STARTING_DELAY: {{ .Values.service.startingDelay }}
+  TIME_MULTIPLE: {{ .Values.service.timeMultiple }}
+  QUEUE_CONCURRENCY: {{ .Values.service.queueConcurrency }}
+  QUEUE_INTERVAL: {{ .Values.service.queueInterval | }}
+  QUEUE_INTERVAL_CAP: {{ .Values.service.queueIntervalCap }}
+  PMR_SYNC_APP_PORT: {{ .Values.service.port }}
   {{- if .Values.otel.enabled }}
   OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
   OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
