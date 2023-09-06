@@ -16,12 +16,12 @@ data:
   BK_DB_USERNAME: {{ .Values.sql.pmrBookkeepingDB.user | quote }}
   BK_DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
   BK_DB_NAME: {{ .Values.sql.pmrBookkeepingDB.dbName | quote }}
-  NUM_OF_ATTEMPTS: {{ .Values.service.numOfAttempts }}
-  STARTING_DELAY: {{ .Values.service.startingDelay }}
-  TIME_MULTIPLE: {{ .Values.service.timeMultiple }}
-  QUEUE_CONCURRENCY: {{ .Values.service.queueConcurrency }}
-  QUEUE_INTERVAL: {{ .Values.service.queueInterval | }}
-  QUEUE_INTERVAL_CAP: {{ .Values.service.queueIntervalCap }}
+  PMR_NUM_OF_ATTEMPTS: {{ .Values.service.numOfAttempts }}
+  PMR_STARTING_DELAY: {{ .Values.service.startingDelay }}
+  PMR_TIME_MULTIPLE: {{ .Values.service.timeMultiple }}
+  PMR_QUEUE_CONCURRENCY: {{ .Values.service.queueConcurrency }}
+  PMR_QUEUE_INTERVAL: {{ .Values.service.queueInterval | }}
+  PMR_QUEUE_INTERVAL_CAP: {{ .Values.service.queueIntervalCap }}
   PMR_SYNC_APP_PORT: {{ .Values.service.port }}
   {{- if .Values.otel.enabled }}
   OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
