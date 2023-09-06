@@ -66,13 +66,10 @@ affinity: {}
 sql:
   region: us-central1
   instance:
-  proxyPort: "5432" 
-  user:
   pmrBookkeepingDB:
     dbName: ngsPMRBookkeeping
-    schema: public
-  customGroupsDB:
-    dbName: ngsCustomGroups
+    proxyPort: "5432"
+    user: 
     schema: public
   proxyServer: localhost
   proxyVersion: "2.1.1"
