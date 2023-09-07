@@ -25,6 +25,7 @@ deployments=(
   "istio-gateway"
   "pgr-api"
   "custom-groups-api"
+  "pmr-sync"
   "web-proxy-ds"
 )
 
