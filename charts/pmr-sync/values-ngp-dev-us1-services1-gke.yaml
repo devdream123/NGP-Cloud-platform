@@ -9,12 +9,12 @@ service:
   subscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr1-sync-service-subscription"
   topicName: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr1-topic"
   serverUrl: "https://wowapidev.woolworths.com.au"
-  numOfAttempts: 10
-  startingDelay: 100
-  timeMultiple: 2
-  queueConcurrency: 1
-  queueInterval: 1000
-  queueIntervalCap: 2
+  numOfAttempts: "10"
+  startingDelay: "100"
+  timeMultiple: "2"
+  queueConcurrency: "1"
+  queueInterval: "1000"
+  queueIntervalCap: "2"
 
 sql:
   instance: ngp-dev-us1-services1-sql
