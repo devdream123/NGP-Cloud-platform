@@ -3,7 +3,7 @@ shouldDeploy: true
 projectId: "gcp-wow-corp-qretail-ngp-dev"
 
 image:
-  tag: "1.0.0"
+  tag: "1.0.1"
 
 service:
   subscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr1-sync-service-subscription"

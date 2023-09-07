@@ -1,5 +1,5 @@
 image:
-  tag: "1.0.0"
+  tag: ""
 
 sql:
   instance: ngp-prd-us1-services1-sql
