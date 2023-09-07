@@ -8,7 +8,7 @@ image:
 service:
   subscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr1-sync-service-subscription"
   topicName: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr1-topic"
-  serverUrl: "http://pmr-api:9090"
+  serverUrl: "https://wowapidev.woolworths.com.au"
   numOfAttempts: 10
   startingDelay: 100
   timeMultiple: 2
