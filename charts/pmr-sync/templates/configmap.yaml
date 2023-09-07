@@ -1,0 +1,36 @@
+{{- if .Values.shouldDeploy }}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "pmr-sync.fullname" . }}-cm
+  labels:
+    {{- include "pmr-sync.labels" . | nindent 4 }}
+data:
+  DB_HOST: {{ .Values.sql.proxyServer | quote }}
+  DB_PORT: {{ .Values.sql.pmrBookkeepingDB.proxyPort | quote }}
+  PROJECT_ID: {{ .Values.projectId | quote }}
+  PMR_SUBSCRIPTION_NAME: {{ .Values.service.subscriptionName | quote }}
+  PMR_TOPIC_NAME: {{ .Values.service.topicName | quote }}
+  PMR_SERVER_URL: {{ .Values.service.serverUrl | quote }}
+  BK_DB_USERNAME: {{ .Values.sql.pmrBookkeepingDB.user | quote }}
+  BK_DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
+  BK_DB_NAME: {{ .Values.sql.pmrBookkeepingDB.dbName | quote }}
+  PMR_NUM_OF_ATTEMPTS: {{ .Values.service.numOfAttempts }}
+  PMR_STARTING_DELAY: {{ .Values.service.startingDelay }}
+  PMR_TIME_MULTIPLE: {{ .Values.service.timeMultiple }}
+  PMR_QUEUE_CONCURRENCY: {{ .Values.service.queueConcurrency }}
+  PMR_QUEUE_INTERVAL: {{ .Values.service.queueInterval | }}
+  PMR_QUEUE_INTERVAL_CAP: {{ .Values.service.queueIntervalCap }}
+  PMR_SYNC_APP_PORT: {{ .Values.service.port }}
+  {{- if .Values.otel.enabled }}
+  OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
+  OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
+  OTEL_TRACES_EXPORTER: {{ .Values.otel.tracesExporter | quote }}
+  OTEL_PROPAGATORS: {{ .Values.otel.propagators | quote }}
+  OTEL_LOG_LEVEL: {{ .Values.otel.logLevel | quote }}
+  SPLUNK_METRICS_ENABLED: {{ .Values.splunk.metricsEnabled | default "false" | quote }}
+  SPLUNK_PROFILER_ENABLED: {{ .Values.splunk.profilerEnabled | quote }}
+  SPLUNK_PROFILER_MEMORY_ENABLED: {{ .Values.splunk.profilerMemoryEnabled | quote }}
+  {{- end }}
+{{- end }}

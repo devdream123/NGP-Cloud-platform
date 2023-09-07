@@ -1,0 +1,17 @@
+image:
+  tag: ""
+
+service:
+  serverUrl: "https://wowapiuat.woolworths.com.au"
+
+sql:
+  instance: ngp-uat-us1-services1-sql
+  pmrBookkeepingDB:
+    user: 
+
+otel:
+  enabled: true
+  resourceAttributes: "deployment.environment=uat"
+
+secrets:
+  pmrEndpointAPICredential:

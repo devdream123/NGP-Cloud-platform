@@ -1,0 +1,69 @@
+{{- if .Values.shouldDeploy }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{ .Release.Name }}"
+  labels:
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/instance: {{ .Release.Name | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-delete-policy": hook-succeeded
+spec:
+  ttlSecondsAfterFinished: 60
+  template:
+    metadata:
+      name: "{{ .Release.Name }}"
+      labels:
+        app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+        app.kubernetes.io/instance: {{ .Release.Name | quote }}
+        helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+        sidecar.istio.io/inject: "false"
+    spec:
+      restartPolicy: Never
+      volumes:
+      - name: job-status
+        emptyDir:
+          sizeLimit: 500Mi
+      containers:
+      - name: cloud-sql-proxy
+        volumeMounts:
+        - mountPath : /tmp
+          name: job-status
+        image: "gcr.io/cloud-sql-connectors/cloud-sql-proxy:{{ .Values.sql.proxyVersion }}-alpine"
+        command: ["/bin/sh"]
+        args:
+          - -c
+          - >-
+              /cloud-sql-proxy \
+                --auto-iam-authn \
+                --private-ip \
+                --port={{ .Values.sql.pmrBookkeepingDB.proxyPort }} \
+                --impersonate-service-account={{ .Values.sql.pmrBookkeepingDB.user }}.gserviceaccount.com \
+                {{ .Values.projectId }}:{{ .Values.sql.region }}:{{ .Values.sql.instance }} &
+              until [ -f /tmp/job-result.log ];
+              do
+                 echo "waiting for migration job to be completed"
+                 sleep 10
+              done
+      - name: db-migrator-job
+        volumeMounts:
+        - mountPath: /tmp
+          name: job-status
+        envFrom:
+          - configMapRef:
+              name: {{ include "pmr-sync.fullname" . }}-cm
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command: ["/bin/sh"]
+        args:
+         - -c
+         - >-
+             cd services/pmr-sync;
+             pnpm sequelize-cli db:migrate;
+             echo "Job is done" > /tmp/job-result.log
+{{- end }}

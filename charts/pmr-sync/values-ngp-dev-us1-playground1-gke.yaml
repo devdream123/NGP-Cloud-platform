@@ -1,0 +1,4 @@
+shouldDeploy: false
+
+secrets:
+  pmrEndpointAPICredential:

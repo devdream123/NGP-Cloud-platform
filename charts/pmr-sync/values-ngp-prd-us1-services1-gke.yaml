@@ -1,0 +1,17 @@
+image:
+  tag: ""
+
+service:
+  serverUrl: "https://wowapi.woolworths.com.au"
+
+sql:
+  instance: ngp-prd-us1-services1-sql
+  pmrBookkeepingDB:
+    user: 
+
+otel:
+  enabled: true
+  resourceAttributes: "deployment.environment=prd"
+
+secrets:
+  pmrEndpointAPICredential:
