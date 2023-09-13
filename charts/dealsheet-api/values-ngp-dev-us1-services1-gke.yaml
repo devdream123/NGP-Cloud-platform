@@ -6,6 +6,7 @@ database:
   user: sa-dev-ngsslotting-sql@gcp-wow-corp-qretail-ngp-dev.iam
   db: ngsSlotting
   commandTimeout: 600
+  pooling: true
   maximumPoolSize: 500
   includeErrorDetail: true
 

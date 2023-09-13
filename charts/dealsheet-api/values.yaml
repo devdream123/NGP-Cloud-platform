@@ -22,6 +22,7 @@ database:
   schema: public
   server: localhost
   commandTimeout: 30
+  pooling: false
   maximumPoolSize: 100
   includeErrorDetail: false
   proxyVersion: "2.3.0"
