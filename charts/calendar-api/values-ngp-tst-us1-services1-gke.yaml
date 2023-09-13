@@ -9,6 +9,10 @@ database:
     user: sa-tst-ngsslotting-sql@gcp-wow-corp-qretail-ngp-test.iam
   placeholder:
     user: sa-tst-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-test.iam
+  commandTimeout: 600
+  pooling: true
+  maximumPoolSize: 500
+  includeErrorDetail: true
 
 otel:
   enabled: True
