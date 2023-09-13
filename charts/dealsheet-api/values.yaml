@@ -21,6 +21,9 @@ database:
   db: ngsSlotting
   schema: public
   server: localhost
+  commandTimeout: 30
+  maximumPoolSize: 100
+  includeErrorDetail: false
   proxyVersion: "2.3.0"
   user: ""
   proxyResources:
