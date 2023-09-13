@@ -6,7 +6,6 @@ database:
   user: sa-uat-ngsslotting-sql@gcp-wow-corp-qretail-ngp-uat.iam
   commandTimeout: 600
   pooling: true
-  maximumPoolSize: 256
   includeErrorDetail: true
 
 otel:
