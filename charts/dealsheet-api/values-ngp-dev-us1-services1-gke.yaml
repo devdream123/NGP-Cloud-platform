@@ -7,7 +7,7 @@ database:
   db: ngsSlotting
   commandTimeout: 600
   pooling: true
-  maximumPoolSize: 500
+  maximumPoolSize: 256
   includeErrorDetail: true
 
 otel:

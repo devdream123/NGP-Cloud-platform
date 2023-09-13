@@ -10,7 +10,7 @@ data:
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
   Hierarchy__Url: {{ printf "http://%s.%s.svc.cluster.local" .Values.hierarchyChartName .Values.backendNamespace | quote  }}
   {{- if .Values.database.pooling }}
-  ConnectionStrings__SlottingDb: {{ printf "Host=%s:%s;Database=%s;Username=%s;PWD=;SearchPath=%s;Pooling=true;MaximumPoolSize=%v;CommandTimeout=%v;IncludeErrorDetail=%v;" .Values.database.server .Values.database.port .Values.database.db .Values.database.user .Values.database.schema .Values.database.maximumPoolSize .Values.database.commandTimeout .Values.database.includeErrorDetail | quote }}
+  ConnectionStrings__SlottingDb: {{ printf "Host=%s:%s;Database=%s;Username=%s;PWD=;SearchPath=%s;Pooling=true;MaxPoolSize=%v;CommandTimeout=%v;IncludeErrorDetail=%v;" .Values.database.server .Values.database.port .Values.database.db .Values.database.user .Values.database.schema .Values.database.maximumPoolSize .Values.database.commandTimeout .Values.database.includeErrorDetail | quote }}
   {{- else }}
   ConnectionStrings__SlottingDb: {{ printf "Host=%s:%s;Database=%s;Username=%s;PWD=;SearchPath=%s;CommandTimeout=%v;IncludeErrorDetail=%v;" .Values.database.server .Values.database.port .Values.database.db .Values.database.user .Values.database.schema .Values.database.commandTimeout .Values.database.includeErrorDetail | quote }}
   {{- end }}
