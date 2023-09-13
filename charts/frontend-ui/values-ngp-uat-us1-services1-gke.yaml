@@ -1,6 +1,6 @@
 ---
 image:
-  tag: 1.51.3-uat
+  tag: 1.51.4-uat
 
 server:
   launchDarklyClientId: "62a81d2460d0f91561c5dc58"
@@ -11,7 +11,7 @@ server:
   proxyHost: ingress-gateway.uat.int.wiqretail.com
   featureFlagsEnvironment: uat
   image:
-    tag: 1.51.3-uat
+    tag: 1.51.4-uat
 
 otel:
   enabled: true
