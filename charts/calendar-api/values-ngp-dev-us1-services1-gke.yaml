@@ -8,6 +8,9 @@ database:
     dbName: ngsSlotting
   placeholder:
     user: sa-dev-ngsplaceholder-sql@gcp-wow-corp-qretail-ngp-dev.iam
+  commandTimeout: 600
+  pooling: true
+  includeErrorDetail: true
 
 otel:
   enabled: True

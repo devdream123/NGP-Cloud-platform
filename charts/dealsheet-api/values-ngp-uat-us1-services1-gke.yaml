@@ -4,6 +4,9 @@ image:
 database:
   instance: ngp-uat-us1-services1-sql
   user: sa-uat-ngsslotting-sql@gcp-wow-corp-qretail-ngp-uat.iam
+  commandTimeout: 600
+  pooling: true
+  includeErrorDetail: true
 
 otel:
   enabled: True
