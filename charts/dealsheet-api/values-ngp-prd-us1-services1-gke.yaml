@@ -1,5 +1,6 @@
+---
 image:
-  tag: v1.53.12-prd
+  tag: v1.55.22-prd
 
 resources:
   limits:
@@ -9,6 +10,8 @@ resources:
 database:
   instance: ngp-prd-us1-services1-sql
   user: sa-prd-ngsslotting-sql@gcp-wow-corp-qretail-ngp-prod.iam
+  commandTimeout: 600
+  pooling: true
 
 otel:
   enabled: True
