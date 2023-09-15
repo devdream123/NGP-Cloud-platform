@@ -16,8 +16,6 @@ image:
   pullPolicy: Always
   tag: ""
 
-appVersion: "v1"
-
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""

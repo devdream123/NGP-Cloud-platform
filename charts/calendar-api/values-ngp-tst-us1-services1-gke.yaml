@@ -1,8 +1,6 @@
 image:
   tag: v1.58.12-rc
 
-appVersion: v1
-
 database:
   instance: ngp-tst-us1-services1-sql
   slotting:
