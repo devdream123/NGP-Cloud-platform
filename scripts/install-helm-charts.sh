@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+echo "Starting install-helm-charts.sh"
+
 set -o errexit   # abort on nonzero exitstatus
 set -o pipefail  # don't hide errors within pipes
+set -o nounset   # abort on unbound variable
 
 function print_usage() {
   printf "A deployment script for helm charts.\n"

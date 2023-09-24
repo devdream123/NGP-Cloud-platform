@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+echo "Starting apply-entity-framework-migrations.sh"
+
 set -o errexit   # abort on nonzero exitstatus
 set -o pipefail  # don't hide errors within pipes
+set -o nounset   # abort on unbound variable
 
 function print_usage() {
   printf "A script to apply entity framework migrations for a specific chart.\n"

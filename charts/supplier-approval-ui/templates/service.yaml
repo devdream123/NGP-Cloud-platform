@@ -1,0 +1,117 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: {{ include "supplier-approval-ui.name" . }}
+  annotations:
+    run.googleapis.com/launch-stage: {{ .Values.instanceLaunchStage | quote }}
+    run.googleapis.com/ingress: {{ .Values.ingress | quote }}
+    run.googleapis.com/ingress-status: {{ .Values.ingress | quote }}
+spec:
+  template:
+    metadata:
+      annotations:
+        {{- if or .Values.secretAsEnv .Values.secretAsVolume }}
+        run.googleapis.com/secrets:
+
+          {{- if .Values.secretAsEnv }}{{" "}}
+            {{- $envLast := sub (len .Values.secretAsEnv) 1 }}
+            {{- range $envK, $env := .Values.secretAsEnv }}{{ printf "secret-as-env-%d:%s" $envK $env.gcpSecretManagerRef.resourceId }}{{ if ne $envK $envLast  }}{{ "," }}{{- end }} {{- end }}
+          {{- end }}
+
+          {{- if .Values.secretAsVolume }}
+            {{- $volLast := sub (len .Values.secretAsVolume) 1 }}
+            {{- if .Values.secretAsEnv }}{{ ","}}
+            {{- else }}{{ " " }}
+            {{- end }}
+            {{- range $volK, $vol := .Values.secretAsVolume }}{{ printf "secret-as-volume-%d:%s" $volK $vol.gcpSecretManagerRef.resourceId }}{{ if ne $volK $volLast }}{{ "," }}{{- end }} {{- end }}
+          {{- end }}
+
+        {{- end }}
+        run.googleapis.com/sessionAffinity: {{ .Values.sessionAffinity | quote }}
+        run.googleapis.com/execution-environment: gen2
+        {{- if .Values.vpcAccessConnector }}
+        run.googleapis.com/vpc-access-egress: {{ .Values.vpcAccessEgress | quote }}
+        run.googleapis.com/vpc-access-connector: {{ .Values.vpcAccessConnector | quote }}
+        {{- end }}
+        autoscaling.knative.dev/minScale: {{ .Values.minScaling | quote }}
+        autoscaling.knative.dev/maxScale: {{ .Values.maxScaling | quote }}
+        run.googleapis.com/cpu-throttling: {{ .Values.cpuThrottling | quote }}
+    spec:
+      containerConcurrency: {{ .Values.container.maxConcurrentRequests }}
+      timeoutSeconds: {{ .Values.instanceTimeoutSeconds }}
+      serviceAccountName: {{ .Values.serviceAccountName }}
+      containers:
+      - name: {{ .Values.container.name }}
+        image: "{{ .Values.containerImage.repository }}:{{ .Values.containerImage.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.containerImage.pullPolicy }}
+        {{- if .Values.container.command }}
+        command:
+          {{- toYaml .Values.container.command | nindent 10 | default }}
+        {{- end }}
+        {{- if .Values.container.args }}
+        args:
+          {{- toYaml .Values.container.args | nindent 10 | default }}
+        {{- end }}
+        {{- if or .Values.env .Values.secretAsEnv .Values.secretAsVolume }}
+        env: 
+          {{- range $k, $v := .Values.env }}
+          - name: {{ $v.name | quote }}
+            value: {{ $v.value | quote }}
+          {{- end }}
+          {{- range $k, $v := .Values.secretAsVolume }}
+            {{- range $i, $item := $v.gcpSecretManagerRef.items }}
+          - name: {{ $v.envName | quote }}
+            value: {{ printf "%s/%s" $v.mountPath $item.path }}
+            {{- end }}
+          {{- end }}
+          {{- range $k, $v := .Values.secretAsEnv }}
+          - name: {{ $v.name | quote }}
+            valueFrom:
+              secretKeyRef:
+                name: {{ printf "secret-as-env-%d" $k}}
+                key: {{ $v.gcpSecretManagerRef.version | quote }}
+          {{- end }}
+        {{- end }}
+        ports:
+          - name: http1
+            containerPort: {{ .Values.container.port }}
+        resources:
+          {{- toYaml .Values.container.resources | nindent 10 }}
+        startupProbe:
+          {{- toYaml .Values.startupProbe | nindent 10 }}
+        {{- if .Values.secretAsVolume }}
+        volumeMounts:
+          {{- range $k, $v := .Values.secretAsVolume }}
+          - name: {{ $v.volumeName }}
+            readOnly: true
+            mountPath: {{ $v.mountPath }}
+          {{- end}}
+        {{- end}}
+      {{- if and .Values.sidecar .Values.sidecarImage }}
+      - name: {{ .Values.sidecar.name }}
+        image: "{{ .Values.sidecarImage.repository }}:{{ .Values.sidecarImage.tag | default .Chart.AppVersion }}"
+        imagePullPolicy: {{ .Values.sidecarImage.pullPolicy }}
+        {{- if .Values.sidecar.command }}
+        command:
+          {{- toYaml .Values.sidecar.command | nindent 10 }}
+        {{- end }}
+        {{- if .Values.sidecar.args }}
+        args:
+          {{- toYaml .Values.sidecar.args | nindent 10 }}
+        {{- end }}
+        resources: {{ toYaml .Values.sidecar.resources | nindent 10 }}
+      {{- end }}
+      {{- if .Values.secretAsVolume }}
+      volumes:
+       {{- range $k, $v := .Values.secretAsVolume }}
+        - name: {{ $v.volumeName }}
+          secret:
+            secretName: {{ printf "secret-as-volume-%d" $k }}
+            items:
+              {{- range $i, $item := $v.gcpSecretManagerRef.items }}
+              - key: {{  $item.version | quote }}
+                path: {{ $item.path | quote }}
+              {{- end }}
+        {{- end}}
+      {{- end }}
+ 

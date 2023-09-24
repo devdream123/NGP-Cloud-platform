@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+echo "Starting substitute-charts-secrets.sh"
+
 set -o errexit   # abort on nonzero exitstatus
 set -o pipefail  # don't hide errors within pipes
+set -o nounset   # abort on unbound variable
 
 script_dir=$(dirname "$0")
 
@@ -10,7 +13,7 @@ export BASE_DIR
 
 if [ "$1" ]; then
   environments=("$1")
- else 
+ else
   environments=("tst" "dev" "uat" "prd")
 fi
 

@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+echo "Starting export-env-variables.sh"
+
 set -o errexit   # abort on nonzero exitstatus
 set -o pipefail  # don't hide errors within pipes
+set -o nounset   # abort on unbound variable
 
 function print_usage() {
   printf "A script to export environment specific variables.\n"
@@ -22,6 +25,8 @@ CLOUDSDK_COMPUTE_REGION=$(yq eval '.env.CLOUDSDK_COMPUTE_REGION' "${BASE_DIR}/..
 export CLOUDSDK_COMPUTE_REGION
 CLOUDSDK_CONTAINER_CLUSTERS=$(yq eval '.env.CLOUDSDK_CONTAINER_CLUSTERS[]' "${BASE_DIR}/../config/${environment}.env.yaml")
 export CLOUDSDK_CONTAINER_CLUSTERS
+CLOUD_RUN_SERVICES=$(yq eval '.env.CLOUD_RUN_SERVICES[]' "${BASE_DIR}/../config/${environment}.env.yaml")
+export CLOUD_RUN_SERVICES
 GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${BASE_DIR}/../config/${environment}.env.yaml")
 export GCLOUD_PROJECT
 HIERARCHY_SERVICE_NAMESPACE=$(yq eval '.hierarchy.namespace' "${BASE_DIR}/../values/${environment}.yaml")

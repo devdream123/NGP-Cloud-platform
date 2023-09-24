@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+echo "Starting package-store-charts.sh"
+
 set -o errexit   # abort on nonzero exitstatus
 set -o pipefail  # don't hide errors within pipes
+set -o nounset   # abort on unbound variable
 
 function print_usage() {
   printf "A script to package and store helm charts on a remote repository.\n"

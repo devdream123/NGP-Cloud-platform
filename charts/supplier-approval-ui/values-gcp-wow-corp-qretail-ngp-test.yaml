@@ -1,0 +1,16 @@
+instanceTimeoutSeconds: 120
+serviceAccountName: ''
+
+container:
+  port: 8080
+  maxConcurrentRequests: 120
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 100m
+    limits:
+      memory: 2Gi
+      cpu: 2000m
+
+containerImage:
+  tag: "latest"

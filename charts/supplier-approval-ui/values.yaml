@@ -1,0 +1,56 @@
+minScaling : "1"
+maxScaling : "3"
+sessionAffinity: false
+cpuThrottling: true
+
+vpcAccessConnector: ""
+vpcAccessEgress: "private-ranges-only"
+ingress: "internal" #[all, internal , internal-and-cloud-load-balancing]
+
+instanceTimeoutSeconds: 120
+serviceAccountName: ""
+instanceLaunchStage: "BETA"
+
+container:
+  name: "pmr-suppliers-approval"
+  command: 
+  args:
+  port: 8080
+  maxConcurrentRequests: 120
+  resources:
+    requests:
+      memory: 64Mi
+      cpu: 50m
+    limits:
+      memory: 2Gi
+      cpu: 2000m
+
+containerImage:
+  repository: "us-docker.pkg.dev/cloudrun/container/hello"
+  pullPolicy: Always
+  tag: ""
+
+startupProbe:
+  timeoutSeconds: 240
+  periodSeconds: 240
+  failureThreshold: 1
+  tcpSocket:
+    port: 8080
+
+# Objects below define secret as environment variables or as Volume. Must be enabled in the override value files.
+
+# secretAsEnv:
+#   - name: "Test"
+#     gcpSecretManagerRef:
+#       resourceId: "projects/<project_id>/secrets/<secret name>"
+#       version: "" GCP secret version : latest or numbered version 
+
+# secretAsVolume: 
+#   - name: ""
+#     envName: "" Injected as env variable name into the container. Its value produced by concatenating the mountPath + items[*].path
+#     mountPath: "" Must starts with /
+#     gcpSecretManagerRef:
+#       resourceId: "projects/<project_id>/secrets/<secret name>"
+#       items:
+#        - version: ""  GCP secret version : latest or numbered version 
+#          path: ""  file name will be concatenated to mountPath

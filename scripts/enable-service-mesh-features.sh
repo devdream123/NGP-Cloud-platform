@@ -5,8 +5,11 @@
 ## https://cloud.google.com/service-mesh/docs/managed/enable-managed-anthos-service-mesh-optional-features#enable_cloud_tracing
 ################
 
+echo "Starting enable-service-mesh-features.sh"
+
 set -o errexit   # abort on nonzero exitstatus
 set -o pipefail  # don't hide errors within pipes
+set -o nounset   # abort on unbound variable
 
 function print_usage() {
   printf "A script to enable service mesh features.\n"
