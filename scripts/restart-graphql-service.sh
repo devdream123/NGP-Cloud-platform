@@ -26,7 +26,7 @@ function check_deployment_completeness () {
 
 function check_all_deployments () {
   deployment_statuses=()
-   
+
   for deployment in "${!deployments[@]}"; do
 
     if [[ $(check_deployment_existence "${deployment}" "${deployments["${deployment}"]}") ]]; then
@@ -37,13 +37,13 @@ function check_all_deployments () {
     fi
 
   done
-   
+
   for status in "${deployment_statuses[@]}"; do
     if [ "${status}" != 0 ]; then 
       return "${status}"
     fi
   done 
-   
+
   return 0
 }
 

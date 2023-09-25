@@ -16,7 +16,8 @@ function check_cloud_run_deployment_status() {
 
   deployment_status=$(gcloud run services describe "${1}" \
     --region="${2}" \
-    --project="${3}"  --format=yaml \
+    --project="${3}" \
+    --format=yaml \
     | yq '.status.conditions[] | select(.type == "Ready") | .status')
 
   echo "${deployment_status}"

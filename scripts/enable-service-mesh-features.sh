@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ################
-## This script automates some of the steps documented in these ASM guides
+## This script automates the step documented in this ASM guide
 ## https://cloud.google.com/service-mesh/docs/managed/enable-managed-anthos-service-mesh-optional-features#enable_cloud_tracing
 ################
 

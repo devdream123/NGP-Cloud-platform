@@ -4,7 +4,6 @@ echo "Starting deploy.sh"
 
 set -o errexit   # abort on nonzero exitstatus
 set -o pipefail  # don't hide errors within pipes
-set -o nounset   # abort on unbound variable
 
 script_dir=$(dirname "$0")
 

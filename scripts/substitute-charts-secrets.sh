@@ -4,7 +4,6 @@ echo "Starting substitute-charts-secrets.sh"
 
 set -o errexit   # abort on nonzero exitstatus
 set -o pipefail  # don't hide errors within pipes
-set -o nounset   # abort on unbound variable
 
 script_dir=$(dirname "$0")
 
@@ -21,7 +20,7 @@ for environment in "${environments[@]}"; do
   source "${BASE_DIR}"/export-env-variables.sh "${environment}"
 
   for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
-   
+
     echo "Substituting secrets' values for cluster: ${cluster} in environment : ${environment}"
 
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/hierarchy-api/values-${cluster}.yaml"
@@ -32,6 +31,7 @@ for environment in "${environments[@]}"; do
     if [ "${environment}" == "dev" ]; then
       sed -i "s/pmrEndpointAPICredential:/pmrEndpointAPICredential: ${PMR_ENDPOINT_API_CREDENTIAL_DEV}/" "./charts/pmr-sync/values-${cluster}.yaml"
     fi
+  
   done
 
 done
