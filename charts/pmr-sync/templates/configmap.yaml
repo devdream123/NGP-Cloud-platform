@@ -10,8 +10,11 @@ data:
   DB_HOST: {{ .Values.sql.proxyServer | quote }}
   DB_PORT: {{ .Values.sql.pmrBookkeepingDB.proxyPort | quote }}
   PROJECT_ID: {{ .Values.projectId | quote }}
-  PMR_SUBSCRIPTION_NAME: {{ .Values.service.subscriptionName | quote }}
-  PMR_TOPIC_NAME: {{ .Values.service.topicName | quote }}
+  PMR_SYNC_SUBMIT_DEAL_TOPIC_NAME: {{ .Values.service.submitDealTopicName | quote }}
+  PMR_SYNC_SUBMIT_DEAL_SUBSCRIPTION_NAME: {{ .Values.service.submitDealSubscriptionName | quote }}
+  PMR_SYNC_DELETE_DEAL_TOPIC_NAME: {{ .Values.service.deleteDealTopicName | quote }}
+  PMR_SYNC_DELETE_DEAL_SUBSCRIPTION_NAME: {{ .Values.service.deleteDealSubscriptionName | quote }}
+  PMR_SYNC_RESPONSE_TOPIC_NAME: {{  .Values.service.syncResponseTopicName | quote }}
   PMR_SERVER_URL: {{ .Values.service.serverUrl | quote }}
   BK_DB_USERNAME: {{ .Values.sql.pmrBookkeepingDB.user | quote }}
   BK_DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
