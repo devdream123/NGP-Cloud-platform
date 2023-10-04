@@ -1,7 +1,0 @@
-image:
-  tag: "7d7a07c"
-
-sql:
-  instance: ngp-dev-us1-services1-sql
-  customGroupsDB:
-    user: sa-dev-fe-microservices@gcp-wow-corp-qretail-ngp-dev.iam

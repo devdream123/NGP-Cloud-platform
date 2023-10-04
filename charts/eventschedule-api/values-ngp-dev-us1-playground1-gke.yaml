@@ -1,6 +1,0 @@
-image:
-  tag: v0.58.1-dev
-
-database:
-  instance: ngp-dev-us1-services1-sql
-  user: sa-dev-ngseventschedule-sql@gcp-wow-corp-qretail-ngp-dev.iam
