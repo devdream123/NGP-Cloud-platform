@@ -62,10 +62,11 @@ echo "Beginning Helm Template checks for Cloud Run services..."
     source "${BASE_DIR}/export-env-variables.sh" "${environment}"
 
     # Check helm charts for Cloud Run services
-    for cloud_run_service in ${CLOUD_RUN_SERVICES}; do
+    for cloud_run_service in "${CLOUD_RUN_SERVICES[@]}"; do
 
-      echo "Checking Cloud Run services chart for ${cloud_run_service} in ${environment} environment with values from ./charts/${cloud_run_service}/values-${GCLOUD_PROJECT}.yaml"
-      helm template "${BASE_DIR}/../charts/${cloud_run_service}" --output-dir "${BASE_DIR}/../outputs/${environment}/${cloud_run_service}" --values "${BASE_DIR}/../charts/${cloud_run_service}/values-${GCLOUD_PROJECT}.yaml"
+      service_name=$(echo "${cloud_run_service}" | yq .name)
+      echo "Checking Cloud Run services chart for ${service_name} in ${environment} environment with values from ./charts/${service_name}/values-${GCLOUD_PROJECT}.yaml"
+      helm template "${BASE_DIR}/../charts/${service_name}" --output-dir "${BASE_DIR}/../outputs/${environment}/${service_name}" --values "${BASE_DIR}/../charts/${service_name}/values-${GCLOUD_PROJECT}.yaml"
 
     done
 

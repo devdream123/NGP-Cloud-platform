@@ -13,4 +13,4 @@ container:
       cpu: 2000m
 
 containerImage:
-  tag: "latest"
+  tag: "1.0.8"

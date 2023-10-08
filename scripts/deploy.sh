@@ -29,6 +29,7 @@ done
 for environment in "${environments[@]}"; do
 
   "${BASE_DIR}"/restart-graphql-service.sh "${environment}"
-  "${BASE_DIR}/check-cloud-run-services-deployment.sh" "${environment}"
+  "${BASE_DIR}/check-env-cloud-run-services-health.sh" "${environment}"
+  "${BASE_DIR}/create-cloud-run-services-neg.sh" "${environment}"
 
 done

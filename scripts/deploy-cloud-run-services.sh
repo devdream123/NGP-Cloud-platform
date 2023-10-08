@@ -26,24 +26,25 @@ environment=$1
 echo "using base dir: ${BASE_DIR}"
 source "${BASE_DIR}"/export-env-variables.sh "${environment}"
 
-if [[ -z ${CLOUD_RUN_SERVICES} ]]; then 
+if [[ ${#CLOUD_RUN_SERVICES[@]} -eq 0 ]]; then
  echo "There is no Cloud Run service in ${environment} environment to deploy.."
  echo "Exiting the script with success status code..."
  exit 0
 fi
 
-for cloud_run_service in ${CLOUD_RUN_SERVICES}; do
+for cloud_run_service in "${CLOUD_RUN_SERVICES[@]}"; do
 
+  service_name=$(echo "${cloud_run_service}" | yq .name)
   chart_output_dir="${BASE_DIR}/../outputs/${environment}"
-  service_chart_dir="${BASE_DIR}/../charts/${cloud_run_service}"
+  service_chart_dir="${BASE_DIR}/../charts/${service_name}"
   
-  echo "Rendering the template of ${cloud_run_service} Cloud Run service in ${environment}"
+  echo "Rendering the template of ${service_name} Cloud Run service in ${environment}"
   helm template "${service_chart_dir}" \
     --values="${service_chart_dir}/values-${GCLOUD_PROJECT}.yaml" \
     --output-dir="${chart_output_dir}"
 
   gcloud run services replace \
-    "${chart_output_dir}/${cloud_run_service}/templates/service.yaml" \
+    "${chart_output_dir}/${service_name}/templates/service.yaml" \
     --region="${CLOUDSDK_COMPUTE_REGION}" \
     --project="${GCLOUD_PROJECT}" \
     --async
