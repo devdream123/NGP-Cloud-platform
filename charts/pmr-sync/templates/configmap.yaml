@@ -35,5 +35,6 @@ data:
   SPLUNK_METRICS_ENABLED: {{ .Values.splunk.metricsEnabled | default "false" | quote }}
   SPLUNK_PROFILER_ENABLED: {{ .Values.splunk.profilerEnabled | quote }}
   SPLUNK_PROFILER_MEMORY_ENABLED: {{ .Values.splunk.profilerMemoryEnabled | quote }}
+  HTTPS_PROXY: {{ .Values.service.httpsProxy | quote }}
   {{- end }}
 {{- end }}

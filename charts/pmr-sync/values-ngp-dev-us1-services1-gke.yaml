@@ -18,6 +18,7 @@ service:
   queueConcurrency: "1"
   queueInterval: "1000"
   queueIntervalCap: "2"
+  httpsProxy: "http://swp.dev.int.wiqretail.com:80"
 
 sql:
   instance: ngp-dev-us1-services1-sql
