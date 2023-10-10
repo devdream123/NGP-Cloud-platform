@@ -1,5 +1,5 @@
 instanceTimeoutSeconds: 120
-serviceAccountName: ''
+serviceAccountName: 'sa-tst-pmr-approval-ui@gcp-wow-corp-qretail-ngp-test.iam.gserviceaccount.com'
 
 container:
   port: 8080

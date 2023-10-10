@@ -5,7 +5,7 @@ cpuThrottling: true
 
 vpcAccessConnector: ""
 vpcAccessEgress: "private-ranges-only"
-ingress: "internal" #[all, internal , internal-and-cloud-load-balancing]
+ingress: "all" #[all, internal , internal-and-cloud-load-balancing]
 
 instanceTimeoutSeconds: 120
 serviceAccountName: ""

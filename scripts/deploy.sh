@@ -31,5 +31,6 @@ for environment in "${environments[@]}"; do
   "${BASE_DIR}"/restart-graphql-service.sh "${environment}"
   "${BASE_DIR}/check-env-cloud-run-services-health.sh" "${environment}"
   "${BASE_DIR}/create-cloud-run-services-neg.sh" "${environment}"
+  "${BASE_DIR}/add-cloud-run-services-iam-policy-binding.sh" "${environment}"
 
 done

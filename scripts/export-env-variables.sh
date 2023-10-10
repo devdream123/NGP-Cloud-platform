@@ -31,6 +31,8 @@ GCLOUD_PROJECT=$(yq eval '.env.GCLOUD_PROJECT' "${BASE_DIR}/../config/${environm
 export GCLOUD_PROJECT
 HIERARCHY_SERVICE_NAMESPACE=$(yq eval '.hierarchy.namespace' "${BASE_DIR}/../values/${environment}.yaml")
 export HIERARCHY_SERVICE_NAMESPACE
+GCLOUD_PROJECT_NUMBER=$(yq eval '.env.GCLOUD_PROJECT_NUMBER' "${BASE_DIR}/../config/${environment}.env.yaml")
+export GCLOUD_PROJECT_NUMBER
 GRAPHQL_SERVICE_NAMESPACE=$(yq eval '.graphql.namespace' "${BASE_DIR}/../values/${environment}.yaml")
 export GRAPHQL_SERVICE_NAMESPACE
 ASM_CONTROL_PLANE_NAMESPACE=$(yq eval '.istioControlPlane.namespace' "${BASE_DIR}/../values/${environment}.yaml")
