@@ -18,6 +18,7 @@ steps:
     secretEnv:
       - 'TYPESENSE_API_KEY'
       - 'PMR_ENDPOINT_API_CREDENTIAL_DEV'
+      - 'PMR_ENDPOINT_API_CREDENTIAL_UAT'
   - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:18-09-2023'
     entrypoint: 'bash'
     args:
@@ -50,7 +51,9 @@ options:
   logging: CLOUD_LOGGING_ONLY
 availableSecrets:
   secretManager:
-    - versionName: projects/$PROJECT_ID/secrets/ngp-ci-us1-typesense-hierarchy-api-key1-sms/versions/1
+    - versionName: projects/$PROJECT_ID/secrets/ngp-ci-us1-typesense-hierarchy-api-key1-sms/versions/latest
       env: TYPESENSE_API_KEY
-    - versionName: projects/$PROJECT_ID/secrets/ngp-dev-us1-pmr-api-credential1-sms/versions/1
+    - versionName: projects/$PROJECT_ID/secrets/ngp-dev-us1-pmr-api-credential1-sms/versions/latest
       env: 'PMR_ENDPOINT_API_CREDENTIAL_DEV'
+    - versionName: projects/$PROJECT_ID/secrets/ngp-uat-us1-pmr-api-credential1-sms/versions/latest
+      env: 'PMR_ENDPOINT_API_CREDENTIAL_UAT'

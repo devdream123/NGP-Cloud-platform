@@ -1,7 +1,5 @@
 shouldDeploy: true
 
-projectId: "gcp-wow-corp-qretail-ngp-dev"
-
 image:
   tag: "1.0.11"
 
