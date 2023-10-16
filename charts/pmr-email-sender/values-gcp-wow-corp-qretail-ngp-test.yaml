@@ -1,0 +1,22 @@
+instanceTimeoutSeconds: 120
+serviceAccountName: 'sa-tst-pmr-email-sender@gcp-wow-corp-qretail-ngp-test.iam.gserviceaccount.com'
+
+container:
+  port: 8080
+  maxConcurrentRequests: 120
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 100m
+    limits:
+      memory: 2Gi
+      cpu: 2000m
+
+containerImage:
+  tag: "1.0.19"
+
+secretAsEnv:
+  - name: "SendGrid_API_KEY"
+    gcpSecretManagerRef:
+      resourceId: "projects/136051381553/secrets/ngp-tst-us1-sendgrid-api-key1-sms"
+      version: "latest"

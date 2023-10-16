@@ -15,32 +15,12 @@ if [ "$1" ]; then
   environments=("tst" "dev" "uat" "prd")
 fi
 
-deployments=(
-  "calendar-api"
-  "dealsheet-api"
-  "eventschedule-api"
-  "forecast-api"
-  "graphql-mesh"
-  "hierarchy-api"
-  "istio-control-plane"
-  "istio"
-  "istio-gateway"
-  "pgr-api"
-  "custom-groups-api"
-  "pmr-sync"
-  "web-proxy-ds"
-)
-
 echo "Beginning Helm Template checks for Kubernetes clusters deployments..."
 
-for deployment in "${deployments[@]}"; do
+for environment in "${environments[@]}"; do
 
-  echo "Deployment: ${deployment}"
-
-  for environment in "${environments[@]}"; do
-
-    echo "Environment: ${environment}"
-    source "${BASE_DIR}/export-env-variables.sh" "${environment}"
+  source "${BASE_DIR}/export-env-variables.sh" "${environment}"
+  for deployment in ${KUBERNETES_CLUSTER_DEPLOYMENTS}; do
 
     # Check helm charts for Kubernetes cluster deployments
     for cluster in ${CLOUDSDK_CONTAINER_CLUSTERS}; do
@@ -71,4 +51,3 @@ echo "Beginning Helm Template checks for Cloud Run services..."
     done
 
   done
-
