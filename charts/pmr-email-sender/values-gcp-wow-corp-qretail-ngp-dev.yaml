@@ -37,7 +37,7 @@ containerImage:
 #       memory: 512Mi
 
 secretAsEnv:
-  - name: "SendGrid_API_KEY"
+  - name: "SENDGRID_API_KEY"
     gcpSecretManagerRef:
       resourceId: "projects/136051381553/secrets/ngp-dev-us1-sendgrid-api-key1-sms"
       version: "latest"
