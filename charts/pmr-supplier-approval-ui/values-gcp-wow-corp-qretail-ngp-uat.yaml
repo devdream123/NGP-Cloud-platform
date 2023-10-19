@@ -1,4 +1,4 @@
-vpcAccessConnector: 'projects/gcp-wow-corp-qretail-ngp-uat/locations/us-central1/connectors/ngp-uat-us1-1-vc'
+vpcAccessConnector: 'projects/gcp-wow-corp-qretail-ngp-uat/locations/us-central1/connectors/ngp-uat-us1-connector1-vc'
 
 instanceTimeoutSeconds: 120
 serviceAccountName: 'sa-uat-pmr-approval-ui@gcp-wow-corp-qretail-ngp-uat.iam.gserviceaccount.com'
