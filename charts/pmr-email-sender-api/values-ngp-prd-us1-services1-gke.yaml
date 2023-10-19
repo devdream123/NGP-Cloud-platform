@@ -1,0 +1,21 @@
+image:
+  tag: ""
+
+sql:
+  instance: ngp-prd-us1-services1-sql
+  pmrEmailTokensDB:
+    user: sa-prd-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-prod.iam
+
+serviceConfigurations:
+  httpsProxy: "http://swp.prd.int.wiqretail.com:80"
+  sendgridNGSEmail: "next-gen-slotter@woolworths.com.au"
+  supplierApprovalURL:
+  approvalRequestTopicName:
+  approvalRequestSubscriptionName:
+
+otel:
+  enabled: true
+  resourceAttributes: "deployment.environment=prd"
+
+secrets:
+  sendgridApiKey:

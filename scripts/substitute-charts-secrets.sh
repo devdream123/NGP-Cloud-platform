@@ -34,7 +34,11 @@ for environment in "${environments[@]}"; do
       pmr_api_credential_secret_value="${!pmr_api_credential_secret_name}"
       sed -i "s/pmrEndpointAPICredential:/pmrEndpointAPICredential: ${pmr_api_credential_secret_value}/" "./charts/pmr-sync/values-${cluster}.yaml"
     fi
-  
+
+    pmr_sendgrid_api_key_secret_name="PMR_SENDGRID_API_KEY_${environment^^}"
+    pmr_sendgrid_api_key_secret_value="${!pmr_sendgrid_api_key_secret_name}"
+    sed -i "s/sendgridApiKey:/sendgridApiKey: ${pmr_sendgrid_api_key_secret_value}/" "./charts/pmr-email-sender-api/values-${cluster}.yaml"
+
   done
 
 done

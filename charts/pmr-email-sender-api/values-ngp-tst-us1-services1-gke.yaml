@@ -1,0 +1,23 @@
+shouldDeploy: true
+
+image:
+  tag: "1.0.21"
+
+sql:
+  instance: ngp-tst-us1-services1-sql
+  pmrEmailTokensDB:
+    user: "sa-tst-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-test.iam"
+
+serviceConfigurations:
+  httpsProxy: "http://swp.tst.int.wiqretail.com:80"
+  sendgridNGSEmail: "next-gen-slotter@woolworths.com.au"
+  supplierApprovalURL: "https://supplier-app.tst.ngp.wiqretail.com/"
+  approvalRequestTopicName: "projects/gcp-wow-corp-qretail-ngp-test/topics/ngp-tst-us1-pmr-approval-request1-topic"
+  approvalRequestSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-test/subscriptions/ngp-tst-us1-pmr-approval-request1-approval-request-subscription"
+
+otel:
+  enabled: true
+  resourceAttributes: "deployment.environment=test"
+
+secrets:
+  sendgridApiKey:

@@ -3,7 +3,7 @@ shouldDeploy: true
 image:
   tag: "1.0.18"
 
-service:
+serviceConfigurations:
   submitDealTopicName: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-submit-deal-request1-topic"
   submitDealSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-submit-deal-request1-submit-deal-request-subscription"
   deleteDealTopicName: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-delete-deal-request1-topic"

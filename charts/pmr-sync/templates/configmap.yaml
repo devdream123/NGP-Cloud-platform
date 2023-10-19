@@ -10,22 +10,23 @@ data:
   DB_HOST: {{ .Values.sql.proxyServer | quote }}
   DB_PORT: {{ .Values.sql.pmrBookkeepingDB.proxyPort | quote }}
   PROJECT_ID: {{ .Values.projectId | quote }}
-  PMR_SYNC_SUBMIT_DEAL_TOPIC_NAME: {{ .Values.service.submitDealTopicName | quote }}
-  PMR_SYNC_SUBMIT_DEAL_SUBSCRIPTION_NAME: {{ .Values.service.submitDealSubscriptionName | quote }}
-  PMR_SYNC_DELETE_DEAL_TOPIC_NAME: {{ .Values.service.deleteDealTopicName | quote }}
-  PMR_SYNC_DELETE_DEAL_SUBSCRIPTION_NAME: {{ .Values.service.deleteDealSubscriptionName | quote }}
-  PMR_SYNC_RESPONSE_TOPIC_NAME: {{  .Values.service.syncResponseTopicName | quote }}
-  PMR_SERVER_URL: {{ .Values.service.serverUrl | quote }}
+  PMR_SYNC_APP_PORT: {{ .Values.service.port | quote }}
+  PMR_SYNC_SUBMIT_DEAL_TOPIC_NAME: {{ .Values.serviceConfigurations.submitDealTopicName | quote }}
+  PMR_SYNC_SUBMIT_DEAL_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.submitDealSubscriptionName | quote }}
+  PMR_SYNC_DELETE_DEAL_TOPIC_NAME: {{ .Values.serviceConfigurations.deleteDealTopicName | quote }}
+  PMR_SYNC_DELETE_DEAL_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.deleteDealSubscriptionName | quote }}
+  PMR_SYNC_RESPONSE_TOPIC_NAME: {{  .Values.serviceConfigurations.syncResponseTopicName | quote }}
+  PMR_SERVER_URL: {{ .Values.serviceConfigurations.serverUrl | quote }}
   BK_DB_USERNAME: {{ .Values.sql.pmrBookkeepingDB.user | quote }}
   BK_DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
   BK_DB_NAME: {{ .Values.sql.pmrBookkeepingDB.dbName | quote }}
-  PMR_NUM_OF_ATTEMPTS: {{ .Values.service.numOfAttempts | quote }}
-  PMR_STARTING_DELAY: {{ .Values.service.startingDelay | quote }}
-  PMR_TIME_MULTIPLE: {{ .Values.service.timeMultiple | quote }}
-  PMR_QUEUE_CONCURRENCY: {{ .Values.service.queueConcurrency | quote }}
-  PMR_QUEUE_INTERVAL: {{ .Values.service.queueInterval | quote }}
-  PMR_QUEUE_INTERVAL_CAP: {{ .Values.service.queueIntervalCap | quote }}
-  PMR_SYNC_APP_PORT: {{ .Values.service.port | quote }}
+  PMR_NUM_OF_ATTEMPTS: {{ .Values.serviceConfigurations.numOfAttempts | quote }}
+  PMR_STARTING_DELAY: {{ .Values.serviceConfigurations.startingDelay | quote }}
+  PMR_TIME_MULTIPLE: {{ .Values.serviceConfigurations.timeMultiple | quote }}
+  PMR_QUEUE_CONCURRENCY: {{ .Values.serviceConfigurations.queueConcurrency | quote }}
+  PMR_QUEUE_INTERVAL: {{ .Values.serviceConfigurations.queueInterval | quote }}
+  PMR_QUEUE_INTERVAL_CAP: {{ .Values.serviceConfigurations.queueIntervalCap | quote }}
+  HTTPS_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
   {{- if .Values.otel.enabled }}
   OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
   OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
@@ -35,6 +36,5 @@ data:
   SPLUNK_METRICS_ENABLED: {{ .Values.splunk.metricsEnabled | default "false" | quote }}
   SPLUNK_PROFILER_ENABLED: {{ .Values.splunk.profilerEnabled | quote }}
   SPLUNK_PROFILER_MEMORY_ENABLED: {{ .Values.splunk.profilerMemoryEnabled | quote }}
-  HTTPS_PROXY: {{ .Values.service.httpsProxy | quote }}
   {{- end }}
 {{- end }}

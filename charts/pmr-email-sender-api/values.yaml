@@ -1,12 +1,13 @@
-# Default values for pmr-sync-api.
+# Default values for pmr-email-sender-api.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+
 shouldDeploy: false
 
 replicaCount: 1
 
 image:
-  repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-pmr-sync-service"
+  repository: "us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-frontend-services-registry1/ngp-frontend-pmr-email-sender-service"
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -39,7 +40,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: "4001"
+  port: "4003"
 
 resources:
   limits:
@@ -48,6 +49,16 @@ resources:
   requests:
     cpu: 100m
     memory: 256Mi
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
 
 autoscaling:
   enabled: true
@@ -65,8 +76,8 @@ affinity: {}
 sql:
   region: us-central1
   instance:
-  pmrBookkeepingDB:
-    dbName: ngsPMRBookkeeping
+  pmrEmailTokensDB:
+    dbName: ngsPMREmailTokens
     proxyPort: "5432"
     user: 
     schema: public
@@ -78,23 +89,19 @@ sql:
       cpu: "50m"
 
 serviceConfigurations:
-  submitDealTopicName:
-  submitDealSubscriptionName:
-  deleteDealTopicName:
-  deleteDealSubscriptionName:
-  syncResponseTopicName:
-  serverUrl:
-  numOfAttempts:
-  startingDelay:
-  timeMultiple:
-  queueConcurrency:
-  queueInterval:
-  queueIntervalCap:
-  httpsProxy:
+  httpsProxy: 
+  sendgridNGSEmail: example@email.com
+  supplierApprovalURL:
+  emailSenderPort: "4003"
+  approvalRequestTopicName:
+  approvalRequestSubscriptionName:
+
+secrets:
+  sendgridApiKey:
 
 otel:
   enabled: false
-  serviceName: "pmr-sync"
+  serviceName: "pmr-email-sender-api"
   resourceAttributes: ""
   tracesExporter: "otlp"
   tracesSampler: "always_on"
@@ -105,6 +112,3 @@ splunk:
   metricsEnabled: false
   profilerEnabled: false
   profilerMemoryEnabled: false
-
-secrets:
-  pmrEndpointAPICredential:
