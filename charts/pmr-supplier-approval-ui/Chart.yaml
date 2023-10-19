@@ -1,6 +1,6 @@
 apiVersion: v2
-name: supplier-approval-ui
-description: A Helm chart for NGS Supplier Approval Cloud Run Service
+name: pmr-supplier-approval-ui
+description: A Helm chart for NGS PMR Supplier Approval Cloud Run Service
 
 # A chart can be either an 'application' or a 'library' chart.
 #

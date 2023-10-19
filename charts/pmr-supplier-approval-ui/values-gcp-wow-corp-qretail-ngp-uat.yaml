@@ -1,0 +1,43 @@
+vpcAccessConnector: 'projects/gcp-wow-corp-qretail-ngp-uat/locations/us-central1/connectors/ngp-uat-us1-1-vc'
+
+instanceTimeoutSeconds: 120
+serviceAccountName: 'sa-uat-pmr-approval-ui@gcp-wow-corp-qretail-ngp-uat.iam.gserviceaccount.com'
+
+container:
+  port: 8080
+  maxConcurrentRequests: 120
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 100m
+    limits:
+      memory: 2Gi
+      cpu: 2000m
+
+containerImage:
+  tag: "1.0.8"
+
+# sidecarImage:
+#   repository: "gcr.io/cloud-sql-connectors/cloud-sql-proxy"
+#   pullPolicy: Always
+#   tag: "2.1.0"
+
+# sidecar:
+#   name: "cloud-sql-proxy"
+#   command:
+#   args:
+#    - --private-ip
+#    - --auto-iam-authn
+#    - --impersonate-service-account=sa-uat-pmr-approval-sql@gcp-wow-corp-qretail-ngp-uat.iam.gserviceaccount.com
+#    - --port=5432
+#    - gcp-wow-corp-qretail-ngp-uat:us-central1:ngp-uat-us1-services1-sql
+#   resources:
+#     limits:
+#       cpu: 1000m
+#       memory: 512Mi
+
+# env: 
+#   - name: "CloudRunVersion"
+#     value: "1"
+#   - name: "ProjectId"
+#     value: "gcp-wow-corp-qretail-ngp-uat"

@@ -12,7 +12,7 @@ serviceAccountName: ""
 instanceLaunchStage: "BETA"
 
 container:
-  name: "pmr-suppliers-approval"
+  name: "pmr-supplier-approval"
   command: 
   args:
   port: 8080
