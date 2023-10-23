@@ -1,6 +1,8 @@
 image:
   tag: ""
 
+projectId: "gcp-wow-corp-qretail-ngp-uat"
+
 serviceConfigurations:
   httpsProxy: "http://swp.uat.int.wiqretail.com:80"
   sendgridNGSEmail: "next-gen-slotter@woolworths.com.au"

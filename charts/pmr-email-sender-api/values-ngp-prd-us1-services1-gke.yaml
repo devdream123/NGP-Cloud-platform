@@ -1,10 +1,7 @@
 image:
   tag: ""
 
-sql:
-  instance: ngp-prd-us1-services1-sql
-  pmrEmailTokensDB:
-    user: sa-prd-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-prod.iam
+projectId: "gcp-wow-corp-qretail-ngp-prd"
 
 serviceConfigurations:
   httpsProxy: "http://swp.prd.int.wiqretail.com:80"
@@ -12,6 +9,11 @@ serviceConfigurations:
   supplierApprovalURL:
   approvalRequestTopicName:
   approvalRequestSubscriptionName:
+
+sql:
+  instance: ngp-prd-us1-services1-sql
+  pmrEmailTokensDB:
+    user: sa-prd-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-prod.iam
 
 otel:
   enabled: true

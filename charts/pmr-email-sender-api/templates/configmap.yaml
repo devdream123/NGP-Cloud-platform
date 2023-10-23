@@ -17,7 +17,9 @@ data:
   DB_HOST: {{ .Values.sql.proxyServer | quote }}
   DB_PORT: {{ .Values.sql.pmrEmailTokensDB.proxyPort | quote }}
   PROJECT_ID: {{ .Values.projectId | quote }}
+  HTTP_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
   HTTPS_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
+  NO_PROXY: {{ .Values.serviceConfigurations.noProxy | quote }}
   {{- if .Values.otel.enabled }}
   OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
   OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
