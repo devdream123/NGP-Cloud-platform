@@ -73,6 +73,8 @@ tolerations: []
 
 affinity: {}
 
+projectId:
+
 sql:
   region: us-central1
   instance:
@@ -90,11 +92,14 @@ sql:
 
 serviceConfigurations:
   httpsProxy: 
+  noProxy:
   sendgridNGSEmail: example@email.com
   supplierApprovalURL:
   emailSenderPort: "4003"
   approvalRequestTopicName:
   approvalRequestSubscriptionName:
+  approvalResponseSubscriptionName:
+  approvalResponseTopicName:
 
 secrets:
   sendgridApiKey:

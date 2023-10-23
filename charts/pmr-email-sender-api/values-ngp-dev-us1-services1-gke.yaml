@@ -3,8 +3,11 @@ shouldDeploy: true
 image:
   tag: "1.0.31"
 
+projectId: "gcp-wow-corp-qretail-ngp-dev"
+
 serviceConfigurations:
   httpsProxy: "http://swp.dev.int.wiqretail.com:80"
+  noProxy: "localhost,10.0.0.0/8,metadata.google.internal,169.254.169.254"
   sendgridNGSEmail: "next-gen-slotter@woolworths.com.au"
   supplierApprovalURL: "https://deal-submission.dev.ngp.wiqretail.com/"
   approvalRequestTopicName: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-approval-request1-topic"
