@@ -15,7 +15,7 @@ container:
       cpu: 2000m
 
 containerImage:
-  tag: "1.0.8"
+  tag: "1.0.31"
 
 # sidecarImage:
 #   repository: "gcr.io/cloud-sql-connectors/cloud-sql-proxy"
@@ -36,8 +36,10 @@ containerImage:
 #       cpu: 1000m
 #       memory: 512Mi
 
-# env: 
-#   - name: "CloudRunVersion"
-#     value: "1"
-#   - name: "ProjectId"
-#     value: "gcp-wow-corp-qretail-ngp-dev"
+env: 
+  - name: "PROJECT_ID"
+    value: "gcp-wow-corp-qretail-ngp-dev"
+  - name: "PMR_APPROVAL_RESPONSE_SUBSCRIPTION_NAME"
+    value: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-approval-response1-approval-response-subscription"
+  - name: "PMR_APPROVAL_RESPONSE_TOPIC_NAME"
+    value: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-approval-response1-topic"

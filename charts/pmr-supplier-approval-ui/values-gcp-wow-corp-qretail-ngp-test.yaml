@@ -13,4 +13,12 @@ container:
       cpu: 2000m
 
 containerImage:
-  tag: "1.0.8"
+  tag: "1.0.31"
+
+env: 
+  - name: "PROJECT_ID"
+    value: "gcp-wow-corp-qretail-ngp-test"
+  - name: "PMR_APPROVAL_RESPONSE_SUBSCRIPTION_NAME"
+    value: "projects/gcp-wow-corp-qretail-ngp-test/subscriptions/ngp-tst-us1-pmr-approval-response1-approval-response-subscription"
+  - name: "PMR_APPROVAL_RESPONSE_TOPIC_NAME"
+    value: "projects/gcp-wow-corp-qretail-ngp-test/topics/ngp-tst-us1-pmr-approval-response1-topic"

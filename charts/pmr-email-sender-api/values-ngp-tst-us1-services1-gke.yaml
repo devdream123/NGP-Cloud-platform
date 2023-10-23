@@ -1,7 +1,7 @@
 shouldDeploy: true
 
 image:
-  tag: "1.0.29"
+  tag: "1.0.31"
 
 sql:
   instance: ngp-tst-us1-services1-sql
@@ -14,6 +14,8 @@ serviceConfigurations:
   supplierApprovalURL: "https://supplier-app.tst.ngp.wiqretail.com/"
   approvalRequestTopicName: "projects/gcp-wow-corp-qretail-ngp-test/topics/ngp-tst-us1-pmr-approval-request1-topic"
   approvalRequestSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-test/subscriptions/ngp-tst-us1-pmr-approval-request1-approval-request-subscription"
+  approvalResponseTopicName: "projects/gcp-wow-corp-qretail-ngp-test/topics/ngp-tst-us1-pmr-approval-response1-topic"
+  approvalResponseSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-test/subscriptions/ngp-tst-us1-pmr-approval-response1-approval-response-subscription"
 
 otel:
   enabled: true
