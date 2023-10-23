@@ -109,5 +109,22 @@ otel:
   propagators: "tracecontext"
   logLevel: "info"
 
+pubsubEvents:
+  supplierApproval:
+    topicName:
+    subscriptionName:
+  syncDeal:
+    topicName:
+    subscriptionName:
+  submissionComplete:
+    topicName:
+    subscriptionName:
+  submitDeal:
+    topicName:
+    subscriptionName:
+  deleteDeal:
+    topicName:
+    subscriptionName:
+
 secrets:
   typesenseAPIKey:

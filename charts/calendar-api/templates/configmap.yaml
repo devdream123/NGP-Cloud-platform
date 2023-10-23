@@ -7,6 +7,16 @@ metadata:
 data:
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
+  GCPSettings__PubSubEvents__SupplierApproval__TopicName: {{ .Values.pubsubEvents.supplierApproval.topicName | quote }}
+  GCPSettings__PubSubEvents__SupplierApproval__SubscriptionName: {{ .Values.pubsubEvents.supplierApproval.subscriptionName | quote }}
+  GCPSettings__PubSubEvents__SyncDeal__TopicName: {{ .Values.pubsubEvents.syncDeal.topicName | quote }}
+  GCPSettings__PubSubEvents__SyncDeal__SubscriptionName: {{ .Values.pubsubEvents.syncDeal.subscriptionName | quote }}
+  GCPSettings__PubSubEvents__SubmissionComplete__TopicName: {{ .Values.pubsubEvents.submissionComplete.topicName | quote }}
+  GCPSettings__PubSubEvents__SubmissionComplete__SubscriptionName: {{ .Values.pubsubEvents.submissionComplete.subscriptionName | quote }}
+  GCPSettings__PubSubEvents__SubmitDeal__TopicName: {{ .Values.pubsubEvents.submitDeal.topicName | quote }}
+  GCPSettings__PubSubEvents__SubmitDeal__SubscriptionName: {{ .Values.pubsubEvents.submitDeal.subscriptionName | quote }}
+  GCPSettings__PubSubEvents__DeleteDeal__TopicName: {{ .Values.pubsubEvents.deleteDeal.topicName | quote }}
+  GCPSettings__PubSubEvents__DeleteDeal__SubscriptionName: {{ .Values.pubsubEvents.deleteDeal.subscriptionName | quote }}
   Hierarchy__Url: {{ printf "http://%s.%s.svc.cluster.local" .Values.hierarchyChartName .Values.backendNamespace | quote  }}
   DemandDriver__ForecastUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.forecastChartName .Values.analyticsNamespace | quote  }}
   GraphQLClient__DealsheetUrl: {{ printf "http://%s.%s.svc.cluster.local/graphql" .Values.dealsheetChartName .Values.backendNamespace | quote  }}
