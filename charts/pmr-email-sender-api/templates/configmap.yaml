@@ -26,6 +26,9 @@ data:
   OTEL_TRACES_EXPORTER: {{ .Values.otel.tracesExporter | quote }}
   OTEL_PROPAGATORS: {{ .Values.otel.propagators | quote }}
   OTEL_LOG_LEVEL: {{ .Values.otel.logLevel | quote }}
+  PST_DB_USERNAME: {{ .Values.sql.pmrEmailTokensDB.user | quote }}
+  PST_DB_NAME: {{ .Values.sql.pmrEmailTokensDB.dbName | quote }}
+  PST_DB_SCHEMA: {{ .Values.sql.pmrEmailTokensDB.schema | quote }}
   SPLUNK_METRICS_ENABLED: {{ .Values.splunk.metricsEnabled | default "false" | quote }}
   SPLUNK_PROFILER_ENABLED: {{ .Values.splunk.profilerEnabled | quote }}
   SPLUNK_PROFILER_MEMORY_ENABLED: {{ .Values.splunk.profilerMemoryEnabled | quote }}
