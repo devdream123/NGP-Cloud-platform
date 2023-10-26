@@ -1,5 +1,5 @@
 image:
-  tag: "pgr-1.53.0" #tag updated for instrumentation
+  tag: "pgr-1.53.0"
 
 otel:
   enabled: True
