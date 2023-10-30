@@ -8,7 +8,7 @@ projectId: "gcp-wow-corp-qretail-ngp-dev"
 serviceConfigurations:
   httpsProxy: "http://swp.dev.int.wiqretail.com:80"
   sendgridNGSEmail: "next-gen-slotter@woolworths.com.au"
-  supplierApprovalURL: "https://deal-submission.dev.ngp.wiqretail.com/"
+  supplierApprovalURL: "https://deal-submission.dev.ngp.wiqretail.com"
   approvalRequestTopicName: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-approval-request1-topic"
   approvalRequestSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-approval-request1-approval-request-subscription"
   approvalResponseTopicName: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-approval-response1-topic"

@@ -17,24 +17,24 @@ container:
 containerImage:
   tag: "1.0.40"
 
-# sidecarImage:
-#   repository: "gcr.io/cloud-sql-connectors/cloud-sql-proxy"
-#   pullPolicy: Always
-#   tag: "2.1.0"
+sidecarImage:
+  repository: "gcr.io/cloud-sql-connectors/cloud-sql-proxy"
+  pullPolicy: Always
+  tag: "2.7.1"
 
-# sidecar:
-#   name: "cloud-sql-proxy"
-#   command:
-#   args:
-#    - --private-ip
-#    - --auto-iam-authn
-#    - --impersonate-service-account=sa-dev-pmr-approval-sql@gcp-wow-corp-qretail-ngp-dev.iam.gserviceaccount.com
-#    - --port=5432
-#    - gcp-wow-corp-qretail-ngp-dev:us-central1:ngp-dev-us1-services1-sql
-#   resources:
-#     limits:
-#       cpu: 1000m
-#       memory: 512Mi
+sidecar:
+  name: "cloud-sql-proxy"
+  command:
+  args:
+   - --private-ip
+   - --auto-iam-authn
+   - --impersonate-service-account=sa-dev-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-dev.iam.gserviceaccount.com
+   - --port=5432
+   - gcp-wow-corp-qretail-ngp-dev:us-central1:ngp-dev-us1-services1-sql
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 512Mi
 
 env: 
   - name: "PROJECT_ID"
@@ -43,3 +43,5 @@ env:
     value: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-approval-response1-approval-response-subscription"
   - name: "PMR_APPROVAL_RESPONSE_TOPIC_NAME"
     value: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-approval-response1-topic"
+  - name: "PST_SETUP_CLOUD_SQL_CONNECTOR"
+    value: false
