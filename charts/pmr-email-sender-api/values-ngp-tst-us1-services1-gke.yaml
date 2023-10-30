@@ -1,7 +1,7 @@
 shouldDeploy: true
 
 image:
-  tag: "1.0.33"
+  tag: "1.0.41"
 
 projectId: "gcp-wow-corp-qretail-ngp-test"
 
@@ -13,6 +13,7 @@ serviceConfigurations:
   approvalRequestSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-test/subscriptions/ngp-tst-us1-pmr-approval-request1-approval-request-subscription"
   approvalResponseTopicName: "projects/gcp-wow-corp-qretail-ngp-test/topics/ngp-tst-us1-pmr-approval-response1-topic"
   approvalResponseSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-test/subscriptions/ngp-tst-us1-pmr-approval-response1-approval-response-subscription"
+  supplierActionSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-test/subscriptions/ngp-tst-us1-pmr-supplier-action1-supplier-action-subscription"
 
 sql:
   instance: ngp-tst-us1-services1-sql

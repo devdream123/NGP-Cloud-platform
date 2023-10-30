@@ -19,7 +19,7 @@ otel:
 pubsubEvents:
   supplierApproval:
     topicName: projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-approval-request1-topic
-    subscriptionName: projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-approval-request1-approval-request-subscription
+    subscriptionName: projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-approval-response1-approval-response-subscription
   syncDeal:
     topicName: projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-sync-deal-response1-topic
     subscriptionName: projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-sync-deal-response1-sync-deal-response-subscription
