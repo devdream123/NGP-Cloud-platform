@@ -43,5 +43,15 @@ env:
     value: "projects/gcp-wow-corp-qretail-ngp-test/subscriptions/ngp-tst-us1-pmr-approval-response1-approval-response-subscription"
   - name: "PMR_APPROVAL_RESPONSE_TOPIC_NAME"
     value: "projects/gcp-wow-corp-qretail-ngp-test/topics/ngp-tst-us1-pmr-approval-response1-topic"
+  - name: "PST_DB_USERNAME"
+    value: "sa-tst-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-test.iam"
+  - name: "PST_DB_NAME"
+    value: "ngsPMREmailTokens"
+  - name: "PST_DB_SCHEMA"
+    value: "public"
+  - name: "PST_DB_HOST"
+    value: "localhost"
+  - name: "PST_DB_PORT"
+    value: 5432
   - name: "PST_SETUP_CLOUD_SQL_CONNECTOR"
     value: false
