@@ -18,6 +18,7 @@ database:
   instance: ngp-dev-us1-services1-sql
   user: sa-dev-qforecast-sql@gcp-wow-corp-qretail-ngp-dev.iam
   schema: public_20230811_1
+  proxyVersion: "2.7.1"
 
 otel:
   enabled: True
