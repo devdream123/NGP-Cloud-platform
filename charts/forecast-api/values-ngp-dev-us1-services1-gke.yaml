@@ -17,7 +17,7 @@ runValidation: True
 database:
   instance: ngp-dev-us1-services1-sql
   user: sa-dev-qforecast-sql@gcp-wow-corp-qretail-ngp-dev.iam
-  schema: public_20230811_1
+  schema: public_20231030_1
 
 otel:
   enabled: True
