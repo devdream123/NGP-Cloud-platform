@@ -10,6 +10,8 @@ data:
   GCPSettings__PmrAuditLogDatasetProjectId: {{ .Values.pmrAuditLogDatasetProjectId | quote }}
   GCPSettings__PubSubEvents__SupplierApproval__TopicName: {{ .Values.pubsubEvents.supplierApproval.topicName | quote }}
   GCPSettings__PubSubEvents__SupplierApproval__SubscriptionName: {{ .Values.pubsubEvents.supplierApproval.subscriptionName | quote }}
+  GCPSettings__PubSubEvents__SupplierApprovalRequest__TopicName: {{ .Values.pubsubEvents.supplierApproval.topicName | quote }}
+  GCPSettings__PubSubEvents__SupplierApprovalResponse__SubscriptionName: {{ .Values.pubsubEvents.supplierApproval.subscriptionName | quote }}
   GCPSettings__PubSubEvents__SyncDeal__TopicName: {{ .Values.pubsubEvents.syncDeal.topicName | quote }}
   GCPSettings__PubSubEvents__SyncDeal__SubscriptionName: {{ .Values.pubsubEvents.syncDeal.subscriptionName | quote }}
   GCPSettings__PubSubEvents__SubmissionComplete__TopicName: {{ .Values.pubsubEvents.submissionComplete.topicName | quote }}
