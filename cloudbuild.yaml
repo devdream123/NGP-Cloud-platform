@@ -1,6 +1,6 @@
 ---
 steps:
-  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:18-09-2023'
+  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:26-10-2023'
     entrypoint: 'bash'
     args:
       - '-c'
@@ -24,7 +24,7 @@ steps:
       - 'PMR_SENDGRID_API_KEY_DEV'
       - 'PMR_SENDGRID_API_KEY_UAT'
       - 'PMR_SENDGRID_API_KEY_PRD'
-  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:18-09-2023'
+  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:26-10-2023'
     entrypoint: 'bash'
     args:
       - '-c'
@@ -38,7 +38,7 @@ steps:
         if [[ "$BRANCH_NAME" == 'tst' ]]; then
           ./scripts/render-helm-charts.sh tst
         fi
-  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:18-09-2023'
+  - name: 'us-central1-docker.pkg.dev/gcp-wow-corp-infra-qrtl-prod/hub-prd-us1-shared-asset-registry1/helmfile:26-10-2023'
     entrypoint: 'bash'
     args:
       - '-c'
