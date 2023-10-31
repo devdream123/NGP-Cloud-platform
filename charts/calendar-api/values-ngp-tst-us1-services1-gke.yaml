@@ -34,3 +34,5 @@ pubsubEvents:
 
 secrets:
   typesenseAPIKey:
+
+pmrAuditLogDatasetProjectId: ngp_dev_us1_pmr_audit_log_dataset1

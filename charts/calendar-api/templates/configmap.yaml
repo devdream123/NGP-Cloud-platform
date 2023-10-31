@@ -7,6 +7,7 @@ metadata:
 data:
   GCPSettings__ProjectId: {{ .Values.projectId | quote }}
   GCPSettings__RequestTracingRate: {{ .Values.requestTracingRate | quote }}
+  GCPSettings__PmrAuditLogDatasetProjectId: {{ .Values.pmrAuditLogDatasetProjectId | quote }}
   GCPSettings__PubSubEvents__SupplierApproval__TopicName: {{ .Values.pubsubEvents.supplierApproval.topicName | quote }}
   GCPSettings__PubSubEvents__SupplierApproval__SubscriptionName: {{ .Values.pubsubEvents.supplierApproval.subscriptionName | quote }}
   GCPSettings__PubSubEvents__SyncDeal__TopicName: {{ .Values.pubsubEvents.syncDeal.topicName | quote }}
