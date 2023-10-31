@@ -1,5 +1,5 @@
 image:
-  tag: "1.0.28"
+  tag: "1.0.42"
 
 shouldDeploy: true
 
