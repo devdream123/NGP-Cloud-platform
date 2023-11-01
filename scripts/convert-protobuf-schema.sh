@@ -19,7 +19,7 @@ conversion_status=$?
 
 if [[ "${conversion_status}" -ne 0 ]]; then
 error_message="An error occured during the conversion."
-error_message=" Exiting the script with erorr status code..."
+error_message=" Exiting the script with error status code..."
 echo "${error_message}"
 exit 1
 fi

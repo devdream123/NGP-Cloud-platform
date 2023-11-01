@@ -23,7 +23,7 @@ bq query --use_legacy_sql=false \
  "ALTER TABLE ${bigquery_table_path} ADD COLUMN IF NOT EXISTS ${column_name} ${column_data_type}"
 
 # step2 Drop the column named data.This column was created by Terraform when BigQuery tables were provisioned
-echo "Dropping the column : data from the BigQuery table: ${bigquery_table_path}"
+echo "Dropping the data column from the BigQuery table: ${bigquery_table_path}"
 bq query --use_legacy_sql=false \
 "ALTER TABLE ${bigquery_table_path} DROP COLUMN IF EXISTS data"
 
