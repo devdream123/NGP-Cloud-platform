@@ -5,12 +5,12 @@ echo "Starting create-pubsub-topic-schema.sh"
 set -o errexit   # abort on nonzero exitstatus
 set -o pipefail  # don't hide errors within pipes
 set -o nounset   # abort on unbound variable
-set -x
 
 protobuf_schema_filename=$1
-topic_schema_name=$2
-topic_full_id=$3
-project_id=$4
+protobuf_schema_file_path=$2
+topic_schema_name=$3
+topic_full_id=$4
+project_id=$5
 topic_schema_full_id="projects/${project_id}/schemas/${topic_schema_name}"
 MAX_N_REVISIONS=20
 
@@ -23,7 +23,7 @@ echo "Validating schema definition for ${topic_schema_name}..."
 
 if [[ $(gcloud pubsub schemas validate-schema \
           --type="protocol-buffer" \
-          --definition-file="${protobuf_schema_filename}") -ne 0
+          --definition-file="${protobuf_schema_file_path}/${protobuf_schema_filename}") -ne 0
     ]]; then
   echo "Definition file ${protobuf_schema_filename} contains invalid protobuf schema definition"
   exit 1
@@ -36,7 +36,7 @@ if [[ ! $(gcloud pubsub schemas describe "${topic_schema_name}" --project="${pro
   gcloud pubsub schemas create \
          "${topic_schema_full_id}" \
          --type="protocol-buffer" \
-         --definition-file="${protobuf_schema_filename}" \
+         --definition-file="${protobuf_schema_file_path}/${protobuf_schema_filename}" \
          --format=yaml | yq '.name'
 
   create_schema=$?
@@ -70,7 +70,7 @@ else
   gcloud pubsub schemas commit \
          "${topic_schema_full_id}" \
          --type=protocol-buffer \
-        --definition-file="${protobuf_schema_filename}" 
+        --definition-file="${protobuf_schema_file_path}/${protobuf_schema_filename}" 
 
   create_schema=$?
   
