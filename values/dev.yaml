@@ -44,9 +44,3 @@ pgr:
 
 webProxy:
   namespace: kube-system
-
-protobufSchemas:
-  tag: ""
-  schemaMappings:
-  - schemaResourceName: "projects/gcp-wow-corp-infra-qrtl-test/schemas/wiq-dev-us1-test-pubsub1-schema"
-    schemaDefinitionFilename: "ApprovalRequest.proto"
