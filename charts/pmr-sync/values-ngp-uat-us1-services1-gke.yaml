@@ -1,5 +1,7 @@
 image:
-  tag: "1.0.28"
+  tag: "1.0.42"
+
+shouldDeploy: true
 
 serviceConfigurations:
   submitDealTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-submit-deal-request1-topic"

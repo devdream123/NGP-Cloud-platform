@@ -77,7 +77,7 @@ projectId:
 
 sql:
   region: us-central1
-  instance:
+  enableCloudConnector: false
   pmrEmailTokensDB:
     dbName: ngsPMREmailTokens
     proxyPort: "5432"

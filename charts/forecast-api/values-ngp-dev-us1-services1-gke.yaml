@@ -1,7 +1,7 @@
 projectId: gcp-wow-corp-qretail-ngp-dev
 
 image:
-  tag: 1.62.1
+  tag: 1.63.1
 
 resources:
   requests:
@@ -17,7 +17,7 @@ runValidation: True
 database:
   instance: ngp-dev-us1-services1-sql
   user: sa-dev-qforecast-sql@gcp-wow-corp-qretail-ngp-dev.iam
-  schema: public_20230811_1
+  schema: public_20231030_1
   proxyVersion: "2.7.1"
 
 otel:

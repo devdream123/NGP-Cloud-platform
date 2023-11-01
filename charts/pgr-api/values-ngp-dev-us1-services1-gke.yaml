@@ -1,5 +1,5 @@
 image:
-  tag: "pgr-1.53.0"
+  tag: "pgr-1.62.1"
 
 otel:
   enabled: True

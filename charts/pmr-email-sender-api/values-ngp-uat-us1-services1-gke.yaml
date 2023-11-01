@@ -1,16 +1,17 @@
 image:
-  tag: ""
+  tag: "1.0.41"
 
 projectId: "gcp-wow-corp-qretail-ngp-uat"
 
 serviceConfigurations:
   httpsProxy: "http://swp.uat.int.wiqretail.com:80"
   sendgridNGSEmail: "next-gen-slotter@woolworths.com.au"
-  supplierApprovalURL: "https://deal-submission.uat.ngp.wiqretail.com/"
+  supplierApprovalURL: "https://deal-submission.uat.ngp.wiqretail.com"
   approvalRequestTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-approval-request1-topic"
   approvalRequestSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-uat/subscriptions/ngp-uat-us1-pmr-approval-request1-approval-request-subscription"
   approvalResponseTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-approval-response1-topic"
   approvalResponseSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-uat/subscriptions/ngp-uat-us1-pmr-approval-response1-approval-response-subscription"
+  supplierActionSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-uat/subscriptions/ngp-uat-us1-pmr-supplier-action1-supplier-action-subscription"
 
 sql:
   instance: ngp-uat-us1-services1-sql

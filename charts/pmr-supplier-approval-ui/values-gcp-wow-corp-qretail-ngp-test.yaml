@@ -1,3 +1,5 @@
+vpcAccessConnector: 'projects/gcp-wow-corp-qretail-ngp-test/locations/us-central1/connectors/ngp-tst-us1-1-vc'
+
 instanceTimeoutSeconds: 120
 serviceAccountName: 'sa-tst-pmr-approval-ui@gcp-wow-corp-qretail-ngp-test.iam.gserviceaccount.com'
 
@@ -13,7 +15,26 @@ container:
       cpu: 2000m
 
 containerImage:
-  tag: "1.0.33"
+  tag: "1.0.41"
+
+sidecarImage:
+  repository: "gcr.io/cloud-sql-connectors/cloud-sql-proxy"
+  pullPolicy: Always
+  tag: "2.7.1"
+
+sidecar:
+  name: "cloud-sql-proxy"
+  command:
+  args:
+   - --private-ip
+   - --auto-iam-authn
+   - --impersonate-service-account=sa-tst-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-test.iam.gserviceaccount.com
+   - --port=5432
+   - gcp-wow-corp-qretail-ngp-test:us-central1:ngp-tst-us1-services1-sql
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 512Mi
 
 env: 
   - name: "PROJECT_ID"
@@ -22,3 +43,17 @@ env:
     value: "projects/gcp-wow-corp-qretail-ngp-test/subscriptions/ngp-tst-us1-pmr-approval-response1-approval-response-subscription"
   - name: "PMR_APPROVAL_RESPONSE_TOPIC_NAME"
     value: "projects/gcp-wow-corp-qretail-ngp-test/topics/ngp-tst-us1-pmr-approval-response1-topic"
+  - name: "PMR_SUPPLIER_ACTION_TOPIC_NAME"
+    value: "projects/gcp-wow-corp-qretail-ngp-test/topics/ngp-tst-us1-pmr-supplier-action1-topic"
+  - name: "PST_DB_USERNAME"
+    value: "sa-tst-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-test.iam"
+  - name: "PST_DB_NAME"
+    value: "ngsPMREmailTokens"
+  - name: "PST_DB_SCHEMA"
+    value: "public"
+  - name: "PST_DB_HOST"
+    value: "localhost"
+  - name: "PST_DB_PORT"
+    value: 5432
+  - name: "PST_SETUP_CLOUD_SQL_CONNECTOR"
+    value: false
