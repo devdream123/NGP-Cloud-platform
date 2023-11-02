@@ -13,9 +13,7 @@ serviceConfigurations:
   numOfAttempts: "10"
   startingDelay: "100"
   timeMultiple: "2"
-  queueConcurrency: "1"
-  queueInterval: "1000"
-  queueIntervalCap: "2"
+  queueConcurrency: "8"
   httpsProxy: "http://swp.tst.int.wiqretail.com:80"
 
 sql:
