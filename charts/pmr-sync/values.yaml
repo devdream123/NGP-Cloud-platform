@@ -71,7 +71,7 @@ sql:
     user: 
     schema: public
   proxyServer: localhost
-  proxyVersion: "2.1.1"
+  proxyVersion: "2.7.1"
   proxyResources:
     requests:
       memory: "32Mi"
