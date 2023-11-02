@@ -71,3 +71,14 @@ releases:
         showlogs: true
         command: 'kubectl'
         args: ['label', 'ns', '{{ .Values.frontend.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']
+  - name: ngs-debug-app
+    chart: ./charts/ngs-debug-app
+    namespace: {{ .Values.frontend.namespace }}
+    values:
+      - ./charts/ngs-debug-app/values-{{ requiredEnv "CLUSTER_NAME" }}.yaml
+      - projectId: {{ .Values.env.GCLOUD_PROJECT }}
+    hooks:
+      - events: ['postsync']
+        showlogs: true
+        command: 'kubectl'
+        args: ['label', 'ns', '{{ .Values.frontend.namespace }}', 'istio.io/rev={{ .Values.istio.revision }}', '--overwrite=true']

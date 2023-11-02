@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "ngs-debug-app.fullname" . }}-test-connection"
+  labels:
+    {{- include "ngs-debug-app.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "ngs-debug-app.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

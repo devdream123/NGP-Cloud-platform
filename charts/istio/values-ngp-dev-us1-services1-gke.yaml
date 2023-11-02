@@ -34,3 +34,14 @@ VirtualServices:
               host: forecast-api.ngp-analytics.svc.cluster.local
               port:
                 number: 80
+      - name: ngs-debug-app
+        match:
+        - uri:
+            prefix: /debug
+        rewrite:
+          uri: /
+        route:
+          - destination:
+              host: ngs-debug-app.ngp-frontend.svc.cluster.local
+              port:
+                number: 80

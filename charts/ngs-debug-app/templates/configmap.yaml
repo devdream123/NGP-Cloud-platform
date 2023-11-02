@@ -1,0 +1,24 @@
+{{- if .Values.shouldDeploy }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "ngs-debug-app.fullname" . }}-cm
+  labels:
+    {{- include "ngs-debug-app.labels" . | nindent 4 }}
+data:
+  PROJECT_ID: {{ .Values.projectId | quote }}
+  PMR_APPROVAL_REQUEST_TOPIC_NAME: {{ .Values.serviceConfigurations.approvalRequestTopicName | quote }}
+  PMR_SYNC_DELETE_DEAL_TOPIC_NAME: {{ .Values.serviceConfigurations.deleteDealTopicName | quote }}
+  PMR_SYNC_SUBMIT_DEAL_TOPIC_NAME: {{ .Values.serviceConfigurations.submitDealTopicName | quote }}
+  PMR_SYNC_RESPONSE_TOPIC_NAME: {{ .Values.serviceConfigurations.syncResponseTopicName | quote }}
+  {{- if .Values.otel.enabled }}
+  OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
+  OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}
+  OTEL_TRACES_EXPORTER: {{ .Values.otel.tracesExporter | quote }}
+  OTEL_PROPAGATORS: {{ .Values.otel.propagators | quote }}
+  OTEL_LOG_LEVEL: {{ .Values.otel.logLevel | quote }}
+  SPLUNK_METRICS_ENABLED: {{ .Values.splunk.metricsEnabled | default "false" | quote }}
+  SPLUNK_PROFILER_ENABLED: {{ .Values.splunk.profilerEnabled | quote }}
+  SPLUNK_PROFILER_MEMORY_ENABLED: {{ .Values.splunk.profilerMemoryEnabled | quote }}
+  {{- end }}
+{{- end }}
