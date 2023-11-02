@@ -23,9 +23,7 @@ data:
   PMR_NUM_OF_ATTEMPTS: {{ .Values.serviceConfigurations.numOfAttempts | quote }}
   PMR_STARTING_DELAY: {{ .Values.serviceConfigurations.startingDelay | quote }}
   PMR_TIME_MULTIPLE: {{ .Values.serviceConfigurations.timeMultiple | quote }}
-  PMR_QUEUE_CONCURRENCY: {{ .Values.serviceConfigurations.queueConcurrency | quote }}
-  PMR_QUEUE_INTERVAL: {{ .Values.serviceConfigurations.queueInterval | quote }}
-  PMR_QUEUE_INTERVAL_CAP: {{ .Values.serviceConfigurations.queueIntervalCap | quote }}
+  PMR_QUEUE_CONCURRENCY: {{ .Values.serviceConfigurations.queueConcurrency | quote }}}
   AXIOS_HTTPS_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
   {{- if .Values.otel.enabled }}
   OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}

@@ -88,8 +88,6 @@ serviceConfigurations:
   startingDelay:
   timeMultiple:
   queueConcurrency:
-  queueInterval:
-  queueIntervalCap:
   httpsProxy:
 
 otel:
