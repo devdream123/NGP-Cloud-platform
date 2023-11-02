@@ -13,6 +13,11 @@ export BASE_DIR
 environment=$1
 source "${BASE_DIR}"/export-env-variables.sh "${environment}"
 
+if [[ "${PROTOBUF_SCHEMA_TAG}" == "null" ]]; then
+  echo "PROTOBUF_SCHEMA_TAG is not set for environment ${environment}, skipping PMR schema deployment..."
+  exit 0
+fi
+
 protobuf_schemas_destination_folder_name="schemaFiles"
 protobuf_schemas_bucket_folder_name="gs://${PROTOBUF_SCHEMA_BUCKET_NAME}/${PROTOBUF_SCHEMA_TAG}"
 bigQuery_protobuf_schemas_folder_name="${protobuf_schemas_destination_folder_name}/bigQuery"
