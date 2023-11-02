@@ -86,7 +86,7 @@ echo "Update topic ${topic_full_id} to only use latest schema revision ${most_re
 gcloud pubsub topics update \
        "${topic_full_id}" \
        --schema="${topic_schema_full_id}" \
-       --message-encoding=json \
+       --message-encoding=binary \
        --first-revision-id="${most_recent_revision}" \
        --last-revision-id="${most_recent_revision}"
 
