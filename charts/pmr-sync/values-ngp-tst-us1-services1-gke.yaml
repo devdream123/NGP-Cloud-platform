@@ -20,6 +20,7 @@ sql:
   instance: ngp-tst-us1-services1-sql
   pmrBookkeepingDB:
     user: "sa-tst-pmr-bookkeeping-sql@gcp-wow-corp-qretail-ngp-test.iam"
+  proxyVersion: "2.7.1"
 
 otel:
   enabled: true
