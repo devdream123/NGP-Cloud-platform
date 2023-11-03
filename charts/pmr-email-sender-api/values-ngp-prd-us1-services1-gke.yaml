@@ -9,6 +9,7 @@ serviceConfigurations:
   supplierApprovalURL:
   approvalRequestTopicName:
   approvalRequestSubscriptionName:
+  completeSubmissionRequestSubscriptionName:
 
 sql:
   instance: ngp-prd-us1-services1-sql

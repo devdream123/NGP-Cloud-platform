@@ -15,6 +15,7 @@ data:
   PMR_APPROVAL_RESPONSE_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.approvalResponseSubscriptionName | quote }}
   PMR_APPROVAL_RESPONSE_TOPIC_NAME: {{ .Values.serviceConfigurations.approvalResponseTopicName | quote }}
   PMR_SUPPLIER_ACTION_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.supplierActionSubscriptionName | quote }}
+  PMR_COMPLETE_SUBMISSION_REQUEST_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.completeSubmissionRequestSubscriptionName | quote }}
   DB_HOST: {{ .Values.sql.proxyServer | quote }}
   DB_PORT: {{ .Values.sql.pmrEmailTokensDB.proxyPort | quote }}
   PROJECT_ID: {{ .Values.projectId | quote }}
