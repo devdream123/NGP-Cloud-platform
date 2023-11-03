@@ -37,7 +37,7 @@ VirtualServices:
       - name: ngs-debug-app
         match:
         - uri:
-            prefix: /debug
+            prefix: /ngs-debug
         rewrite:
           uri: /
         route:

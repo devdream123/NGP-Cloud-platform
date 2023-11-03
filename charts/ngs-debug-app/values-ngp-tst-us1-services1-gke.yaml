@@ -7,4 +7,4 @@ projectId: "gcp-wow-corp-qretail-ngp-test"
 
 otel:
   enabled: true
-  resourceAttributes: "deployment.environment=test"
+  resourceAttributes: "deployment.environment=tst"
