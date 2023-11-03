@@ -19,8 +19,8 @@
 				"eamodio.gitlens",
 				"github.vscode-github-actions",
 				"esbenp.prettier-vscode",
-                "ms-kubernetes-tools.vscode-kubernetes-tools",
-                "tim-koehler.helm-intellisense",
+				"ms-kubernetes-tools.vscode-kubernetes-tools",
+				"tim-koehler.helm-intellisense",
 				"mutantdino.resourcemonitor",
 			],
 			"settings": {
