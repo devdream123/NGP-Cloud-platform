@@ -44,4 +44,4 @@ VirtualServices:
           - destination:
               host: ngs-debug-app.ngp-frontend.svc.cluster.local
               port:
-                number: 80
+                number: 3000
