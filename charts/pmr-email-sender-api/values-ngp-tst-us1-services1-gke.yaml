@@ -20,6 +20,7 @@ sql:
   instance: ngp-tst-us1-services1-sql
   pmrEmailTokensDB:
     user: "sa-tst-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-test.iam"
+  proxyVersion: "2.7.1"
 
 otel:
   enabled: true
