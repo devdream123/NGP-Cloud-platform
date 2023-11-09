@@ -1,9 +1,17 @@
-shouldDeploy: false
+shouldDeploy: true
 
 image:
   tag: "1.0.50"
 
 projectId: "gcp-wow-corp-qretail-ngp-uat"
+
+serviceConfigurations:
+  approvalRequestTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-approval-request1-topic"
+  deleteDealTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-delete-deal-request1-topic"
+  submitDealTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-submit-deal-request1-topic"
+  syncResponseTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-sync-deal-response1-topic"
+  completeSubmissionRequestTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-complete-submission-request1-topic"
+  checkTokensExpiryTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-token-expiry1-topic"
 
 otel:
   enabled: true
