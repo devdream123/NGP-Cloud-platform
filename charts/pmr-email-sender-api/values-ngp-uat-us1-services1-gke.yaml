@@ -1,7 +1,7 @@
 shouldDeploy: true
 
 image:
-  tag: "1.0.46"
+  tag: "1.0.50"
 
 projectId: "gcp-wow-corp-qretail-ngp-uat"
 
@@ -15,6 +15,8 @@ serviceConfigurations:
   approvalResponseSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-uat/subscriptions/ngp-uat-us1-pmr-approval-response1-approval-response-subscription"
   supplierActionSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-uat/subscriptions/ngp-uat-us1-pmr-supplier-action1-supplier-action-subscription"
   completeSubmissionRequestSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-uat/subscriptions/ngp-uat-us1-pmr-complete-submission-request1-complete-submission-request-subscription"
+  checkTokensExpirySubscriptionName: "projects/gcp-wow-corp-qretail-ngp-uat/subscriptions/ngp-uat-us1-pmr-token-expiry1-token-expiry-subscription"
+  checkTokensExpiryTopicName: "projects/gcp-wow-corp-qretail-ngp-uat/topics/ngp-uat-us1-pmr-token-expiry1-topic"
 
 sql:
   instance: ngp-uat-us1-services1-sql

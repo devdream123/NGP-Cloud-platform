@@ -77,7 +77,6 @@ projectId:
 
 sql:
   region: us-central1
-  enableCloudConnector: false
   pmrEmailTokensDB:
     dbName: ngsPMREmailTokens
     proxyPort: "5432"
@@ -94,12 +93,14 @@ serviceConfigurations:
   httpsProxy: 
   noProxy: "localhost,10.0.0.0/8,metadata.google.internal,169.254.169.254"
   sendgridNGSEmail: example@email.com
+  sendgridAPIUrl: "https://api.sendgrid.com/v3/mail/send"
   supplierApprovalURL:
   emailSenderPort: "4003"
   approvalRequestTopicName:
   approvalRequestSubscriptionName:
   approvalResponseSubscriptionName:
   approvalResponseTopicName:
+  pmrTokenExpiryTimeHrs: 24
 
 secrets:
   sendgridApiKey:

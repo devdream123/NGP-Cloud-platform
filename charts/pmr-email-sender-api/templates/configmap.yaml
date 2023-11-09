@@ -8,6 +8,7 @@ metadata:
     {{- include "pmr-email-sender-api.labels" . | nindent 4 }}
 data:
   SENDGRID_NGS_EMAIL: {{ .Values.serviceConfigurations.sendgridNGSEmail | quote }}
+  SENDGRID_API_URL: {{ .Values.serviceConfigurations.sendgridAPIUrl | quote }}
   SUPPLIER_APPROVAL_URL: {{ .Values.serviceConfigurations.supplierApprovalURL | quote }}
   PMR_EMAIL_SENDER_PORT: {{ .Values.serviceConfigurations.emailSenderPort | quote }}
   PMR_APPROVAL_REQUEST_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.approvalRequestSubscriptionName }}
@@ -16,13 +17,15 @@ data:
   PMR_APPROVAL_RESPONSE_TOPIC_NAME: {{ .Values.serviceConfigurations.approvalResponseTopicName | quote }}
   PMR_SUPPLIER_ACTION_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.supplierActionSubscriptionName | quote }}
   PMR_COMPLETE_SUBMISSION_REQUEST_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.completeSubmissionRequestSubscriptionName | quote }}
+  PMR_CHECK_TOKENS_EXPIRY_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.checkTokensExpirySubscriptionName | quote }}
+  PMR_CHECK_TOKENS_EXPIRY_TOPIC_NAME: {{ .Values.serviceConfigurations.checkTokensExpiryTopicName | quote }}
+  PMR_TOKEN_EXPIRY_TIME_HRS: {{ .Values.serviceConfigurations.pmrTokenExpiryTimeHrs | quote }}
   DB_HOST: {{ .Values.sql.proxyServer | quote }}
   DB_PORT: {{ .Values.sql.pmrEmailTokensDB.proxyPort | quote }}
   PROJECT_ID: {{ .Values.projectId | quote }}
   HTTP_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
   HTTPS_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
   NO_PROXY: {{ .Values.serviceConfigurations.noProxy | quote }}
-  PST_SETUP_CLOUD_SQL_CONNECTOR: {{ .Values.sql.enableCloudConnector | quote }}
   PST_DB_USERNAME: {{ .Values.sql.pmrEmailTokensDB.user | quote }}
   PST_DB_NAME: {{ .Values.sql.pmrEmailTokensDB.dbName | quote }}
   PST_DB_SCHEMA: {{ .Values.sql.pmrEmailTokensDB.schema | quote }}

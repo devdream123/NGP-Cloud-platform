@@ -15,7 +15,7 @@ container:
       cpu: 2000m
 
 containerImage:
-  tag: "1.0.47"
+  tag: "1.0.50"
 
 sidecarImage:
   repository: "gcr.io/cloud-sql-connectors/cloud-sql-proxy"
@@ -57,3 +57,5 @@ env:
     value: 5432
   - name: "PST_SETUP_CLOUD_SQL_CONNECTOR"
     value: false
+  - name: "PMR_TOKEN_EXPIRY_TIME_HRS"
+    value: 24
