@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "ngs-debug-app.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "ngs-debug-app.fullname" . }}:{{ .Values.service.targetPort }}']
   restartPolicy: Never
