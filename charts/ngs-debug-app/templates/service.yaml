@@ -4,7 +4,7 @@ kind: Service
 metadata:
   name: {{ include "ngs-debug-app.fullname" . }}
   annotations:
-    cloud.google.com/neg: '{"exposed_ports": {"80":{"name": "{{ .Values.service.negName }}" }}}'
+    cloud.google.com/neg: '{"exposed_ports": {"{{ .Values.service.port }}":{"name": "{{ .Values.service.negName }}" }}}'
   labels:
     {{- include "ngs-debug-app.labels" . | nindent 4 }}
 spec:
