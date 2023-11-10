@@ -32,7 +32,7 @@ fi
 echo "Checking schema ${topic_schema_full_id} exists..."
 
 if [[ ! $(gcloud pubsub schemas describe "${topic_schema_name}" --project="${project_id}") ]]; then
-  echo "Schema not found. Creating new schema..."
+  echo "Schema ${topic_schema_name} not found. Creating new schema..."
   gcloud pubsub schemas create \
          "${topic_schema_full_id}" \
          --type="protocol-buffer" \
@@ -56,7 +56,7 @@ else
 
   if [[ "${n_revisions}" == "${MAX_N_REVISIONS}" ]]; then
 
-    echo "The maximum number of revisions exist. Deleting the oldest revision..."
+    echo "The maximum number of revisions exist for schema ${topic_schema_full_id}. Deleting the oldest revision..."
     oldest_revision_id=$(gcloud pubsub schemas list-revisions "${topic_schema_full_id}" \
                           --format=yaml \
                           --sort-by=revisionCreateTime \

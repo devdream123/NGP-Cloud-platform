@@ -41,14 +41,9 @@ for pmr_event in "${PMR_EVENTS[@]}"; do
         "${topic_full_id}" \
         "${GCLOUD_PROJECT}"
 
-#3 convert protobuf schema to json schema 
-  source "${BASE_DIR}/convert-protobuf-schema.sh" \
-        "${bigQuery_protobuf_schemas_folder_name}" \
-        "${protobuf_schema_file_name}"
-
-#4 update bq table schema
+#3 update bq table schema
   bigquery_table_name=$(echo "${pmr_event}" | yq .bigqueryTableName)
-  bigquery_table_schema_file="${PROTOBUF_SCHEMA_PACKAGE_NAME}/${bigquery_table_name}.schema"
+  bigquery_table_schema_file="${bigQuery_protobuf_schemas_folder_name}/${bigquery_table_name}.json"
   bigquery_dataset_name=$(echo "${pmr_event}" | yq .bigqueryDatasetId)
 
   source "${BASE_DIR}/update-bq-table-schema.sh" \
