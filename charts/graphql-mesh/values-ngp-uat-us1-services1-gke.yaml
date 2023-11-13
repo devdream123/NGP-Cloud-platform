@@ -3,11 +3,9 @@ image:
   tag: "1.94.4"
 
 mesh:
-  cors:
-    origin: "https://lb.uat.ngp.wiqretail.com/"
-  graphqliEnabled: false
-  introspectionEnabled: false
-  errorMaskingEnabled: true
+  graphqliEnabled: true
+  introspectionEnabled: true
+  errorMaskingEnabled: false
 
 secrets:
   typesenseAPIKey:
