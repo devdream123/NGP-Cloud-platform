@@ -43,7 +43,5 @@ PROTOBUF_SCHEMA_TAG=$(yq eval '.env.PROTOBUF_SCHEMA_TAG' "${BASE_DIR}/../config/
 export PROTOBUF_SCHEMA_TAG
 PROTOBUF_SCHEMA_BUCKET_NAME=$(yq eval '.env.PROTOBUF_SCHEMA_BUCKET_NAME' "${BASE_DIR}/../config/${environment}.env.yaml")
 export PROTOBUF_SCHEMA_BUCKET_NAME
-PROTOBUF_SCHEMA_PACKAGE_NAME=$(yq eval '.env.PROTOBUF_SCHEMA_PACKAGE_NAME' "${BASE_DIR}/../config/${environment}.env.yaml")
-export PROTOBUF_SCHEMA_PACKAGE_NAME
 readarray PMR_EVENTS < <(yq eval -o=j -I=0 '.env.PMR_EVENTS[]' "${BASE_DIR}/../config/${environment}.env.yaml")
 export PMR_EVENTS
