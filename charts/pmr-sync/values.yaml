@@ -62,6 +62,8 @@ tolerations: []
 
 affinity: {}
 
+projectId:
+
 sql:
   region: us-central1
   instance:
@@ -84,11 +86,13 @@ serviceConfigurations:
   deleteDealSubscriptionName:
   syncResponseTopicName:
   serverUrl:
+  pmrIncludeNgpHeader:
   numOfAttempts:
   startingDelay:
   timeMultiple:
   queueConcurrency:
   httpsProxy:
+  noProxy: "localhost,10.0.0.0/8,metadata.google.internal,169.254.169.254"
 
 otel:
   enabled: false

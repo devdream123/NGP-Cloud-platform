@@ -17,7 +17,7 @@ data:
   PMR_SYNC_DELETE_DEAL_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.deleteDealSubscriptionName | quote }}
   PMR_SYNC_RESPONSE_TOPIC_NAME: {{  .Values.serviceConfigurations.syncResponseTopicName | quote }}
   PMR_SERVER_URL: {{ .Values.serviceConfigurations.serverUrl | quote }}
-  PMR_FETCH_ACCESS_TOKEN: {{ .Values.serviceConfigurations.pmrFetchAccessToken | quote }}
+  PMR_INCLUDE_NGP_HEADER: {{ .Values.serviceConfigurations.pmrIncludeNgpHeader | quote }}
   BK_DB_USERNAME: {{ .Values.sql.pmrBookkeepingDB.user | quote }}
   BK_DB_SCHEMA: {{ .Values.sql.pmrBookkeepingDB.schema | quote }}
   BK_DB_NAME: {{ .Values.sql.pmrBookkeepingDB.dbName | quote }}
@@ -26,6 +26,9 @@ data:
   PMR_TIME_MULTIPLE: {{ .Values.serviceConfigurations.timeMultiple | quote }}
   PMR_QUEUE_CONCURRENCY: {{ .Values.serviceConfigurations.queueConcurrency | quote }}
   AXIOS_HTTPS_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
+  HTTP_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
+  HTTPS_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
+  NO_PROXY: {{ .Values.serviceConfigurations.noProxy | quote }}
   {{- if .Values.otel.enabled }}
   OTEL_SERVICE_NAME: {{ .Values.otel.serviceName | quote }}
   OTEL_RESOURCE_ATTRIBUTES: {{ .Values.otel.resourceAttributes | quote }}

@@ -1,6 +1,8 @@
 image:
   tag: ""
 
+projectId: "gcp-wow-corp-qretail-ngp-prd"
+
 serviceConfigurations:
   serverUrl: "https://wowapi.woolworths.com.au"
 
