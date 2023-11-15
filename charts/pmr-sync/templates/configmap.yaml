@@ -25,7 +25,6 @@ data:
   PMR_STARTING_DELAY: {{ .Values.serviceConfigurations.startingDelay | quote }}
   PMR_TIME_MULTIPLE: {{ .Values.serviceConfigurations.timeMultiple | quote }}
   PMR_QUEUE_CONCURRENCY: {{ .Values.serviceConfigurations.queueConcurrency | quote }}
-  AXIOS_HTTPS_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
   HTTP_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
   HTTPS_PROXY: {{ .Values.serviceConfigurations.httpsProxy | quote }}
   NO_PROXY: {{ .Values.serviceConfigurations.noProxy | quote }}
