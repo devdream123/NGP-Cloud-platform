@@ -15,6 +15,7 @@ data:
   PMR_APPROVAL_REQUEST_TOPIC_NAME: {{ .Values.serviceConfigurations.approvalRequestTopicName | quote }}
   PMR_APPROVAL_RESPONSE_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.approvalResponseSubscriptionName | quote }}
   PMR_APPROVAL_RESPONSE_TOPIC_NAME: {{ .Values.serviceConfigurations.approvalResponseTopicName | quote }}
+  PMR_SUPPLIER_ACTION_TOPIC_NAME: {{ .Values.serviceConfigurations.supplierActionTopicName | quote }}
   PMR_SUPPLIER_ACTION_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.supplierActionSubscriptionName | quote }}
   PMR_COMPLETE_SUBMISSION_REQUEST_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.completeSubmissionRequestSubscriptionName | quote }}
   PMR_CHECK_TOKENS_EXPIRY_SUBSCRIPTION_NAME: {{ .Values.serviceConfigurations.checkTokensExpirySubscriptionName | quote }}

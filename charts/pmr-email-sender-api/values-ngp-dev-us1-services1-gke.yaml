@@ -13,6 +13,7 @@ serviceConfigurations:
   approvalRequestSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-approval-request1-approval-request-subscription"
   approvalResponseTopicName: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-approval-response1-topic"
   approvalResponseSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-approval-response1-approval-response-subscription"
+  supplierActionTopicName: "projects/gcp-wow-corp-qretail-ngp-dev/topics/ngp-dev-us1-pmr-supplier-action1-topic"
   supplierActionSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-supplier-action1-supplier-action-subscription"
   completeSubmissionRequestSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-complete-submission-request1-complete-submission-request-subscription"
   checkTokensExpirySubscriptionName: "projects/gcp-wow-corp-qretail-ngp-dev/subscriptions/ngp-dev-us1-pmr-token-expiry1-token-expiry-subscription"
