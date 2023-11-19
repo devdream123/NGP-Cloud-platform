@@ -1,15 +1,26 @@
 image:
-  tag: ""
+  tag: "1.0.58"
 
-projectId: "gcp-wow-corp-qretail-ngp-prd"
+projectId: "gcp-wow-corp-qretail-ngp-prod"
 
 serviceConfigurations:
+  submitDealTopicName: "projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-submit-deal-request1-topic"
+  submitDealSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-submit-deal-request1-submit-deal-request-subscription"
+  deleteDealTopicName: "projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-delete-deal-request1-topic"
+  deleteDealSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-delete-deal-request1-delete-deal-request-subscription"
+  syncResponseTopicName: "projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-sync-deal-response1-topic"
   serverUrl: "https://wowapi.woolworths.com.au"
+  pmrIncludeNgpHeader: false
+  numOfAttempts: "10"
+  startingDelay: "100"
+  timeMultiple: "2"
+  queueConcurrency: "8"
+  httpsProxy: "http://swp.prd.int.wiqretail.com:80"
 
 sql:
   instance: ngp-prd-us1-services1-sql
   pmrBookkeepingDB:
-    user: 
+    user: "sa-prd-pmr-bookkeeping-sql@gcp-wow-corp-qretail-ngp-prod.iam"
 
 otel:
   enabled: true
