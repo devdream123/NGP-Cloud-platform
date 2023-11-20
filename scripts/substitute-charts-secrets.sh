@@ -29,11 +29,9 @@ for environment in "${environments[@]}"; do
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/frontend-ui/values-${cluster}.yaml"
     sed -i "s/typesenseAPIKey:/typesenseAPIKey: ${TYPESENSE_API_KEY}/" "./charts/graphql-mesh/values-${cluster}.yaml"
 
-    if [ "${environment}" != "prd" ]; then
-      pmr_api_credential_secret_name="PMR_ENDPOINT_API_CREDENTIAL_${environment^^}"
-      pmr_api_credential_secret_value="${!pmr_api_credential_secret_name}"
-      sed -i "s/pmrEndpointAPICredential:/pmrEndpointAPICredential: ${pmr_api_credential_secret_value}/" "./charts/pmr-sync/values-${cluster}.yaml"
-    fi
+    pmr_api_credential_secret_name="PMR_ENDPOINT_API_CREDENTIAL_${environment^^}"
+    pmr_api_credential_secret_value="${!pmr_api_credential_secret_name}"
+    sed -i "s/pmrEndpointAPICredential:/pmrEndpointAPICredential: ${pmr_api_credential_secret_value}/" "./charts/pmr-sync/values-${cluster}.yaml"
 
     pmr_sendgrid_api_key_secret_name="PMR_SENDGRID_API_KEY_${environment^^}"
     pmr_sendgrid_api_key_secret_value="${!pmr_sendgrid_api_key_secret_name}"
