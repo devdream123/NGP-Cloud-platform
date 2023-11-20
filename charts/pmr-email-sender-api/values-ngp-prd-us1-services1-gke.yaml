@@ -16,7 +16,7 @@ serviceConfigurations:
   completeSubmissionRequestSubscriptionName: "projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-complete-submission-request1-complete-submission-request-subscription"
   checkTokensExpirySubscriptionName: "projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-token-expiry1-token-expiry-subscription"
   checkTokensExpiryTopicName: "projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-token-expiry1-topic"
-
+  pmrTokenExpiryTimeHrs: 48
 sql:
   instance: ngp-prd-us1-services1-sql
   pmrEmailTokensDB:
