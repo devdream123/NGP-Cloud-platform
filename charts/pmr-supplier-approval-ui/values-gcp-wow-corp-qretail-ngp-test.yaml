@@ -15,7 +15,7 @@ container:
       cpu: 2000m
 
 containerImage:
-  tag: "1.0.51"
+  tag: "1.0.60"
 
 sidecarImage:
   repository: "gcr.io/cloud-sql-connectors/cloud-sql-proxy"
