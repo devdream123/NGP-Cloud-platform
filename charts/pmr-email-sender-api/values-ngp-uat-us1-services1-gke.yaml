@@ -1,5 +1,3 @@
-shouldDeploy: true
-
 image:
   tag: "1.0.52"
 
@@ -23,7 +21,6 @@ sql:
   instance: ngp-uat-us1-services1-sql
   pmrEmailTokensDB:
     user: "sa-uat-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-uat.iam"
-  proxyVersion: "2.7.1"
 
 otel:
   enabled: true
