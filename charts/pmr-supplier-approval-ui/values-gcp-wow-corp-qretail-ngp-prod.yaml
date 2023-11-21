@@ -1,0 +1,59 @@
+vpcAccessConnector: "projects/gcp-wow-corp-qretail-ngp-prod/locations/us-central1/connectors/ngp-prd-us1-connector1-vc"
+
+instanceTimeoutSeconds: 120
+serviceAccountName: "sa-prd-pmr-approval-ui@gcp-wow-corp-qretail-ngp-prod.iam.gserviceaccount.com"
+
+container:
+  port: 8080
+  maxConcurrentRequests: 120
+  resources:
+    requests:
+      memory: 128Mi
+      cpu: 100m
+    limits:
+      memory: 2Gi
+      cpu: 2000m
+
+containerImage:
+  tag: "1.0.60"
+
+sidecarImage:
+  repository: "gcr.io/cloud-sql-connectors/cloud-sql-proxy"
+  pullPolicy: Always
+  tag: "2.7.1"
+
+sidecar:
+  name: "cloud-sql-proxy"
+  command:
+  args:
+    - --private-ip
+    - --auto-iam-authn
+    - --impersonate-service-account=sa-prd-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-prod.iam.gserviceaccount.com
+    - --port=5432
+    - gcp-wow-corp-qretail-ngp-prod:us-central1:ngp-prd-us1-services1-sql
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 512Mi
+
+env:
+  - name: "PROJECT_ID"
+    value: "gcp-wow-corp-qretail-ngp-prod"
+  - name: "PMR_APPROVAL_RESPONSE_SUBSCRIPTION_NAME"
+    value: "projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-approval-response1-approval-response-subscription"
+  - name: "PMR_APPROVAL_RESPONSE_TOPIC_NAME"
+    value: "projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-approval-response1-topic"
+  - name: "PMR_SUPPLIER_ACTION_TOPIC_NAME"
+    value: "projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-supplier-action1-topic"
+  - name: "PST_DB_USERNAME"
+    value: "sa-prd-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-prod.iam"
+  - name: "PST_DB_NAME"
+    value: "ngsPMREmailTokens"
+  - name: "PST_DB_SCHEMA"
+    value: "public"
+  - name: "PST_DB_HOST"
+    value: "localhost"
+  - name: "PST_DB_PORT"
+    value: 5432
+  - name: "PMR_TOKEN_EXPIRY_TIME_HRS"
+    value: 48
