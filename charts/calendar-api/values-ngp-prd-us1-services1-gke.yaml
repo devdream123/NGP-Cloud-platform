@@ -20,5 +20,22 @@ otel:
   enabled: True
   resourceAttributes: "deployment.environment=prd"
 
+pubsubEvents:
+  supplierApproval:
+    topicName: projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-approval-request1-topic
+    subscriptionName: projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-approval-response1-approval-response-subscription
+  syncDeal:
+    topicName: projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-sync-deal-response1-topic
+    subscriptionName: projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-sync-deal-response1-sync-deal-response-subscription
+  submissionComplete:
+    topicName: projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-complete-submission-request1-topic
+    subscriptionName: projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-complete-submission-request1-complete-submission-request-subscription
+  submitDeal:
+    topicName: projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-submit-deal-request1-topic
+    subscriptionName: projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-submit-deal-request1-submit-deal-request-subscription
+  deleteDeal:
+    topicName: projects/gcp-wow-corp-qretail-ngp-prod/topics/ngp-prd-us1-pmr-delete-deal-request1-topic
+    subscriptionName: projects/gcp-wow-corp-qretail-ngp-prod/subscriptions/ngp-prd-us1-pmr-delete-deal-request1-delete-deal-request-subscription
+
 secrets:
   typesenseAPIKey:
