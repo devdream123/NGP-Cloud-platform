@@ -2,7 +2,7 @@
 projectId: gcp-wow-corp-qretail-ngp-prod
 
 image:
-  tag: 1.59.3
+  tag: 1.63.1
 
 resources:
   requests:
@@ -17,7 +17,7 @@ environment: production
 database:
   instance: ngp-prd-us1-services1-sql
   user: sa-prd-qforecast-sql@gcp-wow-corp-qretail-ngp-prod.iam
-  schema: public_20230811_1
+  schema: public_20231113_1
 
 otel:
   enabled: True

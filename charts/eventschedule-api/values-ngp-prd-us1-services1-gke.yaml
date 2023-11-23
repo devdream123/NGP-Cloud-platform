@@ -1,6 +1,6 @@
 ---
 image:
-  tag: v1.55.33-prd
+  tag: v1.57.1-prd
 
 resources:
   limits:

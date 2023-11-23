@@ -1,5 +1,5 @@
 image:
-  tag: "03-08-2023"
+  tag: "30-10-2023"
 
 resources:
   limits:
@@ -18,7 +18,7 @@ proxyConfiguration:
 
 ngpAssortmentConfiguration:
   bucket: "analytics-dev-us1-data-central1-b0b1-bucket"
-  filePath: "release_data/calendar/20230606_1_prd"
+  filePath: "release_data/calendar/20231113_1"
   fileName: "pf_codes.csv"
   useNgpAssortmentFile: true
 
