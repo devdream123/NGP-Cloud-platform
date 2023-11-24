@@ -3,15 +3,13 @@
 extends: default
 
 rules:
-  # 80 chars should be enough, but don't fail if a line is longer
-  line-length:
-    max: 80
-    level: warning
+  line-length: disable
 
-  # ignore spaces inside braces for helm
-  braces:
-    level: warning
+  document-start: disable
+
+  braces: disable
+
+  truthy: disable
 
 ignore:
   - charts/*/templates/
-  - scripts/

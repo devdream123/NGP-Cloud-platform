@@ -23,7 +23,7 @@ database:
   placeholder:
     dbName: ngsPlaceholder
     proxyPort: "5433"
-    user: 
+    user:
     schema: public
   server: localhost
   commandTimeout: 30
@@ -90,7 +90,7 @@ affinity: {}
 hierarchyChartName: hierarchy-api
 forecastChartName: forecast-api
 dealsheetChartName: dealsheet-api
-eventScheduleChartName : eventschedule-api
+eventScheduleChartName: eventschedule-api
 
 backendNamespace: ngp-backend
 analyticsNamespace: ngp-analytics
@@ -98,7 +98,7 @@ analyticsNamespace: ngp-analytics
 systemTimeZone: "Australia/Sydney"
 
 PodDisruptionBudget:
-  minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+  minAvailable: 66%  # K8s rounds up to the nearest integer if the Replica Count is odd
 
 otel:
   enabled: False

@@ -26,17 +26,17 @@ sidecar:
   name: "cloud-sql-proxy"
   command:
   args:
-   - --private-ip
-   - --auto-iam-authn
-   - --impersonate-service-account=sa-uat-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-uat.iam.gserviceaccount.com
-   - --port=5432
-   - gcp-wow-corp-qretail-ngp-uat:us-central1:ngp-uat-us1-services1-sql
+    - --private-ip
+    - --auto-iam-authn
+    - --impersonate-service-account=sa-uat-pmr-email-tokens-sql@gcp-wow-corp-qretail-ngp-uat.iam.gserviceaccount.com
+    - --port=5432
+    - gcp-wow-corp-qretail-ngp-uat:us-central1:ngp-uat-us1-services1-sql
   resources:
     limits:
       cpu: 1000m
       memory: 512Mi
 
-env: 
+env:
   - name: "PROJECT_ID"
     value: "gcp-wow-corp-qretail-ngp-uat"
   - name: "PMR_APPROVAL_RESPONSE_SUBSCRIPTION_NAME"

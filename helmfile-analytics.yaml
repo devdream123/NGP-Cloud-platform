@@ -6,21 +6,21 @@ repositories:
 environments:
   default:
     values:
-    - config/dev.env.yaml
-    - values/dev.yaml
+      - config/dev.env.yaml
+      - values/dev.yaml
   dev:
     values:
-    - config/dev.env.yaml
-    - values/dev.yaml
-  uat: 
+      - config/dev.env.yaml
+      - values/dev.yaml
+  uat:
     values:
       - config/uat.env.yaml
       - values/uat.yaml
-  prd: 
+  prd:
     values:
       - config/prd.env.yaml
       - values/prd.yaml
-  tst: 
+  tst:
     values:
       - config/tst.env.yaml
       - values/tst.yaml

@@ -4,19 +4,19 @@ repositories:
     url: https://charts.helm.sh/stable
 
 environments:
-  uat: 
+  uat:
     values:
       - config/uat.env.yaml
       - values/uat.yaml
-  dev: 
+  dev:
     values:
       - config/dev.env.yaml
       - values/dev.yaml
-  prd: 
+  prd:
     values:
       - config/prd.env.yaml
       - values/prd.yaml
-  tst: 
+  tst:
     values:
       - config/tst.env.yaml
       - values/tst.yaml

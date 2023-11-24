@@ -1,6 +1,6 @@
 apiVersion: v2
 name: calendar-api
-description: A Helm chart for NGP calendar API 
+description: A Helm chart for NGP calendar API
 
 # A chart can be either an 'application' or a 'library' chart.
 #

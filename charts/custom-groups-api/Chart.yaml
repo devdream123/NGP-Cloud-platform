@@ -1,6 +1,6 @@
 apiVersion: v2
 name: custom-groups-api
-description: A Helm chart for Front end Custom Groups API 
+description: A Helm chart for Front end Custom Groups API
 
 # A chart can be either an 'application' or a 'library' chart.
 #

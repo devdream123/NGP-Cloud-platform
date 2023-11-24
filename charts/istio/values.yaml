@@ -6,16 +6,16 @@ asm:
   rev: asm-managed
 
 servers:
-    port: 
-      name: http
-      protocol: HTTP
-      number: 80
-    hosts:
-      - "*"
+  port:
+    name: http
+    protocol: HTTP
+    number: 80
+  hosts:
+    - "*"
 
-VirtualServices: 
+VirtualServices:
   name: services-ingress-rules
-  spec: 
+  spec:
     hosts: '*'
     http: []
 

@@ -1,11 +1,11 @@
-minScaling : "1"
-maxScaling : "3"
+minScaling: "1"
+maxScaling: "3"
 sessionAffinity: false
 cpuThrottling: true
 
 vpcAccessConnector: ""
 vpcAccessEgress: "private-ranges-only"
-ingress: "all" #[all, internal , internal-and-cloud-load-balancing]
+ingress: "all"  # [all, internal , internal-and-cloud-load-balancing]
 
 instanceTimeoutSeconds: 120
 serviceAccountName: ""
@@ -13,7 +13,7 @@ instanceLaunchStage: "BETA"
 
 container:
   name: "pmr-supplier-approval"
-  command: 
+  command:
   args:
   port: 8080
   maxConcurrentRequests: 120
@@ -43,14 +43,14 @@ startupProbe:
 #   - name: "Test"
 #     gcpSecretManagerRef:
 #       resourceId: "projects/<project_id>/secrets/<secret name>"
-#       version: "" GCP secret version : latest or numbered version 
+#       version: "" GCP secret version : latest or numbered version
 
-# secretAsVolume: 
+# secretAsVolume:
 #   - name: ""
 #     envName: "" Injected as env variable name into the container. Its value produced by concatenating the mountPath + items[*].path
 #     mountPath: "" Must starts with /
 #     gcpSecretManagerRef:
 #       resourceId: "projects/<project_id>/secrets/<secret name>"
 #       items:
-#        - version: ""  GCP secret version : latest or numbered version 
+#        - version: ""  GCP secret version : latest or numbered version
 #          path: ""  file name will be concatenated to mountPath

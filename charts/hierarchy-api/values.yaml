@@ -4,7 +4,7 @@ replicaCount: 1
 
 hierarchy-api:
   fullname: hierarchy-api
-  
+
   labels:
     run: hierarchy-api
 
@@ -81,7 +81,7 @@ ngpAssortmentConfiguration:
 collectionName: CHECKOUT_SUPER_PRODUCT
 
 PodDisruptionBudget:
-  minAvailable: 66% #K8s rounds up to the nearest integer if the Replica Count is odd
+  minAvailable: 66%  # K8s rounds up to the nearest integer if the Replica Count is odd
 
 otel:
   enabled: False

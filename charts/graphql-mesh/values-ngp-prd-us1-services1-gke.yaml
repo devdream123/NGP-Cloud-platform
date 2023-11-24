@@ -10,7 +10,7 @@ mesh:
   errorMaskingEnabled: true
 
 server:
-  memoryLimit: "4096" # memory limit in megabytes, must not exceed Values.resources.limits.memory
+  memoryLimit: "4096"  # memory limit in megabytes, must not exceed Values.resources.limits.memory
 
 resources:
   limits:

@@ -1,12 +1,12 @@
-VirtualServices: 
+VirtualServices:
   name: services-ingress-rules
-  spec: 
+  spec:
     hosts: '*'
     http:
       - name: graphql-mesh
         match:
-        - uri:
-            prefix: /graphql
+          - uri:
+              prefix: /graphql
         route:
           - destination:
               host: graphql-mesh.ngp-graphql-mesh.svc.cluster.local
@@ -14,8 +14,8 @@ VirtualServices:
                 number: 80
       - name: hierarchy-api
         match:
-        - uri:
-            prefix: /hierarchy
+          - uri:
+              prefix: /hierarchy
         rewrite:
           uri: /
         route:
@@ -25,8 +25,8 @@ VirtualServices:
                 number: 80
       - name: analytics
         match:
-        - uri:
-            prefix: /forecast
+          - uri:
+              prefix: /forecast
         rewrite:
           uri: /
         route:

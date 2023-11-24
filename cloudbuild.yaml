@@ -8,7 +8,6 @@ steps:
         chmod +x ./scripts/*
         set -o errexit   # abort on nonzero exitstatus
         set -o pipefail  # don't hide errors within pipes
-        
         if [[ "$BRANCH_NAME" == 'main' ]]; then
           ./scripts/substitute-charts-secrets.sh
         fi
@@ -32,7 +31,6 @@ steps:
       - |
         set -o errexit   # abort on nonzero exitstatus
         set -o pipefail  # don't hide errors within pipes
-        
         if [[ "$BRANCH_NAME" == 'main' ]]; then
           ./scripts/render-helm-charts.sh
         fi
@@ -46,7 +44,6 @@ steps:
       - |
         set -o errexit   # abort on nonzero exitstatus
         set -o pipefail  # don't hide errors within pipes
-        
         if [[ "$BRANCH_NAME" == 'main' ]]; then
           ./scripts/deploy.sh
         fi

@@ -1,6 +1,6 @@
 apiVersion: v2
 name: eventschedule-api
-description: A Helm chart for NGP eventschedule API 
+description: A Helm chart for NGP eventschedule API
 
 # A chart can be either an 'application' or a 'library' chart.
 #
