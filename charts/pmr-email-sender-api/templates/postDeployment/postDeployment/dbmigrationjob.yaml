@@ -1,4 +1,3 @@
-{{- if .Values.shouldDeploy }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -66,4 +65,3 @@ spec:
              cd services/pmr-email-sender;
              pnpm run db:migrate;
              echo "PMR email sender database migration job is done." > /tmp/job-result.log
-{{- end }}

@@ -1,4 +1,3 @@
-{{- if .Values.shouldDeploy }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -66,4 +65,3 @@ spec:
              cd services/pmr-sync;
              pnpm sequelize-cli db:migrate;
              echo "Job is done" > /tmp/job-result.log
-{{- end }}

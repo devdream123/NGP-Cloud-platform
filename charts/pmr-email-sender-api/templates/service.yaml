@@ -1,4 +1,3 @@
-{{- if .Values.shouldDeploy }}
 apiVersion: v1
 kind: Service
 metadata:
@@ -14,4 +13,3 @@ spec:
       name: http
   selector:
     {{- include "pmr-email-sender-api.selectorLabels" . | nindent 4 }}
-{{- end }}

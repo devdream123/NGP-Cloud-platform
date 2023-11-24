@@ -1,4 +1,3 @@
-{{- if .Values.shouldDeploy }}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -14,4 +13,3 @@ spec:
       command: ['wget']
       args: ['{{ include "pmr-sync.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
-{{- end }}
