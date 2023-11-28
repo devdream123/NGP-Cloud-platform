@@ -59,3 +59,7 @@ env:
     value: false
   - name: "PMR_TOKEN_EXPIRY_TIME_HRS"
     value: 24
+  - name: "ENVIRONMENT"
+    value: "uat"
+  - name: "SPLUNK_KEY"
+    value: "nYDbwqifcGD1UYhVGFps0w"

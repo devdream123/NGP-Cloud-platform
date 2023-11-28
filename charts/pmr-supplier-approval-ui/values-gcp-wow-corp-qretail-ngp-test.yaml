@@ -59,3 +59,5 @@ env:
     value: false
   - name: "PMR_TOKEN_EXPIRY_TIME_HRS"
     value: 24
+  - name: "ENVIRONMENT"
+    value: "tst"
