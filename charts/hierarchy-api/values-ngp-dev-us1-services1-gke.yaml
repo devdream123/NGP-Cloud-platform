@@ -1,5 +1,5 @@
 image:
-  tag: "30-10-2023"
+  tag: "27-11-2023"
 
 secrets:
   typesenseAPIKey:
