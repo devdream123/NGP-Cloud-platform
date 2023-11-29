@@ -61,3 +61,5 @@ env:
     value: "prd"
   - name: "SPLUNK_KEY"
     value: "o5r3enkASx6drHjFi2Jlsg"
+  - name: "SPLUNK_URL"
+    value: "https://rum-ingest.us1.signalfx.com/v1/rum"

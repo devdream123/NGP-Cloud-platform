@@ -63,3 +63,5 @@ env:
     value: "uat"
   - name: "SPLUNK_KEY"
     value: "nYDbwqifcGD1UYhVGFps0w"
+  - name: "SPLUNK_URL"
+    value: "https://rum-ingest.us1.signalfx.com/v1/rum"
