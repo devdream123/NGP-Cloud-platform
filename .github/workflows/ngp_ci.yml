@@ -11,7 +11,7 @@ jobs:
     uses: Q-Retail/wiq_reusable_workflows/.github/workflows/yamllint.yml@yamllint_v1.0.1
     with:
       yamllint_file_or_dir: .
-      yamllint_config_filepath: ./.github/workflows/.yamllint/config.yml
+      yamllint_config_filepath: ./.yamllint.yml
     secrets:
       repo_token: ${{ secrets.GITHUB_TOKEN }}
 

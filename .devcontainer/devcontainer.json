@@ -13,7 +13,7 @@
 				"ms-azuretools.vscode-docker",
 				"eamodio.gitlens",
 				"github.vscode-github-actions",
-				"esbenp.prettier-vscode",
+				"fnando.linter",
 				"ms-kubernetes-tools.vscode-kubernetes-tools",
 				"tim-koehler.helm-intellisense",
 				"mutantdino.resourcemonitor",

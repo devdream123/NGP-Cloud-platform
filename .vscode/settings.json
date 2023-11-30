@@ -8,8 +8,8 @@
     "editor.defaultFormatter": "ms-kubernetes-tools.vscode-kubernetes-tools",
     "editor.formatOnSave": true,
   },
-  "[yaml]":{
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[yaml]": {
+    "editor.defaultFormatter": "fnando.linter",
     "editor.formatOnSave": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
@@ -19,6 +19,35 @@
       "other": true,
       "comments": false,
       "strings": true
+    }
+  },
+  "linter.linters": {
+    "yamllint": {
+      "capabilities": [
+        "ignore-line"
+      ],
+      "command": [
+        "yamllint",
+        "--format",
+        "parsable",
+        [
+          "$config",
+          "--config-file",
+          "$config"
+        ],
+        "-"
+      ],
+      "configFiles": [
+        ".yamllint.yml",
+        ".yamllint.yaml",
+        ".yamllint"
+      ],
+      "enabled": true,
+      "languages": [
+        "yaml"
+      ],
+      "name": "yamllint",
+      "url": "https://github.com/adrienverge/yamllint"
     }
   }
 }
